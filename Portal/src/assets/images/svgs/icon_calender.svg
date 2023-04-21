@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 43.997 43.687">
+    <style>
+        .fill-calender {
+            fill: #00338d;
+        }
+    </style>
+    <path class="fill-calender" id="Path_3542" data-name="Path 3542"
+        d="M15.181,27.493h-2.3a.573.573,0,0,0-.573.573v2.3a.573.573,0,0,0,.573.574h2.3a.574.574,0,0,0,.573-.574v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-3.964 -8.856)" />
+    <path class="fill-calender" id="Path_3543" data-name="Path 3543"
+        d="M26.917,27.493h-2.3a.574.574,0,0,0-.573.573v2.3a.574.574,0,0,0,.573.574h2.3a.574.574,0,0,0,.573-.574v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-7.744 -8.856)" />
+    <path class="fill-calender" id="Path_3544" data-name="Path 3544"
+        d="M38.652,27.493h-2.3a.574.574,0,0,0-.573.573v2.3a.574.574,0,0,0,.573.574h2.3a.574.574,0,0,0,.573-.574v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-11.524 -8.856)" />
+    <path class="fill-calender" id="Path_3545" data-name="Path 3545"
+        d="M50.387,27.493h-2.3a.573.573,0,0,0-.573.573v2.3a.573.573,0,0,0,.573.574h2.3a.574.574,0,0,0,.573-.574v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-15.304 -8.856)" />
+    <path class="fill-calender" id="Path_3546" data-name="Path 3546"
+        d="M15.181,38.765h-2.3a.573.573,0,0,0-.573.573v2.3a.573.573,0,0,0,.573.573h2.3a.573.573,0,0,0,.573-.573v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-3.964 -12.487)" />
+    <path class="fill-calender" id="Path_3547" data-name="Path 3547"
+        d="M26.917,38.765h-2.3a.574.574,0,0,0-.573.573v2.3a.573.573,0,0,0,.573.573h2.3a.573.573,0,0,0,.573-.573v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-7.744 -12.487)" />
+    <path class="fill-calender" id="Path_3548" data-name="Path 3548"
+        d="M38.652,38.765h-2.3a.574.574,0,0,0-.573.573v2.3a.573.573,0,0,0,.573.573h2.3a.573.573,0,0,0,.573-.573v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-11.524 -12.487)" />
+    <path class="fill-calender" id="Path_3549" data-name="Path 3549"
+        d="M50.387,38.765h-2.3a.573.573,0,0,0-.573.573v2.3a.573.573,0,0,0,.573.573h2.3a.573.573,0,0,0,.573-.573v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-15.304 -12.487)" />
+    <path class="fill-calender" id="Path_3550" data-name="Path 3550"
+        d="M15.181,50.036h-2.3a.573.573,0,0,0-.573.573v2.3a.573.573,0,0,0,.573.574h2.3a.574.574,0,0,0,.573-.574v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-3.964 -16.118)" />
+    <path class="fill-calender" id="Path_3551" data-name="Path 3551"
+        d="M26.917,50.036h-2.3a.574.574,0,0,0-.573.573v2.3a.574.574,0,0,0,.573.574h2.3a.574.574,0,0,0,.573-.574v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-7.744 -16.118)" />
+    <path class="fill-calender" id="Path_3552" data-name="Path 3552"
+        d="M38.652,50.036h-2.3a.574.574,0,0,0-.573.573v2.3a.574.574,0,0,0,.573.574h2.3a.574.574,0,0,0,.573-.574v-2.3a.574.574,0,0,0-.573-.573"
+        transform="translate(-11.524 -16.118)" />
+    <rect class="fill-calender" width="15.021" height="2.576" transform="translate(14.488 3.899)" />
+    <path class="fill-calender" id="Path_3553" data-name="Path 3553"
+        d="M41.682,5.753H36.505V8.329h4.916v6.155H2.576V8.329H7.492V5.753H2.315A2.318,2.318,0,0,0,0,8.068V43.226a2.318,2.318,0,0,0,2.315,2.315H41.682A2.318,2.318,0,0,0,44,43.226V8.068a2.318,2.318,0,0,0-2.315-2.315M2.576,17.06H41.421v25.9H2.576Z"
+        transform="translate(0 -1.853)" />
+    <path class="fill-calender" id="Path_3554" data-name="Path 3554"
+        d="M15.5,9.917A1.494,1.494,0,0,0,17,8.423V1.494a1.494,1.494,0,0,0-2.988,0V8.423A1.494,1.494,0,0,0,15.5,9.917"
+        transform="translate(-4.512 0)" />
+    <path class="fill-calender" id="Path_3555" data-name="Path 3555"
+        d="M47.982,9.917a1.494,1.494,0,0,0,1.494-1.494V1.494a1.494,1.494,0,0,0-2.988,0V8.423a1.494,1.494,0,0,0,1.494,1.494"
+        transform="translate(-14.975 0)" />
+</svg>

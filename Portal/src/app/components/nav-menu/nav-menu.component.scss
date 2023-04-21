@@ -1,0 +1,25 @@
+@import "../../../assets/scss/custom.scss";
+
+.listItems{
+
+    @extend .list-none;
+    @extend .m-2;
+    @extend .p-0;
+    @extend .flex;
+    @extend .flex-row;
+    @extend .justify-content-evenly;
+
+    .active{
+       border: 1px solid;
+    }
+    .link{
+        @extend .flex;
+        @extend .align-items-center;
+        @extend .cursor-pointer;
+        @extend .p-3;
+        @extend .border-round;
+        @extend .text-800;
+        @extend .transition-duration-150;
+        @extend .transition-colors;
+    }
+}

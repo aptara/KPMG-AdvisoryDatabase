@@ -1,0 +1,385 @@
+
+
+.bg-repeat {
+    background-repeat: repeat!important
+}
+
+.bg-no-repeat {
+    background-repeat: no-repeat!important
+}
+
+.bg-repeat-x {
+    background-repeat: repeat-x!important
+}
+
+.bg-repeat-y {
+    background-repeat: repeat-y!important
+}
+
+.bg-repeat-round {
+    background-repeat: round!important
+}
+
+.bg-repeat-space {
+    background-repeat: space!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:bg-repeat {
+        background-repeat:repeat!important
+    }
+
+    .sm\:bg-no-repeat {
+        background-repeat: no-repeat!important
+    }
+
+    .sm\:bg-repeat-x {
+        background-repeat: repeat-x!important
+    }
+
+    .sm\:bg-repeat-y {
+        background-repeat: repeat-y!important
+    }
+
+    .sm\:bg-repeat-round {
+        background-repeat: round!important
+    }
+
+    .sm\:bg-repeat-space {
+        background-repeat: space!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:bg-repeat {
+        background-repeat:repeat!important
+    }
+
+    .md\:bg-no-repeat {
+        background-repeat: no-repeat!important
+    }
+
+    .md\:bg-repeat-x {
+        background-repeat: repeat-x!important
+    }
+
+    .md\:bg-repeat-y {
+        background-repeat: repeat-y!important
+    }
+
+    .md\:bg-repeat-round {
+        background-repeat: round!important
+    }
+
+    .md\:bg-repeat-space {
+        background-repeat: space!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:bg-repeat {
+        background-repeat:repeat!important
+    }
+
+    .lg\:bg-no-repeat {
+        background-repeat: no-repeat!important
+    }
+
+    .lg\:bg-repeat-x {
+        background-repeat: repeat-x!important
+    }
+
+    .lg\:bg-repeat-y {
+        background-repeat: repeat-y!important
+    }
+
+    .lg\:bg-repeat-round {
+        background-repeat: round!important
+    }
+
+    .lg\:bg-repeat-space {
+        background-repeat: space!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:bg-repeat {
+        background-repeat:repeat!important
+    }
+
+    .xl\:bg-no-repeat {
+        background-repeat: no-repeat!important
+    }
+
+    .xl\:bg-repeat-x {
+        background-repeat: repeat-x!important
+    }
+
+    .xl\:bg-repeat-y {
+        background-repeat: repeat-y!important
+    }
+
+    .xl\:bg-repeat-round {
+        background-repeat: round!important
+    }
+
+    .xl\:bg-repeat-space {
+        background-repeat: space!important
+    }
+}
+
+.bg-auto {
+    background-size: auto!important
+}
+
+.bg-cover {
+    background-size: cover!important
+}
+
+.bg-contain {
+    background-size: contain!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:bg-auto {
+        background-size:auto!important
+    }
+
+    .sm\:bg-cover {
+        background-size: cover!important
+    }
+
+    .sm\:bg-contain {
+        background-size: contain!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:bg-auto {
+        background-size:auto!important
+    }
+
+    .md\:bg-cover {
+        background-size: cover!important
+    }
+
+    .md\:bg-contain {
+        background-size: contain!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:bg-auto {
+        background-size:auto!important
+    }
+
+    .lg\:bg-cover {
+        background-size: cover!important
+    }
+
+    .lg\:bg-contain {
+        background-size: contain!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:bg-auto {
+        background-size:auto!important
+    }
+
+    .xl\:bg-cover {
+        background-size: cover!important
+    }
+
+    .xl\:bg-contain {
+        background-size: contain!important
+    }
+}
+
+.bg-bottom {
+    background-position: bottom!important
+}
+
+.bg-center {
+    background-position: center!important
+}
+
+.bg-left {
+    background-position: left!important
+}
+
+.bg-left-bottom {
+    background-position: left bottom!important
+}
+
+.bg-left-top {
+    background-position: left top!important
+}
+
+.bg-right {
+    background-position: right!important
+}
+
+.bg-right-bottom {
+    background-position: right bottom!important
+}
+
+.bg-right-top {
+    background-position: right top!important
+}
+
+.bg-top {
+    background-position: top!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:bg-bottom {
+        background-position:bottom!important
+    }
+
+    .sm\:bg-center {
+        background-position: center!important
+    }
+
+    .sm\:bg-left {
+        background-position: left!important
+    }
+
+    .sm\:bg-left-bottom {
+        background-position: left bottom!important
+    }
+
+    .sm\:bg-left-top {
+        background-position: left top!important
+    }
+
+    .sm\:bg-right {
+        background-position: right!important
+    }
+
+    .sm\:bg-right-bottom {
+        background-position: right bottom!important
+    }
+
+    .sm\:bg-right-top {
+        background-position: right top!important
+    }
+
+    .sm\:bg-top {
+        background-position: top!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:bg-bottom {
+        background-position:bottom!important
+    }
+
+    .md\:bg-center {
+        background-position: center!important
+    }
+
+    .md\:bg-left {
+        background-position: left!important
+    }
+
+    .md\:bg-left-bottom {
+        background-position: left bottom!important
+    }
+
+    .md\:bg-left-top {
+        background-position: left top!important
+    }
+
+    .md\:bg-right {
+        background-position: right!important
+    }
+
+    .md\:bg-right-bottom {
+        background-position: right bottom!important
+    }
+
+    .md\:bg-right-top {
+        background-position: right top!important
+    }
+
+    .md\:bg-top {
+        background-position: top!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:bg-bottom {
+        background-position:bottom!important
+    }
+
+    .lg\:bg-center {
+        background-position: center!important
+    }
+
+    .lg\:bg-left {
+        background-position: left!important
+    }
+
+    .lg\:bg-left-bottom {
+        background-position: left bottom!important
+    }
+
+    .lg\:bg-left-top {
+        background-position: left top!important
+    }
+
+    .lg\:bg-right {
+        background-position: right!important
+    }
+
+    .lg\:bg-right-bottom {
+        background-position: right bottom!important
+    }
+
+    .lg\:bg-right-top {
+        background-position: right top!important
+    }
+
+    .lg\:bg-top {
+        background-position: top!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:bg-bottom {
+        background-position:bottom!important
+    }
+
+    .xl\:bg-center {
+        background-position: center!important
+    }
+
+    .xl\:bg-left {
+        background-position: left!important
+    }
+
+    .xl\:bg-left-bottom {
+        background-position: left bottom!important
+    }
+
+    .xl\:bg-left-top {
+        background-position: left top!important
+    }
+
+    .xl\:bg-right {
+        background-position: right!important
+    }
+
+    .xl\:bg-right-bottom {
+        background-position: right bottom!important
+    }
+
+    .xl\:bg-right-top {
+        background-position: right top!important
+    }
+
+    .xl\:bg-top {
+        background-position: top!important
+    }
+}

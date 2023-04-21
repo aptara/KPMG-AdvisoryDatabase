@@ -1,0 +1,432 @@
+
+.text-center {
+    text-align: center!important
+}
+
+.text-justify {
+    text-align: justify!important
+}
+
+.text-left {
+    text-align: left!important
+}
+
+.text-right {
+    text-align: right!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:text-center {
+        text-align:center!important
+    }
+
+    .sm\:text-justify {
+        text-align: justify!important
+    }
+
+    .sm\:text-left {
+        text-align: left!important
+    }
+
+    .sm\:text-right {
+        text-align: right!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:text-center {
+        text-align:center!important
+    }
+
+    .md\:text-justify {
+        text-align: justify!important
+    }
+
+    .md\:text-left {
+        text-align: left!important
+    }
+
+    .md\:text-right {
+        text-align: right!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:text-center {
+        text-align:center!important
+    }
+
+    .lg\:text-justify {
+        text-align: justify!important
+    }
+
+    .lg\:text-left {
+        text-align: left!important
+    }
+
+    .lg\:text-right {
+        text-align: right!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:text-center {
+        text-align:center!important
+    }
+
+    .xl\:text-justify {
+        text-align: justify!important
+    }
+
+    .xl\:text-left {
+        text-align: left!important
+    }
+
+    .xl\:text-right {
+        text-align: right!important
+    }
+}
+
+.underline {
+    text-decoration: underline!important
+}
+
+.line-through {
+    text-decoration: line-through!important
+}
+
+.no-underline {
+    text-decoration: none!important
+}
+
+.focus\:underline:focus {
+    text-decoration: underline!important
+}
+
+.hover\:underline:hover,.active\:underline:active {
+    text-decoration: underline!important
+}
+
+.focus\:line-through:focus {
+    text-decoration: line-through!important
+}
+
+.hover\:line-through:hover,.active\:line-through:active {
+    text-decoration: line-through!important
+}
+
+.focus\:no-underline:focus {
+    text-decoration: none!important
+}
+
+.hover\:no-underline:hover,.active\:no-underline:active {
+    text-decoration: none!important
+}
+
+.lowercase {
+    text-transform: lowercase!important
+}
+
+.uppercase {
+    text-transform: uppercase!important
+}
+
+.capitalize {
+    text-transform: capitalize!important
+}
+
+.text-overflow-clip {
+    text-overflow: clip!important
+}
+
+.text-overflow-ellipsis {
+    text-overflow: ellipsis!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:text-overflow-clip {
+        text-overflow:clip!important
+    }
+
+    .sm\:text-overflow-ellipsis {
+        text-overflow: ellipsis!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:text-overflow-clip {
+        text-overflow:clip!important
+    }
+
+    .md\:text-overflow-ellipsis {
+        text-overflow: ellipsis!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:text-overflow-clip {
+        text-overflow:clip!important
+    }
+
+    .lg\:text-overflow-ellipsis {
+        text-overflow: ellipsis!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:text-overflow-clip {
+        text-overflow:clip!important
+    }
+
+    .xl\:text-overflow-ellipsis {
+        text-overflow: ellipsis!important
+    }
+}
+
+.text-xs {
+    font-size: .75rem!important
+}
+
+.text-sm {
+    font-size: .875rem!important
+}
+
+.text-base {
+    font-size: 1rem!important
+}
+
+.text-lg {
+    font-size: 1.125rem!important
+}
+
+.text-xl {
+    font-size: 1.25rem!important
+}
+
+.text-2xl {
+    font-size: 1.5rem!important
+}
+
+.text-3xl {
+    font-size: 1.75rem!important
+}
+
+.text-4xl {
+    font-size: 2rem!important
+}
+
+.text-5xl {
+    font-size: 2.5rem!important
+}
+
+.text-6xl {
+    font-size: 3rem!important
+}
+
+.text-7xl {
+    font-size: 4rem!important
+}
+
+.text-8xl {
+    font-size: 6rem!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:text-xs {
+        font-size:.75rem!important
+    }
+
+    .sm\:text-sm {
+        font-size: .875rem!important
+    }
+
+    .sm\:text-base {
+        font-size: 1rem!important
+    }
+
+    .sm\:text-lg {
+        font-size: 1.125rem!important
+    }
+
+    .sm\:text-xl {
+        font-size: 1.25rem!important
+    }
+
+    .sm\:text-2xl {
+        font-size: 1.5rem!important
+    }
+
+    .sm\:text-3xl {
+        font-size: 1.75rem!important
+    }
+
+    .sm\:text-4xl {
+        font-size: 2rem!important
+    }
+
+    .sm\:text-5xl {
+        font-size: 2.5rem!important
+    }
+
+    .sm\:text-6xl {
+        font-size: 3rem!important
+    }
+
+    .sm\:text-7xl {
+        font-size: 4rem!important
+    }
+
+    .sm\:text-8xl {
+        font-size: 6rem!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:text-xs {
+        font-size:.75rem!important
+    }
+
+    .md\:text-sm {
+        font-size: .875rem!important
+    }
+
+    .md\:text-base {
+        font-size: 1rem!important
+    }
+
+    .md\:text-lg {
+        font-size: 1.125rem!important
+    }
+
+    .md\:text-xl {
+        font-size: 1.25rem!important
+    }
+
+    .md\:text-2xl {
+        font-size: 1.5rem!important
+    }
+
+    .md\:text-3xl {
+        font-size: 1.75rem!important
+    }
+
+    .md\:text-4xl {
+        font-size: 2rem!important
+    }
+
+    .md\:text-5xl {
+        font-size: 2.5rem!important
+    }
+
+    .md\:text-6xl {
+        font-size: 3rem!important
+    }
+
+    .md\:text-7xl {
+        font-size: 4rem!important
+    }
+
+    .md\:text-8xl {
+        font-size: 6rem!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:text-xs {
+        font-size:.75rem!important
+    }
+
+    .lg\:text-sm {
+        font-size: .875rem!important
+    }
+
+    .lg\:text-base {
+        font-size: 1rem!important
+    }
+
+    .lg\:text-lg {
+        font-size: 1.125rem!important
+    }
+
+    .lg\:text-xl {
+        font-size: 1.25rem!important
+    }
+
+    .lg\:text-2xl {
+        font-size: 1.5rem!important
+    }
+
+    .lg\:text-3xl {
+        font-size: 1.75rem!important
+    }
+
+    .lg\:text-4xl {
+        font-size: 2rem!important
+    }
+
+    .lg\:text-5xl {
+        font-size: 2.5rem!important
+    }
+
+    .lg\:text-6xl {
+        font-size: 3rem!important
+    }
+
+    .lg\:text-7xl {
+        font-size: 4rem!important
+    }
+
+    .lg\:text-8xl {
+        font-size: 6rem!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:text-xs {
+        font-size:.75rem!important
+    }
+
+    .xl\:text-sm {
+        font-size: .875rem!important
+    }
+
+    .xl\:text-base {
+        font-size: 1rem!important
+    }
+
+    .xl\:text-lg {
+        font-size: 1.125rem!important
+    }
+
+    .xl\:text-xl {
+        font-size: 1.25rem!important
+    }
+
+    .xl\:text-2xl {
+        font-size: 1.5rem!important
+    }
+
+    .xl\:text-3xl {
+        font-size: 1.75rem!important
+    }
+
+    .xl\:text-4xl {
+        font-size: 2rem!important
+    }
+
+    .xl\:text-5xl {
+        font-size: 2.5rem!important
+    }
+
+    .xl\:text-6xl {
+        font-size: 3rem!important
+    }
+
+    .xl\:text-7xl {
+        font-size: 4rem!important
+    }
+
+    .xl\:text-8xl {
+        font-size: 6rem!important
+    }
+}

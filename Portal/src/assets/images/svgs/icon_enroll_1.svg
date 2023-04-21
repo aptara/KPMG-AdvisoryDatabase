@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+   <style type="text/css">
+        .fill-enroll {
+            fill: #00338d;
+        }
+    </style>
+    <path class="fill-enroll" d="M16.25,26V24.333h8.083V7.667H16.25V6h8.083A1.709,1.709,0,0,1,26,7.667V24.333A1.709,1.709,0,0,1,24.333,26Zm-2.167-5.139-1.194-1.194,2.833-2.833H6V15.167h9.667l-2.833-2.833,1.194-1.194,4.889,4.889Z" transform="translate(-6 -6)" />
+</svg>

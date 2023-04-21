@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20.632">
+    <style type="text/css">
+        .fill-import-from-csv {
+            fill: #00338d;
+        }
+    </style>
+    <path class="fill-import-from-csv" d="M6,26.368V24.158H17.053v2.211Zm0-6.079V18.079H23.316v2.211Zm0-6.079V12H23.316v2.211ZM25.526,32.632V26.368H19.263V24.158h6.263V17.895h2.211v6.263H34v2.211H27.737v6.263Z" transform="translate(-6 -12)"/>
+</svg>

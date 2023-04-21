@@ -1,0 +1,75 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/debug.log": true,
+        "**/node_modules": true,
+        "**/.DS_Store": true,
+        "**/.angular": true
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.foldingStrategy": "indentation",
+    "editor.showFoldingControls": "always",
+
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 150,
+    "files.trimTrailingWhitespace": true,
+    "editor.autoClosingQuotes": "always",
+
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    "json.format.enable": true,
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+
+    "javascript.format.enable": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "typescript.format.enable": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+
+    "html.format.enable": true,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+
+    "html.format.indentHandlebars": true,
+    "[handlebars]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "css.format.enable": true,
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "scss.format.enable": true,
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "[svg]": {
+        "editor.defaultFormatter": "jock.svg"
+    },
+
+    "prettier.endOfLine": "auto",
+    "prettier.printWidth": 150,
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4
+}

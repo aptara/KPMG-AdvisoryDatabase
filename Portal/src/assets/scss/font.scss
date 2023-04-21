@@ -1,0 +1,112 @@
+
+.font-light {
+    font-weight: 300!important
+}
+
+.font-normal {
+    font-weight: 400!important
+}
+
+.font-medium {
+    font-weight: 500!important
+}
+
+.font-semibold {
+    font-weight: 600!important
+}
+
+.font-bold {
+    font-weight: 700!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:font-light {
+        font-weight:300!important
+    }
+
+    .sm\:font-normal {
+        font-weight: 400!important
+    }
+
+    .sm\:font-medium {
+        font-weight: 500!important
+    }
+
+    .sm\:font-semibold {
+        font-weight: 600!important
+    }
+
+    .sm\:font-bold {
+        font-weight: 700!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:font-light {
+        font-weight:300!important
+    }
+
+    .md\:font-normal {
+        font-weight: 400!important
+    }
+
+    .md\:font-medium {
+        font-weight: 500!important
+    }
+
+    .md\:font-semibold {
+        font-weight: 600!important
+    }
+
+    .md\:font-bold {
+        font-weight: 700!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:font-light {
+        font-weight:300!important
+    }
+
+    .lg\:font-normal {
+        font-weight: 400!important
+    }
+
+    .lg\:font-medium {
+        font-weight: 500!important
+    }
+
+    .lg\:font-semibold {
+        font-weight: 600!important
+    }
+
+    .lg\:font-bold {
+        font-weight: 700!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:font-light {
+        font-weight:300!important
+    }
+
+    .xl\:font-normal {
+        font-weight: 400!important
+    }
+
+    .xl\:font-medium {
+        font-weight: 500!important
+    }
+
+    .xl\:font-semibold {
+        font-weight: 600!important
+    }
+
+    .xl\:font-bold {
+        font-weight: 700!important
+    }
+}
+
+.font-italic {
+    font-style: italic!important
+}

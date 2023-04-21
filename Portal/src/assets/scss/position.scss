@@ -1,0 +1,727 @@
+
+
+.static {
+    position: static!important
+}
+
+.fixed {
+    position: fixed!important
+}
+
+.absolute {
+    position: absolute!important
+}
+
+.relative {
+    position: relative!important
+}
+
+.sticky {
+    position: sticky!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:static {
+        position:static!important
+    }
+
+    .sm\:fixed {
+        position: fixed!important
+    }
+
+    .sm\:absolute {
+        position: absolute!important
+    }
+
+    .sm\:relative {
+        position: relative!important
+    }
+
+    .sm\:sticky {
+        position: sticky!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:static {
+        position:static!important
+    }
+
+    .md\:fixed {
+        position: fixed!important
+    }
+
+    .md\:absolute {
+        position: absolute!important
+    }
+
+    .md\:relative {
+        position: relative!important
+    }
+
+    .md\:sticky {
+        position: sticky!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:static {
+        position:static!important
+    }
+
+    .lg\:fixed {
+        position: fixed!important
+    }
+
+    .lg\:absolute {
+        position: absolute!important
+    }
+
+    .lg\:relative {
+        position: relative!important
+    }
+
+    .lg\:sticky {
+        position: sticky!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:static {
+        position:static!important
+    }
+
+    .xl\:fixed {
+        position: fixed!important
+    }
+
+    .xl\:absolute {
+        position: absolute!important
+    }
+
+    .xl\:relative {
+        position: relative!important
+    }
+
+    .xl\:sticky {
+        position: sticky!important
+    }
+}
+
+
+
+.top-auto {
+    top: auto!important
+}
+
+.top-0 {
+    top: 0!important
+}
+
+.top-50 {
+    top: 50%!important
+}
+
+.top-100 {
+    top: 100%!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:top-auto {
+        top:auto!important
+    }
+
+    .sm\:top-0 {
+        top: 0!important
+    }
+
+    .sm\:top-50 {
+        top: 50%!important
+    }
+
+    .sm\:top-100 {
+        top: 100%!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:top-auto {
+        top:auto!important
+    }
+
+    .md\:top-0 {
+        top: 0!important
+    }
+
+    .md\:top-50 {
+        top: 50%!important
+    }
+
+    .md\:top-100 {
+        top: 100%!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:top-auto {
+        top:auto!important
+    }
+
+    .lg\:top-0 {
+        top: 0!important
+    }
+
+    .lg\:top-50 {
+        top: 50%!important
+    }
+
+    .lg\:top-100 {
+        top: 100%!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:top-auto {
+        top:auto!important
+    }
+
+    .xl\:top-0 {
+        top: 0!important
+    }
+
+    .xl\:top-50 {
+        top: 50%!important
+    }
+
+    .xl\:top-100 {
+        top: 100%!important
+    }
+}
+
+.left-auto {
+    left: auto!important
+}
+
+.left-0 {
+    left: 0!important
+}
+
+.left-50 {
+    left: 50%!important
+}
+
+.left-100 {
+    left: 100%!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:left-auto {
+        left:auto!important
+    }
+
+    .sm\:left-0 {
+        left: 0!important
+    }
+
+    .sm\:left-50 {
+        left: 50%!important
+    }
+
+    .sm\:left-100 {
+        left: 100%!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:left-auto {
+        left:auto!important
+    }
+
+    .md\:left-0 {
+        left: 0!important
+    }
+
+    .md\:left-50 {
+        left: 50%!important
+    }
+
+    .md\:left-100 {
+        left: 100%!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:left-auto {
+        left:auto!important
+    }
+
+    .lg\:left-0 {
+        left: 0!important
+    }
+
+    .lg\:left-50 {
+        left: 50%!important
+    }
+
+    .lg\:left-100 {
+        left: 100%!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:left-auto {
+        left:auto!important
+    }
+
+    .xl\:left-0 {
+        left: 0!important
+    }
+
+    .xl\:left-50 {
+        left: 50%!important
+    }
+
+    .xl\:left-100 {
+        left: 100%!important
+    }
+}
+
+.right-auto {
+    right: auto!important
+}
+
+.right-0 {
+    right: 0!important
+}
+
+.right-50 {
+    right: 50%!important
+}
+
+.right-100 {
+    right: 100%!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:right-auto {
+        right:auto!important
+    }
+
+    .sm\:right-0 {
+        right: 0!important
+    }
+
+    .sm\:right-50 {
+        right: 50%!important
+    }
+
+    .sm\:right-100 {
+        right: 100%!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:right-auto {
+        right:auto!important
+    }
+
+    .md\:right-0 {
+        right: 0!important
+    }
+
+    .md\:right-50 {
+        right: 50%!important
+    }
+
+    .md\:right-100 {
+        right: 100%!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:right-auto {
+        right:auto!important
+    }
+
+    .lg\:right-0 {
+        right: 0!important
+    }
+
+    .lg\:right-50 {
+        right: 50%!important
+    }
+
+    .lg\:right-100 {
+        right: 100%!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:right-auto {
+        right:auto!important
+    }
+
+    .xl\:right-0 {
+        right: 0!important
+    }
+
+    .xl\:right-50 {
+        right: 50%!important
+    }
+
+    .xl\:right-100 {
+        right: 100%!important
+    }
+}
+
+.bottom-auto {
+    bottom: auto!important
+}
+
+.bottom-0 {
+    bottom: 0!important
+}
+
+.bottom-50 {
+    bottom: 50%!important
+}
+
+.bottom-100 {
+    bottom: 100%!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:bottom-auto {
+        bottom:auto!important
+    }
+
+    .sm\:bottom-0 {
+        bottom: 0!important
+    }
+
+    .sm\:bottom-50 {
+        bottom: 50%!important
+    }
+
+    .sm\:bottom-100 {
+        bottom: 100%!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:bottom-auto {
+        bottom:auto!important
+    }
+
+    .md\:bottom-0 {
+        bottom: 0!important
+    }
+
+    .md\:bottom-50 {
+        bottom: 50%!important
+    }
+
+    .md\:bottom-100 {
+        bottom: 100%!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:bottom-auto {
+        bottom:auto!important
+    }
+
+    .lg\:bottom-0 {
+        bottom: 0!important
+    }
+
+    .lg\:bottom-50 {
+        bottom: 50%!important
+    }
+
+    .lg\:bottom-100 {
+        bottom: 100%!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:bottom-auto {
+        bottom:auto!important
+    }
+
+    .xl\:bottom-0 {
+        bottom: 0!important
+    }
+
+    .xl\:bottom-50 {
+        bottom: 50%!important
+    }
+
+    .xl\:bottom-100 {
+        bottom: 100%!important
+    }
+}
+
+.overflow-auto {
+    overflow: auto!important
+}
+
+.overflow-hidden {
+    overflow: hidden!important
+}
+
+.overflow-visible {
+    overflow: visible!important
+}
+
+.overflow-scroll {
+    overflow: scroll!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:overflow-auto {
+        overflow:auto!important
+    }
+
+    .sm\:overflow-hidden {
+        overflow: hidden!important
+    }
+
+    .sm\:overflow-visible {
+        overflow: visible!important
+    }
+
+    .sm\:overflow-scroll {
+        overflow: scroll!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:overflow-auto {
+        overflow:auto!important
+    }
+
+    .md\:overflow-hidden {
+        overflow: hidden!important
+    }
+
+    .md\:overflow-visible {
+        overflow: visible!important
+    }
+
+    .md\:overflow-scroll {
+        overflow: scroll!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:overflow-auto {
+        overflow:auto!important
+    }
+
+    .lg\:overflow-hidden {
+        overflow: hidden!important
+    }
+
+    .lg\:overflow-visible {
+        overflow: visible!important
+    }
+
+    .lg\:overflow-scroll {
+        overflow: scroll!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:overflow-auto {
+        overflow:auto!important
+    }
+
+    .xl\:overflow-hidden {
+        overflow: hidden!important
+    }
+
+    .xl\:overflow-visible {
+        overflow: visible!important
+    }
+
+    .xl\:overflow-scroll {
+        overflow: scroll!important
+    }
+}
+
+.overflow-x-auto {
+    overflow-x: auto!important
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden!important
+}
+
+.overflow-x-visible {
+    overflow-x: visible!important
+}
+
+.overflow-x-scroll {
+    overflow-x: scroll!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:overflow-x-auto {
+        overflow-x:auto!important
+    }
+
+    .sm\:overflow-x-hidden {
+        overflow-x: hidden!important
+    }
+
+    .sm\:overflow-x-visible {
+        overflow-x: visible!important
+    }
+
+    .sm\:overflow-x-scroll {
+        overflow-x: scroll!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:overflow-x-auto {
+        overflow-x:auto!important
+    }
+
+    .md\:overflow-x-hidden {
+        overflow-x: hidden!important
+    }
+
+    .md\:overflow-x-visible {
+        overflow-x: visible!important
+    }
+
+    .md\:overflow-x-scroll {
+        overflow-x: scroll!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:overflow-x-auto {
+        overflow-x:auto!important
+    }
+
+    .lg\:overflow-x-hidden {
+        overflow-x: hidden!important
+    }
+
+    .lg\:overflow-x-visible {
+        overflow-x: visible!important
+    }
+
+    .lg\:overflow-x-scroll {
+        overflow-x: scroll!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:overflow-x-auto {
+        overflow-x:auto!important
+    }
+
+    .xl\:overflow-x-hidden {
+        overflow-x: hidden!important
+    }
+
+    .xl\:overflow-x-visible {
+        overflow-x: visible!important
+    }
+
+    .xl\:overflow-x-scroll {
+        overflow-x: scroll!important
+    }
+}
+
+.overflow-y-auto {
+    overflow-y: auto!important
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden!important
+}
+
+.overflow-y-visible {
+    overflow-y: visible!important
+}
+
+.overflow-y-scroll {
+    overflow-y: scroll!important
+}
+
+@media screen and (min-width: 576px) {
+    .sm\:overflow-y-auto {
+        overflow-y:auto!important
+    }
+
+    .sm\:overflow-y-hidden {
+        overflow-y: hidden!important
+    }
+
+    .sm\:overflow-y-visible {
+        overflow-y: visible!important
+    }
+
+    .sm\:overflow-y-scroll {
+        overflow-y: scroll!important
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .md\:overflow-y-auto {
+        overflow-y:auto!important
+    }
+
+    .md\:overflow-y-hidden {
+        overflow-y: hidden!important
+    }
+
+    .md\:overflow-y-visible {
+        overflow-y: visible!important
+    }
+
+    .md\:overflow-y-scroll {
+        overflow-y: scroll!important
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg\:overflow-y-auto {
+        overflow-y:auto!important
+    }
+
+    .lg\:overflow-y-hidden {
+        overflow-y: hidden!important
+    }
+
+    .lg\:overflow-y-visible {
+        overflow-y: visible!important
+    }
+
+    .lg\:overflow-y-scroll {
+        overflow-y: scroll!important
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:overflow-y-auto {
+        overflow-y:auto!important
+    }
+
+    .xl\:overflow-y-hidden {
+        overflow-y: hidden!important
+    }
+
+    .xl\:overflow-y-visible {
+        overflow-y: visible!important
+    }
+
+    .xl\:overflow-y-scroll {
+        overflow-y: scroll!important
+    }
+}

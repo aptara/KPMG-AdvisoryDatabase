@@ -1,0 +1,79 @@
+<div class="update-user">
+
+  <p-fieldset legend="update User" class="fieldset">
+
+    <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+
+      <div class="group-row">
+
+          <div class="p-float-label">
+          <input pInputText id="first-name" name="first-name" [ngClass]="{ 'is-invalid': isValidFormSubmitted }" />
+          <label htmlFor="first-name">First Name *</label>
+        </div>
+        <div class="p-float-label">
+          <input pInputText id="last-name" />
+          <label htmlFor="last-name">Last Name *</label>
+        </div>
+      </div>
+
+      <div class="group-row">
+        <div class="p-float-label">
+          <input pInputText id="email-id" [pattern]="emailRegex" />
+          <label htmlFor="email-id">Email *</label>
+        </div>
+
+           <div class="p-float-label">
+
+            <select name="location" id="location">
+            <option>Choose location*</option>
+            <option>Mumbai</option>
+            <option>San Fransisco</option>
+            <option>Alabama</option>
+            <option>Africa</option>
+            </select>
+           </div>
+      </div>
+      <div class="group-row">
+<table>
+  <tr>
+    <th>Task Name</th>
+    <th>Check</th>
+
+  </tr>
+  <tr>
+    <td>Task-1</td>
+    <td><input type="checkbox"></td>
+
+  </tr>
+  <tr>
+    <td>Task-2</td>
+    <td><input type="checkbox"></td>
+  </tr>
+  <tr>
+    <td>Task-3</td>
+    <td><input type="checkbox"></td>
+  </tr>
+  <tr>
+    <td>Task-4</td>
+    <td><input type="checkbox"></td>
+  </tr>
+  <tr>
+    <td>Task-5</td>
+    <td><input type="checkbox"></td>
+  </tr>
+  <tr>
+     <td>Task-6</td>
+    <td><input type="checkbox"></td>
+  </tr>
+</table>
+
+      </div>
+      <button label="add user" class="user-btn p-button ">
+        <span class="p-button-label">Update User</span>
+      </button>
+
+    </form>
+
+  </p-fieldset>
+
+</div>

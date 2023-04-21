@@ -1,0 +1,34 @@
+@import "variables";
+
+.legends {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+
+    .legend {
+        display: inline-block;
+
+        .legend-info {
+            margin: 2px;
+            display: flex;
+            padding: 6px 10px;
+            color: rgba($colorWhite, 1);
+            border-left: 4px solid;
+            border-color: rgba($colorWhite, 0.25);
+            &.selections {
+                background-color: rgba($colorPacificBlue, 1);
+            }
+            &.waitlisted {
+                background-color: rgba($colorDarkPurple, 1);
+            }
+            &.assigned {
+                background-color: rgba($colorBlue, 1);
+            }
+            &.confirmed {
+                background-color: rgba($colorDarkGreen, 1);
+            }
+        }
+    }
+}

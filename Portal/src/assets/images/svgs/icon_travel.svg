@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
+    <style type="text/css">
+        .fill-travel {
+            fill: #00338d;
+        }
+    </style>
+    <path class="fill-travel" transform="matrix(0.848, -0.53, 0.53, 0.848, 0, 15.898)"
+        d="M24.2,9V6.4	L13.67-0.1v-7.15c-0.02-1.09-0.93-1.95-2.02-1.93C10.6-9.16,9.75-8.31,9.72-7.25v7.15L-0.8,6.4l0,2.6L9.72,5.75v7.15l-2.63,1.95	v1.95l4.6-1.3l4.6,1.3v-1.95l-2.63-1.95V5.75L24.2,9z" />
+</svg>

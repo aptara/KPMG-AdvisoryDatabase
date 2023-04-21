@@ -1,0 +1,140 @@
+@import "../../../assets/scss/partials/variables";
+@import "../../../assets/scss/partials/mixins";
+
+.user-display-container-default {
+    position: relative;
+    top: 70px;
+    min-width: 200px;
+    max-width: 350px;
+    display: flex;
+    float: right;
+    align-items: center;
+    height: 48px;
+    background-color: rgba($colorWhite, 0.8);
+    border-radius: $smallRadius 0px 0px $smallRadius;
+    padding: 3px;
+    @include dropShadowFaint;
+
+    .user-img-wrapper {
+        position: relative;
+        display: flex;
+        width: 35px;
+        border-radius: $smallRadius;
+        margin-left: 5px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .user-name-wrapper {
+        width: calc(100% - 70px);
+        color: $colorKpmgBlue;
+        padding-left: 7px;
+        line-height: 16px;
+
+        .welcome-text {
+            font-family: $openSansSemiBoldItalic;
+
+            .admin-label {
+                font-size: $fontSizeSmall;
+            }
+        }
+
+        .user-name {
+            font-family: $openSansBold;
+        }
+    }
+
+    .down-arrow-container {
+        width: 35px;
+        cursor: pointer;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .down-arrow {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            font-size: 0;
+            line-height: 0;
+            float: left;
+            border-top: 6px solid $colorKpmgBlue;
+        }
+    }
+}
+
+.user-display-container-photo {
+    position: absolute;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    top: 0;
+
+    .user-img-wrapper {
+        position: relative;
+        display: flex;
+        width: 50px;
+        border-radius: $smallRadius;
+        margin-left: 5px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .user-name-wrapper {
+        padding-left: 7px;
+        color: $colorWhite;
+    }
+}
+
+.user-display-container-proxy {
+    min-width: 260px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+
+    .user-img-wrapper {
+        position: relative;
+        display: flex;
+        width: 50px;
+        border-radius: $smallRadius;
+        margin-left: 5px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .user-name-wrapper {
+        width: calc(100% - 70px);
+        color: $colorKpmgBlue;
+        padding-left: 7px;
+        line-height: 16px;
+
+        .welcome-text {
+            font-family: $openSansSemiBoldItalic;
+        }
+
+        .user-name {
+            font-family: $openSansBold;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .user-display-container-photo {
+        .user-name-wrapper {
+            display: none;
+        }
+    }
+}

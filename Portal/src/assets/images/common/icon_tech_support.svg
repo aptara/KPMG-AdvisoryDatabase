@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
+    <style>
+        .fill-tech-support {
+            fill: #00338d;
+        }
+    </style>
+    <path class="fill-tech-support"
+        d="M22,6H6C4.9,6.01,4.01,6.9,4.01,8L4,20c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8C24,6.9,23.1,6,22,6z M22,20H6V10	l8,5l8-5V20z M14,13L6,8h16L14,13z" />
+</svg>

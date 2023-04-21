@@ -1,0 +1,209 @@
+@import "../../assets/scss/partials/variables";
+
+.p-component {
+  font-size: $fontSizeRegular;
+  font-family: "OpenSans-Regular";
+}
+
+.p-button {
+  background: $colorCobalt;
+  border: 1px solid $colorCobalt;
+
+  &.p-button-lg {
+    font-family: $openSansBold;
+    border-radius: $smallRadius;
+    padding: 15px;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:enabled:hover {
+    background: rgba($colorCobalt, 0.8);
+    border-color: rgba($colorCobalt, 0.8);
+  }
+}
+
+.p-dialog {
+  .p-dialog-header {
+    padding: 10px 14px 10px 20px;
+    border-bottom: 1px solid $colorGrayE5;
+
+    .p-dialog-title {
+      color: $colorKpmgBlue;
+    }
+  }
+
+  .p-dialog-content {
+    padding: 10px 20px;
+    color: $colorKpmgBlue;
+    overflow: hidden;
+  }
+}
+
+.p-dropdown {
+  width: 100%;
+  .p-dropdown-items-wrapper {
+    height: 100%;
+  }
+}
+
+.p-datatable {
+  .p-datatable-tbody {
+    tr {
+      transition: all $animSpeed;
+
+      &.json-only {
+        background-color: rgba($colorGreen, 0.2);
+        &.p-highlight {
+          background-color: rgba($colorGreen, 0.5);
+        }
+        &:hover {
+          background-color: rgba($colorGreen, 0.3);
+        }
+        &:not(.p-highlight):hover {
+          background-color: rgba($colorGreen, 0.3);
+        }
+      }
+      &.db-only {
+        background-color: rgba($colorRed, 0.2);
+        &.p-highlight {
+          background-color: rgba($colorRed, 0.5);
+        }
+        &:hover {
+          background-color: rgba($colorRed, 0.3);
+        }
+        &:not(.p-highlight):hover {
+          background-color: rgba($colorRed, 0.3);
+        }
+      }
+      &.both {
+        background-color: rgba($colorWhite, 0.2);
+        &.p-highlight {
+          background-color: #e3f2fd;
+        }
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.p-accordion {
+  .p-accordion-header {
+    .p-accordion-header-link {
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba($colorGrayB2, 0.5);
+      color: $colorKpmgBlue;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    &:not(.p-disabled) {
+      .p-accordion-header-link {
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+
+    &:not(.p-disabled).p-highlight {
+      .p-accordion-header-link {
+        border-radius: $smallRadius;
+        color: $colorWhite;
+        background-color: $colorPacificBlue;
+
+        &:hover {
+          color: $colorWhite;
+          background-color: $colorPacificBlue;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+
+    &:not(.p-highlight):not(.p-disabled):hover {
+      .p-accordion-header-link {
+        background: rgba($colorWhite, 0.4);
+        color: $colorKpmgBlue;
+      }
+    }
+  }
+
+  .p-accordion-content {
+    padding: 10px 0;
+    background: none;
+    border: none;
+  }
+}
+
+.certification-listbox {
+  .p-listbox {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
+    .p-listbox-header {
+      background: transparent;
+      padding: 10px 15px 10px 40px;
+    }
+
+    .p-listbox-list-wrapper {
+      padding-right: 15px;
+
+      .p-listbox-list {
+        .p-listbox-item {
+          margin: 10px 0;
+          border-radius: $smallRadius;
+
+          &:not(.p-highlight) {
+            color: $colorKpmgBlue;
+            background-color: transparent;
+            border: 1px solid rgba(0, 51, 141, 0.2);
+            .question-radio {
+              .icon-radio-button {
+                .radio-outer {
+                  stroke: $colorPacificBlue;
+                }
+                .radio-check {
+                  fill: transparent;
+                }
+              }
+            }
+          }
+
+          &.p-highlight {
+            background-color: $colorPacificBlue;
+
+            .certificate-item {
+              color: $colorWhite;
+              .show-cid {
+                color: $colorWhite;
+              }
+              .question-radio {
+                .icon-radio-button {
+                  .radio-outer {
+                    stroke: $colorWhite;
+                  }
+                  .radio-check {
+                    fill: $colorWhite;
+                  }
+                }
+              }
+            }
+          }
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}

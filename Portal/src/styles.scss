@@ -1,0 +1,278 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/imports.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+html,
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: $fontSizeRegular;
+  font-family: "OpenSans-Regular";
+  color: $colorKpmgBlue;
+
+  .app-version {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    font-size: $fontSizeSmall;
+    color: $colorGray98;
+    cursor: default;
+    z-index: 1052;
+  }
+
+  .spinner {
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1052;
+    transition: opacity 0.4s;
+    color: $colorGray98;
+    font-family: $fontArial;
+
+    .background-img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($colorBlack, 0.8);
+      text-align: center;
+
+      img {
+        width: 40%;
+        height: auto;
+        margin: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        position: relative;
+      }
+    }
+
+    .center {
+      position: relative;
+      top: calc(100% - 140px);
+      transform: translateY(-50%);
+      width: 100%;
+      text-align: center;
+
+
+      .lds-roller {
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+
+        div {
+          animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          transform-origin: 32px 32px;
+        }
+
+        div:after {
+          content: " ";
+          display: block;
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #cef;
+          margin: -3px 0 0 -3px;
+        }
+
+        div:nth-child(1) {
+          animation-delay: -0.036s;
+        }
+
+        div:nth-child(1):after {
+          top: 50px;
+          left: 50px;
+        }
+
+        div:nth-child(2) {
+          animation-delay: -0.072s;
+        }
+
+        div:nth-child(2):after {
+          top: 54px;
+          left: 45px;
+        }
+
+        div:nth-child(3) {
+          animation-delay: -0.108s;
+        }
+
+        div:nth-child(3):after {
+          top: 57px;
+          left: 39px;
+        }
+
+        div:nth-child(4) {
+          animation-delay: -0.144s;
+        }
+
+        div:nth-child(4):after {
+          top: 58px;
+          left: 32px;
+        }
+
+        div:nth-child(5) {
+          animation-delay: -0.18s;
+        }
+
+        div:nth-child(5):after {
+          top: 57px;
+          left: 25px;
+        }
+
+        div:nth-child(6) {
+          animation-delay: -0.216s;
+        }
+
+        div:nth-child(6):after {
+          top: 54px;
+          left: 19px;
+        }
+
+        div:nth-child(7) {
+          animation-delay: -0.252s;
+        }
+
+        div:nth-child(7):after {
+          top: 50px;
+          left: 14px;
+        }
+
+        div:nth-child(8) {
+          animation-delay: -0.288s;
+        }
+
+        div:nth-child(8):after {
+          top: 45px;
+          left: 10px;
+        }
+      }
+
+      .loading-msg {
+        position: relative;
+        padding-top: 10px;
+      }
+    }
+
+    &.to-hide {
+      opacity: 0;
+    }
+
+    &.show {
+      display: block;
+    }
+  }
+
+  .popup-link {
+    font-family: $openSansBold;
+    text-decoration: underline;
+    cursor: pointer;
+    color: $colorKpmgBlue;
+  }
+
+  .selectable {
+    -webkit-touch-callout: all;
+    -webkit-user-select: all;
+    -khtml-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+  }
+
+  .text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .vertical-middle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .instruction-italic {
+    color: $colorPurple;
+    font-style: italic;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
+  .instruction {
+    color: $colorPurple;
+  }
+
+  .btn {
+    min-width: 90px;
+    min-height: 25px;
+    margin: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: $openSansSemiBold;
+    border-radius: $smallRadius;
+    text-align: center;
+    transition: background-color $animSpeed;
+    font-size: 14px;
+    padding: 6px 10px;
+
+    &.btn-default {
+      color: $colorWhite;
+      background-color: $colorPacificBlue;
+
+      &:hover {
+        background-color: rgba($colorPacificBlue, 0.8);
+      }
+    }
+
+    &.disabled {
+      cursor: default;
+      color: rgba($colorWhite, 0.5);
+      background-color: $colorGrayB2;
+    }
+  }
+
+  .show-cid {
+    position: absolute;
+    left: 2px;
+    width: 100%;
+    height: 10px;
+    overflow: hidden;
+    top: 0;
+    font-size: 8px;
+    color: rgba($colorBlack, 0.3);
+  }
+
+  .cert-info {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: $smallRadius;
+    background-color: rgba($colorBlack, 0.1);
+  }
+}

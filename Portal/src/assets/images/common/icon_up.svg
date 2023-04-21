@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 24 24">
+    <style>
+        .fill-up {
+            fill: #00338d;
+        }
+    </style>
+    <path class="fill-up" d="M7.41,15.41,12,10.83l4.59,4.58L18,14,12,8,6,14Z" />
+</svg>

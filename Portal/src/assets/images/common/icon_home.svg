@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <style>
+        .fill-home {
+            fill: #00338d;
+        }
+    </style>
+    <path class="fill-home" d="M10,20V14h4v6h5V12h3L12,3,2,12H5v8Z" />
+</svg>
