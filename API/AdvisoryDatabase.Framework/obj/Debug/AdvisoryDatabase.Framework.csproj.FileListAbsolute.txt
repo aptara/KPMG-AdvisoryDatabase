@@ -30,10 +30,6 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.Framework\obj\De
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CopyComplete
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.Framework\obj\Debug\AdvisoryDatabase.Framework.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.Framework\obj\Debug\AdvisoryDatabase.Framework.pdb
-D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.AssemblyReference.cache
-D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CoreCompileInputs.cache
-D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.dll
-D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.pdb
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\AdvisoryDatabase.Framework.dll.config
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\AdvisoryDatabase.Framework.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\AdvisoryDatabase.Framework.pdb
@@ -62,4 +58,8 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Fra
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.xml
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.xml
+D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.AssemblyReference.cache
+D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CoreCompileInputs.cache
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CopyComplete
+D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.dll
+D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.pdb

@@ -32,14 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdvisoryDatabase.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="AdvisoryDatabase.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\AdvisoryDatabase.Framework\bin\Debug\AdvisoryDatabase.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
@@ -69,7 +61,16 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Utillity.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AdvisoryDatabase.DataAccess\AdvisoryDatabase.DataAccess.csproj">
+      <Project>{7cd8cb5f-f5d8-48c4-85f0-a82bd245aa7c}</Project>
+      <Name>AdvisoryDatabase.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvisoryDatabase.Framework\AdvisoryDatabase.Framework.csproj">
+      <Project>{cb75f515-0e04-47fb-bfa2-617cd2e4ea7d}</Project>
+      <Name>AdvisoryDatabase.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>

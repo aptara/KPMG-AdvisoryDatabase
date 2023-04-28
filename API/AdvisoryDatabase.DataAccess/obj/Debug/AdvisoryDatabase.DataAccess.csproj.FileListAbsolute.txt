@@ -17,6 +17,7 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.DataAccess\obj\D
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CopyComplete
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\MSB.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.pdb
+D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CoreCompileInputs.cache
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.dll.config
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.pdb
@@ -31,7 +32,6 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Dat
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\log4net.xml
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
-D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CoreCompileInputs.cache
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CopyComplete
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.pdb
