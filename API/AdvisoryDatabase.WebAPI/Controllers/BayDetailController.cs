@@ -21,29 +21,32 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.WebAPI.Controllers
 {
-   
+
     public class BayDetailsController : ApiController
     {
 
         // http://localhost:62220//api/BayDetails/GetBayData
-                    //        {
-                    //"BayID": "22",
-                    //"SubStationID":"11",
-                    //"Name":"Test Name",
-                    //"Description":"Test Description"
-                    //}
-    [HttpPost]
-        public HttpResponseMessage GetBayData(BayDetails ObjInputParameters)
-        {            
+        //        {
+        //"BayID": "22",
+        //"SubStationID":"11",
+        //"Name":"Test Name",
+        //"Description":"Test Description"
+        //}
+        [HttpPost]
+       /* public HttpResponseMessage GetBayData(BayDetails ObjInputParameters)*/
+              public HttpResponseMessage GetBayData()
+        {
             try
-            {   
+            {
                 AdvisoryDatabase.Business.Controllers.BayDetailController ObjBayDetai = new Business.Controllers.BayDetailController();
+                BayDetails ObjInputParameters = new BayDetails();
                 ObjInputParameters.LastUpdatedBy = 1;
+
                 ObjInputParameters.IsActive = true;
                 ObjBayDetai.GetBayDetails(ObjInputParameters);
 
                 string outputData = string.Empty;
-             
+
                 return new HttpResponseMessage()
                 {
                     Content = new StringContent(outputData, Encoding.UTF8, "application/xml")
@@ -58,5 +61,9 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 };
             }
         }
-    }
+
+    } 
+
+    
+
 }
