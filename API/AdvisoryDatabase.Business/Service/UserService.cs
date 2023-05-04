@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,38 +11,38 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Service
 {
-    public class UserService : Repository<User, Int32>
+    public class UserService : Repository<UserDetail, Int32>
     {
-        protected override DataAccess.Repository.DataAccessRepository<User, int> CreateDalManager()
+        protected override DataAccess.Repository.DataAccessRepository<UserDetail, int> CreateDalManager()
         {
             return new DataAccessUserService();
         }
 
-        public User GetUserByUserEmail(string emailID)
+    public UserDetail GetUserByUserEmail(string emailID)
+    {
+      UserDetail ObjUser = new UserDetail();
+      try
+      {
+        ObjUser.EmailID = emailID;
+        var DBUsers = Get(ObjUser);
+        if (DBUsers != null)
         {
-            User ObjUser = new User();
-            try
-            {
-                ObjUser.EmailID = emailID;
-                var DBUsers = Get(ObjUser);
-                if (DBUsers != null)
-                {
-                    DBUsers.IsActive = true;
-                }                
-                ObjUser = DBUsers;
-
-            }
-            catch (SqlException sqlEx)
-            {
-                MSBLogger.WriteError("Failed to Authenticate", sqlEx);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                MSBLogger.WriteError("Failed to Authenticate", ex);
-                throw;
-            }
-            return ObjUser;
+          DBUsers.IsActive = true;
         }
+        ObjUser = DBUsers;
+
+      }
+      catch (SqlException sqlEx)
+      {
+        MSBLogger.WriteError("Failed to Authenticate", sqlEx);
+        throw;
+      }
+      catch (Exception ex)
+      {
+        MSBLogger.WriteError("Failed to Authenticate", ex);
+        throw;
+      }
+      return ObjUser;
     }
+  }
 }

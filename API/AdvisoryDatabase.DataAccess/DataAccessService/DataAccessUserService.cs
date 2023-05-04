@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,20 +7,21 @@ using AdvisoryDatabase.DataAccess.Common;
 using AdvisoryDatabase.DataAccess.Repository;
 using AdvisoryDatabase.Framework.Entities;
 using System.Data;
+using System.Data.Common;
 
 namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
-    public class DataAccessUserService : DataAccessRepository<User, Int32>
+    public class DataAccessUserService : DataAccessRepository<UserDetail, Int32>
     {
         protected override string GetProcedureName(OperationType operation)
         {
             string spName = string.Empty;
             switch (operation)
             {
-                case OperationType.Get:
-                    spName = "USP_GetUser";
-                    break;
                 case OperationType.GetAll:
+                    spName = "UserDetail";
+                    break;
+               /* case OperationType.GetAll:
                     spName = "USP_ManageUser";
                     break;
                 case OperationType.Add:
@@ -31,7 +32,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     break;
                 case OperationType.Delete:
                     spName = "USP_ManageUser";
-                    break;
+                    break;*/
                 default:
                     spName = string.Empty;
                     break;
@@ -39,12 +40,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             return spName;
         }
 
-        protected override string GetParameterName(ParameterType parameter)
+       /* protected override string GetParameterName(ParameterType parameter)
         {
             return parameter == ParameterType.Id ? "UserId" : base.GetParameterName(parameter);
         }
 
-        protected override void FillParameters(OperationType operation, User instance, List<System.Data.Common.DbParameter> parameters)
+        protected override void FillParameters(OperationType operation, UserDetail instance, List<System.Data.Common.DbParameter> parameters)
         {
             if (operation == OperationType.Get)
             {
@@ -61,12 +62,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("HashPassword", instance.Password == null ? "" : instance.Password));
                 //parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
             }
-        }
+        }*/
 
-        protected override List<User> ParseGetAllData(System.Data.DataSet data)
+        protected override List<UserDetail> ParseGetAllData(System.Data.DataSet data)
         {
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
-                     new User
+                     new UserDetail
                      {
                          Id = row.Read<Int32>("Id"),
                          UserId = row.ReadString("Id"),
@@ -82,9 +83,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             return GetAllData;
         }
 
-        protected override User Parse(System.Data.DataRow data)
+        protected override UserDetail Parse(System.Data.DataRow data)
         {
-            return new User
+            return new UserDetail
             {
                 Id = data.Read<Int32>("Id"),
                 UserId = data.ReadString("Id"),
@@ -94,5 +95,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 Password = data.ReadString("Password"),
             };
         }
+
+    protected override void FillParameters(OperationType operation, UserDetail instance, List<DbParameter> parameters)
+    {
+      throw new NotImplementedException();
     }
+  }
 }

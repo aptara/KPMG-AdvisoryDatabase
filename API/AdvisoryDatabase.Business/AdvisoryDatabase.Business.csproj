@@ -48,7 +48,7 @@
     <Compile Include="Controllers\BayDetailController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\MeterDetailController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\BussUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />

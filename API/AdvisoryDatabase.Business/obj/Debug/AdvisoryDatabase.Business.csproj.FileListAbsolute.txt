@@ -43,3 +43,25 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Bus
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.CopyComplete
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Business.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Business.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Business.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.DataAccess.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Framework.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\log4net.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.DataAccess.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.DataAccess.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Framework.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Framework.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\log4net.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.AssemblyReference.cache
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.CoreCompileInputs.cache
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.CopyComplete
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.pdb
