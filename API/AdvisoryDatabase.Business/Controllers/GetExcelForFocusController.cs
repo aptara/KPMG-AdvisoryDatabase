@@ -9,17 +9,15 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Controllers
 {
-    public class UserController : BaseController
+   public class GetExcelForFocusController : BaseController
     {
-
-      
-        public List<User> GetUserDetailsByUserID(User ObjInputParameters)
+        public List<GetExcelForFocusInfo> GetExcelForFocusInfoDetails(GetExcelForFocusInfo ObjInputParameters)
         {
-            List<User> Userdata = new List<User>();
+            List<GetExcelForFocusInfo> CourseData = new List<GetExcelForFocusInfo>();
             try
             {
-                UserService service = new UserService();
-                Userdata = service.GetAll();
+                GetExcelForFocusDataService service = new GetExcelForFocusDataService();
+                CourseData = service.GetAll();
 
             }
             catch (Exception ex)
@@ -28,10 +26,12 @@ namespace AdvisoryDatabase.Business.Controllers
                 Log4NetLogger.Error(ex.Message);
             }
 
-            return Userdata;
+            return CourseData;
         }
     }
+}
 
-      
-    }
+
+
+
 

@@ -15,6 +15,12 @@ using System.Xml.Serialization;
 using AdvisoryDatabase.Framework.Entities;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
+using Newtonsoft.Json;
+using System.Web.Http.Results;
+using System.Web.Script.Serialization;
+//using Microsoft.AspNetCore.Mvc;
+//using System.Collections.Generic;
+
 //using AdvisoryDatabase.WebAPI.ActionFilter;
 
 
@@ -32,8 +38,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         //"Name":"Test Name",
         //"Description":"Test Description"
         //}
-        [HttpPost]
-       /* public HttpResponseMessage GetBayData(BayDetails ObjInputParameters)*/
+      /*  [HttpPost]
+       *//* public HttpResponseMessage GetBayData(BayDetails ObjInputParameters)*//*
               public HttpResponseMessage GetBayData()
         {
             try
@@ -47,9 +53,11 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
                 string outputData = string.Empty;
 
+
                 return new HttpResponseMessage()
                 {
                     Content = new StringContent(outputData, Encoding.UTF8, "application/xml")
+
                 };
             }
             catch (Exception ex)
@@ -60,10 +68,54 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                     Content = new StringContent(errorMessage, Encoding.UTF8, "application/xml")
                 };
             }
+        }*/
+
+
+        [HttpGet]
+       /* public JsonResult Get()*/
+        public HttpResponseMessage ShowData()
+        {
+
+            try
+            {
+                AdvisoryDatabase.Business.Controllers.BayDetailController ObjBayDetai = new Business.Controllers.BayDetailController();
+                BayDetails ObjInputParameters = new BayDetails();
+                ObjInputParameters.LastUpdatedBy = 1;
+                ObjInputParameters.IsActive = true;
+                ObjBayDetai.GetBayDetails(ObjInputParameters);
+
+                List<BayDetails> outputData = ObjBayDetai.GetBayDetails(ObjInputParameters);
+                /*string B= JsonConvert.SerializeObject(outputData);
+                return Ok(B);*/
+
+                /*
+                        return new HttpResponseMessage()
+                        {
+                          //Content = Request.CreateResponse<BayDetails>(HttpStatusCode.OK, outputData, Encoding.UTF8, "application/xml")
+                          //HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK, outputData)
+
+
+                        };*/
+
+                 string jsonData = JsonConvert.SerializeObject(outputData);
+                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                 return response;
+               /* return new JsonResult(outputData);*/
+            }
+            catch (Exception ex)
+            {
+                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
+                return errorResponse;
+              
+            };
         }
 
-    } 
 
-    
+
+    }
+
+
 
 }

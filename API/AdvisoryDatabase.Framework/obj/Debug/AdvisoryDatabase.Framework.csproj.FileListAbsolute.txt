@@ -91,6 +91,7 @@ D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Fr
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.xml
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.AssemblyReference.cache
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CoreCompileInputs.cache
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CopyComplete
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.dll

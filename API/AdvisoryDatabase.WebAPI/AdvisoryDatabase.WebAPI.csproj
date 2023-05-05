@@ -158,6 +158,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BayDetailController.cs" />
+    <Compile Include="Controllers\CourseOwnerController.cs" />
+    <Compile Include="Controllers\GetExcelForFocusController.cs" />
+    <Compile Include="Controllers\oldUserController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,7 +222,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\" />
+    <Folder Include="Views\CourseOwner\" />
+    <Folder Include="Views\GetExcelForFocus\" />
     <Folder Include="Views\Meter\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\webcourse\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

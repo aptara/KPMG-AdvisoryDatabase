@@ -17,13 +17,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             string spName = string.Empty;
             switch (operation)
             {
-                case OperationType.Get:
+               /* case OperationType.Get:
                     spName = "USP_GetUser";
-                    break;
+                    break;*/
                 case OperationType.GetAll:
-                    spName = "USP_ManageUser";
+                    spName = "UserDetail";
                     break;
-                case OperationType.Add:
+                /*case OperationType.Add:
                     spName = "USP_ManageUser";
                     break;
                 case OperationType.Update:
@@ -31,7 +31,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     break;
                 case OperationType.Delete:
                     spName = "USP_ManageUser";
-                    break;
+                    break;*/
                 default:
                     spName = string.Empty;
                     break;
@@ -41,15 +41,15 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override string GetParameterName(ParameterType parameter)
         {
-            return parameter == ParameterType.Id ? "UserId" : base.GetParameterName(parameter);
+            return parameter == ParameterType.Id ? "UserMasterID" : base.GetParameterName(parameter);
         }
 
         protected override void FillParameters(OperationType operation, User instance, List<System.Data.Common.DbParameter> parameters)
         {
-            if (operation == OperationType.Get)
+           /* if (operation == OperationType.Get)
             {
                 parameters.Add(DbHelper.CreateParameter("UserId", instance.Id));
-                parameters.Add(DbHelper.CreateParameter("Email", instance.EmailID));
+                parameters.Add(DbHelper.CreateParameter("Email", instance.Email));
             }
             else
             {
@@ -57,10 +57,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                 parameters.Add(DbHelper.CreateParameter("FirstName", instance.FirstName));
                 parameters.Add(DbHelper.CreateParameter("LastName", instance.LastName));
-                parameters.Add(DbHelper.CreateParameter("EmailID", instance.EmailID));
-                parameters.Add(DbHelper.CreateParameter("HashPassword", instance.Password == null ? "" : instance.Password));
+                parameters.Add(DbHelper.CreateParameter("EmailID", instance.Email));
+                parameters.Add(DbHelper.CreateParameter("HashPassword", instance.LocationID == null ? "" : instance.LocationID));
                 //parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
-            }
+            }*/
         }
 
         protected override List<User> ParseGetAllData(System.Data.DataSet data)
@@ -68,12 +68,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new User
                      {
-                         Id = row.Read<Int32>("Id"),
-                         UserId = row.ReadString("Id"),
-                         EmailID = row.ReadString("EmailID"),
+                         UserMasterID = row.ReadString("UserMasterID"),
+                         Email = row.ReadString("Email"),
                          FirstName = row.ReadString("FirstName"),
                          LastName = row.ReadString("LastName"),                        
-                         Password = row.ReadString("Password"),
+                        LocationID = row.ReadString("LocationID"),
 
 
 
@@ -86,12 +85,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         {
             return new User
             {
-                Id = data.Read<Int32>("Id"),
-                UserId = data.ReadString("Id"),
-                EmailID = data.ReadString("EmailID"),
+               
+                UserMasterID = data.ReadString("UserMasterID"),
+                Email = data.ReadString("Email"),
                 FirstName = data.ReadString("FirstName"),
                 LastName = data.ReadString("LastName"),               
-                Password = data.ReadString("Password"),
+               LocationID = data.ReadString("LocationID"),
             };
         }
     }

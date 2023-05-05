@@ -86,7 +86,10 @@
     <Compile Include="Common\Utility.cs" />
     <Compile Include="CustomException\MSBException.cs" />
     <Compile Include="Entities\BayDetails.cs" />
+    <Compile Include="Entities\Course.cs" />
+    <Compile Include="Entities\CourseOwner.cs" />
     <Compile Include="Entities\DashboardRecords.cs" />
+    <Compile Include="Entities\GetExcelForFocus.cs" />
     <Compile Include="Entities\LoginResponse.cs" />
     <Compile Include="Entities\MeterDetails.cs" />
     <Compile Include="Entities\User.cs" />

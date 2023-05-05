@@ -39,8 +39,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                      {
                          Id = row.Read<Int32>("UserMasterID"),
                          BayID = row.ReadString("FirstName"),
-                    
-
+                         Description = row.ReadString("LastName"),
+                         SubStationID = row.Read<Int32>("LocationID"),
                          Name = row.ReadString("Email"),
                      
                      }).ToList();

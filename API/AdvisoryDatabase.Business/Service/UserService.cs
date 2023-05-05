@@ -23,12 +23,12 @@ namespace AdvisoryDatabase.Business.Service
             User ObjUser = new User();
             try
             {
-                ObjUser.EmailID = emailID;
+                ObjUser.Email = emailID;
                 var DBUsers = Get(ObjUser);
                 if (DBUsers != null)
                 {
                     DBUsers.IsActive = true;
-                }                
+                }
                 ObjUser = DBUsers;
 
             }

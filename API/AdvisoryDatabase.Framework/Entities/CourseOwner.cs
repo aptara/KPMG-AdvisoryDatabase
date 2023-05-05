@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AdvisoryDatabase.Framework.Common;
+
+namespace AdvisoryDatabase.Framework.Entities
+{
+    public class CourseOwnerDetails : BaseEntity<Int32>
+    {
+        public string CourseOwnerID { get; set; }
+        public string CourseOwner { get; set; }
+
+       
+        /*    public string CreatedBy { get; set; }
+   public string CreatedOn { get; set; }
+   public int LastUpdatedBy { get; set; }
+   public int LastUpdatedOn { get; set; }
+*/
+    }
+}

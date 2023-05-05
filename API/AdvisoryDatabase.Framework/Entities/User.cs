@@ -9,10 +9,11 @@ namespace AdvisoryDatabase.Framework.Entities
     [Serializable]
     public class User : BaseEntity<Int32>
     {
-        public string UserId { get; set; }
+        public string UserMasterID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string EmailID { get; set; }
-        public string Password { get; set; }       
+        public string Email { get; set; }
+        public string LocationID { get; set; }
+        
     }
 }
