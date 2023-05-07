@@ -44,6 +44,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                          CourseMasterID = row.ReadString("CourseMasterID"),
                          CourseName =row.ReadString("CourseName"),
+                         LDIntakeOwner = row.ReadString("LDIntakeOwner"),
                          ProjectManagerContact = row.ReadString("CourseName"),
                          BusinessSponsor = row.ReadString("CourseName"),
                          Descriptions = row.ReadString("CourseName"),
@@ -92,9 +93,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         {
             return new Course
             {
-               
+
+
                 CourseMasterID = data.ReadString("CourseMasterID"),
                 CourseName = data.ReadString("CourseName"),
+                 LDIntakeOwner = data.ReadString("LDIntakeOwner"),
                 ProjectManagerContact = data.ReadString("CourseName"),
                 BusinessSponsor = data.ReadString("CourseName"),
                 Descriptions = data.ReadString("CourseName"),

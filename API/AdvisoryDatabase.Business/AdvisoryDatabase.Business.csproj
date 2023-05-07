@@ -46,10 +46,12 @@
     <Compile Include="Controllers\API\MeterController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BayDetailController.cs" />
+    <Compile Include="Controllers\GETExcelForDeploymentReportController.cs" />
+    <Compile Include="Controllers\GETExcelForClarizenFieldsController.cs" />
     <Compile Include="Controllers\CourseDetailController.cs" />
     <Compile Include="Controllers\CourseOwnerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Compile Include="Controllers\GetExcelForFocusController.cs" />
+    <Compile Include="Controllers\GETExcelForFocusController.cs" />
     <Compile Include="Controllers\MeterDetailController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,7 +64,9 @@
     <Compile Include="Service\CourseDataService.cs" />
     <Compile Include="Service\CourseOwnerDataService.cs" />
     <Compile Include="Service\DashboardService.cs" />
-    <Compile Include="Service\GetExcelForFocusDataService.cs" />
+    <Compile Include="Service\ExcelForClarizenFeildDataService.cs" />
+    <Compile Include="Service\ExcelForDeploymentReportDataService.cs" />
+    <Compile Include="Service\ExcelForFocusDataService.cs" />
     <Compile Include="Service\MeterDataService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Utillity.cs" />

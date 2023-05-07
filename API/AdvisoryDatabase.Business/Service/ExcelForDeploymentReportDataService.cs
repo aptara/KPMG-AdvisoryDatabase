@@ -11,11 +11,11 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Service
 {
-    public class GetExcelForFocusDataService : Repository<GetExcelForFocusInfo, Int32>
+   public class ExcelForDeploymentReportDataService : Repository<ExcelforDeployment, Int32>
     {
-        protected override DataAccess.Repository.DataAccessRepository<GetExcelForFocusInfo, int> CreateDalManager()
+        protected override DataAccess.Repository.DataAccessRepository<ExcelforDeployment, int> CreateDalManager()
         {
-            return new DataAccessGetExcelForFocusService();
+            return new DataAccessExcelForDeploymentReportDetailsService();
         }
     }
 }

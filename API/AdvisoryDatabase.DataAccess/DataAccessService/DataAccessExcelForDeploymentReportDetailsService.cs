@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using AdvisoryDatabase.DataAccess.Common;
 using AdvisoryDatabase.DataAccess.Repository;
 using AdvisoryDatabase.Framework.Entities;
 using System.Data;
 
 
-
 namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
-    public class DataAccessGetExcelForFocusDetails: DataAccessRepository<GetExcelForFocusInfo, Int32>
+   public class DataAccessExcelForDeploymentReportDetailsService : DataAccessRepository<ExcelforDeployment, Int32>
     {
         protected override string GetProcedureName(OperationType operation)
         {
@@ -20,87 +20,90 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "getexcelforfocus";
+                    spName = "Excelfordepolyment";
                     break;
-                /*  case OperationType.GetAll:
-                      spName = "CourseOwnerDetail";
-                      break;*/
                 default:
                     spName = string.Empty;
                     break;
             }
             return spName;
         }
-      
-        protected override void FillParameters(OperationType operation, GetExcelForFocusInfo instance, List<System.Data.Common.DbParameter> parameters)
+        protected override void FillParameters(OperationType operation, ExcelforDeployment instance, List<System.Data.Common.DbParameter> parameters)
         {
 
         }
-      
-        protected override List<GetExcelForFocusInfo> ParseGetAllData(System.Data.DataSet data)
+        protected override List<ExcelforDeployment> ParseGetAllData(System.Data.DataSet data)
         {
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
-                     new GetExcelForFocusInfo
+                     new ExcelforDeployment
                      {
-/*
-                         CourseOwnerID = row.ReadString("CourseOwnerID"),
-                         CourseOwner = row.ReadString("CourseOwner"),*/
 
+                     /*    CourseOwnerID = row.ReadString("CourseOwnerID"),
+                         CourseOwner = row.ReadString("CourseOwner"),
+*/
 
                          CourseName = row.ReadString("CourseName"),
-                         CourseOwner = row.ReadString("CourseOwner"),
-                         DeliveryType = row.ReadString("DeliveryType"),
+                         LDIntakeOwner = row.ReadString("LDIntakeOwner"),
+                         ProjectManagerContact = row.ReadString("ProjectManagerContact"),
+                         BusinessSponsor = row.ReadString("BusinessSponsor"),
+                         InstructionalDesigner = row.ReadString("InstructionalDesigner"),
                          TotalCPECredit = row.ReadString("TotalCPECredit"),
+                       Materials = row.ReadString("Materials"),
+                         RoomSetUpComments = row.ReadString("RoomSetUpComments"),
                          CourseID = row.ReadString("CourseID"),
                          Overview = row.ReadString("Overview"),
                          Objectives = row.ReadString("Objectives"),
                          MaximumAttendeeCount = row.ReadString("MaximumAttendeeCount"),
-                         MaximumAttendeeWaitlist = row.ReadString("MaximumAttendeeWaitlist"),
                          MinimumAttendeeCount = row.ReadString("MinimumAttendeeCount"),
+                         MaximumAttendeeWaitlist = row.ReadString("MaximumAttendeeWaitlist"),
                          PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
                          EquivalentCourseID = row.ReadString("EquivalentCourseID"),
                          FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
-                       
                          Duration = row.ReadString("Duration"),
+                         Collateral = row.ReadString("Collateral")
+
 
                      }).ToList();
 
             return GetAllData;
         }
-       
-        protected override GetExcelForFocusInfo Parse(System.Data.DataRow data)
+        protected override ExcelforDeployment Parse(System.Data.DataRow data)
         {
-            return new GetExcelForFocusInfo
+            return new ExcelforDeployment
             {
 
-
-                /*CourseOwnerID = data.ReadString("CourseOwnerID"),
+             /*   CourseOwnerID = data.ReadString("CourseOwnerID"),
                 CourseOwner = data.ReadString("CourseOwner"),
+
 */
-
-                CourseName = data.ReadString("CourseOwnerID"),
-                CourseOwner = data.ReadString("CourseOwner"),
-                DeliveryType = data.ReadString("DeliveryType"),
+                CourseName = data.ReadString("CourseName"),
+                LDIntakeOwner = data.ReadString("LDIntakeOwner"),
+                ProjectManagerContact = data.ReadString("ProjectManagerContact"),
+                BusinessSponsor = data.ReadString("BusinessSponsor"),
+                InstructionalDesigner = data.ReadString("InstructionalDesigner"),
                 TotalCPECredit = data.ReadString("TotalCPECredit"),
+                Materials = data.ReadString("Materials"),
+                RoomSetUpComments = data.ReadString("RoomSetUpComments"),
                 CourseID = data.ReadString("CourseID"),
                 Overview = data.ReadString("Overview"),
                 Objectives = data.ReadString("Objectives"),
                 MaximumAttendeeCount = data.ReadString("MaximumAttendeeCount"),
-                MaximumAttendeeWaitlist = data.ReadString("MaximumAttendeeWaitlist"),
                 MinimumAttendeeCount = data.ReadString("MinimumAttendeeCount"),
+                MaximumAttendeeWaitlist = data.ReadString("MaximumAttendeeWaitlist"),
                 PrerequisiteCourseID = data.ReadString("PrerequisiteCourseID"),
                 EquivalentCourseID = data.ReadString("EquivalentCourseID"),
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
-             
-
                 Duration = data.ReadString("Duration"),
+                Collateral = data.ReadString("Collateral")
 
 
             };
         }
-       
-
     }
 }
+
+
+
+
 
 

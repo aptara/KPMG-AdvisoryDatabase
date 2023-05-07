@@ -159,6 +159,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BayDetailController.cs" />
     <Compile Include="Controllers\CourseOwnerController.cs" />
+    <Compile Include="Controllers\GetExcelForClarizenFieldsController.cs" />
+    <Compile Include="Controllers\GetExcelForDeploymentReportController.cs" />
     <Compile Include="Controllers\GetExcelForFocusController.cs" />
     <Compile Include="Controllers\oldUserController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
@@ -223,6 +225,8 @@
     <Folder Include="Models\" />
     <Folder Include="Properties\" />
     <Folder Include="Views\CourseOwner\" />
+    <Folder Include="Views\GETExcelForClarizenFields\" />
+    <Folder Include="Views\GetExcelForDeploymentReport\" />
     <Folder Include="Views\GetExcelForFocus\" />
     <Folder Include="Views\Meter\" />
     <Folder Include="Views\User\" />

@@ -72,7 +72,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          Email = row.ReadString("Email"),
                          FirstName = row.ReadString("FirstName"),
                          LastName = row.ReadString("LastName"),                        
-                        LocationID = row.ReadString("LocationID"),
+                        LocationID = row.ReadString("LocationID")
 
 
 
@@ -90,7 +90,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 Email = data.ReadString("Email"),
                 FirstName = data.ReadString("FirstName"),
                 LastName = data.ReadString("LastName"),               
-               LocationID = data.ReadString("LocationID"),
+               LocationID = data.ReadString("LocationID")
             };
         }
     }

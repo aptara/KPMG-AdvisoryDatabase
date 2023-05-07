@@ -13,6 +13,7 @@ namespace AdvisoryDatabase.Framework.Entities
     {
         public string CourseMasterID { get; set; }
         public string CourseName { get; set; }
+        public string LDIntakeOwner { get; set; }
         public string ProjectManagerContact { get; set; }
         public string BusinessSponsor { get; set; }
         public string Descriptions { get; set; }

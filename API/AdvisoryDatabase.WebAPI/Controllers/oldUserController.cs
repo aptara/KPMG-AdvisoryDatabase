@@ -38,14 +38,14 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         {
             try
             {
-                AdvisoryDatabase.Business.Controllers.UserController ObjBayDetai = new Business.Controllers.UserController();
+                AdvisoryDatabase.Business.Controllers.UserController ObjBay = new Business.Controllers.UserController();
                 User ObjInputParameters = new User();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
-                ObjBayDetai.GetUserDetailsByUserID(ObjInputParameters);
+                ObjBay.GetUserDetailsByUserID(ObjInputParameters);
 
                
-                List<User> outputData = ObjBayDetai.GetUserDetailsByUserID( ObjInputParameters);
+                List<User> outputData = ObjBay.GetUserDetailsByUserID( ObjInputParameters);
                 //*string B= JsonConvert.SerializeObject(outputData);
         
 
