@@ -31,7 +31,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { UserDisplayComponent } from './components/user-display/user-display.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AppComponent } from './app.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './service/userservice';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
@@ -41,6 +41,15 @@ import { CourseManagementComponent } from './components/course-management/course
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { IconModule } from '@progress/kendo-angular-icons';
+import { DropDownButtonModule } from '@progress/kendo-angular-buttons';
+import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { LabelModule } from '@progress/kendo-angular-label';
+import { DropDownsModule } from "@progress/kendo-angular-dropdowns";
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
 @NgModule({
     declarations: [
         AppComponent,
@@ -57,6 +66,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ],
     imports: [
         BrowserModule,
+        ButtonsModule,
+        ReactiveFormsModule,
+        DropDownsModule,
+        InputsModule,
+        IconModule,
+        DropDownButtonModule,
+        DropDownListModule,
+        LabelModule,
         BrowserAnimationsModule,
         HttpClientModule,
         FormsModule,
@@ -91,6 +108,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
                 { path: "course-management", component: CourseManagementComponent },
                 { path: '**', component: PageNotFoundComponent }
             ]),
+        DateInputsModule,
+        GridModule,
     ],
     providers: [UserService],
     bootstrap: [AppComponent]
