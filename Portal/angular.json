@@ -60,9 +60,16 @@
               "node_modules/primeng/resources/primeng.min.css",
               "src/assets/scss/primeng-kpmg-blue-theme.scss",
               "src/assets/scss/scrollbar-kpmg-blue.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+
+                "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/popper.js/dist/umd/popper.min.js",
+                "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+            ],
             "allowedCommonJsDependencies": [
               "file-saver"
             ]

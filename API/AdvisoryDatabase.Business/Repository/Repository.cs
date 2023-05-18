@@ -358,15 +358,15 @@ namespace AdvisoryDatabase.Business.Repository
             RemoveAllUnsecure(id);
         }
 
-        public void ActivateDeactivate(TId id, bool status)
+       /* public void ActivateDeactivate(TId id, bool status)
         {
             ActivateDeactivateUnsecure(id, status);
-        }
+        }*/
 
-        public void ActivateDeactivate(TBaseEntity entity, bool status)
+      /*  public void ActivateDeactivate(TBaseEntity entity, bool status)
         {
             ActivateDeactivateUnsecure(entity, status);
-        }
+        }*/
 
         #endregion
 

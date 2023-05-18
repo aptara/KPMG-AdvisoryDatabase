@@ -33,7 +33,7 @@ namespace AdvisoryDatabase.Business.Security
                     ObjLoginResponse.ErrorMessage = "This user is In-Active.";
                     return ObjLoginResponse;
                 }           
-                else if (!DBUsers.Password.Equals(decryptPass))
+                else if (!DBUsers.LocationID.Equals(decryptPass))
                 {
                     ObjLoginResponse.ErrorMessage = "Incorrect email id/password.";
                     return ObjLoginResponse;
