@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using AdvisoryDatabase.Framework.Common;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace AdvisoryDatabase.Framework.Entities
 {
-    [Serializable]
+   /* [Serializable]*/
     public class User : BaseEntity<Int32>
     {
         public string UserMasterID { get; set; }
@@ -17,3 +20,8 @@ namespace AdvisoryDatabase.Framework.Entities
         
     }
 }
+
+
+
+
+

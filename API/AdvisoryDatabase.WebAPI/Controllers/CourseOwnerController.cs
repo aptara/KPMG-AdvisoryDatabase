@@ -37,6 +37,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 ObjBayDetai.GetCourseOwnerDetails(ObjInputParameters);
 
 
+
                 List<CourseOwnerDetails> outputData = ObjBayDetai.GetCourseOwnerDetails(ObjInputParameters);
 
                 string jsonData = JsonConvert.SerializeObject(outputData);
@@ -53,6 +54,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
             };
         }
+
     }
 }
 

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdvisoryDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="ExcelForClarizen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Operation" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="AdvisoryDatabaseModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdvisoryDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AdvisoryDatabaseEntities3" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="ExcelForClarizen" ReturnType="Collection(AdvisoryDatabaseModel.ExcelForClarizen_Result)">
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ExcelForClarizen1" ReturnType="Collection(AdvisoryDatabaseModel.ExcelForClarizen1_Result)">
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ExcelForClarizen_Result">
+          <Property Type="String" Name="CourseName" Nullable="false" />
+          <Property Type="String" Name="LDIntakeOwner" Nullable="false" />
+          <Property Type="String" Name="ProjectManagerContact" Nullable="true" />
+          <Property Type="String" Name="BusinessSponsor" Nullable="false" />
+          <Property Type="String" Name="InstructionalDesigner" Nullable="true" />
+          <Property Type="String" Name="ProgramType" Nullable="true" />
+          <Property Type="String" Name="DeliveryType" Nullable="false" />
+          <Property Type="String" Name="TotalCPECredit" Nullable="false" />
+          <Property Type="String" Name="CourseID" Nullable="true" />
+          <Property Type="DateTime" Name="FirstDeliveryDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="LevelofEffort" Nullable="true" />
+          <Property Type="String" Name="Duration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ExcelForClarizen1_Result">
+          <Property Type="String" Name="CourseName" Nullable="false" />
+          <Property Type="String" Name="LDIntakeOwner" Nullable="false" />
+          <Property Type="String" Name="ProjectManagerContact" Nullable="true" />
+          <Property Type="String" Name="BusinessSponsor" Nullable="false" />
+          <Property Type="String" Name="InstructionalDesigner" Nullable="true" />
+          <Property Type="String" Name="ProgramType" Nullable="true" />
+          <Property Type="String" Name="DeliveryType" Nullable="false" />
+          <Property Type="String" Name="TotalCPECredit" Nullable="false" />
+          <Property Type="String" Name="CourseID" Nullable="true" />
+          <Property Type="DateTime" Name="FirstDeliveryDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="LevelofEffort" Nullable="true" />
+          <Property Type="String" Name="Duration" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdvisoryDatabaseModelStoreContainer" CdmEntityContainer="AdvisoryDatabaseEntities3" >
+          <FunctionImportMapping FunctionImportName="ExcelForClarizen" FunctionName="AdvisoryDatabaseModel.Store.ExcelForClarizen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdvisoryDatabaseModel.ExcelForClarizen_Result">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="LDIntakeOwner" ColumnName="LDIntakeOwner" />
+                <ScalarProperty Name="ProjectManagerContact" ColumnName="ProjectManagerContact" />
+                <ScalarProperty Name="BusinessSponsor" ColumnName="BusinessSponsor" />
+                <ScalarProperty Name="InstructionalDesigner" ColumnName="InstructionalDesigner" />
+                <ScalarProperty Name="ProgramType" ColumnName="ProgramType" />
+                <ScalarProperty Name="DeliveryType" ColumnName="DeliveryType" />
+                <ScalarProperty Name="TotalCPECredit" ColumnName="TotalCPECredit" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="FirstDeliveryDate" ColumnName="FirstDeliveryDate" />
+                <ScalarProperty Name="LevelofEffort" ColumnName="LevelofEffort" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ExcelForClarizen1" FunctionName="AdvisoryDatabaseModel.Store.ExcelForClarizen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdvisoryDatabaseModel.ExcelForClarizen1_Result">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="LDIntakeOwner" ColumnName="LDIntakeOwner" />
+                <ScalarProperty Name="ProjectManagerContact" ColumnName="ProjectManagerContact" />
+                <ScalarProperty Name="BusinessSponsor" ColumnName="BusinessSponsor" />
+                <ScalarProperty Name="InstructionalDesigner" ColumnName="InstructionalDesigner" />
+                <ScalarProperty Name="ProgramType" ColumnName="ProgramType" />
+                <ScalarProperty Name="DeliveryType" ColumnName="DeliveryType" />
+                <ScalarProperty Name="TotalCPECredit" ColumnName="TotalCPECredit" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="FirstDeliveryDate" ColumnName="FirstDeliveryDate" />
+                <ScalarProperty Name="LevelofEffort" ColumnName="LevelofEffort" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

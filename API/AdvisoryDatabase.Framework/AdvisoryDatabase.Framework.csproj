@@ -94,6 +94,7 @@
     <Compile Include="Entities\ExcelForFocus.cs" />
     <Compile Include="Entities\LoginResponse.cs" />
     <Compile Include="Entities\MeterDetails.cs" />
+    <Compile Include="Entities\test.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Logger\Log4NetLogger.cs" />
     <Compile Include="Logger\Logger.cs" />

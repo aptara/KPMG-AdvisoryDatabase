@@ -199,6 +199,7 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Web
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.csproj.CopyComplete
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.pdb
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.dll.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.pdb
@@ -249,11 +250,12 @@ D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.We
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.exe
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.exe.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.rsp
-D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Business.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Antlr3.Runtime.dll
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.dll
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.SqlServer.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Web.Infrastructure.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Newtonsoft.Json.dll
@@ -277,6 +279,8 @@ D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.We
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Business.dll.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.pdb
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.dll.config
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.xml
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.SqlServer.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Newtonsoft.Json.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Net.Http.Formatting.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Helpers.xml

@@ -18,7 +18,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    /*spName = "CourseOwnerDetail";*/
+                   
                     spName = "ExcelForClarizen";
                     break;
                 default:
@@ -47,7 +47,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
 
 
-                         ProgramType = row.ReadString("ProgramType"),
+                       ProgramType = row.ReadString("ProgramType"),
+
                          DeliveryType = row.ReadString("DeliveryType"),
                          TotalCPECredit = row.ReadString("TotalCPECredit"),
                          CourseID = row.ReadString("CourseID"),
@@ -56,9 +57,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          Duration = row.ReadString("Duration")
 
 
-                        /*  CourseOwnerID = row.ReadString("CourseOwnerID"),
-                         CourseOwner = row.ReadString("CourseOwner"),
-*/
+                        
                      }).ToList();
 
             return GetAllData;
@@ -69,12 +68,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
 
 
-              
 
                 CourseName = data.ReadString("CourseName"),
                 LDIntakeOwner = data.ReadString("LDIntakeOwner"),
 
-               ProjectManagerContact = data.ReadString("ProjectManagerContact"),
+                ProjectManagerContact = data.ReadString("ProjectManagerContact"),
                 BusinessSponsor = data.ReadString("BusinessSponsor"),
                 InstructionalDesigner = data.ReadString("InstructionalDesigner"),
 
@@ -87,10 +85,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 LevelofEffort = data.ReadString("LevelofEffort"),
                 Duration = data.ReadString("Duration")
 
-                /*
-                                CourseOwnerID = data.ReadString("CourseOwnerID"),
-                                CourseOwner = data.ReadString("CourseOwner"),
-                */
+              
 
             };
         }

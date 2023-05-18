@@ -31,6 +31,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     public class oldUserController : ApiController
     {
         
+
         // GET: User
         [System.Web.Http.HttpGet]
         public HttpResponseMessage ShowData()
@@ -41,7 +42,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 AdvisoryDatabase.Business.Controllers.UserController ObjBay = new Business.Controllers.UserController();
                 User ObjInputParameters = new User();
                 ObjInputParameters.LastUpdatedBy = 1;
-                ObjInputParameters.IsActive = true;
+                //ObjInputParameters.IsActive = false;
                 ObjBay.GetUserDetailsByUserID(ObjInputParameters);
 
                
@@ -64,7 +65,49 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 return errorResponse;
 
             };
+
+
         }
+
+        [System.Web.Http.HttpPost]
+     public HttpResponseMessage PostData(User bay)
+        /* public ActionResult Index()*/
+        {
+            try
+            {
+
+            
+                AdvisoryDatabase.Business.Controllers.UserController ObjBay = new Business.Controllers.UserController();
+                User ObjInputParameters = new User();
+                ObjInputParameters.LastUpdatedBy = 1;
+                ObjInputParameters.IsActive = true;
+                ObjBay.GetUserDetailsByUserID(ObjInputParameters);
+
+               String userMasterId = bay.UserMasterID;
+                List<User> outputData = ObjBay.GetUserDetailsByUserID(ObjInputParameters);
+                //*string B= JsonConvert.SerializeObject(outputData);
+
+
+
+
+                string jsonData = JsonConvert.SerializeObject(outputData);
+                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
+                return errorResponse;
+
+            };
+
+
+        }
+      
+
     }
 }
 

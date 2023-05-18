@@ -38,9 +38,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                      new ExcelforDeployment
                      {
 
-                     /*    CourseOwnerID = row.ReadString("CourseOwnerID"),
-                         CourseOwner = row.ReadString("CourseOwner"),
-*/
+                   
 
                          CourseName = row.ReadString("CourseName"),
                          LDIntakeOwner = row.ReadString("LDIntakeOwner"),
@@ -72,10 +70,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             return new ExcelforDeployment
             {
 
-             /*   CourseOwnerID = data.ReadString("CourseOwnerID"),
-                CourseOwner = data.ReadString("CourseOwner"),
-
-*/
+             
                 CourseName = data.ReadString("CourseName"),
                 LDIntakeOwner = data.ReadString("LDIntakeOwner"),
                 ProjectManagerContact = data.ReadString("ProjectManagerContact"),

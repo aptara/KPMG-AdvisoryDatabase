@@ -11,8 +11,8 @@ namespace AdvisoryDatabase.Business.Controllers
 {
     public class UserController : BaseController
     {
+        
 
-      
         public List<User> GetUserDetailsByUserID(User ObjInputParameters)
         {
             List<User> Userdata = new List<User>();
@@ -30,10 +30,14 @@ namespace AdvisoryDatabase.Business.Controllers
 
             return Userdata;
         }
-    }
 
       
- }
+
+
+    }
+
+
+}
 
 
 

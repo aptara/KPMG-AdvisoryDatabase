@@ -42,9 +42,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new GetExcelForFocusInfo
                      {
-/*
-                         CourseOwnerID = row.ReadString("CourseOwnerID"),
-                         CourseOwner = row.ReadString("CourseOwner"),*/
+
+                    
 
 
                          CourseName = row.ReadString("CourseName"),
@@ -74,9 +73,6 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
 
 
-                /*CourseOwnerID = data.ReadString("CourseOwnerID"),
-                CourseOwner = data.ReadString("CourseOwner"),
-*/
 
                 CourseName = data.ReadString("CourseOwnerID"),
                 CourseOwner = data.ReadString("CourseOwner"),
