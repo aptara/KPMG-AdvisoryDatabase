@@ -1,244 +1,65 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../domain/user';
 
 @Injectable()
 export class UserService {
-
+    gridData: User[] = []
     userData: [] = []
+    headers = new HttpHeaders()
+        .set('content-type', 'application/json')
     constructor(private http: HttpClient) {
-        this.getJSON().subscribe(data => {
-            this.userData = data;
-        });
+
+
     }
 
-    getJSON(): Observable<any> {
-        return this.http.get("../../assets/data/userData.json");
-    }
+
 
 
     getUsersData() {
+        console.log(this.userData)
         return Promise.resolve(this.userData);
     }
 
-    getData_1() {
-        return [
-            {
-                id: 1,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 2,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 3,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 4,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 5,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 6,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 7,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 8,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 9,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 10,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 11,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 12,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 13,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 14,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 15,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 16,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 17,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 18,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 19,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 20,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 21,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 22,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 23,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 24,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 25,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 26,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 27,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 28,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 29,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            },
-            {
-                id: 30,
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                emailId: 'Email.Id@gmail.com',
-                location: 'Location'
-            }
-        ];
+
+    public url = 'http://localhost:62220//api/WebUser/ShowData'
+    getData() {
+        var req = this.url;
+        return this.http.get(req);
     }
 
-    getUsersData_1() {
-        return Promise.resolve(this.getData_1());
+    public GetDataByUrl = 'http://localhost:62220//api/WebUser/GetDataByUserId'
+    getUData(UserID: any) {
+        var req = this.GetDataByUrl + "/" + UserID;
+        return this.http.get(req, UserID)
     }
 
-    
+
+
+    public LocationUrl = 'http://localhost:62220//api/TaskLocationMaster/LocationAction'
+    GetLocationData() {
+        var LocationData = this.LocationUrl;
+        return this.http.get(LocationData);
+    }
+
+    public TaskUrl = 'http://localhost:62220//api/TaskLocationMaster/TaskAction'
+    GetTasks() {
+        return this.http.get(this.TaskUrl)
+    }
+
+    public postData = 'http://localhost:62220//api/WebUser/PostData'
+    PostUserData(User: any) {
+        var req = this.postData;
+        return this.http.post(req, User, { headers: this.headers })
+    }
+
+
+    public EditData = 'http://localhost:62220//api/WebUser/UpdateData'
+    EditUserData(UserData: any) {
+        var req = this.EditData;
+        return this.http.post(req, UserData)
+    }
+
+
 }

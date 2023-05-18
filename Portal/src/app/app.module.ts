@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
@@ -32,6 +32,11 @@ import { UserDisplayComponent } from './components/user-display/user-display.com
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AppComponent } from './app.component';
 
+
+import { GridModule } from '@progress/kendo-angular-grid';
+import { IconsModule } from "@progress/kendo-angular-icons";
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { UserService } from './service/userservice';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
@@ -41,6 +46,9 @@ import { CourseManagementComponent } from './components/course-management/course
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -81,16 +89,23 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         FieldsetModule,
         CalendarModule,
         SelectButtonModule,
+        GridModule,
+        IconsModule,
+        ButtonsModule,
+        InputsModule,
+        ReactiveFormsModule,
+
         RouterModule.forRoot
             ([
                 { path: "add-user", component: AddUserComponent },
-                { path: "update-user", component: UpdateUserComponent },
+                { path: 'update-user/:UserMasterID', component: UpdateUserComponent },
                 { path: "user-management", component: UserManagementComponent },
                 { path: "add-course", component: AddCourseComponent },
                 { path: "update-course", component: UpdateCourseComponent },
                 { path: "course-management", component: CourseManagementComponent },
                 { path: '**', component: PageNotFoundComponent }
             ]),
+        InputsModule,
     ],
     providers: [UserService],
     bootstrap: [AppComponent]
