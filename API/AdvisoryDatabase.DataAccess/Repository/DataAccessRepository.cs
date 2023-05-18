@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -94,7 +94,7 @@ namespace AdvisoryDatabase.DataAccess.Repository
             // Convert data to entity instance
             var instances = this.ParseGetAllData(data);
             return instances;
-        }
+         }
         
        
         public TBaseEntity Get(Dictionary<string, object> parameter)

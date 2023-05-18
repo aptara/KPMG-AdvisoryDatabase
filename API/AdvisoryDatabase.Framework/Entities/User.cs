@@ -6,13 +6,14 @@ using AdvisoryDatabase.Framework.Common;
 
 namespace AdvisoryDatabase.Framework.Entities
 {
-    [Serializable]
-    public class UserDetail : BaseEntity<Int32>
+/*  [Serializable]*/
+  public class UserDetail : BaseEntity<Int32>
     {
-        public string UserId { get; set; }
+        public int UserMasterID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string EmailID { get; set; }
-        public string Password { get; set; }       
+        public string Email { get; set; }
+        public int LocationID { get; set; }       
     }
+
 }

@@ -89,6 +89,7 @@
     <Compile Include="Entities\DashboardRecords.cs" />
     <Compile Include="Entities\LoginResponse.cs" />
     <Compile Include="Entities\MeterDetails.cs" />
+    <Compile Include="Entities\TaskLocation.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Logger\Log4NetLogger.cs" />
     <Compile Include="Logger\Logger.cs" />

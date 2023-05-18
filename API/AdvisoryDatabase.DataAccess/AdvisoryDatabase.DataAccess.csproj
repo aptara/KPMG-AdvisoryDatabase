@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Common\DbHelper.cs" />
     <Compile Include="DataAccessAPIService\DataAccessMeterReadingService.cs" />
+    <Compile Include="DataAccessService\DataAccessLocation.cs" />
+    <Compile Include="DataAccessService\DataAccessTaskLocation.cs" />
     <Compile Include="DataAccessService\DataAccessBayDetailsService.cs" />
     <Compile Include="DataAccessService\DataAccessDashboardService.cs" />
     <Compile Include="DataAccessService\DataAccessMeterDetailService.cs" />

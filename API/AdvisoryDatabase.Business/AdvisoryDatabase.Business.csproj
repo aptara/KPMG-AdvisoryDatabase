@@ -48,13 +48,15 @@
     <Compile Include="Controllers\BayDetailController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\MeterDetailController.cs" />
-    <Compile Include="Controllers\BussUserController.cs" />
+    <Compile Include="Controllers\TaskLocationMasterController.cs" />
+    <Compile Include="Controllers\WebUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Security\AuthnticationHelper.cs" />
     <Compile Include="Security\CryptoServices.cs" />
     <Compile Include="Service\API\MeterReadingService.cs" />
+    <Compile Include="Service\API\TaskService.cs" />
     <Compile Include="Service\BayDataService.cs" />
     <Compile Include="Service\DashboardService.cs" />
     <Compile Include="Service\MeterDataService.cs" />
