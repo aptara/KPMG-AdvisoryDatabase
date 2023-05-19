@@ -1,0 +1,7 @@
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\DataAccessService\DataAccessUserService.cs
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\Service\UserService.cs
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\Entities\User.cs
+UserConr
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\Portal\package-lock.json
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\Portal\package.json
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\Portal\src\app\app.module.ts
