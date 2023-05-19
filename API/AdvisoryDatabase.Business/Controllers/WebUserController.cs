@@ -20,7 +20,7 @@ namespace AdvisoryDatabase.Business.Controllers
       List<UserDetail> Userdata = new List<UserDetail>();
       try
       {
-        UserService service = new UserService();
+        WebUserService service = new WebUserService();
         Userdata = service.GetAll();
 
       }
@@ -42,7 +42,7 @@ namespace AdvisoryDatabase.Business.Controllers
         List<UserDetail> Userdata = new List<UserDetail>();
         try
         {
-           UserService service = new UserService();
+           WebUserService service = new WebUserService();
 
         ObjInputParameters.UserMasterID = service.Add(ObjInputParameters);
         Userdata = service.GetAll();
@@ -66,7 +66,7 @@ namespace AdvisoryDatabase.Business.Controllers
       List<UserDetail> Userdata = new List<UserDetail>();
       try
       {
-        UserService service = new UserService();
+        WebUserService service = new WebUserService();
         
         service.Update(ObjInputParameters);
      
@@ -90,7 +90,7 @@ namespace AdvisoryDatabase.Business.Controllers
       List<UserDetail> Userdata = new List<UserDetail>();
       try
       {
-        UserService service = new UserService();
+        WebUserService service = new WebUserService();
     
 
         service.Update(ObjInputParameters);
