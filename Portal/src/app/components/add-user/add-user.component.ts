@@ -25,12 +25,12 @@ export class AddUserComponent implements OnInit {
 
     onFormSubmit() {
 
-        alert(JSON.stringify(this.UserAdd.value))
 
-        // this.userService.PostUserData(this.UserAdd.value).subscribe(data => {
-        //     this.Userdata = data;
-        //     console.log(this.Userdata)
-        // });
+
+        this.userService.PostUserData(this.UserAdd.value).subscribe(data => {
+            this.Userdata = data;
+            console.log(this.Userdata)
+        });
 
     }
 
