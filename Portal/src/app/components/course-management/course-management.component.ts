@@ -4,7 +4,10 @@ import { DataBindingDirective } from "@progress/kendo-angular-grid";
 import { State, process } from "@progress/kendo-data-query";
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+
+
 import { HttpClient } from '@angular/common/http';
+
 
 import { CourseService } from 'src/app/service/service/course.service';
 import { GroupDescriptor, GroupResult } from "@progress/kendo-data-query";
@@ -36,7 +39,7 @@ export class CourseManagementComponent implements OnInit {
     }
     getHeaders() {
         const headers = Object.keys(this.data[0]).slice(0, 14);
-        // console.log('headers:', headers);
+
         return headers;
     }
     downloadExceloffocus() {
@@ -103,7 +106,25 @@ export class CourseManagementComponent implements OnInit {
         const data = this.datad.map((obj: any) => headers.map(key => obj[key]));
         const worksheetName = 'Data Of Deployment Field';
         const fileName = 'Excel For Deployment Fields.xlsx';
+
         const worksheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
+
+        const headerCellStyle = {
+            fill: { patternType: 'solid', fgColor: { theme: 8, tint: -0.25 } }, // Set the color to blue
+            font: { bold: true },
+            alignment: { horizontal: 'center', wrapText: true },
+        };
+        Object.keys(worksheet).forEach((cell) => {
+            if (cell.startsWith('A1:') && cell.endsWith('1')) {
+                worksheet[cell].s = headerCellStyle;
+            }
+        });
+
+        // Set column widths
+        const columnWidths = headers.map(() => ({ width: 30 })); // Set a width of 15 for each column
+        worksheet['!cols'] = columnWidths;
+
+
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
         XLSX.writeFile(workbook, fileName);
@@ -186,3 +207,4 @@ export class CourseManagementComponent implements OnInit {
 
 
 }
+ // console.log('headers:', headers);line 41
