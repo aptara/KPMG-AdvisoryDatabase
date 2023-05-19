@@ -1,95 +1,68 @@
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<div class="user-management">
-  <p-fieldset legend="User Management" class="fieldset">
-    <div class="group-row">
-      <p-table #dt [scrollable]="true" scrollHeight="450px" [value]="users" [(selection)]="selectedUser" dataKey="email"
-        [rowHover]="true" [rows]="100" [showCurrentPageReport]="true" [rowsPerPageOptions]="[ 100]"
-        [loading]="loading" [paginator]="false"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="400"
-        [globalFilterFields]="['firstName', 'lastName', 'email', 'location']">
-
-        <ng-template pTemplate="caption">
-          <div class="table-header">
-            <div class="btns">
-             <button type="button" class="btn btn-primary" routerLink="/add-user">Export</button>
-             <button type="button" class="btn btn-primary" routerLink="/add-user">Add User</button>
-             </div>
-            <span class="p-input-icon-right global-search">
-              <i class="pi pi-search"></i>
-              <input #fieldInput_1 pInputText type="text" (input)="dt.filterGlobal(fieldInput_1.value, 'contains')"
-                placeholder="Search User" />
-            </span>
-          </div>
-        </ng-template>
-
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="min-width: 4rem">
-            </th>
-            <th pSortableColumn="firstName" style="min-width: 10rem">
-              <div class="flex justify-content-between align-items-center">
-                First Name
-                <p-sortIcon field="firstName"></p-sortIcon>
-              </div>
-            </th>
-            <th pSortableColumn="lastName" style="min-width: 10rem">
-              <div class="flex justify-content-between align-items-center">
-                Last Name
-                <p-sortIcon field="lastName"></p-sortIcon>
-              </div>
-            </th>
-            <th pSortableColumn="email" style="min-width: 10rem">
-              <div class="flex justify-content-between align-items-center">
-                Email
-                <p-sortIcon field="email"></p-sortIcon>
-              </div>
-            </th>
-            <th pSortableColumn="location" style="min-width: 10rem">
-              <div class="flex justify-content-between align-items-center">
-                Location
-                <p-sortIcon field="location"></p-sortIcon>
-                <p-columnFilter type="text" field="location" display="menu" class="ml-auto"></p-columnFilter>
-              </div>
-            </th>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="body" let-user>
-          <tr class="p-selectable-row">
-            <td>
-            <a class="edit" title="Edit" data-toggle="tooltip" routerLink="/add-user"><i class="material-icons">&#xE254;</i></a>
-            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-            </td>
-            <td>
-              <span class="p-column-title">First Name</span>
-              {{ user.firstName }}
-            </td>
-            <td>
-              <span class="p-column-title">Last Name</span>
-              {{ user.lastName }}
-            </td>
-            <td>
-              <span class="p-column-title">Email</span>
-              {{ user.email }}
-            </td>
-            <td>
-              <span class="p-column-title">Location</span>
-              {{ user.location }}
-            </td>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="emptymessage">
-          <tr>
-            <td colspan="8">No users found.</td>
-          </tr>
-        </ng-template>
-
-      </p-table>
+  <div class="openCheckBoxList">
+  <div class="row example-config" *ngIf="displayCheckBoxList">
+    <div *ngFor="let column of columns" class="col-xs-12 col-md-3 example-col">
+        <input type="checkbox"
+            id="{{column}}"
+            kendoCheckBox
+            [checked]="!isHidden(column)"
+            (change)="hideColumn(column)" />
+        <label class="k-checkbox-label" for="{{column}}">{{column}}</label>
     </div>
-  </p-fieldset>
+  </div>
 </div>
 
+<button type="submit" routerLink="/add-user" class="btn btn-primary" style="margin-left: 1000px;">Add</button>
+ <kendo-textbox
+          placeholder="Search in all columns..."
+          (valueChange)="onFilter($event)"
+          [style.width.px]="180"
+        ></kendo-textbox>
+
+    <kendo-grid
+    [data]="UserDAta"
+    [pageSize]="20"
+    [pageable]="false"
+    [sortable]="true"
+    [groupable]="false"
+    [reorderable]="true"
+    [filterable]="true"
+    [columnMenu]="{ filter: true }">
+
+    <kendo-grid-command-column title="Action" >
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <kendo-icon name="edit" themeColor="info" (click)="editData(dataItem.UserMasterID)"></kendo-icon>
+            <kendo-icon name="delete" themeColor="info" (click)="deleteRecord(dataItem)" ></kendo-icon>
+
+        </ng-template>
+    </kendo-grid-command-column>
+     <kendo-grid-column
+        field="UserMasterID"
+        title="UserMasterID"
+        *ngIf="isHidden('UserMasterID')">
+      </kendo-grid-column>
+
+      <kendo-grid-column
+        field="FirstName"
+        title="First Name"
+        *ngIf="!isHidden('First Name')">
+      </kendo-grid-column>
+
+      <kendo-grid-column
+        field="LastName"
+        title="Last Name"
+        *ngIf="!isHidden('Last Name')">
+      </kendo-grid-column>
+
+      <kendo-grid-column
+        field="Email"
+        title="Email"
+        *ngIf="!isHidden('Email')">
+      </kendo-grid-column>
+
+       <kendo-grid-column
+        field="LocationID"
+        title="Location"
+        *ngIf="!isHidden('Location')">
+      </kendo-grid-column>
+    </kendo-grid>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ namespace AdvisoryDatabase.Framework.Entities
 {
     public class LoginResponse
     {
-        public User User { get; set; }
+        public UserDetail User { get; set; }
         public string ErrorMessage { get; set; }
         public bool IsAuthenticated { get; set; }
     }

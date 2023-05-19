@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ namespace AdvisoryDatabase.Business.Controllers
     public class BayDetailController : BaseController
     {
         public List<BayDetails> GetBayDetails(BayDetails ObjInputParameters)
-        {
+         {
             List<BayDetails> bayData = new List<BayDetails>();
             try
             {

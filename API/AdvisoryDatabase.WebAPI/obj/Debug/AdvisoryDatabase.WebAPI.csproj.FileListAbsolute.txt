@@ -199,7 +199,108 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Web
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.csproj.CopyComplete
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.dll
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.pdb
-D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\csc.exe
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\csc.exe.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\csc.rsp
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\csi.exe
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\csi.exe.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\csi.rsp
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.AppContext.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Console.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.IO.Compression.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Net.Http.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Net.Sockets.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.ValueTuple.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Xml.XPath.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.exe
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.exe.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.rsp
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Business.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Antlr3.Runtime.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Newtonsoft.Json.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Helpers.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Http.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Http.WebHost.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Mvc.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Optimization.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Razor.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.WebPages.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\WebGrease.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.DataAccess.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\log4net.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Business.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Business.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Newtonsoft.Json.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Net.Http.Formatting.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Helpers.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Http.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Mvc.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Optimization.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Razor.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.WebPages.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Antlr3.Runtime.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.DataAccess.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.DataAccess.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\log4net.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.csproj.AssemblyReference.cache
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.csproj.CopyComplete
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\obj\Debug\AdvisoryDatabase.WebAPI.pdb
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.dll.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.WebAPI.pdb
@@ -250,12 +351,11 @@ D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.We
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.exe
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.exe.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\vbc.rsp
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\roslyn\VBCSCompiler.exe.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Business.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Antlr3.Runtime.dll
-D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.dll
-D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.SqlServer.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Microsoft.Web.Infrastructure.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Newtonsoft.Json.dll
@@ -279,8 +379,6 @@ D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.We
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Business.dll.config
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.pdb
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\AdvisoryDatabase.Framework.dll.config
-D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.xml
-D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\EntityFramework.SqlServer.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\Newtonsoft.Json.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Net.Http.Formatting.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.WebAPI\bin\System.Web.Helpers.xml

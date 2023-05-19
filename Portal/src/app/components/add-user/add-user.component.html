@@ -1,96 +1,60 @@
 
-<div class="add-user">
+<div class="update-user">
 
   <p-fieldset legend="Add User" class="fieldset">
 
-    <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+    <form #userForm="ngForm" (ngSubmit)="onFormSubmit()" [formGroup]="UserAdd">
 
       <div class="group-row">
 
           <div class="p-float-label">
-
-            <span class="lables">First Name <span style="color:red">*</span></span>
-          <input pInputText id="first-name" name="first-name" [ngClass]="{ 'is-invalid': isValidFormSubmitted }" placeholder="First Name" />
-
+          <input pInputText id="first-name" name="first-name"  formControlName="FirstName" />
+          <label htmlFor="first-name">First Name *</label>
         </div>
         <div class="p-float-label">
-            <span class="lables">Last Name <span style="color:red">*</span></span>
-          <input pInputText id="last-name" [ngClass]="{ 'is-invalid': isValidFormSubmitted }" placeholder="Last Name">
-
+          <input pInputText id="last-name"  formControlName="LastName"/>
+          <label htmlFor="last-name">Last Name *</label>
         </div>
       </div>
 
       <div class="group-row">
         <div class="p-float-label">
-            <span class="lables">EmailID <span style="color:red">*</span></span>
-          <input pInputText id="email-id" [pattern]="emailRegex" placeholder="Email ID"/>
-          <!-- <label htmlFor="email-id">Email *</label> -->
+          <input pInputText id="email-id" formControlName="Email" />
+          <label htmlFor="email-id">Email *</label>
         </div>
 
            <div class="p-float-label">
-            <span class="lables"> Location <span style="color:red">*</span></span><br>
-            <select name="location" id="location">
-            <option>Choose Location </option>
-            <option>Mumbai</option>
-            <option>San Fransisco</option>
-            <option>Alabama</option>
-            <option>Africa</option>
+
+            <select name="location" id="location" formControlName="LocationID">
+            <option value="0">Choose location*</option>
+            <option *ngFor="let loc of Location" [value]="loc.LocationID">{{ loc.Location }}</option>
             </select>
            </div>
       </div>
-       <div class="group-row">
+      <div class="group-row">
+
 
 <table>
-  <tr>
+<tr>
     <th>Check</th>
     <th>Task Name</th>
+</tr>
 
-  </tr>
-  <tr>
+  <tr *ngFor="let task of Tasks">
 
-    <td><input type="checkbox"></td>
-    <td>User Management</td>
-  </tr>
-  <tr>
-   <td><input type="checkbox"></td>
-    <td>Course Management</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox"></td>
-    <td>Download Focus RDI</td>
-  </tr>
-  <tr>
-   <td><input type="checkbox"></td>
-    <td>Download Cliarizen RDI</td>
-  </tr>
-  <tr>
-   <td><input type="checkbox"></td>
-    <td>Download Deployment Report</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox"></td>
-    <td>Focus to Advisory data integration</td>
-  </tr>
-   <tr>
-    <td><input type="checkbox"></td>
-    <td>Notifications and Alerts</td>
-  </tr>
-    <tr>
-    <td><input type="checkbox"></td>
-    <td>Import data from Existing Singularity</td>
+      <td><input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]="task.checked"  formControlName="TaskName"></td>
+        <td>{{ task.TaskMasterName }}</td>
   </tr>
 </table>
 
-       </div>
-
-      <button label="add user" class="user-btn p-button ">
+      </div>
+     <button label="add user" class="user-btn p-button ">
         <span class="p-button-label">Save</span>
       </button>
 
        <button label="add user" class="user-btn p-button " style="margin-left: 50px;">
         <span class="p-button-label">cancel</span>
       </button>
-
 
     </form>
 

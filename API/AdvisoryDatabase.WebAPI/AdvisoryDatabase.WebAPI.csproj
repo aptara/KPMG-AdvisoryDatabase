@@ -46,18 +46,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -165,36 +158,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BayDetailController.cs" />
-    <Compile Include="Controllers\CourseOwnerController.cs" />
-    <Compile Include="Controllers\GetExcelForClarizenFieldsController.cs" />
-    <Compile Include="Controllers\GetExcelForDeploymentReportController.cs" />
-    <Compile Include="Controllers\GetExcelForFocusController.cs" />
-    <Compile Include="Controllers\oldUserController.cs" />
-    <Compile Include="Controllers\CourseController.cs" />
-    <Compile Include="Controllers\testController.cs" />
-    <Compile Include="ExcelForClarizen1_Result.cs">
-      <DependentUpon>test2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExcelForClarizen_Result.cs">
-      <DependentUpon>test2.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\TaskLocationMasterController.cs" />
+    <Compile Include="Controllers\WebUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="test2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>test2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="test2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>test2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="test2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>test2.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -233,16 +200,6 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="test2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>test2.edmx</DependentUpon>
-      <LastGenOutput>test2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="test2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>test2.edmx</DependentUpon>
-      <LastGenOutput>test2.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -257,27 +214,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <EntityDeploy Include="test2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>test2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="test2.edmx.diagram">
-      <DependentUpon>test2.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ActionFilter\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\" />
-    <Folder Include="Views\CourseOwner\" />
-    <Folder Include="Views\GETExcelForClarizenFields\" />
-    <Folder Include="Views\GetExcelForDeploymentReport\" />
-    <Folder Include="Views\GetExcelForFocus\" />
     <Folder Include="Views\Meter\" />
-    <Folder Include="Views\test\" />
+    <Folder Include="Views\TaskLocationMaster\" />
     <Folder Include="Views\User\" />
-    <Folder Include="Views\webcourse\" />
+    <Folder Include="Views\WebUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -320,9 +266,6 @@
       <Project>{cb75f515-0e04-47fb-bfa2-617cd2e4ea7d}</Project>
       <Name>AdvisoryDatabase.Framework</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

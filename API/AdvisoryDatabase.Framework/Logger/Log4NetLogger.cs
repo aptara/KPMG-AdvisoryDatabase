@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using log4net;
 
 namespace AdvisoryDatabase.Framework.Logger
@@ -68,7 +68,7 @@ namespace AdvisoryDatabase.Framework.Logger
             {
                 mLogger.Error("Error Source: Mobile App");
             }
-            mLogger.Error(message);
+             mLogger.Error(message);
         }
 
 

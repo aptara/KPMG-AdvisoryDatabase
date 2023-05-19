@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +30,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         protected override void FillParameters(OperationType operation, BayDetails instance, List<System.Data.Common.DbParameter> parameters)
         {
            
+            
         }
 
         protected override List<BayDetails> ParseGetAllData(System.Data.DataSet data)
@@ -37,12 +38,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new BayDetails
                      {
-                         Id = row.Read<Int32>("UserMasterID"),
+                      
                          BayID = row.ReadString("FirstName"),
-                         Description = row.ReadString("LastName"),
-                         SubStationID = row.Read<Int32>("LocationID"),
-                         Name = row.ReadString("Email"),
                      
+                         Name = row.ReadString("Email"),
+                         Description = row.ReadString("LocationID")
                      }).ToList();
 
             return GetAllData;

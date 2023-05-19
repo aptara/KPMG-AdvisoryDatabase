@@ -11,7 +11,7 @@ using System.Data.Common;
 
 namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
-    public class DataAccessUserService : DataAccessRepository<UserDetail, Int32>
+    public class WebDataAccessUserService : DataAccessRepository<UserDetail, Int32>
     {
         protected override string GetProcedureName(OperationType operation)
         {

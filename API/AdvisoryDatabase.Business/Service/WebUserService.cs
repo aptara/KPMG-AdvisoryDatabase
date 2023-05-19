@@ -11,11 +11,11 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Service
 {
-    public class UserService : Repository<UserDetail, Int32>
+    public class WebUserService : Repository<UserDetail, Int32>
     {
         protected override DataAccess.Repository.DataAccessRepository<UserDetail, int> CreateDalManager()
         {
-            return new DataAccessUserService();
+            return new WebDataAccessUserService();
         }
 
 

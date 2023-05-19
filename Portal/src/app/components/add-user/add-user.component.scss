@@ -1,6 +1,6 @@
 @import "../../../assets/scss/custom.scss";
 
-.add-user {
+.update-user {
     overflow: auto;
     @extend .p-2;
     @extend .shadow-2;
@@ -41,7 +41,17 @@
         border-color: rgb(213, 218, 218);
         color: rgb(117, 121, 121);
     }
-    td, th {
+
+     td, th {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 8px;
+  width: 200px;
+}
+
+
+ td, th {
   border: 1px solid #dddddd;
   border-collapse: collapse;
   text-align: center;
@@ -59,4 +69,6 @@ span .lables{
 }
 
 }
+
+
 
