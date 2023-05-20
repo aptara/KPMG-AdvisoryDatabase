@@ -46,10 +46,18 @@
     <Compile Include="Controllers\API\MeterController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BayDetailController.cs" />
+    <Compile Include="Controllers\CourseDetailController.cs" />
+    <Compile Include="Controllers\CourseOwnerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\GETExcelForClarizenFieldsController.cs" />
+    <Compile Include="Controllers\GETExcelForDeploymentReportController.cs" />
+    <Compile Include="Controllers\GETExcelForFocusController.cs" />
     <Compile Include="Controllers\MeterDetailController.cs" />
+    <Compile Include="Controllers\NewGetExcelForClarizenFields.cs" />
+    <Compile Include="Controllers\NewGetExcelForFocus.cs" />
     <Compile Include="Controllers\TaskLocationMasterController.cs" />
     <Compile Include="Controllers\WebUserController.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
@@ -58,8 +66,15 @@
     <Compile Include="Service\API\MeterReadingService.cs" />
     <Compile Include="Service\API\TaskService.cs" />
     <Compile Include="Service\BayDataService.cs" />
+    <Compile Include="Service\CourseDataService.cs" />
+    <Compile Include="Service\CourseOwnerDataService.cs" />
     <Compile Include="Service\DashboardService.cs" />
+    <Compile Include="Service\ExcelForClarizenFeildDataService.cs" />
+    <Compile Include="Service\ExcelForDeploymentReportDataService.cs" />
+    <Compile Include="Service\ExcelForFocusDataService.cs" />
     <Compile Include="Service\MeterDataService.cs" />
+    <Compile Include="Service\NewExcelForClarizenFieldsControllerDataService.cs" />
+    <Compile Include="Service\NewGetExcelForFous.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Utillity.cs" />
   </ItemGroup>
@@ -75,6 +90,50 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="bin\Release\MSB.Business.dll.config" />
+    <None Include="bin\Release\MSB.DataAccess.dll.config" />
+    <None Include="bin\Release\MSB.Framework.dll.config" />
+    <None Include="obj\Debug\AdvisoryDatabase.Business.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\AdvisoryDatabase.Business.csproj.CopyComplete" />
+    <None Include="obj\Debug\AdvisoryDatabase.Business.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\MSB.Business.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\MSB.Business.csproj.CopyComplete" />
+    <None Include="obj\Debug\MSB.Business.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\MSB.Business.csprojAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\MSB.Business.csproj.CopyComplete" />
+    <None Include="obj\Release\MSB.Business.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\MSB.Business.csprojAssemblyReference.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\log4net.dll" />
+    <Content Include="bin\Release\log4net.xml" />
+    <Content Include="bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
+    <Content Include="bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.xml" />
+    <Content Include="bin\Release\Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
+    <Content Include="bin\Release\Microsoft.Practices.EnterpriseLibrary.Logging.xml" />
+    <Content Include="bin\Release\MSB.Business.dll" />
+    <Content Include="bin\Release\MSB.Business.pdb" />
+    <Content Include="bin\Release\MSB.DataAccess.dll" />
+    <Content Include="bin\Release\MSB.DataAccess.pdb" />
+    <Content Include="bin\Release\MSB.Framework.dll" />
+    <Content Include="bin\Release\MSB.Framework.pdb" />
+    <Content Include="obj\Debug\AdvisoryDatabase.Business.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\AdvisoryDatabase.Business.dll" />
+    <Content Include="obj\Debug\AdvisoryDatabase.Business.pdb" />
+    <Content Include="obj\Debug\MSB.Business.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\MSB.Business.dll" />
+    <Content Include="obj\Debug\MSB.Business.pdb" />
+    <Content Include="obj\Release\MSB.Business.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\MSB.Business.dll" />
+    <Content Include="obj\Release\MSB.Business.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

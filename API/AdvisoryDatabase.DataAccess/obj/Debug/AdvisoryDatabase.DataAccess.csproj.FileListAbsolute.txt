@@ -69,6 +69,7 @@ D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Da
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\log4net.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.AssemblyReference.cache
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CoreCompileInputs.cache
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CopyComplete
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.dll

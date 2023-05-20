@@ -25,7 +25,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     public class GetExcelForDeploymentReportController : ApiController
     {
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage ShowData()
+        public HttpResponseMessage ShowDataofdeployment()
         // GET: GetExcelForDeploymentReport
         /*public ActionResult Index()*/
         {

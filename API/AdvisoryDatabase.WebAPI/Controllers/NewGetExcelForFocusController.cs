@@ -1,9 +1,9 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
+
 using AdvisoryDatabase.Framework.Entities;
 using Newtonsoft.Json;
 using System.Net;
@@ -18,18 +18,17 @@ using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using System.Web.Http.Results;
 using System.Web.Script.Serialization;
-
-
-
+using System.Web.Http;
 
 namespace AdvisoryDatabase.WebAPI.Controllers
 {
-    public class GetExcelForFocusController : ApiController
+    public class NewGetExcelForFocusController : ApiController
     {
+        // GET: NewGetExcelForFocus
         // GET: GetExcelForFocus
         [System.Web.Http.HttpGet]
         public HttpResponseMessage ShowDataoffocus()
-        /*public ActionResult Index()*/
+        *//*public ActionResult Index()*//*
         {
 
             try
@@ -39,7 +38,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
                 ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
-               
+
 
 
 
@@ -60,28 +59,4 @@ namespace AdvisoryDatabase.WebAPI.Controllers
             };
         }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}*/

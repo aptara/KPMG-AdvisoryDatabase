@@ -26,10 +26,5 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FirstDeliveryDate { get; set; }
         public string LevelofEffort { get; set; }
         public string Duration { get; set; }
-
-
-
-        /*public string CourseOwnerID { get; set; }
-        public string CourseOwner { get; set; }*/
     }
 }

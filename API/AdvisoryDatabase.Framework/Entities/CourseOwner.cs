@@ -10,13 +10,7 @@ namespace AdvisoryDatabase.Framework.Entities
     public class CourseOwnerDetails : BaseEntity<Int32>
     {
         public string CourseOwnerID { get; set; }
-        public string CourseOwner { get; set; }
+        public string CourseOwner { get; set; } 
 
-       
-        /*    public string CreatedBy { get; set; }
-   public string CreatedOn { get; set; }
-   public int LastUpdatedBy { get; set; }
-   public int LastUpdatedOn { get; set; }
-*/
     }
 }

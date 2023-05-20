@@ -224,29 +224,25 @@
 
         <!-- <div class="course-field"> -->
 
-        <form [formGroup]="AddUser" (ngSubmit)="addCourse()">
+        <form [formGroup]="addcourse" (ngSubmit)="addCourse()">
+            <!-- Row 1st -->
             <div class="group-row row">
                 <div class="col">
                     <span>Course ID <span style="color:red;">*</span></span>
                     <input type="text" class="course-input course-id" id="courseId" placeholder="Course ID *" pInputText
                         pKeyFilter="alphanum" formControlName="courseId" pattern="^[0-9]*$" />
-                    <!-- <div *ngIf="AddUser.get('courseId').errors?.pattern">Please enter a valid number</div> -->
-
-
-                    <div *ngIf="AddUser.controls.courseId.invalid && AddUser.controls.courseId.touched"
+                    <!-- <div *ngIf="addcourse.get('courseId').errors?.pattern">Please enter a valid number</div> -->
+                    <div *ngIf="addcourse.controls.courseId.invalid && addcourse.controls.courseId.touched"
                         class="text-danger">
                         The CourseID is required.
 
                     </div>
-
-
-
                 </div>
                 <div class="col">
                     <span>Course Name <span style="color:red;">*</span></span>
                     <input type="text" class="course-input course-name" placeholder="Course Name *" pInputText
                         pKeyFilter="alphanum" formControlName="coursename" />
-                    <div *ngIf="AddUser.controls.coursename.invalid && AddUser.controls.coursename.touched"
+                    <div *ngIf="addcourse.controls.coursename.invalid && addcourse.controls.coursename.touched"
                         class="text-danger">
                         The CourseName is required.
                     </div>
@@ -256,7 +252,7 @@
                     <span>L&D-Intake-Owner<span style="color:red;">*</span></span>
                     <input type="text" class="course-input L&D-Intake-Owner" placeholder="L&D Intake Owner *" pInputText
                         pKeyFilter="alphanum" formControlName="ldintake" />
-                    <div *ngIf="AddUser.controls.ldintake.invalid && AddUser.controls.ldintake.touched"
+                    <div *ngIf="addcourse.controls.ldintake.invalid && addcourse.controls.ldintake.touched"
                         class="text-danger">
                         The L&D Intake Owner is required.
                     </div>
@@ -295,7 +291,7 @@
                             </div>
                         </ng-template>
                     </p-dropdown>
-                    <div *ngIf="AddUser.controls.courseowner.invalid && AddUser.controls.courseowner.touched"
+                    <div *ngIf="addcourse.controls.courseowner.invalid && addcourse.controls.courseowner.touched"
                         class="text-danger">
                         The Course Owner is required.
                     </div>
@@ -312,7 +308,7 @@
                             </div>
                         </ng-template>
                     </p-dropdown>
-                    <div *ngIf="AddUser.controls.programtype.invalid && AddUser.controls.programtype.touched"
+                    <div *ngIf="addcourse.controls.programtype.invalid && addcourse.controls.programtype.touched"
                         class="text-danger">
                         The Program Type is required.
                     </div>
@@ -329,7 +325,7 @@
                             </div>
                         </ng-template>
                     </p-dropdown>
-                    <div *ngIf="AddUser.controls.deliverytype.invalid && AddUser.controls.deliverytype.touched"
+                    <div *ngIf="addcourse.controls.deliverytype.invalid && addcourse.controls.deliverytype.touched"
                         class="text-danger">
                         The Delivery Type is required.
                     </div>
@@ -356,7 +352,7 @@
                         <p-inputNumber id="total-cpe-credit" [showButtons]="true" inputId="stacked" mode="decimal"
                             [min]="0" formControlName="totalcpecredit">
                         </p-inputNumber>
-                        <div *ngIf="AddUser.controls.totalcpecredit.invalid && AddUser.controls.totalcpecredit.touched"
+                        <div *ngIf="addcourse.controls.totalcpecredit.invalid && addcourse.controls.totalcpecredit.touched"
                             class="text-danger">
                             The Total CPE Credit is required.
                         </div>
@@ -364,10 +360,6 @@
                 </div>
 
             </div>
-
-
-
-
 
             <div class="group-row row">
                 <div class="col">
@@ -410,10 +402,6 @@
                 </div>
             </div>
 
-
-
-
-
             <div class="group-row row">
                 <div class="col">
                     <span>Maximum Attendee Count<span style="color:red;">*</span></span>
@@ -452,7 +440,6 @@
                         pInputText pKeyFilter="alphanum" formControlName="prerequisite-course-id" />
                 </div>
 
-
                 <div class="col">
                     <span>Equivalent Course ID <span style="color:red;">*</span></span>
                     <input type="text" class="course-input equivalent-course-id" placeholder="Equivalent Course ID"
@@ -464,7 +451,7 @@
                     <p-calendar class="course-calendar first-delivery-date" formControlName="firstdeliverydate"
                         placeholder="First Delivery Date" [showIcon]="true">
                     </p-calendar>
-                    <div *ngIf="AddUser.controls.firstdeliverydate.invalid && AddUser.controls.firstdeliverydate.touched"
+                    <div *ngIf="addcourse.controls.firstdeliverydate.invalid && addcourse.controls.firstdeliverydate.touched"
                         class="text-danger">
                         The First Delivery Date is required.
                     </div>
@@ -498,10 +485,6 @@
                 </div>
             </div>
 
-
-
-
-
             <div class="group-row row">
                 <div class="col">
                     <span>Duration<span style="color:red;">*</span></span>
@@ -524,7 +507,6 @@
                 <div class="col">
                     <span>Collateral <span style="color:red;">*</span></span>
                     <div class="course-radio-group collateral">
-
                         <p-selectButton class="course-label" [options]="collaterals" formControlName="Collateral"
                             optionLabel="label" optionValue="value">
                         </p-selectButton>
@@ -558,7 +540,7 @@
                     <span>Service ID <span style="color:red;">*</span></span>
                     <input type="text" class="course-input dervice-now-id" placeholder="Service Now ID" pInputText
                         pKeyFilter="alphanum" formControlName="serviceid" />
-                    <div *ngIf="AddUser.controls.serviceid.invalid && AddUser.controls.serviceid.touched"
+                    <div *ngIf="addcourse.controls.serviceid.invalid && addcourse.controls.serviceid.touched"
                         class="text-danger">
                         The Service ID is required.
                     </div>
@@ -582,7 +564,5 @@
             </div>
 
         </form>
-        <!-- </div> -->
-
     </p-fieldset>
 </div>

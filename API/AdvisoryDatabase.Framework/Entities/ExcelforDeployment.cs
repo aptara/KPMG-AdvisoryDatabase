@@ -9,11 +9,7 @@ namespace AdvisoryDatabase.Framework.Entities
 {
    public class ExcelforDeployment : BaseEntity<Int32>
     {
-        /*  public string CourseOwnerID { get; set; }
-          public string CourseOwner { get; set; }*/
-
-
-
+       
        public string CourseName { get; set; }
        public string LDIntakeOwner { get; set; }
        public string ProjectManagerContact { get; set; }

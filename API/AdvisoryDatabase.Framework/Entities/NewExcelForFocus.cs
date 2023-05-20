@@ -1,14 +1,16 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using AdvisoryDatabase.Framework.Common;
 
 namespace AdvisoryDatabase.Framework.Entities
 {
-    public class GetExcelForFocusInfo: BaseEntity<Int32>
+    public class GetExcelForFocusInfo1 : BaseEntity<Int32>
     {
+
         public string CourseName { get; set; }
         public string CourseOwner { get; set; }
         public string DeliveryType { get; set; }
@@ -24,10 +26,10 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FirstDeliveryDate { get; set; }
         public string Duration { get; set; }
 
-         
+
 
 
 
     }
 }
-
+*/
