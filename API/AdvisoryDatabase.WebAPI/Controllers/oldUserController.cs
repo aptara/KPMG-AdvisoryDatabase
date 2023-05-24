@@ -1,4 +1,4 @@
-﻿using AdvisoryDatabase.Framework.Entities;
+/*using AdvisoryDatabase.Framework.Entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,8 +23,8 @@ using System.Web.Http;
 
 
 
-/*
-http://localhost:62220//api/User/ShowData*/
+*//*
+http://localhost:62220//api/User/ShowData*//*
 namespace AdvisoryDatabase.WebAPI.Controllers
 {
     
@@ -35,7 +35,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         // GET: User
         [System.Web.Http.HttpGet]
         public HttpResponseMessage ShowData()
-       /* public ActionResult Index()*/
+       *//* public ActionResult Index()*//*
         {
             try
             {
@@ -71,7 +71,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
         [System.Web.Http.HttpPost]
      public HttpResponseMessage PostData(User bay)
-        /* public ActionResult Index()*/
+        *//* public ActionResult Index()*//*
         {
             try
             {
@@ -111,3 +111,4 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     }
 }
 
+*/

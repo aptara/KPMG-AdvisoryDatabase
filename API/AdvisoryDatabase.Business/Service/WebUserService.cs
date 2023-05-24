@@ -15,7 +15,7 @@ namespace AdvisoryDatabase.Business.Service
     {
         protected override DataAccess.Repository.DataAccessRepository<UserDetail, int> CreateDalManager()
         {
-            return new WebDataAccessUserService();
+            return new DataAccessUserService();
         }
 
 

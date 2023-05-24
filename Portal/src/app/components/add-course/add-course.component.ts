@@ -23,7 +23,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class AddCourseComponent implements OnInit {
 
     public isFormSubmitted: boolean = false;
-    AddUser: FormGroup | any;
+    addcourse: FormGroup | any;
 
 
 
@@ -57,7 +57,7 @@ export class AddCourseComponent implements OnInit {
 
     web = { label: 'google', url: 'https://www.google.com' }
     constructor(private formBuilder: FormBuilder) {
-        this.AddUser = this.formBuilder.group({
+        this.addcourse = this.formBuilder.group({
             'courseId': ['', Validators.required, Validators.pattern('^[0-9]*$')],
             'coursename': ['', Validators.required],
             'ldintake': ['', Validators.required],
@@ -98,11 +98,11 @@ export class AddCourseComponent implements OnInit {
     ngOnInit(): void { }
 
     addCourse() {
-        if (this.AddUser.valid) {
+        if (this.addcourse.valid) {
             // Handle form submission
         } else {
             // Mark all fields as touched to show error messages
-            this.AddUser.markAllAsTouched();
+            this.addcourse.markAllAsTouched();
         }
     }
 

@@ -1,60 +1,62 @@
 <div class="update-user">
 
-  <p-fieldset legend="update User" class="fieldset">
+    <p-fieldset legend="update User" class="fieldset">
 
-    <form #userForm="ngForm" (ngSubmit)="onFormSubmit()" [formGroup]="UserUpdate">
+        <form #userForm="ngForm" (ngSubmit)="onFormSubmit()" [formGroup]="UserUpdate">
 
-      <div class="group-row">
-
-
-          <div class="p-float-label">
-          <input pInputText id="first-name" name="first-name" [ngClass]="{ 'is-invalid': isValidFormSubmitted }"  formControlName="FirstName" />
-          <label htmlFor="first-name">First Name *</label>
-        </div>
-        <div class="p-float-label">
-          <input pInputText id="last-name"  formControlName="LastName"/>
-          <label htmlFor="last-name">Last Name *</label>
-        </div>
-      </div>
-
-      <div class="group-row">
-        <div class="p-float-label">
-          <input pInputText id="email-id" [pattern]="emailRegex" formControlName="Email" />
-          <label htmlFor="email-id">Email *</label>
-        </div>
-
-           <div class="p-float-label">
-
-            <select name="location" id="location" formControlName="LocationID">
-            <option value="0">Choose location*</option>
-            <option *ngFor="let loc of Location" [value]="loc.LocationID">{{ loc.Location }}</option>
-            </select>
-           </div>
-      </div>
-      <div class="group-row">
+            <div class="group-row">
 
 
-<table>
-<tr>
-    <th>Check</th>
-    <th>Task Name</th>
-</tr>
+                <div class="p-float-label">
+                    <input pInputText id="first-name" name="first-name"
+                        [ngClass]="{ 'is-invalid': isValidFormSubmitted }" formControlName="FirstName" />
+                    <label htmlFor="first-name">First Name *</label>
+                </div>
+                <div class="p-float-label">
+                    <input pInputText id="last-name" formControlName="LastName" />
+                    <label htmlFor="last-name">Last Name *</label>
+                </div>
+            </div>
 
-  <tr *ngFor="let task of Tasks">
+            <div class="group-row">
+                <div class="p-float-label">
+                    <input pInputText id="email-id" [pattern]="emailRegex" formControlName="Email" />
+                    <label htmlFor="email-id">Email *</label>
+                </div>
 
-      <td><input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]="task.checked"  formControlName="TaskName"></td>
-        <td>{{ task.TaskMasterName }}</td>
-  </tr>
-</table>
+                <div class="p-float-label">
 
-      </div>
+                    <select name="location" id="location" formControlName="LocationID">
+                        <option value="0">Choose location*</option>
+                        <option *ngFor="let loc of Location" [value]="loc.LocationID">{{ loc.Location }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="group-row">
 
-      <button label="add user" class="user-btn p-button" type="submit">
-        <span class="p-button-label">Update User</span>
-      </button>
 
-    </form>
+                <table>
+                    <tr>
+                        <th>Check</th>
+                        <th>Task Name</th>
+                    </tr>
 
-  </p-fieldset>
+                    <tr *ngFor="let task of Tasks">
+
+                        <td><input type="checkbox" (change)="onCheckboxChange(task,$event)">
+                        </td>
+                        <td>{{ task.TaskMasterName }}</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <button label="add user" class="user-btn p-button" type="submit">
+                <span class="p-button-label">Update User</span>
+            </button>
+
+        </form>
+
+    </p-fieldset>
 
 </div>

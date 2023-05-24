@@ -28,7 +28,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
         // GET: GetExcelForFocus
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage ShowData()
+        public HttpResponseMessage ShowDataoffocus()
         /*public ActionResult Index()*/
         {
 

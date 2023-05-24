@@ -9,11 +9,6 @@ namespace AdvisoryDatabase.Framework.Entities
 {
     public class GetExcelForFocusInfo: BaseEntity<Int32>
     {
-
-        /*public string CourseOwnerID { get; set; }
-        public string CourseOwner { get; set; }*/
-
-
         public string CourseName { get; set; }
         public string CourseOwner { get; set; }
         public string DeliveryType { get; set; }
@@ -29,7 +24,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FirstDeliveryDate { get; set; }
         public string Duration { get; set; }
 
-
+         
 
 
 

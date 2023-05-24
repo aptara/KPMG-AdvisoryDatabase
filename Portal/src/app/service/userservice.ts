@@ -62,4 +62,16 @@ export class UserService {
     }
 
 
+    //for all delete data but show on screen
+
+    public deleteData = 'http://localhost:62220//api/WebUser/DelData'
+    delData(empData: any) {
+        var req = this.deleteData;
+        return this.http.post(req, empData);
+    }
+
+    //to show only true value data
+    getUsers(): Observable<any[]> {
+        return this.http.get<any[]>('http://localhost:62220//api/WebUser/ShowData');
+    }
 }

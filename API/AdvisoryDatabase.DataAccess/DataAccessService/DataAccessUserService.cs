@@ -30,9 +30,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                   spName = "UpdateUser";
           break;
-        case OperationType.Delete:
-          spName = "DeleteUser";
-          break;
+     
 
         default:
                     spName = string.Empty;
@@ -41,47 +39,21 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             return spName;
         }
 
-    /*protected override string GetParameterName(ParameterType parameter)
-    {
-      return parameter == ParameterType.Id ? "UserId" : base.GetParameterName(parameter);
-    }*/
-
-  /*  protected override void FillParameters(OperationType operation, UserDetail instance, List<System.Data.Common.DbParameter> parameters)
-    {
-      if (operation == OperationType.Add)
-      {
-        parameters.Add(DbHelper.CreateParameter("FirstName", instance.FirstName));
-        parameters.Add(DbHelper.CreateParameter("LastName", instance.LastName));
-        parameters.Add(DbHelper.CreateParameter("Email", instance.Email));
-        parameters.Add(DbHelper.CreateParameter("LocationID", instance.LocationID));
-
-      }
-      else
-      {
-        //parameters.Add(DbHelper.CreateParameter("UserId",instance.Id));
-
-        parameters.Add(DbHelper.CreateParameter("FirstName", instance.FirstName));
-        parameters.Add(DbHelper.CreateParameter("LastName", instance.LastName));
-        parameters.Add(DbHelper.CreateParameter("Email", instance.Email));
-        parameters.Add(DbHelper.CreateParameter("LocationID", instance.LocationID));
-
-        *//* parameters.Add(DbHelper.CreateParameter("EmailID", instance.EmailID));
-         parameters.Add(DbHelper.CreateParameter("HashPassword", instance.Password == null ? "" : instance.Password));*//*
-        //parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
-      }
-    }
-*/
+   
     protected override List<UserDetail> ParseGetAllData(System.Data.DataSet data)
         {
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new UserDetail
                      {
                          UserMasterID =Int32.Parse( row.ReadString("UserMasterID")),
-                        /* UserId = row.ReadString("Id"),*/
+                        
                          Email = row.ReadString("Email"),
                          FirstName = row.ReadString("FirstName"),
                          LastName = row.ReadString("LastName"),
                        LocationID = Int32.Parse(row.ReadString("LocationID")),
+                       Location = row.ReadString("Location"),
+                       IsActive = Boolean.Parse(row.ReadString("IsActive"))
+                      
 
                      }).ToList();
 
@@ -98,13 +70,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 FirstName = data.ReadString("FirstName"),
                 LastName = data.ReadString("LastName"),
               LocationID = Int32.Parse(data.ReadString("LocationID")),
+              Location = data.ReadString("Location"),
+            
             };
         }
 
-    /*  protected override void FillParameters(OperationType operation, UserDetail instance, List<DbParameter> parameters)
-      {
-        throw new NotImplementedException();
-      }*/
+   
 
     
 
@@ -119,7 +90,9 @@ protected override void FillParameters(OperationType operation, UserDetail insta
             parameters.Add(DbHelper.CreateParameter("LastName", instance.LastName));
             parameters.Add(DbHelper.CreateParameter("Email", instance.Email));
             parameters.Add(DbHelper.CreateParameter("LocationID", instance.LocationID));
-            break;
+          parameters.Add(DbHelper.CreateParameter("TaskMasterID", instance.TaskMasterID));
+
+          break;
 
         case OperationType.Update:
           parameters.Add(DbHelper.CreateParameter("UserMasterID", instance.UserMasterID));
@@ -127,6 +100,8 @@ protected override void FillParameters(OperationType operation, UserDetail insta
           parameters.Add(DbHelper.CreateParameter("LastName", instance.LastName));
           parameters.Add(DbHelper.CreateParameter("Email", instance.Email));
           parameters.Add(DbHelper.CreateParameter("LocationID", instance.LocationID));
+          parameters.Add(DbHelper.CreateParameter("TaskMasterID", instance.TaskMasterID));
+          parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
           break;
 
         case OperationType.Delete:

@@ -25,7 +25,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     public class GetExcelForClarizenFieldsController : ApiController
     {
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage ShowData()
+        public HttpResponseMessage ShowDataofclarizen()
         // GET: GETExcelForClarizenFields
        /* public ActionResult Index()*/
         {

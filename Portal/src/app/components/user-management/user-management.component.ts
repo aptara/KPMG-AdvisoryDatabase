@@ -4,7 +4,7 @@ import { User } from '../../domain/user';
 import { process } from "@progress/kendo-data-query";
 import { DataBindingDirective } from "@progress/kendo-angular-grid";
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { GridDataResult } from '@progress/kendo-angular-grid';
 @Component({
     selector: 'app-user-management',
     templateUrl: './user-management.component.html',
@@ -29,15 +29,24 @@ export class UserManagementComponent implements OnInit {
 
     ngOnInit() {
         // this.gridView = this.gridData;
-        this.userService.getData().subscribe(res => {
-            this.UserDAta = res;
-            this.UserDAta.IsActive = true;
-            console.log(JSON.stringify(this.UserDAta))
-        }
+        // this.userService.getData().subscribe(res => {
+        //     // this.UserDAta = res;
 
-        )
+        //     // console.log(JSON.stringify(this.UserDAta))
+        // }
+
+        //)
+
+        this.userService.getUsers().subscribe((data: any[]) => {
+            this.UserDAta = data.filter(user => user.IsActive === true);
+        });
     }
-
+    get gridData(): GridDataResult {
+        return {
+            data: this.users,
+            total: this.users.length
+        };
+    }
 
 
 
@@ -77,7 +86,7 @@ export class UserManagementComponent implements OnInit {
                 logic: "or",
                 filters: [
                     {
-                        field: "UserMasterID",
+                        field: "IsActive",
                         operator: "contains",
                         value: inputValue,
                     },
@@ -129,11 +138,51 @@ export class UserManagementComponent implements OnInit {
         this.Router.navigate(['/update-user', SelectedUserData])
 
         // console.log(SelectedUserData)
+    }
 
-
-
-
+    deleteUser(userData: any): void {
+        if (confirm("Are you sure you want to delete this user?")) {
+            this.userService.delData(userData).subscribe((response: any) => {
+                if (response != null) {
+                    alert("User Deleted successfully");
+                }
+                else {
+                    alert("not successful")
+                }
+                this.ngOnInit();
+            });
+        }
     }
 
 
 }
+
+
+//to show only valid user (only status is true)
+// ngOnInit() {
+//     this.userService.getUsers().subscribe((data: any[]) => {
+//         this.UserData = data.filter(user => user.IsActive === true);
+//     });
+// }
+
+//     get gridData(): GridDataResult {
+//     return {
+//         data: this.users,
+//         total: this.users.length
+//     };
+// }
+
+//for delete user but not in db
+// deleteUser(userData: any): void {
+//     if(confirm("Are you sure you want to delete this user?")) {
+//     this.userService.delData(userData).subscribe((response: any) => {
+//         if (response != null) {
+//             alert("successful");
+//         }
+//         else {
+//             alert("not successful")
+//         }
+//         this.ngOnInit();
+//     });
+// }
+//     }

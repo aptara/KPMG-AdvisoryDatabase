@@ -22,19 +22,19 @@ export class UpdateUserComponent implements OnInit {
     checked: any;
     User: any;
     checkedTask: any;
+    tmId: any = ""
     constructor(private userService: UserService, private Router: Router, private ActivatedRoute: ActivatedRoute) {
 
     }
 
     onFormSubmit() {
 
-        this.checkbox = this.Tasks.filter(x => x.checked == true)
-        this.checkbox.forEach(task => {
-            console.log(task.TaskMasterID)
-        })
+        this.UserUpdate.controls.TaskMasterID.setValue(this.tmId)
+        console.log(this.UserUpdate)
+        // console.log(this.tmId)
 
         this.userService.EditUserData(this.UserUpdate.value).subscribe(response => {
-            console.log(response)
+            // console.log(response)
             if (response != null) {
                 alert('successful');
 
@@ -44,8 +44,6 @@ export class UpdateUserComponent implements OnInit {
             }
 
         });
-
-
     }
 
 
@@ -60,8 +58,11 @@ export class UpdateUserComponent implements OnInit {
             'LastName': new FormControl(),
             'Email': new FormControl(),
             'LocationID': new FormControl(),
-            'TaskName': new FormControl()
+            'TaskMasterID': new FormControl()
         })
+
+
+
 
         this.UserID = this.ActivatedRoute.snapshot.params['UserMasterID'];
         console.log(this.UserID)
@@ -74,7 +75,7 @@ export class UpdateUserComponent implements OnInit {
             this.UserUpdate.controls.LastName.setValue(this.data.LastName)
             this.UserUpdate.controls.Email.setValue(this.data.Email)
             this.UserUpdate.controls.LocationID.setValue(this.data.LocationID)
-            this.UserUpdate.controls.TaskName.setValue(this.checkbox)
+
         })
 
 
@@ -84,7 +85,7 @@ export class UpdateUserComponent implements OnInit {
 
         this.SelectLocation()
         this.SetTasksTable()
-        this.onCheckboxChange()
+
     }
     SelectLocation() {
         this.userService.GetLocationData().subscribe(loc => {
@@ -101,7 +102,30 @@ export class UpdateUserComponent implements OnInit {
     }
 
 
-    onCheckboxChange() {
+    onCheckboxChange(task: any, e: any) {
+
+        var Ids: any = []
+
+        if (e.target.checked) {
+            this.checkbox.push(task)
+            // console.log(task
+        }
+        else {
+            this.checkbox.forEach((value, index) => {
+                if (value == task)
+                    this.checkbox.splice(index, 1)
+
+            })
+
+
+        }
+
+        this.checkbox.forEach(taskName => {
+            Ids.push(taskName.TaskMasterID)
+            this.tmId = Ids.join(",")
+        })
+        console.log(this.tmId)
+
 
     }
 

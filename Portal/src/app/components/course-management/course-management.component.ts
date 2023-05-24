@@ -31,7 +31,7 @@ export class CourseManagementComponent implements OnInit {
 
     //excel for focus
     ExcelOfFocus() {
-        this.http.get<any[]>('http://localhost:62220//api/GetExcelForFocus/ShowData').subscribe(data => {
+        this.http.get<any[]>('http://localhost:62220//api/GetExcelForFocus/ShowDataoffocus').subscribe(data => {
 
             this.data = data;
 
@@ -51,6 +51,9 @@ export class CourseManagementComponent implements OnInit {
         const worksheetName = 'Data Of Focus Fields';
         const fileName = 'Excel of Focus Fields.xlsx';
         const worksheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
+        // Set column widths
+        const columnWidths = headers.map(() => ({ width: 23 }));
+        worksheet['!cols'] = columnWidths;
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
         XLSX.writeFile(workbook, fileName);
@@ -59,7 +62,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for Clarizen
 
     ExcelOfClarizen() {
-        this.http.get<any[]>('http://localhost:62220//api/GETExcelForClarizenFields/ShowData').subscribe(data2 => {
+        this.http.get<any[]>('http://localhost:62220//api/GETExcelForClarizenFields/ShowDataofclarizen').subscribe(data2 => {
 
             this.datac = data2;
 
@@ -79,6 +82,9 @@ export class CourseManagementComponent implements OnInit {
         const worksheetName = 'Data Of Clarizen Fields';
         const fileName = 'Excel For Clarizen Fields.xlsx';
         const worksheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
+        // Set column widths
+        const columnWidths = headers.map(() => ({ width: 20 }));
+        worksheet['!cols'] = columnWidths
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
         XLSX.writeFile(workbook, fileName);
@@ -87,7 +93,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for deployment
 
     ExcelOfDeployment() {
-        this.http.get<any[]>('http://localhost:62220//api/GetExcelForDeploymentReport/ShowData').subscribe(data3 => {
+        this.http.get<any[]>('http://localhost:62220//api/GetExcelForDeploymentReport/ShowDataofdeployment').subscribe(data3 => {
 
             this.datad = data3;
 
@@ -109,8 +115,9 @@ export class CourseManagementComponent implements OnInit {
 
         const worksheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
 
+        // Set the color to blue
         const headerCellStyle = {
-            fill: { patternType: 'solid', fgColor: { theme: 8, tint: -0.25 } }, // Set the color to blue
+            fill: { patternType: 'solid', fgColor: { theme: 8, tint: -0.25 } },
             font: { bold: true },
             alignment: { horizontal: 'center', wrapText: true },
         };
@@ -121,7 +128,7 @@ export class CourseManagementComponent implements OnInit {
         });
 
         // Set column widths
-        const columnWidths = headers.map(() => ({ width: 30 })); // Set a width of 15 for each column
+        const columnWidths = headers.map(() => ({ width: 24 }));
         worksheet['!cols'] = columnWidths;
 
 

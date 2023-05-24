@@ -14,22 +14,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
   public class TaskLocationMasterController : ApiController
   {
 
-   /* // GET: TaskLocationMaster
-    [System.Web.Http.HttpGet]
-    public ActionResult index()
-    {
-      AdvisoryDatabase.Business.Controllers.TaskLocationMasterController ObjBayDetai = new Business.Controllers.TaskLocationMasterController();
-      Task ObjInputParameters = new Task();
-      ObjInputParameters.LastUpdatedBy = 1;
-      ObjInputParameters.IsActive = true;
-      // ObjBayDetai.GetUserDetailsByUserID(ObjInputParameters);
-
-
-      var outputData = ObjBayDetai.GetTasks(ObjInputParameters);
-      return Json(outputData, JsonRequestBehavior.AllowGet);
-
-    }
-*/
+   
 
 
 

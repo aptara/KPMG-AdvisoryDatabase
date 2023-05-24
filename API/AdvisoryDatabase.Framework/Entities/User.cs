@@ -13,7 +13,14 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int LocationID { get; set; }       
-    }
+        public int LocationID { get; set; }
+        public string TaskMasterID { get; set; }
+       public string Location { get; set; }
+
+
+
+  }
+
+ 
 
 }

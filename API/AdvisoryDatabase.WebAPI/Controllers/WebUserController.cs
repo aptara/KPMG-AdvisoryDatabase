@@ -63,6 +63,9 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastName = user.LastName;
         ObjInputParameters.Email = user.Email;
         ObjInputParameters.LocationID = user.LocationID;
+     
+        ObjInputParameters.TaskMasterID = user.TaskMasterID;
+
         List<UserDetail> outputData = ObjBayDetai.PostUserDetail(ObjInputParameters);
 
         string jsonData = JsonConvert.SerializeObject(outputData);
@@ -133,6 +136,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastName = user.LastName;
         ObjInputParameters.Email = user.Email;
         ObjInputParameters.LocationID = user.LocationID;
+        ObjInputParameters.TaskMasterID = user.TaskMasterID;
 
         UserDetail UserDataByUID = new UserDetail();
         var UserId = user.UserMasterID;
@@ -157,8 +161,10 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
 
 
+  
+
     [System.Web.Mvc.HttpPost]
-    public HttpResponseMessage DeleteUser(UserDetail user)
+    public HttpResponseMessage DelData(UserDetail user)
 
     {
       try
@@ -166,21 +172,20 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters = user;
-        ObjInputParameters.LastUpdatedBy = 1;
-        ObjInputParameters.IsActive = true;
+      
         ObjInputParameters.UserMasterID = user.UserMasterID;
         ObjInputParameters.FirstName = user.FirstName;
         ObjInputParameters.LastName = user.LastName;
         ObjInputParameters.Email = user.Email;
         ObjInputParameters.LocationID = user.LocationID;
-        // Check if IsActive is false, then update it to true
-        if (!ObjInputParameters.IsActive)
+
+        if (ObjInputParameters.IsActive)
         {
-          ObjInputParameters.IsActive = true;
-          // You can also add code here to update the record in the database using your ORM or data access layer
+          ObjInputParameters.IsActive = false;
+
         }
-        UserDetail UserDataByUID = new UserDetail();
-        var UserId = user.UserMasterID;
+
+        
         List<UserDetail> outputData = ObjBayDetai.deleteuser(ObjInputParameters);
 
 

@@ -46,9 +46,17 @@
     <Compile Include="Controllers\API\MeterController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BayDetailController.cs" />
+    <Compile Include="Controllers\CourseDetailController.cs" />
+    <Compile Include="Controllers\CourseOwnerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\GETExcelForClarizenFieldsController.cs" />
+    <Compile Include="Controllers\GETExcelForDeploymentReportController.cs" />
+    <Compile Include="Controllers\GetExcelForFocusController.cs" />
     <Compile Include="Controllers\MeterDetailController.cs" />
+    <Compile Include="Controllers\NewGetExcelForClarizenFields.cs" />
+    <Compile Include="Controllers\NewGetExcelForFocus.cs" />
     <Compile Include="Controllers\TaskLocationMasterController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WebUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
@@ -58,9 +66,17 @@
     <Compile Include="Service\API\MeterReadingService.cs" />
     <Compile Include="Service\API\TaskService.cs" />
     <Compile Include="Service\BayDataService.cs" />
+    <Compile Include="Service\CourseDataService.cs" />
+    <Compile Include="Service\CourseOwnerDataService.cs" />
     <Compile Include="Service\DashboardService.cs" />
+    <Compile Include="Service\ExcelForClarizenFeildDataService.cs" />
+    <Compile Include="Service\ExcelForDeploymentReportDataService.cs" />
+    <Compile Include="Service\ExcelForFocusDataService.cs" />
     <Compile Include="Service\MeterDataService.cs" />
+    <Compile Include="Service\NewExcelForClarizenFieldsControllerDataService.cs" />
+    <Compile Include="Service\NewGetExcelForFous.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\WebUserService.cs" />
     <Compile Include="Utillity.cs" />
   </ItemGroup>
   <ItemGroup>

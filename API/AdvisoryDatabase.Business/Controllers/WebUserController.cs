@@ -45,6 +45,7 @@ namespace AdvisoryDatabase.Business.Controllers
            UserService service = new UserService();
 
         ObjInputParameters.UserMasterID = service.Add(ObjInputParameters);
+
         Userdata = service.GetAll();
 
         }

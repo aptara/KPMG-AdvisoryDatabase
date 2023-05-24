@@ -1,68 +1,38 @@
-
-  <div class="openCheckBoxList">
-  <div class="row example-config" *ngIf="displayCheckBoxList">
-    <div *ngFor="let column of columns" class="col-xs-12 col-md-3 example-col">
-        <input type="checkbox"
-            id="{{column}}"
-            kendoCheckBox
-            [checked]="!isHidden(column)"
-            (change)="hideColumn(column)" />
-        <label class="k-checkbox-label" for="{{column}}">{{column}}</label>
+<div class="openCheckBoxList">
+    <div class="row example-config" *ngIf="displayCheckBoxList">
+        <div *ngFor="let column of columns" class="col-xs-12 col-md-3 example-col">
+            <input type="checkbox" id="{{column}}" kendoCheckBox [checked]="!isHidden(column)"
+                (change)="hideColumn(column)" />
+            <label class="k-checkbox-label" for="{{column}}">{{column}}</label>
+        </div>
     </div>
-  </div>
 </div>
 
 <button type="submit" routerLink="/add-user" class="btn btn-primary" style="margin-left: 1000px;">Add</button>
- <kendo-textbox
-          placeholder="Search in all columns..."
-          (valueChange)="onFilter($event)"
-          [style.width.px]="180"
-        ></kendo-textbox>
+<kendo-textbox placeholder="Search in all columns..." (valueChange)="onFilter($event)"
+    [style.width.px]="180"></kendo-textbox>
 
-    <kendo-grid
-    [data]="UserDAta"
-    [pageSize]="20"
-    [pageable]="false"
-    [sortable]="true"
-    [groupable]="false"
-    [reorderable]="true"
-    [filterable]="true"
-    [columnMenu]="{ filter: true }">
+<kendo-grid [kendoGridBinding]="UserDAta" [pageSize]="100" [pageable]="true" [sortable]="true" [groupable]="false"
+    [reorderable]="true" [filterable]="true" [columnMenu]="{ filter: true }">
 
-    <kendo-grid-command-column title="Action" >
+    <kendo-grid-command-column title="Action">
         <ng-template kendoGridCellTemplate let-dataItem>
             <kendo-icon name="edit" themeColor="info" (click)="editData(dataItem.UserMasterID)"></kendo-icon>
-            <kendo-icon name="delete" themeColor="info" (click)="deleteRecord(dataItem)" ></kendo-icon>
+            <kendo-icon name="delete" themeColor="info" (click)="deleteUser(dataItem)"></kendo-icon>
 
         </ng-template>
     </kendo-grid-command-column>
-     <kendo-grid-column
-        field="UserMasterID"
-        title="UserMasterID"
-        *ngIf="isHidden('UserMasterID')">
-      </kendo-grid-column>
+    <kendo-grid-column field="UserMasterID" title="UserMasterID" *ngIf="isHidden('UserMasterID')">
+    </kendo-grid-column>
 
-      <kendo-grid-column
-        field="FirstName"
-        title="First Name"
-        *ngIf="!isHidden('First Name')">
-      </kendo-grid-column>
+    <kendo-grid-column field="FirstName" title="First Name" *ngIf="!isHidden('First Name')">
+    </kendo-grid-column>
 
-      <kendo-grid-column
-        field="LastName"
-        title="Last Name"
-        *ngIf="!isHidden('Last Name')">
-      </kendo-grid-column>
+    <kendo-grid-column field="LastName" title="Last Name" *ngIf="!isHidden('Last Name')">
+    </kendo-grid-column>
 
-      <kendo-grid-column
-        field="Email"
-        title="Email"
-        *ngIf="!isHidden('Email')">
-      </kendo-grid-column>
+    <kendo-grid-column field="Email" title="Email" *ngIf="!isHidden('Email')">
+    </kendo-grid-column>
 
-       <kendo-grid-column
-        field="LocationID"
-        title="Location"
-        *ngIf="!isHidden('Location')">
-      </kendo-grid-column>
-    </kendo-grid>
+    <kendo-grid-column field="Location" title="Location" *ngIf="!isHidden('Location')">
+    </kendo-grid-column>

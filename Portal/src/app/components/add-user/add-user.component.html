@@ -1,65 +1,62 @@
-
 <div class="update-user">
 
-  <p-fieldset legend="Add User" class="fieldset">
+    <p-fieldset legend="Add User" class="fieldset">
 
-    <form #userForm="ngForm" (ngSubmit)="onFormSubmit()" [formGroup]="UserAdd">
+        <form #userForm="ngForm" (ngSubmit)="onFormSubmit()" [formGroup]="UserAdd">
 
-      <div class="group-row">
+            <div class="group-row">
 
-          <div class="p-float-label">
-          <input pInputText id="first-name" name="first-name"  formControlName="FirstName" />
-          <label htmlFor="first-name">First Name *</label>
-        </div>
-        <div class="p-float-label">
-          <input pInputText id="last-name"  formControlName="LastName"/>
-          <label htmlFor="last-name">Last Name *</label>
-        </div>
-      </div>
+                <div class="p-float-label">
+                    <input pInputText id="first-name" name="first-name" formControlName="FirstName" />
+                    <label htmlFor="first-name">First Name *</label>
+                </div>
+                <div class="p-float-label">
+                    <input pInputText id="last-name" formControlName="LastName" />
+                    <label htmlFor="last-name">Last Name *</label>
+                </div>
+            </div>
 
-      <div class="group-row">
-        <div class="p-float-label">
-          <input pInputText id="email-id" formControlName="Email" />
-          <label htmlFor="email-id">Email *</label>
-        </div>
+            <div class="group-row">
+                <div class="p-float-label">
+                    <input pInputText id="email-id" formControlName="Email" />
+                    <label htmlFor="email-id">Email *</label>
+                </div>
 
-           <div class="p-float-label">
+                <div class="p-float-label">
 
-            <select name="location" id="location" formControlName="LocationID">
-            <option value="0">Choose location*</option>
-            <option *ngFor="let loc of Location" [value]="loc.LocationID">{{ loc.Location }}</option>
-            </select>
-           </div>
-      </div>
-      <div class="group-row">
+                    <select name="location" id="location" formControlName="LocationID">
+                        <option value="0">Choose location*</option>
+                        <option *ngFor="let loc of Location" [value]="loc.LocationID">{{ loc.Location }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="group-row">
 
 
-<table>
-<tr>
-    <th>Check</th>
-    <th>Task Name</th>
-</tr>
+                <table>
+                    <tr>
+                        <th>Check</th>
+                        <th>Task Name</th>
+                    </tr>
 
-  <tr *ngFor="let task of Tasks">
+                    <tr *ngFor="let task of Tasks">
 
-      <td><input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]="task.checked"  formControlName="TaskName"></td>
-        <td>{{ task.TaskMasterName }}</td>
-  </tr>
-</table>
+                        <td><input type="checkbox" (change)="onCheckboxChange(task,$event)"></td>
+                        <td>{{ task.TaskMasterName }}</td>
+                    </tr>
+                </table>
 
-      </div>
-     <button label="add user" class="user-btn p-button ">
-        <span class="p-button-label">Save</span>
-      </button>
+            </div>
+            <button label="add user" class="user-btn p-button ">
+                <span class="p-button-label">Save</span>
+            </button>
 
-       <button label="add user" class="user-btn p-button " style="margin-left: 50px;">
-        <span class="p-button-label">cancel</span>
-      </button>
+            <button label="add user" class="user-btn p-button " style="margin-left: 50px;">
+                <span class="p-button-label">cancel</span>
+            </button>
 
-    </form>
+        </form>
 
-  </p-fieldset>
+    </p-fieldset>
 
 </div>
-
-
