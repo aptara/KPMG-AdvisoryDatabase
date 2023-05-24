@@ -52,13 +52,18 @@
   <ItemGroup>
     <Compile Include="Common\DbHelper.cs" />
     <Compile Include="DataAccessAPIService\DataAccessMeterReadingService.cs" />
-    <Compile Include="DataAccessService\DataAccessCourseOwnerDetailsService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseDetailService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseOwnerDetailsService.cs" />
+    <Compile Include="DataAccessService\DataAccessExcelForClarizenFieldDetailsService.cs" />
+    <Compile Include="DataAccessService\DataAccessExcelForDeploymentReportDetailsService.cs" />
+    <Compile Include="DataAccessService\DataAccessGetExcelForFocusService.cs" />
+    <Compile Include="DataAccessService\DataAccessLocation.cs" />
+    <Compile Include="DataAccessService\DataAccessTaskLocation.cs" />
     <Compile Include="DataAccessService\DataAccessBayDetailsService.cs" />
     <Compile Include="DataAccessService\DataAccessDashboardService.cs" />
-    <Compile Include="DataAccessService\DataAccessGetExcelForFocusService.cs" />
     <Compile Include="DataAccessService\DataAccessMeterDetailService.cs" />
     <Compile Include="DataAccessService\DataAccessUserService.cs" />
+    <Compile Include="DataAccessService\NewGetExcelForFocusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DataAccessRepository.cs" />
     <Compile Include="Repository\IDataAccessRepository.cs" />
@@ -73,5 +78,6 @@
       <Name>AdvisoryDatabase.Framework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

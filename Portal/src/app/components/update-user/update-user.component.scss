@@ -49,8 +49,23 @@
   padding: 8px;
   width: 200px;
 }
+
+
+ td, th {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 8px;
+  width: 200px;
+}
 table{
     border-collapse: collapse;
+    width: 100%
+}
+span .lables{
+    font-size: 20px;
+    font-weight: 300;
+
 }
 
 }

@@ -1,4 +1,4 @@
-﻿using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +11,8 @@ namespace AdvisoryDatabase.Business.Controllers
 {
     public class UserController : BaseController
     {
+        
 
-      
         public List<User> GetUserDetailsByUserID(User ObjInputParameters)
         {
             List<User> Userdata = new List<User>();
@@ -30,8 +30,16 @@ namespace AdvisoryDatabase.Business.Controllers
 
             return Userdata;
         }
-    }
 
       
+
+
     }
 
+
+}
+
+
+
+
+*/

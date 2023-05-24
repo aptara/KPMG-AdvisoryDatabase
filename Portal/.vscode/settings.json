@@ -46,7 +46,7 @@
 
     "html.format.enable": true,
     "[html]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
+        "editor.defaultFormatter": "vscode.html-language-features"
     },
 
     "html.format.indentHandlebars": true,

@@ -50,8 +50,27 @@ D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Da
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\log4net.xml
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
-D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.AssemblyReference.cache
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CoreCompileInputs.cache
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CopyComplete
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.dll
 D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.Framework.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\log4net.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.Framework.pdb
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.Framework.dll.config
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\log4net.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.AssemblyReference.cache
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CopyComplete
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.dll
+C:\Users\shivani.ghewari\ShivaniGhewari\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.pdb
+D:\siddhesh\advisory Database-2023\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.AssemblyReference.cache

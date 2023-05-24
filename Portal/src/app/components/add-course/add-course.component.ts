@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style } from '@angular/animations';
 
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 @Component({
     selector: 'app-add-course',
     templateUrl: './add-course.component.html',
@@ -19,6 +21,14 @@ import { trigger, state, style } from '@angular/animations';
 })
 
 export class AddCourseComponent implements OnInit {
+
+    public isFormSubmitted: boolean = false;
+    addcourse: FormGroup | any;
+
+
+
+
+
 
     firstDeliveryDate: any = "First Delivery Date";
 
@@ -46,11 +56,55 @@ export class AddCourseComponent implements OnInit {
     selectedCollateral: string = '0';
 
     web = { label: 'google', url: 'https://www.google.com' }
-    constructor() { }
+    constructor(private formBuilder: FormBuilder) {
+        this.addcourse = this.formBuilder.group({
+            'courseId': ['', Validators.required, Validators.pattern('^[0-9]*$')],
+            'coursename': ['', Validators.required],
+            'ldintake': ['', Validators.required],
+            'project-manager-contact': ['', Validators.required],
+            'instructional-designer': ['', Validators.required],
+            'courseowner': ['', Validators.required],
+            'business-sponsor': ['', Validators.required],
+            'programtype': ['', Validators.required],
+            'deliverytype': ['', Validators.required],
+            'business-description': ['', Validators.required],
+            'materials': ['', Validators.required],
+            'totalcpecredit': ['', Validators.required],
+            'course-note': ['', Validators.required],
+            'room-set-up-comments': ['', Validators.required],
+            'overview': ['', Validators.required],
+            'objectives': ['', Validators.required],
+            'maximum-attendee-count': ['', Validators.required],
+            'minimum-attendee-count': ['', Validators.required],
+            'maximumAttendeeWaitlist': ['', Validators.required],
+            'prerequisite-course-id': ['', Validators.required],
+            'firstdeliverydate': ['', Validators.required],
+            'level-of-effort': ['', Validators.required],
+            'vendor': ['', Validators.required],
+            'status': ['', Validators.required],
+            'duration': ['', Validators.required],
+            'project-status': ['', Validators.required],
+            'Collateral': ['', Validators.required],
+            'new-domain': ['', Validators.required],
+            'disc-from': ['', Validators.required],
+            'displayed-to-learner': ['', Validators.required],
+            'serviceid': ['', Validators.required],
+            'subject-matter-professional': ['', Validators.required],
+            'equivalent-course-id': ['', Validators.required]
+
+        });
+    }
 
     ngOnInit(): void { }
 
-    addCourse() { }
+    addCourse() {
+        if (this.addcourse.valid) {
+            // Handle form submission
+        } else {
+            // Mark all fields as touched to show error messages
+            this.addcourse.markAllAsTouched();
+        }
+    }
 
 
 }

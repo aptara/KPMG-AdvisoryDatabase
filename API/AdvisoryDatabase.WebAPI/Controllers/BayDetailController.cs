@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,11 +16,6 @@ using AdvisoryDatabase.Framework.Entities;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using Newtonsoft.Json;
-using System.Web.Http.Results;
-using System.Web.Script.Serialization;
-//using Microsoft.AspNetCore.Mvc;
-//using System.Collections.Generic;
-
 //using AdvisoryDatabase.WebAPI.ActionFilter;
 
 
@@ -28,94 +23,82 @@ using System.Web.Script.Serialization;
 namespace AdvisoryDatabase.WebAPI.Controllers
 {
 
-    public class BayDetailsController : ApiController
+  public class BayDetailsController : ApiController
+  {
+
+    // http://localhost:62220//api/BayDetails/GetBayData
+    //        {
+    //"BayID": "22",
+    //"SubStationID":"11",
+    //"Name":"Test Name",
+    //"Description":"Test Description"
+    //}
+    [HttpPost]
+    /*  public HttpResponseMessage GetBayData(BayDetails ObjInputParameters)*/
+    public HttpResponseMessage GetBayData()
     {
+      try
+      {
+        AdvisoryDatabase.Business.Controllers.BayDetailController ObjBayDetai = new Business.Controllers.BayDetailController();
+        BayDetails ObjInputParameters = new BayDetails();
+        ObjInputParameters.LastUpdatedBy = 1;
+        ObjInputParameters.IsActive = true;
+        ObjBayDetai.GetBayDetails(ObjInputParameters);
 
-        // http://localhost:62220//api/BayDetails/GetBayData
-        //        {
-        //"BayID": "22",
-        //"SubStationID":"11",
-        //"Name":"Test Name",
-        //"Description":"Test Description"
-        //}
-      /*  [HttpPost]
-       *//* public HttpResponseMessage GetBayData(BayDetails ObjInputParameters)*//*
-              public HttpResponseMessage GetBayData()
+        string outputData = string.Empty;
+
+        return new HttpResponseMessage()
         {
-            try
-            {
-                AdvisoryDatabase.Business.Controllers.BayDetailController ObjBayDetai = new Business.Controllers.BayDetailController();
-                BayDetails ObjInputParameters = new BayDetails();
-                ObjInputParameters.LastUpdatedBy = 1;
-
-                ObjInputParameters.IsActive = true;
-                ObjBayDetai.GetBayDetails(ObjInputParameters);
-
-                string outputData = string.Empty;
-
-
-                return new HttpResponseMessage()
-                {
-                    Content = new StringContent(outputData, Encoding.UTF8, "application/xml")
-
-                };
-            }
-            catch (Exception ex)
-            {
-                string errorMessage = (ex.Message.ToString());
-                return new HttpResponseMessage()
-                {
-                    Content = new StringContent(errorMessage, Encoding.UTF8, "application/xml")
-                };
-            }
-        }*/
-
-
-        [HttpGet]
-       /* public JsonResult Get()*/
-        public HttpResponseMessage ShowData()
+          Content = new StringContent(outputData, Encoding.UTF8, "application/xml")
+        };
+      }
+      catch (Exception ex)
+      {
+        string errorMessage = (ex.Message.ToString());
+        return new HttpResponseMessage()
         {
+          Content = new StringContent(errorMessage, Encoding.UTF8, "application/xml")
+        };
+      }
+    }
 
-            try
-            {
-                AdvisoryDatabase.Business.Controllers.BayDetailController ObjBayDetai = new Business.Controllers.BayDetailController();
-                BayDetails ObjInputParameters = new BayDetails();
-                ObjInputParameters.LastUpdatedBy = 1;
-                ObjInputParameters.IsActive = true;
-                ObjBayDetai.GetBayDetails(ObjInputParameters);
+    [HttpGet]
+    public HttpResponseMessage ShowData() {
 
-                List<BayDetails> outputData = ObjBayDetai.GetBayDetails(ObjInputParameters);
-                /*string B= JsonConvert.SerializeObject(outputData);
-                return Ok(B);*/
+      try
+      {
+        AdvisoryDatabase.Business.Controllers.BayDetailController ObjBayDetai = new Business.Controllers.BayDetailController();
+        BayDetails ObjInputParameters = new BayDetails();
+        ObjInputParameters.LastUpdatedBy = 1;
+        ObjInputParameters.IsActive = true;
+        ObjBayDetai.GetBayDetails(ObjInputParameters);
 
-                /*
-                        return new HttpResponseMessage()
-                        {
-                          //Content = Request.CreateResponse<BayDetails>(HttpStatusCode.OK, outputData, Encoding.UTF8, "application/xml")
-                          //HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK, outputData)
+        List<BayDetails> outputData = ObjBayDetai.GetBayDetails(ObjInputParameters);
+        
+
+        string jsonData = JsonConvert.SerializeObject(outputData);
+        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+        response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        return response;
 
 
-                        };*/
+      }
+      catch (Exception ex)
+      {
+        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
+        return errorResponse;
+      };
+    }
+  
 
-                 string jsonData = JsonConvert.SerializeObject(outputData);
-                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                 return response;
-               /* return new JsonResult(outputData);*/
-            }
-            catch (Exception ex)
-            {
-                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
-                errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
-                return errorResponse;
-              
-            };
-        }
+
+    
+
+
+
 
 
 
     }
-
-
-
 }

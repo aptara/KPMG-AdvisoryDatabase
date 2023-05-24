@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,38 +11,49 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Service
 {
-    public class UserService : Repository<User, Int32>
+    public class UserService : Repository<UserDetail, Int32>
     {
-        protected override DataAccess.Repository.DataAccessRepository<User, int> CreateDalManager()
+        protected override DataAccess.Repository.DataAccessRepository<UserDetail, int> CreateDalManager()
         {
             return new DataAccessUserService();
         }
 
-        public User GetUserByUserEmail(string emailID)
-        {
-            User ObjUser = new User();
-            try
-            {
-                ObjUser.Email = emailID;
-                var DBUsers = Get(ObjUser);
-                if (DBUsers != null)
-                {
-                    DBUsers.IsActive = true;
-                }
-                ObjUser = DBUsers;
 
-            }
-            catch (SqlException sqlEx)
-            {
-                MSBLogger.WriteError("Failed to Authenticate", sqlEx);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                MSBLogger.WriteError("Failed to Authenticate", ex);
-                throw;
-            }
-            return ObjUser;
-        }
+
+    //method for update data
+    public int GetUpdatedUserMasterID(UserDetail userDetail)
+    {
+      
+
+      int updatedUserMasterID = userDetail.UserMasterID;
+      return updatedUserMasterID;
     }
+    //GetEmail method
+    public UserDetail GetUserByUserEmail(string emailID)
+    {
+      UserDetail ObjUser = new UserDetail();
+      try
+      {
+        ObjUser.Email = emailID;
+        var DBUsers = Get(ObjUser);
+        if (DBUsers != null)
+        {
+          DBUsers.IsActive = true;
+        }
+        ObjUser = DBUsers;
+
+      }
+      catch (SqlException sqlEx)
+      {
+        MSBLogger.WriteError("Failed to Authenticate", sqlEx);
+        throw;
+      }
+      catch (Exception ex)
+      {
+        MSBLogger.WriteError("Failed to Authenticate", ex);
+        throw;
+      }
+      return ObjUser;
+    }
+  }
 }

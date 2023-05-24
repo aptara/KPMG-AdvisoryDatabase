@@ -21,23 +21,26 @@ using System.Web.Script.Serialization;
 
 
 
+
 namespace AdvisoryDatabase.WebAPI.Controllers
 {
     public class GetExcelForFocusController : ApiController
     {
         // GET: GetExcelForFocus
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage ShowData()
+        public HttpResponseMessage ShowDataoffocus()
         /*public ActionResult Index()*/
         {
 
             try
             {
-                AdvisoryDatabase.Business.Controllers.GetExcelForFocusController ObjBayDetai = new Business.Controllers.GetExcelForFocusController();
+                AdvisoryDatabase.Business.Controllers.GETExcelForFocusController ObjBayDetai = new Business.Controllers.GETExcelForFocusController();
                 GetExcelForFocusInfo ObjInputParameters = new GetExcelForFocusInfo();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
                 ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
+               
+
 
 
                 List<GetExcelForFocusInfo> outputData = ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
@@ -58,6 +61,23 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

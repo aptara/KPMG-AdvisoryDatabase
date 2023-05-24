@@ -146,5 +146,14 @@ tr{width: 500px}
             }
         }
     }
+
+    .selectColum::after {
+      position: absolute;
+      right: 14px;
+      top: 22px;
+  }
+  .k-icon k-i-edit{
+    color: #4321ec;
+  }
 }
 

@@ -9,9 +9,10 @@ using AdvisoryDatabase.Framework.Entities;
 using System.Data;
 
 
+
 namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
-    public class DataAccessGetExcelForFocusService : DataAccessRepository<GetExcelForFocusInfo, Int32>
+    public class DataAccessGetExcelForFocusDetails: DataAccessRepository<GetExcelForFocusInfo, Int32>
     {
         protected override string GetProcedureName(OperationType operation)
         {
@@ -19,23 +20,31 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "***new here***";
+                    spName = "getexcelforfocus";
                     break;
+                /*  case OperationType.GetAll:
+                      spName = "CourseOwnerDetail";
+                      break;*/
                 default:
                     spName = string.Empty;
                     break;
             }
             return spName;
         }
+      
         protected override void FillParameters(OperationType operation, GetExcelForFocusInfo instance, List<System.Data.Common.DbParameter> parameters)
         {
 
         }
+      
         protected override List<GetExcelForFocusInfo> ParseGetAllData(System.Data.DataSet data)
         {
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new GetExcelForFocusInfo
                      {
+
+                    
+
 
                          CourseName = row.ReadString("CourseName"),
                          CourseOwner = row.ReadString("CourseOwner"),
@@ -45,23 +54,25 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          Overview = row.ReadString("Overview"),
                          Objectives = row.ReadString("Objectives"),
                          MaximumAttendeeCount = row.ReadString("MaximumAttendeeCount"),
+                         MaximumAttendeeWaitlist = row.ReadString("MaximumAttendeeWaitlist"),
                          MinimumAttendeeCount = row.ReadString("MinimumAttendeeCount"),
                          PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
                          EquivalentCourseID = row.ReadString("EquivalentCourseID"),
                          FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
-                         LevelofEffort = row.ReadString("LevelofEffort"),
-                         Vendor = row.ReadString("Vendor"),
-                         ProjectStatusID = row.ReadString("ProjectStatusID"),
+                       
                          Duration = row.ReadString("Duration"),
 
                      }).ToList();
 
             return GetAllData;
         }
+       
         protected override GetExcelForFocusInfo Parse(System.Data.DataRow data)
         {
             return new GetExcelForFocusInfo
             {
+
+
 
                 CourseName = data.ReadString("CourseOwnerID"),
                 CourseOwner = data.ReadString("CourseOwner"),
@@ -71,19 +82,20 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 Overview = data.ReadString("Overview"),
                 Objectives = data.ReadString("Objectives"),
                 MaximumAttendeeCount = data.ReadString("MaximumAttendeeCount"),
+                MaximumAttendeeWaitlist = data.ReadString("MaximumAttendeeWaitlist"),
                 MinimumAttendeeCount = data.ReadString("MinimumAttendeeCount"),
                 PrerequisiteCourseID = data.ReadString("PrerequisiteCourseID"),
                 EquivalentCourseID = data.ReadString("EquivalentCourseID"),
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
-                LevelofEffort = data.ReadString("LevelofEffort"),
-                Vendor = data.ReadString("Vendor"),
-                ProjectStatusID = data.ReadString("ProjectStatusID"),
+             
 
                 Duration = data.ReadString("Duration"),
 
 
             };
         }
+       
+
     }
 }
 
