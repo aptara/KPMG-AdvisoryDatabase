@@ -36,12 +36,13 @@ export class UpdateUserComponent implements OnInit {
         this.userService.EditUserData(this.UserUpdate.value).subscribe(response => {
             // console.log(response)
             if (response != null) {
-                alert('successful');
+                alert('User Updated successfully');
 
             }
             else {
-                alert('not successful')
+                alert('Failed to User upadte ')
             }
+            window.location.href = '/user-management';
 
         });
     }
@@ -77,9 +78,6 @@ export class UpdateUserComponent implements OnInit {
             this.UserUpdate.controls.LocationID.setValue(this.data.LocationID)
 
         })
-
-
-
 
 
 
@@ -128,21 +126,4 @@ export class UpdateUserComponent implements OnInit {
 
 
     }
-
-
-    // UpdateUser() {
-    //     this.userService.EditUserData(this.UpdateUser).subscribe(response => {
-    //         if (response != null) {
-    //             alert('successful');
-
-    //         }
-    //         else {
-    //             alert('not successful')
-    //         }
-
-    //     });
-
-    // }
-
-
 }
