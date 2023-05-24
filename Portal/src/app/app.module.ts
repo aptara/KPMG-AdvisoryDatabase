@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
@@ -41,6 +41,14 @@ import { CourseManagementComponent } from './components/course-management/course
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CourseListComponent } from './components/course-list/course-list.component';
+import { CourseComponent } from './components/course/course.component';
+import { CourseService } from './service/course.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { SharedModule } from 'primeng/api';
+import { MessagesModule } from "primeng/messages";
+import { MessageModule } from "primeng/message";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -54,12 +62,15 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         CourseManagementComponent,
         NavMenuComponent,
         MainBodyComponent,
+        CourseListComponent,
+        CourseComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule,
         AppRoutingModule,
         CheckboxModule,
@@ -81,6 +92,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         FieldsetModule,
         CalendarModule,
         SelectButtonModule,
+        SharedModule,
+        DropdownModule,
+        InputTextModule,
+        InputTextareaModule,
+        ButtonModule,
+        FormsModule,
+        MessagesModule,
+        MessageModule,
         RouterModule.forRoot
             ([
                 { path: "add-user", component: AddUserComponent },
@@ -89,10 +108,17 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
                 { path: "add-course", component: AddCourseComponent },
                 { path: "update-course", component: UpdateCourseComponent },
                 { path: "course-management", component: CourseManagementComponent },
+                { path: "course-List", component: CourseListComponent },
+                { path: "course-details", component: CourseComponent },
                 { path: '**', component: PageNotFoundComponent }
             ]),
     ],
-    providers: [UserService],
+    providers: [
+        UserService,
+        CourseService,
+        ConfirmationService,
+        MessageService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

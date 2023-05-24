@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="API\GetMeterReadingRecords.cs" />
     <Compile Include="Common\BaseEntity.cs" />
+    <Compile Include="Common\ErrorResponse.cs" />
     <Compile Include="Common\Utility.cs" />
     <Compile Include="CustomException\MSBException.cs" />
     <Compile Include="Entities\BayDetails.cs" />
@@ -96,6 +97,8 @@
     <Compile Include="Logger\Log4NetLogger.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\APIResponse.cs" />
+    <Compile Include="Response\User\LoginResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
