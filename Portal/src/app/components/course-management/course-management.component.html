@@ -1,12 +1,11 @@
-
- <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 
 
 <h2 style="margin-left: 500px;">Course Management </h2>
- <!-- <div class="search-box" > -->
+<!-- <div class="search-box" > -->
 
-    <!-- <button class="btn btn-primary float-left" (click)="downloadExceloffocus() ">Export RDI for
+<!-- <button class="btn btn-primary float-left" (click)="downloadExceloffocus() ">Export RDI for
         Focus</button>
     <button class="btn btn-primary float-left" (click)="downloadExcelofClarizen()">Export RDI for
         Clarizen</button>
@@ -17,24 +16,27 @@
     <input type="text" placeholder="Search" class="search"> -->
 
 
- <!-- </div> -->
+<!-- </div> -->
 <div class="search-box">
 
-<button kendoButton  themeColor="info"  class="float-left button-gap" (click)="downloadExceloffocus() "> Export RDI for Focus</button>
+    <button kendoButton themeColor="info" class="float-left button-gap" (click)="downloadExceloffocus() "> Export RDI
+        for Focus</button>
 
-<button kendoButton  themeColor="info" class="button-gap" (click)="downloadExcelofClarizen()"> Export RDI for Clarizen</button>
+    <button kendoButton themeColor="info" class="button-gap" (click)="downloadExcelofClarizen()"> Export RDI for
+        Clarizen</button>
 
-<button kendoButton  themeColor="info" class="button-gap"(click)="downloadExcelofDeployment()"> Export RDI for Deployment</button>
+    <button kendoButton themeColor="info" class="button-gap" (click)="downloadExcelofDeployment()"> Export RDI for
+        Deployment</button>
 
-  <button routerLink="/add-course" class="button-gap" kendoButton  themeColor="info">Add New Course</button>
-    <button kendoButton  themeColor="info" class="button-gap" >Search</button>
-    <input type="text" placeholder="Search" kendoButton  themeColor="info">
+    <button routerLink="/add-course" class="button-gap" kendoButton themeColor="info">Add New Course</button>
+    <button kendoButton themeColor="info" class="button-gap">Search</button>
+    <input type="text" placeholder="Search" kendoButton themeColor="info">
 
 </div><br>
 
 
 <div class="div">
-    <kendo-grid [kendoGridBinding]="coursed" [pageSize]="100" [pageable]="true" [sortable]="true" [groupable]="false"
+    <kendo-grid [kendoGridBinding]="coursView" [pageSize]="100" [pageable]="true" [sortable]="true" [groupable]="false"
         [reorderable]="true" [filterable]="true" [columnMenu]="{ filter: true }" [height]="500">
 
 
@@ -66,9 +68,3 @@
 </div>
 
 <!-- select CourseID,CourseName,LDIntakeOwner,ProjectManagerContact,BusinessSponsor,ProjectStatusID from CourseMaster -->
-
-
-
-
-
-

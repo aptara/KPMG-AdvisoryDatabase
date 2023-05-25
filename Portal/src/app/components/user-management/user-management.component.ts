@@ -28,17 +28,11 @@ export class UserManagementComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.gridView = this.gridData;
-        // this.userService.getData().subscribe(res => {
-        //     // this.UserDAta = res;
 
-        //     // console.log(JSON.stringify(this.UserDAta))
-        // }
-
-        //)
 
         this.userService.getUsers().subscribe((data: any[]) => {
             this.UserDAta = data.filter(user => user.IsActive === true);
+            this.gridView = this.UserDAta
         });
     }
     get gridData(): GridDataResult {
@@ -85,28 +79,24 @@ export class UserManagementComponent implements OnInit {
             filter: {
                 logic: "or",
                 filters: [
+
                     {
-                        field: "IsActive",
+                        field: "FirstName",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "firstName",
+                        field: "LastName",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "lastName",
+                        field: "Email",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "email",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "location",
+                        field: "Location",
                         operator: "contains",
                         value: inputValue,
                     },
