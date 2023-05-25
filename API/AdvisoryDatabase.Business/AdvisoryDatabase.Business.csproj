@@ -46,6 +46,7 @@
     <Compile Include="Controllers\API\MeterController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BayDetailController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseDetailController.cs" />
     <Compile Include="Controllers\CourseOwnerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />

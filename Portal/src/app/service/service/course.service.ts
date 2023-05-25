@@ -14,7 +14,7 @@ export class CourseService {
 
     //for get all course data in table
     getData() {
-        var req = environment.apiurl + 'api/Course/ShowData'
+        var req = environment.baseUrl + 'api/Course/ShowData'
         return this.http.get(req);
     }
 

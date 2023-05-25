@@ -4,11 +4,7 @@
 
 export const environment = {
     production: false,
-
-    apiurl: 'http://ctsdemo.aptaracorp.net//AdvisoryDatabaseAPI/'
-
-    //'http://localhost:62220//api/WebUser/PostData'
-    //'http://ctsdemo.aptaracorp.net//AdvisoryDatabaseAPI//api/WebUser/ShowData'
+    baseUrl: 'http://ctsdemo.aptaracorp.net//AdvisoryDatabaseAPI/'
 };
 
 /*
