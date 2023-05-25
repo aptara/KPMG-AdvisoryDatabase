@@ -367,6 +367,7 @@
     <Folder Include="Views\NewGetExcelForFocus\" />
     <Folder Include="Views\TaskLocationMaster\" />
     <Folder Include="Views\User\" />
+    <Folder Include="Views\webcourse\" />
     <Folder Include="Views\WebUser\" />
   </ItemGroup>
   <ItemGroup>
