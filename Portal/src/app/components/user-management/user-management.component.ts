@@ -21,6 +21,7 @@ export class UserManagementComponent implements OnInit {
     loading: boolean = true;
     public colSpan: number = 5;
     public gridView: any[] = [];
+
     UserDAta: any;
 
     constructor(private userService: UserService, private Router: Router, private ActivatedRoute: ActivatedRoute) {
@@ -39,6 +40,7 @@ export class UserManagementComponent implements OnInit {
 
         this.userService.getUsers().subscribe((data: any[]) => {
             this.UserDAta = data.filter(user => user.IsActive === true);
+            this.gridView = this.UserDAta;
         });
     }
     get gridData(): GridDataResult {
@@ -85,28 +87,24 @@ export class UserManagementComponent implements OnInit {
             filter: {
                 logic: "or",
                 filters: [
+
                     {
-                        field: "IsActive",
+                        field: "FirstName",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "firstName",
+                        field: "LastName",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "lastName",
+                        field: "Email",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "email",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "location",
+                        field: "Location",
                         operator: "contains",
                         value: inputValue,
                     },
@@ -116,7 +114,6 @@ export class UserManagementComponent implements OnInit {
 
         this.dataBinding.skip = 0;
     }
-
     public displayCheckBoxListFunction() {
 
         this.displayCheckBoxList = !this.displayCheckBoxList

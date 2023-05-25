@@ -13,6 +13,7 @@ import { CourseService } from 'src/app/service/service/course.service';
 import { GroupDescriptor, GroupResult } from "@progress/kendo-data-query";
 import { write } from 'xlsx';
 import { groupBy } from "@progress/kendo-data-query";
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-course-management',
@@ -31,9 +32,10 @@ export class CourseManagementComponent implements OnInit {
 
     //excel for focus
     ExcelOfFocus() {
-        this.http.get<any[]>('http://localhost:62220//api/GetExcelForFocus/ShowDataoffocus').subscribe(data => {
+        this.http.get<any[]>(environment.apiurl + 'api/GetExcelForFocus/ShowDataoffocus').subscribe(data => {
 
             this.data = data;
+
 
         });
     }
@@ -62,7 +64,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for Clarizen
 
     ExcelOfClarizen() {
-        this.http.get<any[]>('http://localhost:62220//api/GETExcelForClarizenFields/ShowDataofclarizen').subscribe(data2 => {
+        this.http.get<any[]>(environment.apiurl + 'api/GETExcelForClarizenFields/ShowDataofclarizen').subscribe(data2 => {
 
             this.datac = data2;
 
@@ -93,7 +95,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for deployment
 
     ExcelOfDeployment() {
-        this.http.get<any[]>('http://localhost:62220//api/GetExcelForDeploymentReport/ShowDataofdeployment').subscribe(data3 => {
+        this.http.get<any[]>(environment.apiurl + 'api/GetExcelForDeploymentReport/ShowDataofdeployment').subscribe(data3 => {
 
             this.datad = data3;
 
@@ -141,7 +143,7 @@ export class CourseManagementComponent implements OnInit {
 
 
 
-
+    public gridView: any[] = [];
 
     // getcoursedata
     constructor(public courseservice: CourseService, public http: HttpClient) { }
@@ -152,6 +154,7 @@ export class CourseManagementComponent implements OnInit {
         this.ExcelOfDeployment();
         this.courseservice.getData().subscribe(res => {
             this.coursed = res;
+            this.gridView = this.coursed;
 
         });
     }
@@ -160,7 +163,7 @@ export class CourseManagementComponent implements OnInit {
 
     //for search method
     public onFilter(inputValue: string): void {
-        this.coursed = process(this.coursed, {
+        this.gridView = process(this.coursed, {
             filter: {
                 logic: "or",
                 filters: [

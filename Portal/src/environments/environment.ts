@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false
+    production: false,
+
+    apiurl: 'http://ctsdemo.aptaracorp.net//AdvisoryDatabaseAPI/'
+
+    //'http://localhost:62220//api/WebUser/PostData'
+    //'http://ctsdemo.aptaracorp.net//AdvisoryDatabaseAPI//api/WebUser/ShowData'
 };
 
 /*
