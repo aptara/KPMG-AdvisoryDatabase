@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NgForm, FormControl } from '@angular/forms';
+import { FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/service/userservice';
 @Component({
@@ -23,6 +23,8 @@ export class UpdateUserComponent implements OnInit {
     User: any;
     checkedTask: any;
     tmId: any = ""
+    submitted = false;
+
     constructor(private userService: UserService, private Router: Router, private ActivatedRoute: ActivatedRoute) {
 
     }
@@ -44,6 +46,12 @@ export class UpdateUserComponent implements OnInit {
             }
 
         });
+        if (this.UserUpdate.valid) {
+
+        } else {
+
+            this.UserUpdate.markAllAsTouched();
+        }
     }
 
 
@@ -54,11 +62,11 @@ export class UpdateUserComponent implements OnInit {
     ngOnInit(): void {
         this.UserUpdate = new FormGroup({
             'UserMasterID': new FormControl(this.UserID),
-            'FirstName': new FormControl(),
-            'LastName': new FormControl(),
-            'Email': new FormControl(),
-            'LocationID': new FormControl(),
-            'TaskMasterID': new FormControl()
+            'FirstName': new FormControl('', Validators.required),
+            'LastName': new FormControl('', Validators.required),
+            'Email': new FormControl('', [Validators.required, Validators.email]),
+            'LocationID': new FormControl('', Validators.required),
+            'TaskMasterID': new FormControl('', Validators.required)
         })
 
 
@@ -130,19 +138,16 @@ export class UpdateUserComponent implements OnInit {
     }
 
 
-    // UpdateUser() {
-    //     this.userService.EditUserData(this.UpdateUser).subscribe(response => {
-    //         if (response != null) {
-    //             alert('successful');
 
-    //         }
-    //         else {
-    //             alert('not successful')
-    //         }
+    clearForm() {
+        this.UserUpdate.reset();
+        this.submitted = false;
+    }
 
-    //     });
 
-    // }
+    onCancel() {
 
+        this.clearForm();
+    }
 
 }

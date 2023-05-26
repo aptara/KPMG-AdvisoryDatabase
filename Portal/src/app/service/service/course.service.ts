@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CourseService {
 
-    public url = environment.apiurl + 'api/Course/ShowData'
+    public url = environment.baseUrl + 'api/Course/ShowData'
 
 
 
@@ -26,7 +26,7 @@ export class CourseService {
 
     //for get all course data in table
     getData() {
-        var req = environment.apiurl + 'api/Course/ShowData'
+        var req = environment.baseUrl + 'api/Course/ShowData'
         return this.http.get(req);
     }
 

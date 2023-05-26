@@ -33,7 +33,7 @@ export class CourseManagementComponent implements OnInit {
 
     //excel for focus
     ExcelOfFocus() {
-        this.http.get<any[]>(environment.apiurl + 'api/GetExcelForFocus/ShowDataoffocus').subscribe(data => {
+        this.http.get<any[]>(environment.baseUrl + 'api/GetExcelForFocus/ShowDataoffocus').subscribe(data => {
 
             this.data = data;
 
@@ -64,7 +64,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for Clarizen
 
     ExcelOfClarizen() {
-        this.http.get<any[]>(environment.apiurl + 'api/GETExcelForClarizenFields/ShowDataofclarizen').subscribe(data2 => {
+        this.http.get<any[]>(environment.baseUrl + 'api/GETExcelForClarizenFields/ShowDataofclarizen').subscribe(data2 => {
 
             this.datac = data2;
 
@@ -95,7 +95,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for deployment
 
     ExcelOfDeployment() {
-        this.http.get<any[]>(environment.apiurl + 'api/GetExcelForDeploymentReport/ShowDataofdeployment').subscribe(data3 => {
+        this.http.get<any[]>(environment.baseUrl + 'api/GetExcelForDeploymentReport/ShowDataofdeployment').subscribe(data3 => {
 
             this.datad = data3;
 

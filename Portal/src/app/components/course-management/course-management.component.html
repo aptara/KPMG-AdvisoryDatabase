@@ -30,14 +30,15 @@
 
     <button routerLink="/add-course" class="button-gap" kendoButton themeColor="info">Add New Course</button>
     <button kendoButton themeColor="info" class="button-gap">Search</button>
-    <input type="text" placeholder="Search" kendoButton themeColor="info">
+    <kendo-textbox placeholder="Search in all columns..." (valueChange)="onFilter($event)"
+        [style.width.px]="180"></kendo-textbox>
 
 </div><br>
 
 
 <div class="div">
-    <kendo-grid [kendoGridBinding]="coursView" [pageSize]="100" [pageable]="true" [sortable]="true" [groupable]="false"
-        [reorderable]="true" [filterable]="true" [columnMenu]="{ filter: true }" [height]="500">
+    <kendo-grid [kendoGridBinding]="coursView" [pageSize]="0" [pageable]="true" [sortable]="true" [groupable]="false"
+        [reorderable]="true" [filterable]="true" [columnMenu]="{ filter: true }" [height]="600">
 
 
         <kendo-grid-command-column title="Options">
