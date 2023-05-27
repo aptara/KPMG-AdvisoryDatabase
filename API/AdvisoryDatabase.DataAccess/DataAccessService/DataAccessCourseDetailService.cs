@@ -76,13 +76,15 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("ProjectStatusID", instance.ProjectStatusID));
                 parameters.Add(DbHelper.CreateParameter("Duration", instance.Duration));
                 parameters.Add(DbHelper.CreateParameter("Collateral", instance.Collateral));
-                parameters.Add(DbHelper.CreateParameter("FocusDomain", instance.FocusDomain));
-                parameters.Add(DbHelper.CreateParameter("FocusRetired", instance.FocusRetired));
-                parameters.Add(DbHelper.CreateParameter("FocusDiscFrom", instance.FocusDiscFrom));
-                parameters.Add(DbHelper.CreateParameter("FocusDisplayedToLearner", instance.FocusDisplayedToLearner));
+                //parameters.Add(DbHelper.CreateParameter("FocusDomain", instance.FocusDomain));
+                //parameters.Add(DbHelper.CreateParameter("FocusRetired", instance.FocusRetired));
+                //parameters.Add(DbHelper.CreateParameter("FocusDiscFrom", instance.FocusDiscFrom));
+                //parameters.Add(DbHelper.CreateParameter("FocusDisplayedToLearner", instance.FocusDisplayedToLearner));
                 parameters.Add(DbHelper.CreateParameter("CourseRecordURL", instance.CourseRecordURL));
                 parameters.Add(DbHelper.CreateParameter("ServiceNowID", instance.ServiceNowID));
                 parameters.Add(DbHelper.CreateParameter("SubjectMatterProfessional", instance.SubjectMatterProfessional));
+                parameters.Add(DbHelper.CreateParameter("@Status", instance.Status));
+
             }
             else if(operation == OperationType.Delete)
             {
@@ -102,7 +104,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     BusinessSponsor = row.ReadString("BusinessSponsor"),
                     Descriptions = row.ReadString("Descriptions"),
                     InstructionalDesigner = row.ReadString("InstructionalDesigner"),
-                    CourseOwnerID = row.Read<int>("CourseOwnerID"),
+                    CourseOwnerID = row.Read<int?>("CourseOwnerID"),
                     ProgramTypeID = row.Read<int>("ProgramTypeID"),
                     DeliveryTypeID = row.Read<int>("DeliveryTypeID"),
                     TotalCPECredit = row.ReadString("TotalCPECredit"),
@@ -112,15 +114,20 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     CourseID = row.ReadString("CourseID"),
                     Overview = row.ReadString("Overview"),
                     Objectives = row.ReadString("Objectives"),
+
                     MaximumAttendeeCount = row.Read<decimal?>("MaximumAttendeeCount"),
                     MinimumAttendeeCount = row.Read<decimal?>("MinimumAttendeeCount"),
                     MaximumAttendeeWaitlist = row.Read<decimal?>("MaximumAttendeeWaitlist"),
+
                     PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
                     EquivalentCourseID = row.ReadString("EquivalentCourseID"),
                     FirstDeliveryDate = row.Read<DateTime>("FirstDeliveryDate"),
                     LevelofEffort = row.ReadString("LevelofEffort"),
+
                     Vendor = row.ReadString("Vendor"),
                     ProjectStatusID = row.Read<int?>("ProjectStatusID"),
+                    ProjectStatus = row.ReadString("ProjectStatus"),
+
                     Duration = row.ReadString("Duration"),
                     Collateral = row.Read<bool?>("Collateral"),
                     FocusDomain = row.ReadString("FocusDomain"),
@@ -134,7 +141,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     CreatedOn = row.Read<DateTime>("CreatedOn"),
                     LastUpdatedBy = row.Read<int>("LastUpdatedBy"),
                     LastUpdatedOn = row.Read<DateTime>("LastUpdatedOn"),
-                    //IsDeleted = row.Read<bool>("IsDeleted"),
+                    IsDeleted = row.Read<bool>("IsDeleted"),
                 }).ToList();
             return GetAllData;
         }

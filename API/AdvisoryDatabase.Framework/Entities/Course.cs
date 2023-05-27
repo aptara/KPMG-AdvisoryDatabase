@@ -37,6 +37,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string LevelofEffort { get; set; }
         public string Vendor { get; set; }
         public int? ProjectStatusID { get; set; }
+        public string ProjectStatus { get; set; }
         public string Duration { get; set; }
         public bool? Collateral { get; set; }
         public string FocusDomain { get; set; }
@@ -47,5 +48,6 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ServiceNowID { get; set; }
         public string SubjectMatterProfessional { get; set; }
         public bool IsDeleted { get; set; }
+        public string Status { get; set; }
     }
 }

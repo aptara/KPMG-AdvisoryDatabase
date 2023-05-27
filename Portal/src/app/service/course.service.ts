@@ -13,9 +13,9 @@ export class CourseService {
 
     //constant variable for API URL
     readonly getAllCourseAPI = this.apiURL + "Course/GetAllCourse/";
-    readonly getCourseAPI = this.apiURL + "Course/GetAllCourse/";
-    readonly addCourseAPI = this.apiURL + "Course/GetAllCourse/";
-    readonly updateCourseAPI = this.apiURL + "Course/GetAllCourse/";
+    readonly getCourseAPI = this.apiURL + "Course/GetCourse/";
+    readonly addCourseAPI = this.apiURL + "Course/AddEditCourse/";
+    readonly updateCourseAPI = this.apiURL + "Course/AddEditCourse/";
     readonly deleteCourseAPI = this.apiURL + "Course/DeleteCourse/";
 
     constructor(private http: HttpClient) {

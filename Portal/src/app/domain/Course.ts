@@ -35,4 +35,5 @@ export interface Course {
     ServiceNowID: string;
     SubjectMatterProfessional: string;
     IsDeleted: boolean;
+    Status: string;
 }
