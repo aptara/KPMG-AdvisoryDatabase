@@ -22,7 +22,6 @@ export class CourseListComponent implements OnInit {
         public service: CourseService,
         private route: ActivatedRoute,
         private router: Router,
-        private confirmationService: ConfirmationService,
         private messageService: MessageService,
         private downloadExcelService: DownloadExcelService
     ) { }
