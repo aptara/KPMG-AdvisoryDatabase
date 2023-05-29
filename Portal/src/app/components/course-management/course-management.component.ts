@@ -4,6 +4,7 @@ import { DataBindingDirective } from "@progress/kendo-angular-grid";
 import { State, process } from "@progress/kendo-data-query";
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+import { environment } from 'src/environments/environment';
 
 
 import { HttpClient } from '@angular/common/http';
@@ -27,11 +28,12 @@ export class CourseManagementComponent implements OnInit {
     data: any;
     datac: any;
     datad: any;
+    public coursView: any[] = []
 
 
     //excel for focus
     ExcelOfFocus() {
-        this.http.get<any[]>('http://localhost:62220//api/GetExcelForFocus/ShowDataoffocus').subscribe(data => {
+        this.http.get<any[]>(environment.baseUrl + 'api/GetExcelForFocus/ShowDataoffocus').subscribe(data => {
 
             this.data = data;
 
@@ -62,7 +64,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for Clarizen
 
     ExcelOfClarizen() {
-        this.http.get<any[]>('http://localhost:62220//api/GETExcelForClarizenFields/ShowDataofclarizen').subscribe(data2 => {
+        this.http.get<any[]>(environment.baseUrl + 'api/GETExcelForClarizenFields/ShowDataofclarizen').subscribe(data2 => {
 
             this.datac = data2;
 
@@ -93,7 +95,7 @@ export class CourseManagementComponent implements OnInit {
     //excel for deployment
 
     ExcelOfDeployment() {
-        this.http.get<any[]>('http://localhost:62220//api/GetExcelForDeploymentReport/ShowDataofdeployment').subscribe(data3 => {
+        this.http.get<any[]>(environment.baseUrl + 'api/GetExcelForDeploymentReport/ShowDataofdeployment').subscribe(data3 => {
 
             this.datad = data3;
 
@@ -152,6 +154,7 @@ export class CourseManagementComponent implements OnInit {
         this.ExcelOfDeployment();
         this.courseservice.getData().subscribe(res => {
             this.coursed = res;
+            this.coursView = this.coursed
 
         });
     }
@@ -160,7 +163,7 @@ export class CourseManagementComponent implements OnInit {
 
     //for search method
     public onFilter(inputValue: string): void {
-        this.coursed = process(this.coursed, {
+        this.coursView = process(this.coursed, {
             filter: {
                 logic: "or",
                 filters: [

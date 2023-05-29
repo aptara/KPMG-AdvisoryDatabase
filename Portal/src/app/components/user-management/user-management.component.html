@@ -12,8 +12,8 @@
 <kendo-textbox placeholder="Search in all columns..." (valueChange)="onFilter($event)"
     [style.width.px]="180"></kendo-textbox>
 
-<kendo-grid [kendoGridBinding]="UserDAta" [pageSize]="100" [pageable]="true" [sortable]="true" [groupable]="false"
-    [reorderable]="true" [filterable]="true" [columnMenu]="{ filter: true }">
+<kendo-grid [kendoGridBinding]="gridView" [pageSize]="100" [pageable]="false" [sortable]="true" [groupable]="false"
+    [reorderable]="true" [filterable]="true" [columnMenu]="{ filter: true }" [height]="600">
 
     <kendo-grid-command-column title="Action">
         <ng-template kendoGridCellTemplate let-dataItem>
@@ -22,8 +22,7 @@
 
         </ng-template>
     </kendo-grid-command-column>
-    <kendo-grid-column field="UserMasterID" title="UserMasterID" *ngIf="isHidden('UserMasterID')">
-    </kendo-grid-column>
+
 
     <kendo-grid-column field="FirstName" title="First Name" *ngIf="!isHidden('First Name')">
     </kendo-grid-column>

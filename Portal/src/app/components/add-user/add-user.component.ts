@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/service/userservice';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-add-user',
@@ -15,6 +15,8 @@ export class AddUserComponent implements OnInit {
     checkbox: any[] = []
     Userdata: any;
     tmId: any = ""
+    emailInvalid: boolean = false;
+    submitted = false;
 
     constructor(private userService: UserService) { }
 
@@ -39,23 +41,27 @@ export class AddUserComponent implements OnInit {
                 alert('not successful')
             }
             window.location.href = '/user-management';
+
         });
-        // console.log(JSON.stringify(this.UserAdd.value))
-        // console.log(this.checkbox)
-        // console.log(JSON.stringify(this.Tasks))
+
         console.log(this.UserAdd)
 
+        if (this.UserAdd.valid) {
 
+        } else {
+
+            this.UserAdd.markAllAsTouched();
+        }
     }
 
 
     ngOnInit(): void {
         this.UserAdd = new FormGroup({
-            'FirstName': new FormControl(),
-            'LastName': new FormControl(),
-            'Email': new FormControl(),
-            'LocationID': new FormControl(),
-            'TaskMasterID': new FormControl()
+            'FirstName': new FormControl('', Validators.required),
+            'LastName': new FormControl('', Validators.required),
+            'Email': new FormControl('', [Validators.required, Validators.email]),
+            'LocationID': new FormControl('', Validators.required),
+            'TaskMasterID': new FormControl('', Validators.required)
 
         });
 
@@ -71,6 +77,7 @@ export class AddUserComponent implements OnInit {
         this.SetLocationDropDown()
         this.SetTasksTable()
 
+        this.clearForm();
 
     }
 
@@ -117,6 +124,29 @@ export class AddUserComponent implements OnInit {
 
 
     }
+
+
+    validateEmail() {
+        const emailInput = this.UserAdd.get('Email');
+        if (emailInput?.invalid && emailInput?.dirty) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$/;
+            this.emailInvalid = !emailRegex.test(emailInput.value);
+        }
+    }
+
+    clearForm() {
+        this.UserAdd.reset();
+        this.submitted = false;
+    }
+
+
+    onCancel() {
+        // Clear the form
+        this.clearForm();
+    }
+
+
+
 }
 
 

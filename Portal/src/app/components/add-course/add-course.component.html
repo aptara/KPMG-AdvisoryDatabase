@@ -1,212 +1,4 @@
-<!--
-<div class="add-course">
-  <p-fieldset legend="Add Course" class="fieldset">
-
-    <div class="course-field">
-      <p-fieldset legend="Fieldset-1" class="fieldset" [toggleable]="true">
-
-        <div class="group-row">
-          <input type="text" class="course-input course-id" placeholder="Course ID *" pInputText
-            pKeyFilter="alphanum" />
-          <input type="text" class="course-input course-name" placeholder="Course Name *" pInputText
-            pKeyFilter="alphanum" />
-          <input type="text" class="course-input L&D-Intake-Owner" placeholder="L&D Intake Owner *" pInputText
-            pKeyFilter="alphanum" />
-        </div>
-
-        <div class="group-row">
-          <input type="text" class="course-input project-manager-contact" placeholder="Project Manager Contact"
-            pInputText pKeyFilter="alphanum" />
-          <input type="text" class="course-input business-sponsor" placeholder="Business Sponsor *" pInputText
-            pKeyFilter="alphanum" />
-          <input type="text" class="course-input instructional-designer" placeholder="Instructional Designer" pInputText
-            pKeyFilter="alphanum" />
-
-        </div>
-
-        <div class="group-row">
-          <p-dropdown class="course-drop-down course-owner" [options]="courseOwners" [(ngModel)]="selectedCourseOwner"
-            optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Course Owner">
-            <ng-template pTemplate="selectedItem">
-              <div class="flex align-items-center gap-2" *ngIf="selectedCourseOwner">
-                <div>{{ selectedCourseOwner.name }}</div>
-              </div>
-            </ng-template>
-          </p-dropdown>
-
-          <p-dropdown class="course-drop-down program-type" [options]="programTypes" [(ngModel)]="selectedProgramType"
-            optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Program Type">
-            <ng-template pTemplate="selectedItem">
-              <div class="flex align-items-center gap-2" *ngIf="selectedProgramType">
-                <div>{{ selectedProgramType.name }}</div>
-              </div>
-            </ng-template>
-          </p-dropdown>
-
-          <p-dropdown class="course-drop-down delivery-type" [options]="deliveryTypes"
-            [(ngModel)]="selectedDeliveryType" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true"
-            placeholder="Select a Delivery Type">
-            <ng-template pTemplate="selectedItem">
-              <div class="flex align-items-center gap-2" *ngIf="selectedDeliveryType">
-                <div>{{ selectedDeliveryType.name }}</div>
-              </div>
-            </ng-template>
-          </p-dropdown>
-
-        </div>
-
-        <div class="group-row">
-          <input type="text" class="course-input business-description"
-            placeholder="Please provide a description/the business need related to this request *" pInputText
-            pKeyFilter="alphanum" />
-
-          <input type="text" class="course-input materials" placeholder="Materials (print or electronic)" pInputText
-            pKeyFilter="alphanum" />
-
-          <div class="course-input-number total-cpe-credit">
-            <label for="total-cpe-credit" class="user-label">Total CPE Credit:</label>
-            <p-inputNumber id="total-cpe-credit" [showButtons]="true" inputId="stacked" mode="decimal" [min]="0"
-              [(ngModel)]="totalCPECredit">
-            </p-inputNumber>
-          </div>
-
-        </div>
-
-      </p-fieldset>
-
-      <p-fieldset legend="Fieldset-2" class="fieldset" [toggleable]="true">
-
-        <div class="group-row">
-
-          <div class="course-input-area course-note">
-            <label for="course-note" class="course-label">Course Notes/ Additional Information:</label>
-            <textarea id="course-note" rows="5" cols="30" pInputTextarea pKeyFilter="alphanum"></textarea>
-          </div>
-
-          <div class="course-input-area room-set-up-comments">
-            <label for="room-set-up-comments" class="course-label">Room Set Up Comments:</label>
-            <textarea id="room-set-up-comments" rows="5" cols="30" pInputTextarea pKeyFilter="alphanum"></textarea>
-          </div>
-
-        </div>
-
-        <div class="group-row">
-
-          <div class="course-input-area overview">
-            <label for="overview" class="course-label">Overview:</label>
-            <textarea id="overview" rows="5" cols="30" pInputTextarea pKeyFilter="alphanum"></textarea>
-          </div>
-
-          <div class="course-input-area objectives">
-            <label for="objectives" class="course-label">Objectives:</label>
-            <textarea id="objectives" rows="5" cols="30" pInputTextarea pKeyFilter="alphanum"></textarea>
-          </div>
-
-        </div>
-
-      </p-fieldset>
-
-      <p-fieldset legend="Fieldset-3" class="fieldset" [toggleable]="true">
-
-        <div class="group-row">
-
-          <div class="course-input-number maximum-attendee-count">
-            <label for="maximum-attendee-count" class="course-label">Maximum Attendee Count:</label>
-            <p-inputNumber id="maximum-attendee-count" [showButtons]="true" inputId="stacked" mode="decimal" [min]="0"
-              [(ngModel)]="maximumAttendeeCount">
-            </p-inputNumber>
-          </div>
-
-          <div class="course-input-number minimum-attendee-count">
-            <label for="minimum-attendee-count" class="course-label">Minimum Attendee Count:</label>
-            <p-inputNumber id="minimum-attendee-count" [showButtons]="true" inputId="stacked" mode="decimal" [min]="0"
-              [(ngModel)]="minimumAttendeeCount">
-            </p-inputNumber>
-          </div>
-
-          <div class="course-input-number maximum-attendee-waitlist">
-            <label for="maximum-attendee-waitlist" class="course-label">Maximum Attendee Waitlist:</label>
-            <p-inputNumber id="maximum-attendee-waitlist" [showButtons]="true" inputId="stacked" mode="decimal"
-              [min]="0" [(ngModel)]="maximumAttendeeWaitlist">
-            </p-inputNumber>
-          </div>
-        </div>
-
-        <div class="group-row">
-
-          <input type="text" class="course-input prerequisite-course-id" placeholder="Prerequisite Course ID" pInputText
-            pKeyFilter="alphanum" />
-
-          <input type="text" class="course-input equivalent-course-id" placeholder="Equivalent Course ID" pInputText
-            pKeyFilter="alphanum" />
-
-          <p-calendar class="course-calendar first-delivery-date" [(ngModel)]="firstDeliveryDate"
-            placeholder="First Delivery Date" [showIcon]="true">
-          </p-calendar>
-
-        </div>
-
-        <div class="group-row">
-          <input type="text" class="course-input level-of-effort" placeholder="Level of Effort" pInputText
-            pKeyFilter="alphanum" />
-
-          <input type="text" class="course-input vendor(s)" placeholder="Vendor(s)" pInputText />
-          <input type="text" class="course-input status" placeholder="Status" pInputText />
-
-        </div>
-
-      </p-fieldset>
-
-      <p-fieldset legend="Fieldset-4" class="fieldset" [toggleable]="true">
-
-        <div class="group-row">
-          <input type="text" class="course-input duration" placeholder="Duration" pInputText pKeyFilter="alphanum" />
-          <p-dropdown class="course-drop-down project-status" [options]="projectStatus"
-            [(ngModel)]="selectedProjectStatus" optionLabel="label" [filter]="true" filterBy="label" [showClear]="true"
-            placeholder="Select a Project Status">
-            <ng-template pTemplate="selectedItem">
-              <div class="flex align-items-center gap-2" *ngIf="selectedProjectStatus">
-                <div>{{ selectedProjectStatus.label }}</div>
-              </div>
-            </ng-template>
-          </p-dropdown>
-          <div class="course-radio-group collateral">
-            <span class="mr-2">Collateral:</span>
-            <p-selectButton class="course-label" [options]="collaterals" [(ngModel)]="selectedCollateral"
-              optionLabel="label" optionValue="value">
-            </p-selectButton>
-          </div>
-        </div>
-
-        <div class="group-row">
-          <input type="text" class="course-input new-domain" placeholder="New Domain" pInputText />
-          <input type="text" class="course-input disc-from" placeholder="Disc From" pInputText />
-          <input type="text" class="course-input displayed-to-learner " placeholder="Displayed to Learner "
-            pInputText />
-        </div>
-
-        <div class="group-row">
-
-
-          <input type="text" class="course-input dervice-now-id" placeholder="Service Now ID" pInputText
-            pKeyFilter="alphanum" />
-
-          <input type="text" class="course-input subject-matter-professional" placeholder="Subject Matter Professional"
-            pInputText pKeyFilter="alphanum" />
-        </div>
-      </p-fieldset>
-
-      <button label="add user" class="user-btn p-button ">
-        <span class="p-button-label">Add Course</span>
-      </button>
-
-    </div>
-
-  </p-fieldset>
-</div> -->
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"
@@ -216,7 +8,7 @@
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
 
 <div class="add-course">
 
@@ -229,7 +21,7 @@
             <div class="group-row row">
                 <div class="col">
                     <span>Course ID <span style="color:red;">*</span></span>
-                    <input type="text" class="course-input course-id" id="courseId" placeholder="Course ID *" pInputText
+                    <input type="text" class="course-input course-id" id="courseId" placeholder="Course ID" pInputText
                         pKeyFilter="alphanum" formControlName="courseId" pattern="^[0-9]*$" />
                     <!-- <div *ngIf="addcourse.get('courseId').errors?.pattern">Please enter a valid number</div> -->
                     <div *ngIf="addcourse.controls.courseId.invalid && addcourse.controls.courseId.touched"
@@ -240,7 +32,7 @@
                 </div>
                 <div class="col">
                     <span>Course Name <span style="color:red;">*</span></span>
-                    <input type="text" class="course-input course-name" placeholder="Course Name *" pInputText
+                    <input type="text" class="course-input course-name" placeholder="Course Name" pInputText
                         pKeyFilter="alphanum" formControlName="coursename" />
                     <div *ngIf="addcourse.controls.coursename.invalid && addcourse.controls.coursename.touched"
                         class="text-danger">
@@ -250,7 +42,7 @@
                 </div>
                 <div class="col">
                     <span>L&D-Intake-Owner<span style="color:red;">*</span></span>
-                    <input type="text" class="course-input L&D-Intake-Owner" placeholder="L&D Intake Owner *" pInputText
+                    <input type="text" class="course-input L&D-Intake-Owner" placeholder="L&D Intake Owner" pInputText
                         pKeyFilter="alphanum" formControlName="ldintake" />
                     <div *ngIf="addcourse.controls.ldintake.invalid && addcourse.controls.ldintake.touched"
                         class="text-danger">
@@ -268,7 +60,7 @@
                 </div>
                 <div class="col">
                     <span>Input Business Sponsor <span style="color:red;">*</span></span>
-                    <input type="text" class="course-input business-sponsor" placeholder="Business Sponsor *" pInputText
+                    <input type="text" class="course-input business-sponsor" placeholder="Business Sponsor" pInputText
                         pKeyFilter="alphanum" formControlName="business-sponsor" />
                 </div>
                 <div class="col">
@@ -336,8 +128,8 @@
                 <div class="col">
                     <span>Business Description <span style="color:red;">*</span></span>
                     <input type="text" class="course-input business-description"
-                        placeholder="Please provide a description/the business need related to this request *"
-                        pInputText pKeyFilter="alphanum" formControlName="business-description" />
+                        placeholder="Please provide a description/the business need related to this request" pInputText
+                        pKeyFilter="alphanum" formControlName="business-description" />
                 </div>
 
                 <div class="col">

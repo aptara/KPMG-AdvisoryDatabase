@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NgForm, FormControl } from '@angular/forms';
+import { FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/service/userservice';
 @Component({
@@ -23,6 +23,8 @@ export class UpdateUserComponent implements OnInit {
     User: any;
     checkedTask: any;
     tmId: any = ""
+    submitted = false;
+
     constructor(private userService: UserService, private Router: Router, private ActivatedRoute: ActivatedRoute) {
 
     }
@@ -36,15 +38,20 @@ export class UpdateUserComponent implements OnInit {
         this.userService.EditUserData(this.UserUpdate.value).subscribe(response => {
             // console.log(response)
             if (response != null) {
-                alert('User Updated successfully');
+                alert('successful');
 
             }
             else {
-                alert('Failed to User upadte ')
+                alert('not successful')
             }
-            window.location.href = '/user-management';
 
         });
+        if (this.UserUpdate.valid) {
+
+        } else {
+
+            this.UserUpdate.markAllAsTouched();
+        }
     }
 
 
@@ -55,11 +62,11 @@ export class UpdateUserComponent implements OnInit {
     ngOnInit(): void {
         this.UserUpdate = new FormGroup({
             'UserMasterID': new FormControl(this.UserID),
-            'FirstName': new FormControl(),
-            'LastName': new FormControl(),
-            'Email': new FormControl(),
-            'LocationID': new FormControl(),
-            'TaskMasterID': new FormControl()
+            'FirstName': new FormControl('', Validators.required),
+            'LastName': new FormControl('', Validators.required),
+            'Email': new FormControl('', [Validators.required, Validators.email]),
+            'LocationID': new FormControl('', Validators.required),
+            'TaskMasterID': new FormControl('', Validators.required)
         })
 
 
@@ -78,6 +85,9 @@ export class UpdateUserComponent implements OnInit {
             this.UserUpdate.controls.LocationID.setValue(this.data.LocationID)
 
         })
+
+
+
 
 
 
@@ -126,4 +136,18 @@ export class UpdateUserComponent implements OnInit {
 
 
     }
+
+
+
+    clearForm() {
+        this.UserUpdate.reset();
+        this.submitted = false;
+    }
+
+
+    onCancel() {
+
+        this.clearForm();
+    }
+
 }

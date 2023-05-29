@@ -22,24 +22,36 @@ export class UserManagementComponent implements OnInit {
     public colSpan: number = 5;
     public gridView: any[] = [];
     UserDAta: any;
+    user: any[] = []
 
     constructor(private userService: UserService, private Router: Router, private ActivatedRoute: ActivatedRoute) {
 
     }
 
     ngOnInit() {
-        // this.gridView = this.gridData;
-        // this.userService.getData().subscribe(res => {
-        //     // this.UserDAta = res;
 
-        //     // console.log(JSON.stringify(this.UserDAta))
-        // }
 
-        //)
-
+        // this.userService.getUsers().subscribe((data: any[]) => {
+        //     this.UserDAta = data.filter(user => user.IsActive === true);
+        //     console.log(this.UserDAta)
+        //     this.gridView = this.UserDAta.map((user: { Location: number; }) => {
+        //         return {
+        //             ...user,
+        //             Location: user.Location === 0 ? null : user.Location
+        //         };
+        //     });
+        // });
         this.userService.getUsers().subscribe((data: any[]) => {
             this.UserDAta = data.filter(user => user.IsActive === true);
+            console.log(data)
+            this.gridView = this.UserDAta.map((user: { Location: number; }) => {
+                return {
+                    ...user,
+                    Location: user.Location === 0 ? null : user.Location
+                };
+            });
         });
+
     }
     get gridData(): GridDataResult {
         return {
@@ -85,28 +97,24 @@ export class UserManagementComponent implements OnInit {
             filter: {
                 logic: "or",
                 filters: [
+
                     {
-                        field: "IsActive",
+                        field: "FirstName",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "firstName",
+                        field: "LastName",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "lastName",
+                        field: "Email",
                         operator: "contains",
                         value: inputValue,
                     },
                     {
-                        field: "email",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "location",
+                        field: "Location",
                         operator: "contains",
                         value: inputValue,
                     },
