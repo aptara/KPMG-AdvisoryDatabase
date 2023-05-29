@@ -121,7 +121,7 @@ export class CourseListComponent implements OnInit {
 
     downloadExcelofDeployment() {
 
-        this.downloadExcelService.getAllCoursesForClarizen().subscribe((data: any) => {
+        this.downloadExcelService.getAllCoursesForDataOfDeployment().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
                 const headers = Object.keys(courseData[0]).slice(0, 19);
