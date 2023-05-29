@@ -12,7 +12,7 @@ export class CourseService {
     apiURL = environment.baseUrl;
 
     //constant variable for API URL
-    readonly getAllCourseAPI = this.apiURL + "Course/GetAllCourse/";
+    readonly getAllCourseAPI = this.apiURL + "Course/GetAllCourse";
     readonly getCourseAPI = this.apiURL + "Course/GetCourse/";
     readonly addCourseAPI = this.apiURL + "Course/AddEditCourse/";
     readonly updateCourseAPI = this.apiURL + "Course/AddEditCourse/";

@@ -32,9 +32,10 @@ export class CourseComponent implements OnInit {
         public courseService: CourseService,
         private router: Router,
     ) {
-        this.route.queryParams.subscribe(params => {
-            this.CourseId = params['id'];
-        });
+        // this.route.queryParams.subscribe(params => {
+        //     this.CourseId = 36; //params['id'];
+        // });
+        this.CourseId = this.route.snapshot.params['id'];
 
         this.CourseForm = this.formBuilder.group({
             CourseID: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
@@ -83,6 +84,7 @@ export class CourseComponent implements OnInit {
     }
 
     bindFormData() {
+
         this.CourseForm.setValue({
             CourseName: this.CourseData?.CourseName,
             LDIntakeOwner: this.CourseData?.LDIntakeOwner,
@@ -125,12 +127,15 @@ export class CourseComponent implements OnInit {
         console.log(this.CourseForm.value)
     }
 
+
     getCourseDataForEdit() {
         if (this.CourseId) {
             return this.courseService.getCourse(this.CourseId).subscribe((data: any) => {
                 if (data.Success) {
                     this.CourseData = data.Data;
+
                     this.bindFormData();
+
                 }
             });
         }
@@ -154,7 +159,7 @@ export class CourseComponent implements OnInit {
 
     BindCourseDataForSaveEdit() {
         var saveCourse: any = this.CourseForm.value;
-        debugger
+
         saveCourse.CourseMasterID = this.CourseId;
         saveCourse.CourseOwnerID = this.courseOwnersData.find(x => x.Id === saveCourse.CourseOwnerID?.Id)?.Id;
         saveCourse.ProgramTypeID = this.programTypesData.find(x => x.Id === saveCourse.ProgramTypeID?.Id)?.Id;
@@ -174,13 +179,13 @@ export class CourseComponent implements OnInit {
             if (this.CourseId != 0) {
                 this.courseService.createCourse(SaveData).subscribe((data: any) => {
                     if (data.Success) {
-                        this.router.navigate(['/course-List']);
+                        this.router.navigate(['/course-management']);
                     }
                 });
             } else {
                 this.courseService.updateCourse(this.CourseId, SaveData).subscribe((data: any) => {
                     if (data.Success) {
-                        this.router.navigate(['/course-List']);
+                        this.router.navigate(['/course-management']);
                     }
                 });
             }
