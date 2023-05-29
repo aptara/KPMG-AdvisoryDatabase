@@ -54,6 +54,11 @@
     <Compile Include="DataAccessAPIService\DataAccessMeterReadingService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseDetailService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseOwnerDetailsService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseOwnerMasterService.cs" />
+    <Compile Include="DataAccessService\DataAccessProgramTypeMasterService.cs" />
+    <Compile Include="DataAccessService\DataAccessDeliveryTypeMasterService.cs" />
+    <Compile Include="DataAccessService\DataAccessProjectStatusMasterService.cs" />
+    <Compile Include="DataAccessService\DataAccessStatusMasterService.cs" />
     <Compile Include="DataAccessService\DataAccessExcelForClarizenFieldDetailsService.cs" />
     <Compile Include="DataAccessService\DataAccessExcelForDeploymentReportDetailsService.cs" />
     <Compile Include="DataAccessService\DataAccessGetExcelForFocusService.cs" />

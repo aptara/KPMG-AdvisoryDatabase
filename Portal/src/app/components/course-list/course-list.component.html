@@ -1,0 +1,110 @@
+<div class="card">
+    <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['CourseMasterID', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'BusinessSponsor', 'ProjectStatusID']">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                    (click)="clear(dt1)"></button>
+                <button pButton class="btn-excel-width" (click)="downloadExceloffocus()">
+                    Export RDI for Focus
+                </button>
+                <button pButton class="btn-excel-width" (click)="downloadExcelofClarizen()">
+                    Export RDI for Clarizen
+                </button>
+                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()">
+                    Export RDI for Deployment
+                </button>
+                <span class="p-input-icon-left ml-auto filter-bar">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                        placeholder="Search keyword" />
+                    <button pButton class="p-button-outlined btn-width" icon="pi pi-plus" (click)="AddCourse()">
+                    </button>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>
+                    <div class="flex align-items-center">
+                        Course ID
+                        <p-columnFilter type="text" field="CourseMasterID" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center">
+                        Course Name
+                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center">
+                        L&D Intake Owner
+                        <p-columnFilter type="date" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center">
+                        Project Manager Contact
+                        <p-columnFilter type="text" field="ProjectManagerContact" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center">
+                        Business Sponsor
+                        <p-columnFilter type="text" field="BusinessSponsor" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center">
+                        Status
+                        <p-columnFilter type="number" field="ProjectStatus" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-course>
+            <tr>
+                <td>
+                    <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
+                        {{ course.CourseMasterID }}</a>
+                </td>
+                <td>
+                    <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
+                        {{ course.CourseName }}</a>
+                </td>
+                <td>
+                    {{ course.LDIntakeOwner }}
+                </td>
+                <td>
+                    {{ course.ProjectManagerContact }}
+                </td>
+                <td>
+                    {{ course.BusinessSponsor }}
+                </td>
+                <td>
+                    {{ course.ProjectStatus }}
+                </td>
+                <td style="text-align: center">
+                    <span class="edit-btn">
+                        <i class="pi pi-pencil" (click)="EditCourse(course.CourseMasterID)"></i>
+                    </span>
+                    <span class="edit-btn">
+                        <i class="pi pi-trash" (click)="DeleteCourse(course.CourseMasterID)"></i>
+                    </span>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No Course found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <!-- <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog> -->
+</div>

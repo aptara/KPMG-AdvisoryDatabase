@@ -1,0 +1,506 @@
+<div class="add-course">
+    <!-- <div class="course-field"> -->
+    <form #userForm="ngForm" (ngSubmit)="onSubmitCourse()" [formGroup]="CourseForm">
+        <div class="group-row row">
+            <div class="col">
+                <span>Course ID </span>
+                <input type="text" class="course-input course-id" formControlName="CourseID" placeholder="Course ID "
+                    pInputText pKeyFilter="alphanum" />
+            </div>
+            <div class="col">
+                <span>Course Name <span style="color:red;">*</span></span>
+                <input type="text" class="course-input course-name" placeholder="Course Name "
+                    formControlName="CourseName" pInputText pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['CourseName'].valid && CourseForm.controls['CourseName'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseName?.errors?.required">
+                        Course Name is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseName?.errors?.pattern">
+                        Course Name should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>L&D-Intake-Owner <span style="color:red;">*</span></span>
+                <input type="text" class="course-input L&D-Intake-Owner" placeholder="L&D Intake Owner"
+                    formControlName="LDIntakeOwner" pInputText pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['LDIntakeOwner'].valid && CourseForm.controls['LDIntakeOwner'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.required">
+                        L&D-Intake-Owner is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.pattern">
+                        L&D-Intake-Owner should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Project Manager Contact </span>
+                <input type="text" class="course-input project-manager-contact" placeholder="Project Manager Contact"
+                    formControlName="ProjectManagerContact" pInputText pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['ProjectManagerContact'].valid && CourseForm.controls['ProjectManagerContact'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ProjectManagerContact?.errors?.required">
+                        Project Manager Contact is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ProjectManagerContact?.errors?.pattern">
+                        Project Manager Contact should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Input Business Sponsor <span style="color:red;">*</span> </span>
+                <input type="text" class="course-input business-sponsor" placeholder="Business Sponsor"
+                    formControlName="BusinessSponsor" pInputText pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['BusinessSponsor'].valid && CourseForm.controls['BusinessSponsor'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.BusinessSponsor?.errors?.required">
+                        Input Business Sponsor is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.BusinessSponsor?.errors?.pattern">
+                        Input Business Sponsor should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Instructional Designer </span>
+                <input type="text" class="course-input instructional-designer" placeholder="Instructional Designer"
+                    formControlName="InstructionalDesigner" pInputText pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['InstructionalDesigner'].valid && CourseForm.controls['InstructionalDesigner'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.InstructionalDesigner?.errors?.required">
+                        Instructional Designer is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.InstructionalDesigner?.errors?.pattern">
+                        Instructional Designer should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Course Owner</span>
+                <p-dropdown class="course-drop-down course-owner" [options]="courseOwnersData" optionLabel="CourseOwner"
+                    [filter]="true" filterBy="CourseOwner" [showClear]="true" formControlName="CourseOwnerID"
+                    placeholder="Select a Course Owner">
+                </p-dropdown>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['CourseOwnerID'].valid && CourseForm.controls['CourseOwnerID'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseOwnerID?.errors?.required">
+                        Course Owner is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseOwnerID?.errors?.pattern">
+                        Course Owner should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Program Type <span style="color:red;">*</span> </span>
+                <p-dropdown class="course-drop-down program-type" [options]="programTypesData"
+                    formControlName="ProgramTypeID" optionLabel="ProgramType" [filter]="true" filterBy="ProgramType"
+                    [showClear]="true" placeholder="Select a Program Type">
+                </p-dropdown>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['ProgramTypeID'].valid && CourseForm.controls['ProgramTypeID'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ProgramTypeID?.errors?.required">
+                        Program Type is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ProgramTypeID?.errors?.pattern">
+                        Program Type should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Delivery Type <span style="color:red;">*</span> </span>
+                <p-dropdown class="course-drop-down delivery-type" [options]="deliveryTypesData"
+                    formControlName="DeliveryTypeID" optionLabel="DeliveryType" [filter]="true" filterBy="DeliveryType"
+                    [showClear]="true" placeholder="Select a Delivery Type">
+                </p-dropdown>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['DeliveryTypeID'].valid && CourseForm.controls['DeliveryTypeID'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.DeliveryTypeID?.errors?.required">
+                        Delivery Type is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.DeliveryTypeID?.errors?.pattern">
+                        Delivery Type should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Business Description <span style="color:red;">*</span> </span>
+                <input type="text" class="course-input business-description" formControlName="Descriptions"
+                    placeholder="Please provide a description/the business need related to this request" pInputText
+                    pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['Descriptions'].valid && CourseForm.controls['Descriptions'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.required">
+                        Business Description is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.pattern">
+                        Business Description should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Course Input Materials </span>
+                <input type="text" class="course-input materials" placeholder="Materials (print or electronic)"
+                    formControlName="Materials" pInputText pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['Materials'].valid && CourseForm.controls['Materials'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Materials?.errors?.required">
+                        Course Input Materials is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Materials?.errors?.pattern">
+                        Course Input Materials should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Total Cpe Credit <span style="color:red;">*</span></span>
+                <div class="course-input-number total-cpe-credit">
+                    <p-inputNumber id="total-cpe-credit" [showButtons]="true" inputId="stacked" mode="decimal" [min]="0"
+                        formControlName="TotalCPECredit">
+                    </p-inputNumber>
+                </div>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['TotalCPECredit'].valid && CourseForm.controls['TotalCPECredit'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.required">
+                        Total Cpe Credit is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.pattern">
+                        Total Cpe Credit should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Course Notes/ Additional Information </span>
+                <div>
+                    <textarea class="p-inputtextarea" id="course-note" formControlName="CourseNotes"
+                        pInputTextarea></textarea>
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['CourseNotes'].valid && CourseForm.controls['CourseNotes'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseNotes?.errors?.required">
+                            Course Notes/ Additional Information is reuired.
+                        </div>
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseNotes?.errors?.pattern">
+                            Course Notes/ Additional Information should be Alpha Numeric.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Room Set Up Comments </span>
+                <div>
+                    <textarea class="p-inputtextarea" id="room-set-up-comments" formControlName="RoomSetUpComments"
+                        pInputTextarea></textarea>
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['RoomSetUpComments'].valid && CourseForm.controls['RoomSetUpComments'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.RoomSetUpComments?.errors?.required">
+                            Room Set Up Comments is reuired.
+                        </div>
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.RoomSetUpComments?.errors?.pattern">
+                            Room Set Up Comments should be Alpha Numeric.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Overview </span>
+                <div>
+                    <textarea class="p-inputtextarea" id="overview" formControlName="Overview"
+                        pInputTextarea></textarea>
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['Overview'].valid && CourseForm.controls['Overview'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Overview?.errors?.required">
+                            Overview is reuired.
+                        </div>
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Overview?.errors?.pattern">
+                            Overview should be Alpha Numeric.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Objectives </span>
+                <div>
+                    <textarea class="p-inputtextarea" id="objectives" formControlName="Objectives"
+                        pInputTextarea></textarea>
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['Objectives'].valid && CourseForm.controls['Objectives'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Objectives?.errors?.required">
+                            Objectives is reuired.
+                        </div>
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Objectives?.errors?.pattern">
+                            Objectives should be Alpha Numeric.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Maximum Attendee Count</span>
+                <div class="course-input-number maximum-attendee-count">
+                    <p-inputNumber id="maximum-attendee-count" [showButtons]="true" inputId="stacked" mode="decimal"
+                        [min]="0" formControlName="MaximumAttendeeCount">
+                    </p-inputNumber>
+                </div>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['MaximumAttendeeCount'].valid && CourseForm.controls['MaximumAttendeeCount'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.MaximumAttendeeCount?.errors?.required">
+                        Maximum Attendee Count is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.MaximumAttendeeCount?.errors?.pattern">
+                        Maximum Attendee Count should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Minimum Attendee Count </span>
+                <div class="course-input-number minimum-attendee-count">
+                    <p-inputNumber id="minimum-attendee-count" [showButtons]="true" inputId="stacked" mode="decimal"
+                        [min]="0" formControlName="MinimumAttendeeCount">
+                    </p-inputNumber>
+                </div>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['MinimumAttendeeCount'].valid && CourseForm.controls['MinimumAttendeeCount'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.MinimumAttendeeCount?.errors?.required">
+                        Minimum Attendee Count is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.MinimumAttendeeCount?.errors?.pattern">
+                        Minimum Attendee Count should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Maximum Attendee Waitlist </span>
+                <div class="course-input-number maximum-attendee-waitlist">
+                    <p-inputNumber id="maximum-attendee-waitlist" [showButtons]="true" inputId="stacked" mode="decimal"
+                        formControlName="MaximumAttendeeWaitlist" [min]="0">
+                    </p-inputNumber>
+                </div>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['MaximumAttendeeWaitlist'].valid && CourseForm.controls['MaximumAttendeeWaitlist'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.MaximumAttendeeWaitlist?.errors?.required">
+                        Maximum Attendee Waitlist is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.MaximumAttendeeWaitlist?.errors?.pattern">
+                        Maximum Attendee Waitlist should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Prerequisite CourseId </span>
+                <input type="text" class="course-input prerequisite-course-id" placeholder="Prerequisite Course ID"
+                    pInputText formControlName="PrerequisiteCourseID" pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['PrerequisiteCourseID'].valid && CourseForm.controls['PrerequisiteCourseID'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.required">
+                        Prerequisite CourseId is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.pattern">
+                        Prerequisite CourseId should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Equivalent Course ID </span>
+                <input type="text" class="course-input equivalent-course-id" placeholder="Equivalent Course ID"
+                    pInputText formControlName="EquivalentCourseID" pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['EquivalentCourseID'].valid && CourseForm.controls['EquivalentCourseID'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.EquivalentCourseID?.errors?.required">
+                        Equivalent Course ID is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.EquivalentCourseID?.errors?.pattern">
+                        Equivalent Course ID should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>First Delivery Date<span style="color:red;">*</span></span>
+                <p-calendar class="course-calendar first-delivery-date" formControlName="FirstDeliveryDate"
+                    placeholder="First Delivery Date" [showIcon]="true">
+                </p-calendar>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['FirstDeliveryDate'].valid && CourseForm.controls['FirstDeliveryDate'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.FirstDeliveryDate?.errors?.required">
+                        First Delivery Date is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.FirstDeliveryDate?.errors?.pattern">
+                        First Delivery Date should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Level Of Effort </span>
+                <input type="text" class="course-input level-of-effort" placeholder="Level of Effort" pInputText
+                    formControlName="LevelofEffort" pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['LevelofEffort'].valid && CourseForm.controls['LevelofEffort'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.LevelofEffort?.errors?.required">
+                        Level Of Effort is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.LevelofEffort?.errors?.pattern">
+                        Level Of Effort should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Vendor(s) </span>
+                <input type="text" class="course-input vendor(s)" placeholder="Vendor(s)" pInputText
+                    formControlName="Vendor" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['Vendor'].valid && CourseForm.controls['Vendor'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.required">
+                        Vendor(s) is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.pattern">
+                        Vendor(s) should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Status </span>
+                <p-dropdown class="course-drop-down delivery-type" [options]="statusData" optionLabel="Status"
+                    [filter]="true" filterBy="Status" [showClear]="true" formControlName="Status"
+                    placeholder="Select a Delivery Type">
+                </p-dropdown>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['Status'].valid && CourseForm.controls['Status'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Status?.errors?.required">
+                        Status is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Status?.errors?.pattern">
+                        Status should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Duration</span>
+                <input type="text" class="course-input duration" placeholder="Duration" pInputText
+                    formControlName="Duration" pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['Duration'].valid && CourseForm.controls['Duration'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
+                        Duration is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.pattern">
+                        Duration should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Project Status </span>
+                <p-dropdown class="course-drop-down project-status" [options]="projectStatusData"
+                    optionLabel="ProjectStatus" [filter]="true" filterBy="ProjectStatus" [showClear]="true"
+                    formControlName="ProjectStatusID" placeholder="Select a Project Status">
+                </p-dropdown>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['ProjectStatusID'].valid && CourseForm.controls['ProjectStatusID'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ProjectStatusID?.errors?.required">
+                        Project Status is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ProjectStatusID?.errors?.pattern">
+                        Project Status should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Collateral </span>
+                <div class="course-radio-group collateral">
+                    <p-selectButton class="course-label" [options]="collaterals" formControlName="Collateral"
+                        optionLabel="label">
+                    </p-selectButton>
+                </div>
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['Collateral'].valid && CourseForm.controls['Collateral'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Collateral?.errors?.required">
+                        Collateral is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.Collateral?.errors?.pattern">
+                        Collateral should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>Service ID <span style="color:red;">*</span></span>
+                <input type="text" class="course-input dervice-now-id" placeholder="Service Now ID" pInputText
+                    formControlName="ServiceNowID" pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['ServiceNowID'].valid && CourseForm.controls['ServiceNowID'].dirty">
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.required">
+                        Service ID is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.pattern">
+                        Service ID should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Subject Matter Professional</span>
+                <input type="text" class="course-input subject-matter-professional"
+                    formControlName="SubjectMatterProfessional" placeholder="Subject Matter Professional" pInputText
+                    pKeyFilter="alphanum" />
+                <div class="message-error"
+                    *ngIf="!CourseForm.controls['SubjectMatterProfessional'].valid && CourseForm.controls['SubjectMatterProfessional'].dirty">
+                    <div class="error-tooltips"
+                        *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.required">
+                        Subject Matter Professional is reuired.
+                    </div>
+                    <div class="error-tooltips" *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.pattern">
+                        Subject Matter Professional should be Alpha Numeric.
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span>Retired</span>
+                <div class="course-input new-domain">{{CourseData?.FocusRetired}}</div>
+            </div>
+        </div>
+        <div class="group-row row">
+            <div class="col">
+                <span>New Domain</span>
+                <div class="course-input new-domain">{{CourseData?.FocusDomain}}</div>
+            </div>
+            <div class="col">
+                <span>Disc Form </span>
+                <div class="course-input new-domain">{{CourseData?.FocusDiscFrom}}</div>
+            </div>
+            <div class="col">
+                <span>Displayed to Learner</span>
+                <div class="course-input new-domain">{{CourseData?.FocusDisplayedToLearner}}</div>
+            </div>
+        </div>
+
+        <div class="group-row row">
+            <div class="col textAlign">
+                <button type="submit" [disabled]="!this.CourseForm.valid" label="add user"
+                    class="corse-submit-btn p-button ">
+                    <span class="p-button-label">Save</span>
+                </button>
+                <button label="add user" class="corse-submit-btn p-button ">
+                    <span class="p-button-label">Cancel</span>
+                </button>
+            </div>
+        </div>
+    </form>
+    <!-- </div> -->
+</div>

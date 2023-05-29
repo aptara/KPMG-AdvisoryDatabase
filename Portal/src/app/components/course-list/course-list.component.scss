@@ -1,0 +1,50 @@
+:host ::ng-deep {
+    .p-progressbar {
+        height: .5rem;
+        background-color: #D8DADC;
+
+        .p-progressbar-value {
+            background-color: #607D8B;
+        }
+    }
+}
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.flex {
+    display: flex !important;
+}
+
+.p-input-icon-left{
+    width: auto;
+}
+
+.p-button {
+    width: auto;
+}
+
+.filter-bar{
+    display: flex;
+}
+
+.btn-width{
+    width: 50px;
+    margin-left: 10px;
+}
+
+.btn-excel-width{
+    margin-left: 10px;
+}
+
+.edit-btn{
+    margin: 10px;
+    cursor: pointer;
+}
+
+.p-datatable-header{
+    padding: 0px;
+}
