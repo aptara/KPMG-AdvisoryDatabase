@@ -23,29 +23,19 @@ export class AddUserComponent implements OnInit {
 
 
 
-
-
-
-
     onFormSubmit() {
 
         this.UserAdd.controls.TaskMasterID.setValue(this.tmId)
         this.userService.PostUserData(this.UserAdd.value).subscribe(data => {
             if (data != null) {
                 alert('User Added succesfully!!');
-
-
             }
 
             else {
                 alert('not successful')
             }
             window.location.href = '/user-management';
-
         });
-
-        console.log(this.UserAdd)
-
         if (this.UserAdd.valid) {
 
         } else {
@@ -66,12 +56,7 @@ export class AddUserComponent implements OnInit {
         });
 
 
-        // this.Tasks.forEach(task => {
-        //     this.checkbox = this.Tasks.filter(x => x.checked == true)
 
-        //     // this.checkbox = task.TaskMasterID
-        // })
-        // console.log(this.checkbox)
 
 
         this.SetLocationDropDown()
@@ -120,7 +105,7 @@ export class AddUserComponent implements OnInit {
             Ids.push(taskName.TaskMasterID)
             this.tmId = Ids.join(",")
         })
-        console.log(this.tmId)
+
 
 
     }
