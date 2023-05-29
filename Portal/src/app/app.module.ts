@@ -166,6 +166,11 @@ import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { DropDownsModule } from "@progress/kendo-angular-dropdowns";
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { CourseListComponent } from './components/course-list/course-list.component';
+import { CourseComponent } from './components/course/course.component';
+import { MessageService } from 'primeng/api';
+import { CourseService } from './service/course.service';
+import { DownloadExcelService } from './service/service/download-excel.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -176,6 +181,8 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
         AddUserComponent,
         UpdateUserComponent,
         UpdateCourseComponent,
+        CourseListComponent,
+        CourseComponent,
         CourseManagementComponent,
         NavMenuComponent,
         MainBodyComponent,
@@ -221,13 +228,18 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
                 { path: "user-management", component: UserManagementComponent },
                 { path: "add-course", component: AddCourseComponent },
                 { path: "update-course", component: UpdateCourseComponent },
-                { path: "course-management", component: CourseManagementComponent },
+                { path: "course-management", component: CourseListComponent },
                 { path: '**', component: PageNotFoundComponent }
             ]),
         DateInputsModule,
         GridModule,
     ],
-    providers: [UserService],
+    providers: [
+        UserService,
+        MessageService,
+        CourseService,
+        DownloadExcelService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
