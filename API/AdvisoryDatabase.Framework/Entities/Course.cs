@@ -49,5 +49,29 @@ namespace AdvisoryDatabase.Framework.Entities
         public string SubjectMatterProfessional { get; set; }
         public bool IsDeleted { get; set; }
         public string Status { get; set; }
+
+        public string ServiceGroupLineNetwork { get; set; }
+        public string SubjectMatterProfessionals { get; set; }
+        public bool IsRegulatoryOrLegalRequirement { get; set; }
+        public int Competency { get; set; }
+        public int Audience { get; set; }
+        public int ServiceGroup { get; set; }
+        public int ServiceLine { get; set; }
+        public int ServiceNetwork { get; set; }
+        public int AudienceLevel { get; set; }
+        public int FieldOfStudy { get; set; }
+        public string DeploymentFiscalYear { get; set; }
+        public string StartDate { get; set; }
+        public string Function { get; set; }
+        public string DevelopmentYear { get; set; }
+        public string Price { get; set; }
+        public string Currency { get; set; }
+        public string DisplayCallCenter { get; set; }
+        public string AudienceType { get; set; }
+        public int ProgramKnowledgeLevel { get; set; }
+        public string TargetAudience { get; set; }
+        public int SpecialNotice { get; set; }
+
+
     }
 }

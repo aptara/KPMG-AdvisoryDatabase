@@ -83,7 +83,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("CourseRecordURL", instance.CourseRecordURL));
                 parameters.Add(DbHelper.CreateParameter("ServiceNowID", instance.ServiceNowID));
                 parameters.Add(DbHelper.CreateParameter("SubjectMatterProfessional", instance.SubjectMatterProfessional));
-                parameters.Add(DbHelper.CreateParameter("@Status", instance.Status));
+                //parameters.Add(DbHelper.CreateParameter("@Status", instance.Status));
 
             }
             else if(operation == OperationType.Delete)

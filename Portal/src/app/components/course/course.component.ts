@@ -6,6 +6,7 @@ import { Message } from "primeng/api";
 import { Course } from 'src/app/domain/Course';
 import { CourseService } from 'src/app/service/course.service';
 import { DropdownDataService } from 'src/app/service/dropdown-data.service';
+import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 
 @Component({
     selector: 'app-course',
@@ -24,6 +25,17 @@ export class CourseComponent implements OnInit {
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
     web = { label: 'google', url: 'https://www.google.com' }
 
+    public areaList: Array<string> = [
+        "Boston",
+        "Chicago",
+        "Houston",
+        "Los Angeles",
+        "Miami",
+        "New York",
+        "Philadelphia",
+        "San Francisco",
+        "Seattle",
+    ];
 
     constructor(
         private formBuilder: FormBuilder,
@@ -72,7 +84,29 @@ export class CourseComponent implements OnInit {
             //FocusDisplayedToLearner: [''],
             CourseRecordURL: [''],
             SubjectMatterProfessional: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Status: ['']
+            Status: [''],
+
+            ServiceGroupLineNetwork: [''],
+            SubjectMatterProfessionals: [''],
+            IsRegulatoryOrLegalRequirement: [''],
+            Competency: [''],
+            Audience: [''],
+            ServiceGroup: [''],
+            ServiceLine: [''],
+            ServiceNetwork: [''],
+            AudienceLevel: [''],
+            FieldOfStudy: [''],
+            DeploymentFiscalYear: [''],
+            StartDate: [''],
+            Function: [''],
+            DevelopmentYear: [''],
+            Price: [''],
+            Currency: [''],
+            DisplayCallCenter: [''],
+            AudienceType: [''],
+            ProgramKnowledgeLevel: [''],
+            TargetAudience: [''],
+            SpecialNotice: [''],
         })
     }
 
@@ -119,7 +153,28 @@ export class CourseComponent implements OnInit {
             ProgramTypeID: this.programTypesData.find(x => x.Id === this.CourseData?.ProgramTypeID),
             DeliveryTypeID: this.deliveryTypesData.find(x => x.Id === this.CourseData?.DeliveryTypeID),
             ProjectStatusID: this.projectStatusData.find(x => x.Id === this.CourseData?.ProgramTypeID),
-            Collateral: this.collaterals.find(x => x.value === this.CourseData?.Collateral)
+            Collateral: this.collaterals.find(x => x.value === this.CourseData?.Collateral),
+            ServiceGroupLineNetwork: 0,
+            SubjectMatterProfessionals: 0,
+            IsRegulatoryOrLegalRequirement: 0,
+            Competency: 0,
+            Audience: 0,
+            ServiceGroup: 0,
+            ServiceLine: 0,
+            ServiceNetwork: 0,
+            AudienceLevel: 0,
+            FieldOfStudy: 0,
+            DeploymentFiscalYear: 0,
+            StartDate: 0,
+            Function: 0,
+            DevelopmentYear: 0,
+            Price: 0,
+            Currency: 0,
+            DisplayCallCenter: 0,
+            AudienceType: 0,
+            ProgramKnowledgeLevel: 0,
+            TargetAudience: 0,
+            SpecialNotice: 0,
         });
 
         console.log(this.CourseForm.value)

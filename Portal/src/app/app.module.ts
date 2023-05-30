@@ -96,6 +96,7 @@ import { DownloadExcelService } from './service/service/download-excel.service';
         ProgressBarModule,
         TagModule,
         DropdownModule,
+        DropDownListModule,
         InputTextModule,
         InputNumberModule,
         InputTextareaModule,
