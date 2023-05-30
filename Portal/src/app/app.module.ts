@@ -115,6 +115,7 @@ import { DownloadExcelService } from './service/service/download-excel.service';
                 { path: "course-management", component: CourseListComponent },
                 { path: "course-details", component: CourseComponent },
                 { path: '**', component: PageNotFoundComponent }
+
             ]),
         DateInputsModule,
         GridModule,

@@ -1,6 +1,6 @@
 <div class="update-user">
 
-    <p-fieldset legend="update User" class="fieldset">
+    <p-fieldset legend="Update User" class="fieldset">
 
         <form #userForm="ngForm" (ngSubmit)="onFormSubmit()" [formGroup]="UserUpdate">
 
@@ -30,10 +30,10 @@
             <div class="group-row">
                 <div class="p-float-label">
                     <span style="font-size: 15px; font-weight: 500;">Email<span style="color:red">*</span></span>
-                    <input pInputText id="email-id" [pattern]="emailRegex" formControlName="Email" />
+                    <input pInputText id="email-id" formControlName="Email" />
                     <div *ngIf="UserUpdate.controls.Email.invalid && UserUpdate.controls.Email.touched"
                         class="text-danger">
-                        Email is required*
+                        Email ID is required*
                     </div>
                 </div>
 
@@ -51,10 +51,7 @@
 
 
             </div>
-
             <div class="group-row">
-
-
 
                 <table>
                     <tr>

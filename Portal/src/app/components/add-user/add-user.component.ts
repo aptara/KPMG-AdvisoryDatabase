@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/service/userservice';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-add-user',
@@ -18,7 +19,8 @@ export class AddUserComponent implements OnInit {
     emailInvalid: boolean = false;
     submitted = false;
 
-    constructor(private userService: UserService) { }
+
+    constructor(private userService: UserService, ActivatedRoute: ActivatedRoute, private router: Router,) { }
 
 
 
@@ -32,9 +34,9 @@ export class AddUserComponent implements OnInit {
             }
 
             else {
-                alert('not successful')
+                alert('Failed!!')
             }
-            window.location.href = '/user-management';
+            this.router.navigate(['/user-management']);
         });
         if (this.UserAdd.valid) {
 
@@ -49,7 +51,7 @@ export class AddUserComponent implements OnInit {
         this.UserAdd = new FormGroup({
             'FirstName': new FormControl('', Validators.required),
             'LastName': new FormControl('', Validators.required),
-            'Email': new FormControl('', [Validators.required, Validators.email]),
+            'Email': new FormControl('', [Validators.required]),
             'LocationID': new FormControl('', Validators.required),
             'TaskMasterID': new FormControl('', Validators.required)
 
@@ -114,7 +116,7 @@ export class AddUserComponent implements OnInit {
     validateEmail() {
         const emailInput = this.UserAdd.get('Email');
         if (emailInput?.invalid && emailInput?.dirty) {
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$/;
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/;
             this.emailInvalid = !emailRegex.test(emailInput.value);
         }
     }

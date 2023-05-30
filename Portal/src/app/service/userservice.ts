@@ -28,7 +28,7 @@ export class UserService {
         return this.http.get(req);
     }
 
-    public GetDataByUrl = environment.baseUrl + '/WebUser/GetDataByUserId'
+    public GetDataByUrl = environment.baseUrl + 'WebUser/GetDataByUserId'
     getUData(UserID: any) {
         var req = this.GetDataByUrl + "/" + UserID;
         return this.http.get(req, UserID)
@@ -36,25 +36,25 @@ export class UserService {
 
 
 
-    public LocationUrl = environment.baseUrl + '/TaskLocationMaster/LocationAction'
+    public LocationUrl = environment.baseUrl + 'TaskLocationMaster/LocationAction'
     GetLocationData() {
         var LocationData = this.LocationUrl;
         return this.http.get(LocationData);
     }
 
-    public TaskUrl = environment.baseUrl + '/TaskLocationMaster/TaskAction'
+    public TaskUrl = environment.baseUrl + 'TaskLocationMaster/TaskAction'
     GetTasks() {
         return this.http.get(this.TaskUrl)
     }
 
-    public postData = environment.baseUrl + '/WebUser/PostData'
+    public postData = environment.baseUrl + 'WebUser/PostData'
     PostUserData(User: any) {
         var req = this.postData;
         return this.http.post(req, User, { headers: this.headers })
     }
 
 
-    public EditData = environment.baseUrl + '/WebUser/UpdateData'
+    public EditData = environment.baseUrl + 'WebUser/UpdateData'
     EditUserData(UserData: any) {
         var req = this.EditData;
         return this.http.post(req, UserData)
@@ -63,7 +63,7 @@ export class UserService {
 
     //for all delete data but show on screen
 
-    public deleteData = environment.baseUrl + '/WebUser/DelData'
+    public deleteData = environment.baseUrl + 'WebUser/DelData'
     delData(empData: any) {
         var req = this.deleteData;
         return this.http.post(req, empData);
@@ -71,7 +71,7 @@ export class UserService {
 
     //to show only true value data
     getUsers(): Observable<any[]> {
-        var req = environment.baseUrl + '/WebUser/ShowData'
+        var req = environment.baseUrl + 'WebUser/ShowData'
         return this.http.get<any[]>(req);
     }
 }

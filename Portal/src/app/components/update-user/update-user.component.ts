@@ -24,7 +24,7 @@ export class UpdateUserComponent implements OnInit {
     checkedTask: any;
     tmId: any = ""
     submitted = false;
-
+    emailInvalid: boolean = false;
     constructor(private userService: UserService, private Router: Router, private ActivatedRoute: ActivatedRoute) {
 
     }
@@ -38,13 +38,15 @@ export class UpdateUserComponent implements OnInit {
         this.userService.EditUserData(this.UserUpdate.value).subscribe(response => {
             // console.log(response)
             if (response != null) {
-                alert('successful');
+                alert('User updated succefully');
+
 
             }
             else {
-                alert('not successful')
+                alert('Failed!!')
             }
-            window.location.href = '/user-management';
+            this.Router.navigate(['/user-management']);
+
         });
         if (this.UserUpdate.valid) {
 
@@ -149,5 +151,11 @@ export class UpdateUserComponent implements OnInit {
 
         this.clearForm();
     }
-
+    validateEmail() {
+        const emailInput = this.UserUpdate.get('Email');
+        if (emailInput?.invalid && emailInput?.dirty) {
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/;
+            this.emailInvalid = !emailRegex.test(emailInput.value);
+        }
+    }
 }

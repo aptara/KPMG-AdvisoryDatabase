@@ -34,7 +34,7 @@
     .user-btn{
         @extend .w-auto;
     }
-    #location{
+#location{
         width:200px;
         height: 40px;
         border-radius: 4px;
@@ -42,7 +42,7 @@
         color: rgb(117, 121, 121);
     }
 
-     td, th {
+td, th {
   border: 1px solid #dddddd;
   border-collapse: collapse;
   text-align: center;
