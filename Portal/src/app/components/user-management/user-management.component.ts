@@ -43,13 +43,9 @@ export class UserManagementComponent implements OnInit {
         // });
         this.userService.getUsers().subscribe((data: any[]) => {
             this.UserDAta = data.filter(user => user.IsActive === true);
-            console.log(data)
-            this.gridView = this.UserDAta.map((user: { Location: number; }) => {
-                return {
-                    ...user,
-                    Location: user.Location === 0 ? null : user.Location
-                };
-            });
+            this.gridView = this.UserDAta
+
+
         });
 
     }

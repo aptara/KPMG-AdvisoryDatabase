@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="p-float-label">
-                    <span style="font-size: 15px; font-weight: 500;">First Name<span style="color:red">*</span></span>
+                    <span style="font-size: 15px; font-weight: 500;">Last Name<span style="color:red">*</span></span>
                     <input pInputText id="last-name" formControlName="LastName" />
                     <div *ngIf="UserAdd.controls.LastName.invalid && UserAdd.controls.LastName.touched"
                         class="text-danger">
@@ -32,7 +32,7 @@
                     <span style="font-size: 15px; font-weight: 500;">Email<span style="color:red">*</span></span>
                     <input pInputText id="email-id" formControlName="Email" (input)="validateEmail()" />
                     <div *ngIf="UserAdd.controls.Email.invalid && UserAdd.controls.Email.touched" class="text-danger">
-                        Email name is required*
+                        Email ID is required*
                     </div>
 
                 </div>
