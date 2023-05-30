@@ -50,7 +50,7 @@ export class CourseListComponent implements OnInit {
     }
 
     DeleteCourse(CourseId: any) {
-        debugger
+
         // this.confirmationService.confirm({
         //     message: 'Do you want to delete this record?',
         //     header: 'Delete Confirmation',
@@ -80,7 +80,7 @@ export class CourseListComponent implements OnInit {
     }
 
     downloadExceloffocus() {
-        debugger
+
         this.downloadExcelService.getAllCoursesForDataOfFocus().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
@@ -121,7 +121,7 @@ export class CourseListComponent implements OnInit {
 
     downloadExcelofDeployment() {
 
-        this.downloadExcelService.getAllCoursesForClarizen().subscribe((data: any) => {
+        this.downloadExcelService.getAllCoursesForDataOfDeployment().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
                 const headers = Object.keys(courseData[0]).slice(0, 19);

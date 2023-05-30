@@ -44,7 +44,7 @@ export class UpdateUserComponent implements OnInit {
             else {
                 alert('not successful')
             }
-
+            window.location.href = '/user-management';
         });
         if (this.UserUpdate.valid) {
 
