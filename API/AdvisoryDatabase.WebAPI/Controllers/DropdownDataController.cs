@@ -30,17 +30,23 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         {
             DropdownData dropdownData = new DropdownData();
 
-            AdvisoryDatabase.Business.Controllers.CourseOwnerMasterController courseOwnerController = new AdvisoryDatabase.Business.Controllers.CourseOwnerMasterController();
-            AdvisoryDatabase.Business.Controllers.ProgramTypeMasterController programTypeMasterController = new AdvisoryDatabase.Business.Controllers.ProgramTypeMasterController();
-            AdvisoryDatabase.Business.Controllers.DeliveryTypeMasterController deliveryTypeMasterController = new AdvisoryDatabase.Business.Controllers.DeliveryTypeMasterController();
-            AdvisoryDatabase.Business.Controllers.ProjectStatusMasterController projectStatusMasterController = new AdvisoryDatabase.Business.Controllers.ProjectStatusMasterController();
-            AdvisoryDatabase.Business.Controllers.StatusMasterController statusMasterController = new AdvisoryDatabase.Business.Controllers.StatusMasterController();
+            AdvisoryDatabase.Business.Controllers.CourseDropdownMasterDataController courseDropdownMasterDataController = new CourseDropdownMasterDataController();
 
-            dropdownData.CourseOwnerMasters = courseOwnerController.GetAllCourseOwner();
-            dropdownData.ProgramTypeMasters = programTypeMasterController.GetAllProgramType();
-            dropdownData.DeliveryTypeMasters = deliveryTypeMasterController.GetAllDeliveryType();
-            dropdownData.ProjectStatusMasters = projectStatusMasterController.GetProjectStatus();
-            dropdownData.StatusMasters = statusMasterController.GetStatusData();
+            dropdownData = courseDropdownMasterDataController.GetCourseDropdownMasterData();
+
+            //dropdownData.CourseOwnerMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().CourseOwnerMasters;
+            //dropdownData.ProgramTypeMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ProgramTypeMasters;
+            //dropdownData.DeliveryTypeMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().DeliveryTypeMasters;
+            //dropdownData.ProjectStatusMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ProjectStatusMasters;
+            //dropdownData.StatusMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().StatusMasters;
+            //dropdownData.CompetencyMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().CompetencyMasters;
+            //dropdownData.ServiceGroupMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ServiceGroupMasters;
+            //dropdownData.ServiceLineMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ServiceLineMasters;
+            //dropdownData.ServiceNetworkMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ServiceNetworkMasters;
+            //dropdownData.AudienceLevelMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().AudienceLevelMasters;
+            //dropdownData.FieldOfFieldOfStudyMaster = courseDropdownMasterDataController.GetCourseDropdownMasterData().FieldOfFieldOfStudyMaster;
+            //dropdownData.ProgramKnowledgeLevelMaster = courseDropdownMasterDataController.GetCourseDropdownMasterData().ProgramKnowledgeLevelMaster;
+
 
             return new APIResponse<DropdownData>
             {

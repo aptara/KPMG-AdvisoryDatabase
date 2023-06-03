@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { Message } from "primeng/api";
@@ -7,6 +7,7 @@ import { Course } from 'src/app/domain/Course';
 import { CourseService } from 'src/app/service/course.service';
 import { DropdownDataService } from 'src/app/service/dropdown-data.service';
 import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { NgxDropdownConfig } from 'ngx-select-dropdown';
 
 @Component({
     selector: 'app-course',
@@ -15,27 +16,45 @@ import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
 })
 export class CourseComponent implements OnInit {
     public CourseForm: FormGroup;
+    public ServiceGroupLineNetworkFormGroup: FormGroup;
+    public FieldOfFieldOfStudyFormGroup: FormGroup;
     CourseId: number = 0;
     CourseData: Course | undefined;
-    courseOwnersData: any[] = [];
-    programTypesData: any[] = [];
-    deliveryTypesData: any[] = [];
-    statusData: any[] = [];
-    projectStatusData: any[] = [];
+
+    CourseOwnerMasters: any = [];
+    ProgramTypeMasters: any = [];
+    DeliveryTypeMasters: any = [];
+    ProjectStatusMasters: any = [];
+    StatusMasters: any = [];
+    CompetencyMasters: any = [];
+    ServiceGroupMasters: any = [];
+    ServiceLineMasters: any = [];
+    ServiceNetworkMasters: any = [];
+    AudienceLevelMasters: any = [];
+    FieldOfFieldOfStudyMaster: any = [];
+    ProgramKnowledgeLevelMasterData: any = [];
+    CourseFunctionMasters: any = [];
+
+    IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
     web = { label: 'google', url: 'https://www.google.com' }
-
-    public areaList: Array<string> = [
-        "Boston",
-        "Chicago",
-        "Houston",
-        "Los Angeles",
-        "Miami",
-        "New York",
-        "Philadelphia",
-        "San Francisco",
-        "Seattle",
-    ];
+    config: NgxDropdownConfig = {
+        displayKey: "DisplayName",
+        search: true,
+        height: '200px',
+        placeholder: '',
+        customComparator: function (a: any, b: any): number {
+            //throw new Error('Function not implemented.');
+            return 0;
+        },
+        limitTo: 0,
+        moreText: 'More',
+        noResultsFound: '',
+        searchPlaceholder: '',
+        searchOnKey: '',
+        clearOnSelection: false,
+        inputDirection: ''
+    }
 
     constructor(
         private formBuilder: FormBuilder,
@@ -91,9 +110,6 @@ export class CourseComponent implements OnInit {
             IsRegulatoryOrLegalRequirement: [''],
             Competency: [''],
             Audience: [''],
-            ServiceGroup: [''],
-            ServiceLine: [''],
-            ServiceNetwork: [''],
             AudienceLevel: [''],
             FieldOfStudy: [''],
             DeploymentFiscalYear: [''],
@@ -107,12 +123,54 @@ export class CourseComponent implements OnInit {
             ProgramKnowledgeLevel: [''],
             TargetAudience: [''],
             SpecialNotice: [''],
+            AddFormControl: this.formBuilder.array([]),
+            AddFormFieldOfStudyChild: this.formBuilder.array([])
         })
+
+        this.ServiceGroupLineNetworkFormGroup = this.formBuilder.group({
+            ServiceGroup: ['', Validators.required],
+            ServiceLine: ['', Validators.required],
+            ServiceNetwork: ['', Validators.required],
+        })
+
+        this.FieldOfFieldOfStudyFormGroup = this.formBuilder.group({
+            FieldOfStudy: ['', Validators.required],
+            FieldOfStudyCredit: ['', Validators.required],
+        });
+
+        this.addNewCourseChild();
+        this.addFormFieldOfStudyChildForm();
+    }
+
+    get AddFormControl() {
+        return this.CourseForm.controls["AddFormControl"] as FormArray;
+    }
+
+    removeFormControl(i: any) {
+        this.AddFormControl.removeAt(i);
+    }
+
+    addNewCourseChild() {
+        if (this.AddFormControl.length < 4) {
+            this.AddFormControl.push(this.ServiceGroupLineNetworkFormGroup);
+        }
+    }
+
+    get AddFormFieldOfStudyChild() {
+        return this.CourseForm.controls["AddFormFieldOfStudyChild"] as FormArray;
+    }
+
+    removeFieldOfStudyFormControl(i: any) {
+        this.AddFormFieldOfStudyChild.removeAt(i);
+    }
+
+    addFormFieldOfStudyChildForm() {
+        if (this.AddFormFieldOfStudyChild.length < 4) {
+            this.AddFormFieldOfStudyChild.push(this.FieldOfFieldOfStudyFormGroup);
+        }
     }
 
     ngOnInit() {
-
-
         this.getDropdownData();
     }
 
@@ -149,10 +207,10 @@ export class CourseComponent implements OnInit {
             SubjectMatterProfessional: this.CourseData?.SubjectMatterProfessional,
             Status: this.CourseData?.Status,
 
-            CourseOwnerID: this.courseOwnersData.find(x => x.Id === this.CourseData?.CourseOwnerID),
-            ProgramTypeID: this.programTypesData.find(x => x.Id === this.CourseData?.ProgramTypeID),
-            DeliveryTypeID: this.deliveryTypesData.find(x => x.Id === this.CourseData?.DeliveryTypeID),
-            ProjectStatusID: this.projectStatusData.find(x => x.Id === this.CourseData?.ProgramTypeID),
+            CourseOwnerID: this.CourseData?.CourseOwnerID,
+            ProgramTypeID: this.CourseData?.ProgramTypeID,
+            DeliveryTypeID: this.CourseData?.DeliveryTypeID,
+            ProjectStatusID: this.CourseData?.ProgramTypeID,
             Collateral: this.collaterals.find(x => x.value === this.CourseData?.Collateral),
             ServiceGroupLineNetwork: 0,
             SubjectMatterProfessionals: 0,
@@ -197,11 +255,19 @@ export class CourseComponent implements OnInit {
             if (data.Success) {
                 console.log(data.Data)
                 var dropdowndata: any = data?.Data
-                this.courseOwnersData = dropdowndata?.CourseOwnerMasters;
-                this.programTypesData = dropdowndata?.ProgramTypeMasters;
-                this.deliveryTypesData = dropdowndata?.DeliveryTypeMasters;
-                this.statusData = dropdowndata?.StatusMasters;
-                this.projectStatusData = dropdowndata?.ProjectStatusMasters;
+                this.CourseOwnerMasters = dropdowndata.CourseOwnerMasters
+                this.ProgramTypeMasters = dropdowndata.ProgramTypeMasters
+                this.DeliveryTypeMasters = dropdowndata.DeliveryTypeMasters
+                this.ProjectStatusMasters = dropdowndata.ProjectStatusMasters
+                this.StatusMasters = dropdowndata.StatusMasters
+                this.CompetencyMasters = dropdowndata.CompetencyMasters
+                this.ServiceGroupMasters = dropdowndata.ServiceGroupMasters
+                this.ServiceLineMasters = dropdowndata.ServiceLineMasters
+                this.ServiceNetworkMasters = dropdowndata.ServiceNetworkMasters
+                this.AudienceLevelMasters = dropdowndata.AudienceLevelMasters
+                this.FieldOfFieldOfStudyMaster = dropdowndata.FieldOfFieldOfStudyMaster
+                this.ProgramKnowledgeLevelMasterData = dropdowndata.ProgramKnowledgeLevelMaster
+                this.CourseFunctionMasters = dropdowndata.CourseFunctionMasters
             }
             this.getCourseDataForEdit();
         });
@@ -211,12 +277,12 @@ export class CourseComponent implements OnInit {
         var saveCourse: any = this.CourseForm.value;
         debugger
         saveCourse.CourseMasterID = this.CourseId;
-        saveCourse.CourseOwnerID = this.courseOwnersData.find(x => x.Id === saveCourse.CourseOwnerID?.Id)?.Id;
-        saveCourse.ProgramTypeID = this.programTypesData.find(x => x.Id === saveCourse.ProgramTypeID?.Id)?.Id;
-        saveCourse.DeliveryTypeID = this.deliveryTypesData.find(x => x.Id === saveCourse.DeliveryTypeID?.Id)?.Id;
-        saveCourse.ProjectStatusID = this.projectStatusData.find(x => x.Id === saveCourse.ProjectStatusID?.Id)?.Id;
-        saveCourse.Collateral = this.collaterals.find(x => x.value === saveCourse.Collateral?.value)?.value
-        saveCourse.Status = this.statusData.find(x => x.Id === saveCourse.Status?.Id)?.Id;
+        saveCourse.CourseOwnerID = saveCourse.CourseOwnerID;
+        saveCourse.ProgramTypeID = saveCourse.ProgramTypeID;
+        saveCourse.DeliveryTypeID = saveCourse.DeliveryTypeID;
+        saveCourse.ProjectStatusID = saveCourse.ProjectStatusID;
+        saveCourse.Collateral = saveCourse.Collateral?.value
+        saveCourse.Status = saveCourse.Status?.Id;
 
         console.log(saveCourse)
         return saveCourse;

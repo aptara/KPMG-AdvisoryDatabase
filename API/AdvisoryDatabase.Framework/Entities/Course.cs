@@ -72,6 +72,8 @@ namespace AdvisoryDatabase.Framework.Entities
         public string TargetAudience { get; set; }
         public int SpecialNotice { get; set; }
 
+        public string DeploymentFacilitationConsiderations { get; set; }
+
 
     }
 }

@@ -55,6 +55,7 @@ import { CourseComponent } from './components/course/course.component';
 import { MessageService } from 'primeng/api';
 import { CourseService } from './service/course.service';
 import { DownloadExcelService } from './service/service/download-excel.service';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 @NgModule({
     declarations: [
         AppComponent,
@@ -106,6 +107,9 @@ import { DownloadExcelService } from './service/service/download-excel.service';
         FieldsetModule,
         CalendarModule,
         SelectButtonModule,
+        SelectDropDownModule,
+        //BsDatepickerModule.forRoot(),
+        //DatepickerModule.forRoot(),
         RouterModule.forRoot
             ([
                 { path: "add-user", component: AddUserComponent },

@@ -3,272 +3,381 @@
     <form #userForm="ngForm" (ngSubmit)="onSubmitCourse()" [formGroup]="CourseForm">
         <div class="panel panel-default">
             <div class="panel-heading">Course Details</div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="CourseID">Course Name <span style="color:red;">*</span></label>
-                    <input type="text" class="form-control" placeholder="Course Name " formControlName="CourseName"
-                        id="CourseName">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="CourseID">Course Name <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" formControlName="CourseName" id="CourseName">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="TotalCPECredit">Total Cpe Credit <span style="color:red;">*</span></label>
-                    <input type="number" class="form-control" placeholder="Total Cpe Credit"
-                        formControlName="TotalCPECredit" id="TotalCPECredit">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['TotalCPECredit'].valid && CourseForm.controls['TotalCPECredit'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.required">
-                            Total Cpe Credit is reuired.
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="TotalCPECredit">Total Cpe Credit <span style="color:red;">*</span></label>
+                        <input type="number" class="form-control" formControlName="TotalCPECredit" id="TotalCPECredit">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['TotalCPECredit'].valid && CourseForm.controls['TotalCPECredit'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.required">
+                                Total Cpe Credit is reuired.
+                            </div>
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.pattern">
+                                Total Cpe Credit should be Alpha Numeric.
+                            </div>
                         </div>
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.pattern">
-                            Total Cpe Credit should be Alpha Numeric.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Overview">Course Overview/Objectives</label>
+                        <textarea type="test" class="form-control" formControlName="Overview" id="Overview"></textarea>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['Overview'].valid && CourseForm.controls['Overview'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Overview?.errors?.required">
+                                Overview is reuired.
+                            </div>
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Overview?.errors?.pattern">
+                                Overview should be Alpha Numeric.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Objectives">Objectives</label>
+                        <textarea type="test" class="form-control" formControlName="Objectives"
+                            id="Objectives"></textarea>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['Objectives'].valid && CourseForm.controls['Objectives'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Objectives?.errors?.required">
+                                Objectives is reuired.
+                            </div>
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Objectives?.errors?.pattern">
+                                Objectives should be Alpha Numeric.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="Overview">Overview</label>
-                    <textarea type="test" class="form-control" placeholder="Overview" formControlName="Overview"
-                        id="Overview"></textarea>
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['Overview'].valid && CourseForm.controls['Overview'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Overview?.errors?.required">
-                            Overview is reuired.
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="PrerequisiteCourseID">Prerequisite CourseId</label>
+                        <input type="text" class="form-control" formControlName="PrerequisiteCourseID"
+                            id="PrerequisiteCourseID">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['PrerequisiteCourseID'].valid && CourseForm.controls['PrerequisiteCourseID'].dirty">
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.required">
+                                Prerequisite CourseId is reuired.
+                            </div>
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.pattern">
+                                Prerequisite CourseId should be Alpha Numeric.
+                            </div>
                         </div>
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Overview?.errors?.pattern">
-                            Overview should be Alpha Numeric.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="EquivalentCourseID">Equivalent Course ID</label>
+                        <input type="text" class="form-control" formControlName="EquivalentCourseID"
+                            id="EquivalentCourseID">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['EquivalentCourseID'].valid && CourseForm.controls['EquivalentCourseID'].dirty">
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.EquivalentCourseID?.errors?.required">
+                                Equivalent Course ID is reuired.
+                            </div>
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.EquivalentCourseID?.errors?.pattern">
+                                Equivalent Course ID should be Alpha Numeric.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Competency">Competency</label>
+                        <ngx-select-dropdown [config]="config" formControlName="Competency"
+                            [options]="CompetencyMasters">
+                        </ngx-select-dropdown>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['Competency'].valid && CourseForm.controls['Competency'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Competency?.errors?.required">
+                                Project Status is reuired.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="AudienceLevel">Audience Level</label>
+                        <ngx-select-dropdown [config]="config" formControlName="AudienceLevel" [multiple]="true"
+                            [options]="AudienceLevelMasters">
+                        </ngx-select-dropdown>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['AudienceLevel'].valid && CourseForm.controls['AudienceLevel'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.AudienceLevel?.errors?.required">
+                                Project Status is reuired.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="Objectives">Objectives</label>
-                    <textarea type="test" class="form-control" placeholder="Objectives" formControlName="Objectives"
-                        id="Objectives"></textarea>
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['Objectives'].valid && CourseForm.controls['Objectives'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Objectives?.errors?.required">
-                            Objectives is reuired.
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="DeploymentFiscalYear">Deployment Fiscal Year</label>
+                        <input type="text" class="form-control" formControlName="DeploymentFiscalYear"
+                            id="DeploymentFiscalYear">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['DeploymentFiscalYear'].valid && CourseForm.controls['DeploymentFiscalYear'].dirty">
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.DeploymentFiscalYear?.errors?.required">
+                                Project Status is reuired.
+                            </div>
                         </div>
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Objectives?.errors?.pattern">
-                            Objectives should be Alpha Numeric.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Function">Function</label>
+                        <ngx-select-dropdown [config]="config" formControlName="AudienceLevel" [multiple]="true"
+                            [options]="CourseFunctionMasters">
+                        </ngx-select-dropdown>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['Function'].valid && CourseForm.controls['Function'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Function?.errors?.required">
+                                Project Status is reuired.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="DevelopmentYear">Development Year</label>
+                        <input type="text" class="form-control" formControlName="DevelopmentYear" id="DevelopmentYear">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['DevelopmentYear'].valid && CourseForm.controls['DevelopmentYear'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.DevelopmentYear?.errors?.required">
+                                Project Status is reuired.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="AudienceType">Audience Type 1</label>
+                        <input type="text" class="form-control" formControlName="AudienceType" id="AudienceType">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['AudienceType'].valid && CourseForm.controls['AudienceType'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.AudienceType?.errors?.required">
+                                Project Status is reuired.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="PrerequisiteCourseID">Prerequisite CourseId</label>
-                    <input type="text" class="form-control" placeholder="Prerequisite CourseId"
-                        formControlName="PrerequisiteCourseID" id="PrerequisiteCourseID">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['PrerequisiteCourseID'].valid && CourseForm.controls['PrerequisiteCourseID'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.required">
-                            Prerequisite CourseId is reuired.
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="AudienceType">Audience Type 2</label>
+                        <input type="text" class="form-control" formControlName="AudienceType" id="AudienceType">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['AudienceType'].valid && CourseForm.controls['AudienceType'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.AudienceType?.errors?.required">
+                                Project Status is reuired.
+                            </div>
                         </div>
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.pattern">
-                            Prerequisite CourseId should be Alpha Numeric.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="ProgramKnowledgeLevel">Program Knowledge Level</label>
+                        <ngx-select-dropdown [config]="config" formControlName="AudienceLevel"
+                            [options]="ProgramKnowledgeLevelMasterData">
+                        </ngx-select-dropdown>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['ProgramKnowledgeLevel'].valid && CourseForm.controls['ProgramKnowledgeLevel'].dirty">
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.ProgramKnowledgeLevel?.errors?.required">
+                                Program Knowledge Level is reuired.
+                            </div>
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.ProgramKnowledgeLevel?.errors?.pattern">
+                                Program Knowledge Level should be Alpha Numeric.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="TargetAudience">Target Audience</label>
+                        <input type="text" class="form-control" formControlName="TargetAudience" id="TargetAudience">
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['TargetAudience'].valid && CourseForm.controls['TargetAudience'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.TargetAudience?.errors?.required">
+                                Project Status is reuired.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="EquivalentCourseID">Equivalent Course ID</label>
-                    <input type="text" class="form-control" placeholder="Equivalent Course ID"
-                        formControlName="EquivalentCourseID" id="EquivalentCourseID">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['EquivalentCourseID'].valid && CourseForm.controls['EquivalentCourseID'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.EquivalentCourseID?.errors?.required">
-                            Equivalent Course ID is reuired.
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="SpecialNotice">Skill</label>
+                        <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID" [multiple]="true"
+                            [options]="ProgramTypeMasters"></ngx-select-dropdown>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['SpecialNotice'].valid && CourseForm.controls['SpecialNotice'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.required">
+                                First Delivery Date is reuired.
+                            </div>
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.pattern">
+                                First Delivery Date should be Alpha Numeric.
+                            </div>
                         </div>
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.EquivalentCourseID?.errors?.pattern">
-                            Equivalent Course ID should be Alpha Numeric.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="SpecialNotice">Industry</label>
+                        <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID" [multiple]="true"
+                            [options]="ProgramTypeMasters">
+                        </ngx-select-dropdown>
+                        <div class="message-error"
+                            *ngIf="!CourseForm.controls['SpecialNotice'].valid && CourseForm.controls['SpecialNotice'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.required">
+                                First Delivery Date is reuired.
+                            </div>
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.pattern">
+                                First Delivery Date should be Alpha Numeric.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <label for="Competency">Competency</label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist class="form-control" [valuePrimitive]="false" [data]="areaList">
-                    </kendo-dropdownlist> -->
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['Competency'].valid && CourseForm.controls['Competency'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Competency?.errors?.required">
-                            Project Status is reuired.
-                        </div>
+                    <label for="SpecialNotice">Special Notice</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                        <label class="form-check-label" for="flexRadioDefault2">This course
+                            awards CPE credit. </label>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="ServiceGroup">Service Group</label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist class="form-control" [data]="areaList" [valuePrimitive]="false"
-                        formControlName="ServiceGroup">
-                    </kendo-dropdownlist> -->
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['ServiceGroup'].valid && CourseForm.controls['ServiceGroup'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceGroup?.errors?.required">
-                            Project Status is reuired.
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                        <label class="form-check-label" for="flexRadioDefault2"> CPE credit will be awarded for this
+                            self-study upon successful completion of the content and passing the exam with a
+                            grade of 70 or higher and must be within one year of enrollment.
+                        </label>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="ServiceLine">Service Line</label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist class="form-control" [data]="areaList" [valuePrimitive]="false"
-                        formControlName="ServiceLine">
-                    </kendo-dropdownlist> -->
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['ServiceLine'].valid && CourseForm.controls['ServiceLine'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceLine?.errors?.required">
-                            Project Status is reuired.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="ServiceNetwork">Service Network</label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist class="form-control" [valuePrimitive]="false" [data]="areaList"
-                        formControlName="ServiceNetwork">
-                    </kendo-dropdownlist> -->
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['ServiceNetwork'].valid && CourseForm.controls['ServiceNetwork'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNetwork?.errors?.required">
-                            Project Status is reuired.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="AudienceLevel">Audience Level</label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist class="form-control" [data]="areaList" [valuePrimitive]="false"
-                        formControlName="AudienceLevel">
-                    </kendo-dropdownlist> -->
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['AudienceLevel'].valid && CourseForm.controls['AudienceLevel'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.AudienceLevel?.errors?.required">
-                            Project Status is reuired.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="DeploymentFiscalYear">Deployment Fiscal Year</label>
-                    <input type="text" class="form-control" formControlName="DeploymentFiscalYear"
-                        id="DeploymentFiscalYear">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['DeploymentFiscalYear'].valid && CourseForm.controls['DeploymentFiscalYear'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.DeploymentFiscalYear?.errors?.required">
-                            Project Status is reuired.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="Function">Function</label>
-                    <input type="text" class="form-control" formControlName="Function" id="Function">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['Function'].valid && CourseForm.controls['Function'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Function?.errors?.required">
-                            Project Status is reuired.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="DevelopmentYear">Deployment Fiscal Year</label>
-                    <input type="text" class="form-control" formControlName="DevelopmentYear" id="DevelopmentYear">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['DevelopmentYear'].valid && CourseForm.controls['DevelopmentYear'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.DevelopmentYear?.errors?.required">
-                            Project Status is reuired.
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                        <label class="form-check-label" for="flexRadioDefault2"> This course does not award CPE
+                            credit.
+                        </label>
                     </div>
                 </div>
             </div>
             <div class="clear"></div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="AudienceType">Audience Type</label>
-                    <input type="text" class="form-control" formControlName="AudienceType" id="AudienceType">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['AudienceType'].valid && CourseForm.controls['AudienceType'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.AudienceType?.errors?.required">
-                            Project Status is reuired.
+            <ng-container formArrayName="AddFormControl">
+                <ng-container *ngFor="let adminForm of AddFormControl?.controls; let index = index">
+                    <div class="col-md-12" [formGroupName]="index">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="ServiceGroup">Service Group {{ index + 1}}</label>
+                                <ngx-select-dropdown [config]="config" formControlName="ServiceGroup"
+                                    [options]="ServiceGroupMasters">
+                                </ngx-select-dropdown>
+                                <!-- <div class="message-error"
+                            *ngIf="!CourseForm.controls['ServiceGroup'].valid && CourseForm.controls['ServiceGroup'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceGroup?.errors?.required">
+                                Project Status is reuired.
+                            </div>
+                        </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="ServiceLine">Service Line {{ index + 1}}</label>
+                                <ngx-select-dropdown [config]="config" formControlName="ServiceLine"
+                                    [options]="ServiceLineMasters">
+                                </ngx-select-dropdown>
+                                <!-- <div class="message-error"
+                            *ngIf="!CourseForm.controls['ServiceLine'].valid && CourseForm.controls['ServiceLine'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceLine?.errors?.required">
+                                Project Status is reuired.
+                            </div>
+                        </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="ServiceNetwork">Service Network {{ index + 1}}</label>
+                                <ngx-select-dropdown [config]="config" formControlName="ServiceNetwork"
+                                    [options]="ServiceNetworkMasters">
+                                </ngx-select-dropdown>
+                                <!-- <div class="message-error"
+                            *ngIf="!CourseForm.controls['ServiceNetwork'].valid && CourseForm.controls['ServiceNetwork'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNetwork?.errors?.required">
+                                Project Status is reuired.
+                            </div>
+                        </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div *ngIf="index != 0">
+                                <button type="button" class="btn btn-default" (click)="removeFormControl(index)">
+                                    <i class="pi pi-minus"></i>
+                                </button>
+                            </div>
+                            <div *ngIf="index == 0">
+                                <button type="button" class="btn btn-default" (click)="addNewCourseChild()">
+                                    <i class="pi pi-plus"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="ProgramKnowledgeLevel">Program Knowledge Level</label>
-                    <kendo-datepicker class="form-control" placeholder="First Delivery Date"
-                        formControlName="ProgramKnowledgeLevel" id="ProgramKnowledgeLevel"></kendo-datepicker>
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['ProgramKnowledgeLevel'].valid && CourseForm.controls['ProgramKnowledgeLevel'].dirty">
-                        <div class="error-tooltips"
-                            *ngIf="CourseForm.controls?.ProgramKnowledgeLevel?.errors?.required">
-                            First Delivery Date is reuired.
+                </ng-container>
+            </ng-container>
+            <ng-container formArrayName="AddFormFieldOfStudyChild">
+                <ng-container *ngFor="let adminForm of AddFormFieldOfStudyChild?.controls; let index = index">
+                    <div class="col-md-12" [formGroupName]="index">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="SpecialNotice">Field of Study</label>
+                                <ngx-select-dropdown [config]="config" formControlName="FieldOfStudy"
+                                    [options]="FieldOfFieldOfStudyMaster">
+                                </ngx-select-dropdown>
+                            </div>
                         </div>
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.ProgramKnowledgeLevel?.errors?.pattern">
-                            First Delivery Date should be Alpha Numeric.
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="SpecialNotice">Field of Study Credit</label>
+                                <input type="text" class="form-control" formControlName="FieldOfStudyCredit"
+                                    id="TargetAudience">
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="TargetAudience">Audience Type</label>
-                    <input type="text" class="form-control" formControlName="TargetAudience" id="TargetAudience">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['TargetAudience'].valid && CourseForm.controls['TargetAudience'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.TargetAudience?.errors?.required">
-                            Project Status is reuired.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="SpecialNotice">Special Notice</label>
-                    <kendo-datepicker class="form-control" placeholder="Special Notice" formControlName="SpecialNotice"
-                        id="SpecialNotice"></kendo-datepicker>
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['SpecialNotice'].valid && CourseForm.controls['SpecialNotice'].dirty">
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.required">
-                            First Delivery Date is reuired.
-                        </div>
-                        <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.pattern">
-                            First Delivery Date should be Alpha Numeric.
+                        <div class="col-md-3">
+                            <div *ngIf="index != 0">
+                                <button type="button" class="btn btn-default"
+                                    (click)="removeFieldOfStudyFormControl(index)">
+                                    <i class="pi pi-minus"></i>
+                                </button>
+                            </div>
+                            <div *ngIf="index == 0">
+                                <button type="button" class="btn btn-default" (click)="addFormFieldOfStudyChildForm()">
+                                    <i class="pi pi-plus"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </ng-container>
+
+            </ng-container>
+
+
         </div>
         <div class="clear"></div>
         <div class="panel panel-default">
@@ -276,8 +385,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="BusinessSponsor">Input Business Sponsor <span style="color:red;">*</span></label>
-                    <input type="text" class="form-control" placeholder="Input Business Sponsor"
-                        formControlName="BusinessSponsor" id="BusinessSponsor">
+                    <input type="text" class="form-control" formControlName="BusinessSponsor" id="BusinessSponsor">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['BusinessSponsor'].valid && CourseForm.controls['BusinessSponsor'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.BusinessSponsor?.errors?.required">
@@ -292,8 +400,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="Vendor">Vendor(s)</label>
-                    <input type="text" class="form-control" placeholder="Vendor(s)" formControlName="Vendor"
-                        id="Vendor">
+                    <input type="text" class="form-control" formControlName="Vendor" id="Vendor">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['Vendor'].valid && CourseForm.controls['Vendor'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.required">
@@ -308,8 +415,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="ServiceNowID">Service ID <span style="color:red;">*</span></label>
-                    <input type="text" class="form-control" placeholder="Service Now ID" formControlName="ServiceNowID"
-                        id="ServiceNowID">
+                    <input type="text" class="form-control" formControlName="ServiceNowID" id="ServiceNowID">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['ServiceNowID'].valid && CourseForm.controls['ServiceNowID'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.required">
@@ -317,6 +423,25 @@
                         </div>
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.pattern">
                             Service ID should be Alpha Numeric.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="SubjectMatterProfessional">Subject Matter Professional</label>
+                    <input type="text" class="form-control" formControlName="SubjectMatterProfessional"
+                        id="SubjectMatterProfessional">
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['SubjectMatterProfessional'].valid && CourseForm.controls['SubjectMatterProfessional'].dirty">
+                        <div class="error-tooltips"
+                            *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.required">
+                            Subject Matter Professional is reuired.
+                        </div>
+                        <div class="error-tooltips"
+                            *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.pattern">
+                            Subject Matter Professional should be Alpha Numeric.
                         </div>
                     </div>
                 </div>
@@ -340,24 +465,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="SubjectMatterProfessional">Subject Matter Professional</label>
-                    <input type="text" class="form-control" placeholder="Subject Matter Professional"
-                        formControlName="SubjectMatterProfessional" id="SubjectMatterProfessional">
-                    <div class="message-error"
-                        *ngIf="!CourseForm.controls['SubjectMatterProfessional'].valid && CourseForm.controls['SubjectMatterProfessional'].dirty">
-                        <div class="error-tooltips"
-                            *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.required">
-                            Subject Matter Professional is reuired.
-                        </div>
-                        <div class="error-tooltips"
-                            *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.pattern">
-                            Subject Matter Professional should be Alpha Numeric.
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="clear"></div>
@@ -365,9 +472,9 @@
             <div class="panel-heading">Business Need</div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="Descriptions">Business Description <span style="color:red;">*</span></label>
-                    <input type="text" class="form-control" placeholder="Business Description"
-                        formControlName="Descriptions" id="Descriptions">
+                    <label for="Descriptions">Please provide a description/the business need related to this request
+                        <span style="color:red;">*</span></label>
+                    <input type="text" class="form-control" formControlName="Descriptions" id="Descriptions">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['Descriptions'].valid && CourseForm.controls['Descriptions'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.required">
@@ -381,13 +488,10 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="IsRegulatoryOrLegalRequirement">Delivery Type</label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist class="form-control" [valuePrimitive]="false" [data]="areaList"
-                        formControlName="IsRegulatoryOrLegalRequirement">
-                    </kendo-dropdownlist> -->
+                    <label for="IsRegulatoryOrLegalRequirement">Is this a regulatory or legal requirement (e.g.
+                        audit-assist training, FINRA compliance, etc.)?</label>
+                    <ngx-select-dropdown [config]="config" formControlName="IsRegulatoryOrLegalRequirement"
+                        [options]="IsRegulatoryOrLegalRequirementDropdownData"></ngx-select-dropdown>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['IsRegulatoryOrLegalRequirement'].valid && CourseForm.controls['IsRegulatoryOrLegalRequirement'].dirty">
                         <div class="error-tooltips"
@@ -404,12 +508,9 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="CourseOwnerID">Program Type <span style="color:red;">*</span></label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist [data]="programTypesData" [valuePrimitive]="true" class="form-control"
-                        textField="ProgramType" valueField="Id" formControlName="ProgramTypeID">
-                    </kendo-dropdownlist> -->
+                    <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID"
+                        [options]="ProgramTypeMasters">
+                    </ngx-select-dropdown>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['ProgramTypeID'].valid && CourseForm.controls['ProgramTypeID'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.ProgramTypeID?.errors?.required">
@@ -421,12 +522,9 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="CourseOwnerID">Delivery Type <span style="color:red;">*</span></label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist [data]="deliveryTypesData" [valuePrimitive]="true" class="form-control"
-                        textField="DeliveryType" valueField="Id" formControlName="DeliveryTypeID">
-                    </kendo-dropdownlist> -->
+                    <ngx-select-dropdown [config]="config" formControlName="DeliveryTypeID"
+                        [options]="DeliveryTypeMasters">
+                    </ngx-select-dropdown>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['DeliveryTypeID'].valid && CourseForm.controls['DeliveryTypeID'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.DeliveryTypeID?.errors?.required">
@@ -438,8 +536,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="Descriptions">Course Input Materials</label>
-                    <input type="text" class="form-control" placeholder="Course Input Materials"
-                        formControlName="Descriptions" id="Descriptions">
+                    <input type="text" class="form-control" formControlName="Descriptions" id="Descriptions">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['Materials'].valid && CourseForm.controls['Materials'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.Materials?.errors?.required">
@@ -454,8 +551,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="RoomSetUpComments">Room Set Up Comments</label>
-                    <textarea class="form-control" placeholder="Room Set Up Comments"
-                        formControlName="RoomSetUpComments" id="RoomSetUpComments"></textarea>
+                    <textarea class="form-control" formControlName="RoomSetUpComments"
+                        id="RoomSetUpComments"></textarea>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['RoomSetUpComments'].valid && CourseForm.controls['RoomSetUpComments'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.RoomSetUpComments?.errors?.required">
@@ -470,8 +567,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="MaximumAttendeeCount">Maximum Attendee Count</label>
-                    <input type="number" class="form-control" placeholder="Maximum Attendee Count"
-                        formControlName="MaximumAttendeeCount" id="MaximumAttendeeCount">
+                    <input type="number" class="form-control" formControlName="MaximumAttendeeCount"
+                        id="MaximumAttendeeCount">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['MaximumAttendeeCount'].valid && CourseForm.controls['MaximumAttendeeCount'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.MaximumAttendeeCount?.errors?.required">
@@ -486,8 +583,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="MinimumAttendeeCount">Minimum Attendee Count</label>
-                    <input type="number" class="form-control" placeholder="Minimum Attendee Count"
-                        formControlName="MinimumAttendeeCount" id="MinimumAttendeeCount">
+                    <input type="number" class="form-control" formControlName="MinimumAttendeeCount"
+                        id="MinimumAttendeeCount">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['MinimumAttendeeCount'].valid && CourseForm.controls['MinimumAttendeeCount'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.MinimumAttendeeCount?.errors?.required">
@@ -502,8 +599,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="MaximumAttendeeWaitlist">Maximum Attendee Waitlist</label>
-                    <input type="number" class="form-control" placeholder="Maximum Attendee Waitlist"
-                        formControlName="MaximumAttendeeWaitlist" id="MaximumAttendeeWaitlist">
+                    <input type="number" class="form-control" formControlName="MaximumAttendeeWaitlist"
+                        id="MaximumAttendeeWaitlist">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['MaximumAttendeeWaitlist'].valid && CourseForm.controls['MaximumAttendeeWaitlist'].dirty">
                         <div class="error-tooltips"
@@ -520,8 +617,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="FirstDeliveryDate">First Delivery Date<span style="color:red;">*</span></label>
-                    <kendo-datepicker class="form-control" placeholder="First Delivery Date"
-                        formControlName="FirstDeliveryDate" id="FirstDeliveryDate"></kendo-datepicker>
+                    <kendo-datepicker class="form-control" formControlName="FirstDeliveryDate" id="FirstDeliveryDate">
+                    </kendo-datepicker>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['FirstDeliveryDate'].valid && CourseForm.controls['FirstDeliveryDate'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.FirstDeliveryDate?.errors?.required">
@@ -537,8 +634,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="LevelofEffort">Level Of Effort</label>
-                    <input type="text" class="form-control" placeholder="Level Of Effort"
-                        formControlName="LevelofEffort" id="LevelofEffort">
+                    <input type="text" class="form-control" formControlName="LevelofEffort" id="LevelofEffort">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['LevelofEffort'].valid && CourseForm.controls['LevelofEffort'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.LevelofEffort?.errors?.required">
@@ -553,8 +649,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="Duration">Duration</label>
-                    <input type="text" class="form-control" placeholder="Duration" formControlName="Duration"
-                        id="Duration">
+                    <input type="text" class="form-control" formControlName="Duration" id="Duration">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['Duration'].valid && CourseForm.controls['Duration'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
@@ -583,15 +678,29 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="Duration">Deployment/Facilitation Considerations</label>
+                    <input type="text" class="form-control" formControlName="Duration" id="Duration">
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['Duration'].valid && CourseForm.controls['Duration'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
+                            Duration is reuired.
+                        </div>
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.pattern">
+                            Duration should be Alpha Numeric.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="clear"></div>
         <div class="panel panel-default">
             <div class="panel-heading">Project Team</div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="LDIntakeOwner">L&D-Intake-Owner <span style="color:red;">*</span></label>
-                    <input type="text" class="form-control" placeholder="L&D-Intake-Owner "
-                        formControlName="LDIntakeOwner" id="LDIntakeOwner">
+                    <label for="LDIntakeOwner">L&D Intake Owner <span style="color:red;">*</span></label>
+                    <input type="text" class="form-control" formControlName="LDIntakeOwner" id="LDIntakeOwner">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['LDIntakeOwner'].valid && CourseForm.controls['LDIntakeOwner'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.required">
@@ -606,8 +715,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="ProjectManagerContact">Project Manager Contact</label>
-                    <input type="text" class="form-control" placeholder="Project Manager Contact"
-                        formControlName="ProjectManagerContact" id="ProjectManagerContact">
+                    <input type="text" class="form-control" formControlName="ProjectManagerContact"
+                        id="ProjectManagerContact">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['ProjectManagerContact'].valid && CourseForm.controls['ProjectManagerContact'].dirty">
                         <div class="error-tooltips"
@@ -623,8 +732,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="InstructionalDesigner">Instructional Designer</label>
-                    <input type="text" class="form-control" placeholder="Instructional Designer"
-                        formControlName="InstructionalDesigner" id="InstructionalDesigner">
+                    <input type="text" class="form-control" formControlName="InstructionalDesigner"
+                        id="InstructionalDesigner">
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['InstructionalDesigner'].valid && CourseForm.controls['InstructionalDesigner'].dirty">
                         <div class="error-tooltips"
@@ -637,15 +746,27 @@
                     </div>
                 </div>
             </div>
+            <div class="clear"></div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="CourseOwnerID">Course Owner</label>
-                    <select class="form-control">
-                        <option>Select</option>
-                    </select>
-                    <!-- <kendo-dropdownlist [data]="courseOwnersData" [valuePrimitive]="true" class="form-control"
-                        textField="CourseOwner" valueField="Id" formControlName="CourseOwnerID">
-                    </kendo-dropdownlist> -->
+                    <label for="CourseOwnerID">Course Owner 1</label>
+                    <ngx-select-dropdown [config]="config" formControlName="CourseOwnerID"
+                        [options]="CourseOwnerMasters">
+                    </ngx-select-dropdown>
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['CourseOwnerID'].valid && CourseForm.controls['CourseOwnerID'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseOwnerID?.errors?.required">
+                            Course Owner is reuired.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="CourseOwnerID">Course Owner 2</label>
+                    <ngx-select-dropdown [config]="config" formControlName="CourseOwnerID"
+                        [options]="CourseOwnerMasters">
+                    </ngx-select-dropdown>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['CourseOwnerID'].valid && CourseForm.controls['CourseOwnerID'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseOwnerID?.errors?.required">
@@ -661,8 +782,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="CourseNotes">Course Notes/ Additional Information</label>
-                    <textarea class="form-control" placeholder="Instructional Designer" formControlName="CourseNotes"
-                        id="CourseNotes"> </textarea>
+                    <textarea class="form-control" formControlName="CourseNotes" id="CourseNotes"> </textarea>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['CourseNotes'].valid && CourseForm.controls['CourseNotes'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseNotes?.errors?.required">

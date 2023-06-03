@@ -58,7 +58,6 @@
               "src/assets/scss/primeng-kpmg-blue-theme.scss",
               "src/assets/scss/scrollbar-kpmg-blue.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@progress/kendo-theme-default/dist/all.css",
               "src/styles.scss"
             ],
             "scripts": [
