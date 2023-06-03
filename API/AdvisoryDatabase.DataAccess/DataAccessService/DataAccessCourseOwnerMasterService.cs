@@ -38,7 +38,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new CourseOwnerMaster
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<Int32>("CourseOwnerId"),
                          CourseOwner = row.ReadString("CourseOwner"),
                          
                      }).ToList();

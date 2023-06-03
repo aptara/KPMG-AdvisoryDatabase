@@ -52,23 +52,18 @@
               "src/assets/templates"
             ],
             "styles": [
-              {
-                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
-              },
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "src/assets/scss/primeng-kpmg-blue-theme.scss",
               "src/assets/scss/scrollbar-kpmg-blue.scss",
-              "src/styles.scss",
-
-                "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
             ],
             "scripts": [
                 "node_modules/jquery/dist/jquery.min.js",
                 "node_modules/popper.js/dist/umd/popper.min.js",
                 "node_modules/bootstrap/dist/js/bootstrap.min.js"
-
             ],
             "allowedCommonJsDependencies": [
               "file-saver"

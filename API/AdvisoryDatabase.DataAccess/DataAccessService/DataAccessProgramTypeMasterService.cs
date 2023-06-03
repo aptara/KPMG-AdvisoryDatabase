@@ -38,7 +38,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new ProgramTypeMaster
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<Int32>("ProgramTypeId"),
                           ProgramType = row.ReadString("ProgramType"),
                          
                      }).ToList();
@@ -50,7 +50,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         {
             return new ProgramTypeMaster
             {
-                Id = data.Read<Int32>("Id"),
+                Id = data.Read<Int32>("ProgramTypeId"),
                 ProgramType = data.ReadString("ProgramType"),
             };
         }

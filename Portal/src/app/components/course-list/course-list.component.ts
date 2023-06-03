@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
+import { DataBindingDirective } from '@progress/kendo-angular-grid';
 import { Table } from 'primeng/table';
 import { Course } from 'src/app/domain/Course';
 import { CourseService } from 'src/app/service/course.service';
 import { DownloadExcelService } from 'src/app/service/service/download-excel.service';
+import { State, process } from "@progress/kendo-data-query";
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -17,12 +18,12 @@ export class CourseListComponent implements OnInit {
     statuses: any = [];
     loading: boolean = false;
     activityValues: number[] = [0, 100];
+    @ViewChild(DataBindingDirective) dataBinding!: DataBindingDirective;
 
     constructor(
         public service: CourseService,
         private route: ActivatedRoute,
         private router: Router,
-        private messageService: MessageService,
         private downloadExcelService: DownloadExcelService
     ) { }
 
@@ -57,7 +58,6 @@ export class CourseListComponent implements OnInit {
         //     accept: () => {
         return this.service.deleteCourse(CourseId).subscribe((data: any) => {
             this.GetAllCourse();
-            this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' });
         });
         //     },
         //     reject: (type: any) => {
@@ -153,6 +153,49 @@ export class CourseListComponent implements OnInit {
                 XLSX.writeFile(workbook, fileName);
             }
         });
+    }
+
+    public onFilter(inputValue: string): void {
+        this.CourseData = process(this.CourseData, {
+            filter: {
+                logic: "or",
+                filters: [
+                    {
+
+                        field: "CourseID",
+                        operator: "contains",
+                        value: inputValue,
+                    },
+                    {
+                        field: "CourseName",
+                        operator: "contains",
+                        value: inputValue,
+                    },
+                    {
+                        field: "LDIntakeOwner",
+                        operator: "contains",
+                        value: inputValue,
+                    },
+                    {
+                        field: "ProjectManagerContact",
+                        operator: "contains",
+                        value: inputValue,
+                    },
+                    {
+                        field: " BusinessSponsor",
+                        operator: "contains",
+                        value: inputValue,
+                    },
+                    {
+                        field: "ProjectStatusID",
+                        operator: "contains",
+                        value: inputValue,
+                    },
+                ],
+            },
+        }).data;
+
+        this.dataBinding.skip = 0;
     }
 
 }

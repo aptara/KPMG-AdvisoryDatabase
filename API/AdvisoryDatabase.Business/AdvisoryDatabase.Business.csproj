@@ -48,6 +48,7 @@
     <Compile Include="Controllers\BayDetailController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseDetailController.cs" />
+    <Compile Include="Controllers\CourseDropdownMasterDataController.cs" />
     <Compile Include="Controllers\StatusMasterController.cs" />
     <Compile Include="Controllers\ProjectStatusMasterController.cs" />
     <Compile Include="Controllers\DeliveryTypeMasterController.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Service\BayDataService.cs" />
     <Compile Include="Service\CourseDataService.cs" />
     <Compile Include="Service\CourseOwnerDataService.cs" />
+    <Compile Include="Service\CourseDropdownMasterDataService.cs" />
     <Compile Include="Service\StatusMasterService.cs" />
     <Compile Include="Service\ProjectStatusMasterService.cs" />
     <Compile Include="Service\DeliveryTypeMasterService.cs" />

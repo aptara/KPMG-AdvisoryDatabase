@@ -39,7 +39,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new DeliveryTypeMaster
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<Int32>("DeliveryTypeId"),
                          DeliveryType = row.ReadString("DeliveryType")
                          
                      }).ToList();
@@ -51,7 +51,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         {
             return new DeliveryTypeMaster
             {
-                Id = data.Read<Int32>("Id"),
+                Id = data.Read<Int32>("DeliveryTypeId"),
                 DeliveryType = data.ReadString("DeliveryType"),
             };
         }

@@ -54,6 +54,7 @@
     <Compile Include="DataAccessAPIService\DataAccessMeterReadingService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseDetailService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseOwnerDetailsService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseDropdownMasterDataService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseOwnerMasterService.cs" />
     <Compile Include="DataAccessService\DataAccessProgramTypeMasterService.cs" />
     <Compile Include="DataAccessService\DataAccessDeliveryTypeMasterService.cs" />
