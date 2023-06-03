@@ -38,7 +38,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new StatusMaster
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<Int32>("StatusId"),
                          Status = row.ReadString("Status"),
                      }).ToList();
 
@@ -49,7 +49,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         {
             return new StatusMaster
             {
-                Id = data.Read<Int32>("Id"),
+                Id = data.Read<Int32>("StatusId"),
                 Status = data.ReadString("Status"),
             };
         }

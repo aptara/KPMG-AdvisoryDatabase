@@ -1,3 +1,46 @@
+<div class="row">
+    <div class="panel panel-default">
+
+        <button kendoButton themeColor="info" class="btn btn-default" (click)="downloadExceloffocus() "> Export
+            RDI
+            for Focus</button>
+
+        <button kendoButton themeColor="info" class="btn btn-default" (click)="downloadExcelofClarizen()"> Export RDI
+            for
+            Clarizen</button>
+
+        <button kendoButton themeColor="info" class="btn btn-default" (click)="downloadExcelofDeployment()"> Export RDI
+            for
+            Deployment</button>
+
+        <button (click)="AddCourse()" class="btn btn-default" kendoButton themeColor="info">Add New Course</button>
+        <button kendoButton themeColor="info" class="btn btn-default">Search</button>
+        <kendo-textbox placeholder="Search in all columns..." (valueChange)="onFilter($event)" [style.width.px]="180">
+        </kendo-textbox>
+
+    </div><br>
+    <div class="col-md-12">
+        <kendo-grid [kendoGridBinding]="CourseData" [pageSize]="10" [pageable]="true" [sortable]="true">
+            <kendo-grid-column field="CourseMasterID"></kendo-grid-column>
+            <kendo-grid-column field="CourseName"></kendo-grid-column>
+            <kendo-grid-column field="LDIntakeOwner"></kendo-grid-column>
+            <kendo-grid-column field="ProjectManagerContact"></kendo-grid-column>
+            <kendo-grid-column field="BusinessSponsor"></kendo-grid-column>
+            <kendo-grid-column field="ProjectStatus"></kendo-grid-column>
+            <kendo-grid-command-column title="Options">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <kendo-icon name="edit" themeColor="info" [routerLink]="['/course-details']"
+                        [queryParams]="{id: dataItem.CourseMasterID}"></kendo-icon>
+                    <kendo-icon name="delete" themeColor="info" (click)="DeleteCourse(dataItem.CourseMasterID)">
+                    </kendo-icon>
+                    <!-- <button kendoButton icon="trash" (click)="deleteRecord()">Delete</button> -->
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+</div>
+
+<!--
 <div class="card">
     <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
@@ -106,5 +149,4 @@
             </tr>
         </ng-template>
     </p-table>
-    <!-- <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog> -->
-</div>
+</div> -->

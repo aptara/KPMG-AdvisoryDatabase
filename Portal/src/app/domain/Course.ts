@@ -36,4 +36,27 @@ export interface Course {
     SubjectMatterProfessional: string;
     IsDeleted: boolean;
     Status: string;
+
+    ServiceGroupLineNetwork: string;
+    SubjectMatterProfessionals: string;
+    IsRegulatoryOrLegalRequirement: boolean;
+    Competency: number;
+    Audience: number;
+    ServiceGroup: number;
+    ServiceLine: number;
+    ServiceNetwork: number;
+    AudienceLevel: number;
+    FieldOfStudy: number;
+    DeploymentFiscalYear: string;
+    StartDate: string;
+    Function: string;
+    DevelopmentYear: string;
+    Price: string;
+    Currency: string;
+    DisplayCallCenter: string;
+    AudienceType: string;
+    ProgramKnowledgeLevel: number;
+    TargetAudience: string;
+    SpecialNotice: number;
+
 }
