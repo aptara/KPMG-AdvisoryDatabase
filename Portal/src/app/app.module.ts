@@ -120,6 +120,7 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
                 { path: "course-management", component: CourseListComponent },
                 { path: "course-details", component: CourseComponent },
                 { path: '**', component: PageNotFoundComponent }
+
             ]),
         DateInputsModule,
         GridModule,
