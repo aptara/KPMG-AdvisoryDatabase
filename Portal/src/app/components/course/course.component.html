@@ -12,15 +12,15 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="TotalCPECredit">Total Cpe Credit <span style="color:red;">*</span></label>
+                        <label for="TotalCPECredit">Toal CPE Credit <span style="color:red;">*</span></label>
                         <input type="number" class="form-control" formControlName="TotalCPECredit" id="TotalCPECredit">
                         <div class="message-error"
                             *ngIf="!CourseForm.controls['TotalCPECredit'].valid && CourseForm.controls['TotalCPECredit'].dirty">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.required">
-                                Total Cpe Credit is reuired.
+                                Toal CPE Credit is reuired.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.TotalCPECredit?.errors?.pattern">
-                                Total Cpe Credit should be Alpha Numeric.
+                                Toal CPE Credit should be Alpha Numeric.
                             </div>
                         </div>
                     </div>
@@ -67,11 +67,11 @@
                             *ngIf="!CourseForm.controls['PrerequisiteCourseID'].valid && CourseForm.controls['PrerequisiteCourseID'].dirty">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.required">
-                                Prerequisite CourseId is reuired.
+                                Prerequisite Course ID is reuired.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.PrerequisiteCourseID?.errors?.pattern">
-                                Prerequisite CourseId should be Alpha Numeric.
+                                Prerequisite Course ID should be Alpha Numeric.
                             </div>
                         </div>
                     </div>
@@ -152,13 +152,14 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="DevelopmentYear">Development Year</label>
-                        <input type="text" class="form-control" formControlName="DevelopmentYear" id="DevelopmentYear">
+                        <label for="AudienceType">Audience Type 1</label>
+                        <input type="text" class="form-control" formControlName="AudienceType" id="AudienceType">
                         <div class="message-error"
-                            *ngIf="!CourseForm.controls['DevelopmentYear'].valid && CourseForm.controls['DevelopmentYear'].dirty">
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.DevelopmentYear?.errors?.required">
+                            *ngIf="!CourseForm.controls['AudienceType'].valid && CourseForm.controls['AudienceType'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.AudienceType?.errors?.required">
                                 Project Status is reuired.
                             </div>
                         </div>
@@ -166,7 +167,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="AudienceType">Audience Type 1</label>
+                        <label for="AudienceType">Audience Type 2</label>
                         <input type="text" class="form-control" formControlName="AudienceType" id="AudienceType">
                         <div class="message-error"
                             *ngIf="!CourseForm.controls['AudienceType'].valid && CourseForm.controls['AudienceType'].dirty">
@@ -180,11 +181,11 @@
             <div class="col-md-12">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="AudienceType">Audience Type 2</label>
-                        <input type="text" class="form-control" formControlName="AudienceType" id="AudienceType">
+                        <label for="DevelopmentYear">Development Year</label>
+                        <input type="text" class="form-control" formControlName="DevelopmentYear" id="DevelopmentYear">
                         <div class="message-error"
-                            *ngIf="!CourseForm.controls['AudienceType'].valid && CourseForm.controls['AudienceType'].dirty">
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.AudienceType?.errors?.required">
+                            *ngIf="!CourseForm.controls['DevelopmentYear'].valid && CourseForm.controls['DevelopmentYear'].dirty">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.DevelopmentYear?.errors?.required">
                                 Project Status is reuired.
                             </div>
                         </div>
@@ -222,64 +223,45 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="SpecialNotice">Skill</label>
-                        <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID" [multiple]="true"
-                            [options]="ProgramTypeMasters"></ngx-select-dropdown>
-                        <div class="message-error"
-                            *ngIf="!CourseForm.controls['SpecialNotice'].valid && CourseForm.controls['SpecialNotice'].dirty">
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.required">
-                                First Delivery Date is reuired.
-                            </div>
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.pattern">
-                                First Delivery Date should be Alpha Numeric.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="SpecialNotice">Industry</label>
-                        <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID" [multiple]="true"
-                            [options]="ProgramTypeMasters">
-                        </ngx-select-dropdown>
-                        <div class="message-error"
-                            *ngIf="!CourseForm.controls['SpecialNotice'].valid && CourseForm.controls['SpecialNotice'].dirty">
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.required">
-                                First Delivery Date is reuired.
-                            </div>
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.pattern">
-                                First Delivery Date should be Alpha Numeric.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="SpecialNotice">Special Notice</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                        <label class="form-check-label" for="flexRadioDefault2">This course
-                            awards CPE credit. </label>
+                    <label for="SpecialNotice">Skill</label>
+                    <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID" [multiple]="true"
+                        [options]="ProgramTypeMasters"></ngx-select-dropdown>
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['SpecialNotice'].valid && CourseForm.controls['SpecialNotice'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.required">
+                            First Delivery Date is reuired.
+                        </div>
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.pattern">
+                            First Delivery Date should be Alpha Numeric.
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                        <label class="form-check-label" for="flexRadioDefault2"> CPE credit will be awarded for this
-                            self-study upon successful completion of the content and passing the exam with a
-                            grade of 70 or higher and must be within one year of enrollment.
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                        <label class="form-check-label" for="flexRadioDefault2"> This course does not award CPE
-                            credit.
-                        </label>
+
+                </div>
+
+            </div>
+            <br>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="SpecialNotice">Industry</label>
+                    <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID" [multiple]="true"
+                        [options]="ProgramTypeMasters">
+                    </ngx-select-dropdown>
+                    <div class="message-error"
+                        *ngIf="!CourseForm.controls['SpecialNotice'].valid && CourseForm.controls['SpecialNotice'].dirty">
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.required">
+                            First Delivery Date is reuired.
+                        </div>
+                        <div class="error-tooltips" *ngIf="CourseForm.controls?.SpecialNotice?.errors?.pattern">
+                            First Delivery Date should be Alpha Numeric.
+                        </div>
                     </div>
                 </div>
             </div>
+
+
             <div class="clear"></div>
             <ng-container formArrayName="AddFormControl">
                 <ng-container *ngFor="let adminForm of AddFormControl?.controls; let index = index">
@@ -380,6 +362,37 @@
 
         </div>
         <div class="clear"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="SpecialNotice">Special Notice</label>
+                <br><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                    <label class="form-check-label" for="flexRadioDefault2">This course
+                        awards CPE credit. </label>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                    <label class="form-check-label" for="flexRadioDefault2"> CPE credit will be awarded for this
+                        self-study upon successful completion of the content and passing the exam with a
+                        grade of 70 or higher and must be within one year of enrollment.
+                    </label>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                    <label class="form-check-label" for="flexRadioDefault2"> This course does not award CPE
+                        credit.
+                    </label>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                    <label class="form-check-label" for="flexRadioDefault"> None.</label>
+                </div>
+            </div>
+        </div>
         <div class="panel panel-default">
             <div class="panel-heading">Requester Details</div>
             <div class="col-md-3">
@@ -446,7 +459,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <br>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="ServiceGroupLineNetwork">Which Service Group, Service Line, or Service Network will be
                         sponsoring this learning?</label>
@@ -470,7 +484,7 @@
         <div class="clear"></div>
         <div class="panel panel-default">
             <div class="panel-heading">Business Need</div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="Descriptions">Please provide a description/the business need related to this request
                         <span style="color:red;">*</span></label>
@@ -486,7 +500,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="IsRegulatoryOrLegalRequirement">Is this a regulatory or legal requirement (e.g.
                         audit-assist training, FINRA compliance, etc.)?</label>
@@ -617,7 +631,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="FirstDeliveryDate">First Delivery Date<span style="color:red;">*</span></label>
-                    <kendo-datepicker class="form-control" formControlName="FirstDeliveryDate" id="FirstDeliveryDate">
+                    <kendo-datepicker class="form-control" title="MM/DD/YY" formControlName="FirstDeliveryDate"
+                        id="FirstDeliveryDate">
                     </kendo-datepicker>
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['FirstDeliveryDate'].valid && CourseForm.controls['FirstDeliveryDate'].dirty">
@@ -779,7 +794,7 @@
         <div class="clear"></div>
         <div class="panel panel-default">
             <div class="panel-heading">Work Notes</div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="CourseNotes">Course Notes/ Additional Information</label>
                     <textarea class="form-control" formControlName="CourseNotes" id="CourseNotes"> </textarea>
@@ -801,25 +816,33 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Retired</label>
+                    <input type="text" class="form-control" formControlName="SubjectMatterProfessionals" id="Retired">
                     <div>{{CourseData?.FocusRetired}}</div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>New Domain</label>
+                    <input type="text" class="form-control" formControlName="SubjectMatterProfessionals" id="NewDomain">
                     <div>{{CourseData?.FocusDomain}}</div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Disc Form</label>
+                    <input type="text" class="form-control" formControlName="SubjectMatterProfessionals" id="Discfrom">
                     <div>{{CourseData?.FocusDiscFrom}}</div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Displayed to Learner</label>
-                    <div>{{CourseData?.FocusDisplayedToLearner}}</div>
+                    <div>
+                        <input type="text" class="form-control" formControlName="SubjectMatterProfessionals"
+                            id="Displayedto">
+
+                        {{CourseData?.FocusDisplayedToLearner}}
+                    </div>
                 </div>
             </div>
         </div>

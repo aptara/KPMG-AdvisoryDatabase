@@ -139,14 +139,14 @@
                 </div>
 
                 <div class="col">
-                    <span>Total Cpe Credit <span style="color:red;">*</span></span>
+                    <span>Toal CPE Credit <span style="color:red;">*</span></span>
                     <div class="course-input-number total-cpe-credit">
                         <p-inputNumber id="total-cpe-credit" [showButtons]="true" inputId="stacked" mode="decimal"
                             [min]="0" formControlName="totalcpecredit">
                         </p-inputNumber>
                         <div *ngIf="addcourse.controls.totalcpecredit.invalid && addcourse.controls.totalcpecredit.touched"
                             class="text-danger">
-                            The Total CPE Credit is required.
+                            The Toal CPE Credit is required.
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
 
             <div class="group-row row">
                 <div class="col">
-                    <span>Prerequisite CourseId <span style="color:red;">*</span></span>
+                    <span>Prerequisite Course ID <span style="color:red;">*</span></span>
                     <input type="text" class="course-input prerequisite-course-id" placeholder="Prerequisite Course ID"
                         pInputText pKeyFilter="alphanum" formControlName="prerequisite-course-id" />
                 </div>
