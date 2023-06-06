@@ -392,7 +392,7 @@
                     <label class="form-check-label" for="flexRadioDefault"> None.</label>
                 </div>
             </div>
-        </div>
+        </div><br>
         <div class="panel panel-default">
             <div class="panel-heading">Requester Details</div>
             <div class="col-md-3">
@@ -631,9 +631,9 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="FirstDeliveryDate">First Delivery Date<span style="color:red;">*</span></label>
-                    <kendo-datepicker class="form-control" title="MM/DD/YY" formControlName="FirstDeliveryDate"
+                    <input class="form-control" type="date" title="MM/DD/YY" formControlName="FirstDeliveryDate"
                         id="FirstDeliveryDate">
-                    </kendo-datepicker>
+
                     <div class="message-error"
                         *ngIf="!CourseForm.controls['FirstDeliveryDate'].valid && CourseForm.controls['FirstDeliveryDate'].dirty">
                         <div class="error-tooltips" *ngIf="CourseForm.controls?.FirstDeliveryDate?.errors?.required">

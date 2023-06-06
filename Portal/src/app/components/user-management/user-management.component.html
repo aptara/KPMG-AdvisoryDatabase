@@ -1,37 +1,100 @@
-<div class="openCheckBoxList">
-    <div class="row example-config" *ngIf="displayCheckBoxList">
-        <div *ngFor="let column of columns" class="col-xs-12 col-md-3 example-col">
-            <input type="checkbox" id="{{column}}" kendoCheckBox [checked]="!isHidden(column)"
-                (change)="hideColumn(column)" />
-            <label class="k-checkbox-label" for="{{column}}">{{column}}</label>
-        </div>
-    </div>
-</div>
+<div class="card">
+    <p-table #dt [scrollable]="false" [value]="Uservalue" [(selection)]="selectedUser" dataKey="UserMasterID"
+        [rowHover]="true" [rows]="100" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,  50, 100]"
+        [loading]="loading" [paginator]="false"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="400"
+        [globalFilterFields]="['FirstName', 'LastName', 'Email']" [columns]="selectedColumns">
 
-<button type="submit" routerLink="/add-user" class="btn btn-primary" style="margin-left: 1000px;">Add</button>
-<kendo-textbox placeholder="Search in all columns..." (valueChange)="onFilter($event)"
-    [style.width.px]="180"></kendo-textbox>
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <div>
+                    <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                        (click)="clear(dt)"></button>
+                </div>
 
-<kendo-grid [kendoGridBinding]="gridView" [pageSize]="100" [pageable]="false" [sortable]="true" [groupable]="false"
-    [reorderable]="true" [filterable]="true" [columnMenu]="{ filter: true }" [height]="600">
+                <div class="search-container">
+                    <span class="p-input-icon-right">
+                        <i class="pi pi-search"></i>
+                        <input #fieldInput_1 pInputText type="text"
+                            (input)="dt.filterGlobal(fieldInput_1.value, 'contains')" placeholder="Search keyword"
+                            style="width:200px;" />
+                    </span>
+                </div>
 
-    <kendo-grid-command-column title="Action">
-        <ng-template kendoGridCellTemplate let-dataItem>
-            <kendo-icon name="edit" themeColor="info" (click)="editData(dataItem.UserMasterID)"></kendo-icon>
-            <kendo-icon name="delete" themeColor="info" (click)="deleteUser(dataItem)"></kendo-icon>
+                <div class="button-container">
+                    <button pButton class="p-button-outlined btn-width" icon="pi pi-plus" (click)="AddUser()"></button>
+                </div>
+            </div>
+
+
 
         </ng-template>
-    </kendo-grid-command-column>
 
+        <ng-template pTemplate="header">
+            <tr>
+                <th>
+                    <div class="flex justify-content-between align-items-center">
+                        Action
+                    </div>
+                </th>
 
-    <kendo-grid-column field="FirstName" title="First Name" *ngIf="!isHidden('First Name')">
-    </kendo-grid-column>
+                <th>
+                    <div class="flex justify-content-between align-items-center">
+                        First Name
+                        <!-- <p-sortIcon field="firstName"></p-sortIcon> -->
+                        <p-columnFilter type="text" field="FirstName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
 
-    <kendo-grid-column field="LastName" title="Last Name" *ngIf="!isHidden('Last Name')">
-    </kendo-grid-column>
+                <th>
+                    <div class="flex justify-content-between align-items-center">
+                        Last Name
 
-    <kendo-grid-column field="Email" title="Email" *ngIf="!isHidden('Email')">
-    </kendo-grid-column>
+                        <p-columnFilter type="text" field="LastName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex justify-content-between align-items-center">
+                        Email
 
-    <kendo-grid-column field="Location" title="Location" *ngIf="!isHidden('Location')">
-    </kendo-grid-column>
+                        <p-columnFilter type="text" field="Email" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-UserValue>
+            <tr class="p-selectable-row">
+                <td style="text-align: left;">
+                    <span class="edit-btn">
+                        <i class="pi pi-pencil" (click)="editData(UserValue.UserMasterID)"></i>
+                    </span>
+                    <span class="edit-btn">
+                        <i class="pi pi-trash" (click)="deleteUser(UserValue)"></i>
+                    </span>
+
+                </td>
+                <td>
+                    <span class="p-column-title">First Name</span>
+                    {{ UserValue.FirstName }}
+                </td>
+                <td>
+                    <span class="p-column-title">Last Name</span>
+                    {{ UserValue.LastName }}
+                </td>
+                <td>
+                    <span class="p-column-title">Email</span>
+                    {{ UserValue.Email }}
+                </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">No users found.</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+</div>

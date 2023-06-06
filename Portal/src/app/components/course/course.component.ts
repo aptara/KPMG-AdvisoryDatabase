@@ -6,7 +6,7 @@ import { Message } from "primeng/api";
 import { Course } from 'src/app/domain/Course';
 import { CourseService } from 'src/app/service/course.service';
 import { DropdownDataService } from 'src/app/service/dropdown-data.service';
-import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+
 import { NgxDropdownConfig } from 'ngx-select-dropdown';
 
 @Component({
@@ -169,6 +169,7 @@ export class CourseComponent implements OnInit {
             this.AddFormFieldOfStudyChild.push(this.FieldOfFieldOfStudyFormGroup);
         }
     }
+
 
     ngOnInit() {
         this.getDropdownData();

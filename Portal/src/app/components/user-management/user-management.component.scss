@@ -1,4 +1,4 @@
-@import "../../../assets/scss/custom.scss";
+ @import "../../../assets/scss/custom.scss";
 
 :host ::ng-deep {
 
@@ -59,9 +59,9 @@ tr{width: 500px}
         display: flex;
         justify-content: space-between;
 
-        .global-search{
-            width: auto;
-        }
+        // .global-search{
+        //     width: auto;
+        // }
     }
 
     .p-calendar .p-datepicker {
@@ -103,7 +103,7 @@ tr{width: 500px}
         overflow-y: hidden;
     }
 
-    /* Responsive */
+    // / Responsive /
     .p-datatable-users .p-datatable-tbody > tr > td .p-column-title {
         display: none;
     }
@@ -146,7 +146,15 @@ tr{width: 500px}
             }
         }
     }
-
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.flex {
+    display: flex !important;
+}
     .selectColum::after {
       position: absolute;
       right: 14px;
@@ -155,5 +163,13 @@ tr{width: 500px}
   .k-icon k-i-edit{
     color: #4321ec;
   }
+}
+.search-container {
+ margin-left: 970px;
+}
+
+.button-container {
+  display: flex;
+
 }
 

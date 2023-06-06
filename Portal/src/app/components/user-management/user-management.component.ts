@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../service/userservice';
 import { User } from '../../domain/user';
-import { process } from "@progress/kendo-data-query";
-import { DataBindingDirective } from "@progress/kendo-angular-grid";
+import { Table } from 'primeng/table';
+
+
+
 import { Router, ActivatedRoute } from '@angular/router';
-import { GridDataResult } from '@progress/kendo-angular-grid';
+declare var bootbox: any;
 @Component({
     selector: 'app-user-management',
     templateUrl: './user-management.component.html',
@@ -13,47 +15,51 @@ import { GridDataResult } from '@progress/kendo-angular-grid';
 
 export class UserManagementComponent implements OnInit {
 
-    @ViewChild(DataBindingDirective)
-    dataBinding!: DataBindingDirective;
+    // @ViewChild(DataBindingDirective)
+    // dataBinding!: DataBindingDirective;
     displayCheckBoxList = false
     users: User[] = [];
     selectedUser: User[] = [];
     loading: boolean = true;
     public colSpan: number = 5;
-    public gridView: any[] = [];
-    UserDAta: any;
+    Uservalue: any = [];
     user: any[] = []
+    cols: any[];
+    bootbox: any;
+    _selectedColumns: any[];
+    public showFirstNameColumn: boolean = true;
+    constructor(private userService: UserService,
+        private Router: Router,
+        private ActivatedRoute: ActivatedRoute,
 
-    constructor(private userService: UserService, private Router: Router, private ActivatedRoute: ActivatedRoute) {
+    ) {
 
     }
 
     ngOnInit() {
 
-
-        // this.userService.getUsers().subscribe((data: any[]) => {
-        //     this.UserDAta = data.filter(user => user.IsActive === true);
-        //     console.log(this.UserDAta)
-        //     this.gridView = this.UserDAta.map((user: { Location: number; }) => {
-        //         return {
-        //             ...user,
-        //             Location: user.Location === 0 ? null : user.Location
-        //         };
-        //     });
-        // });
         this.userService.getUsers().subscribe((data: any[]) => {
-            this.UserDAta = data.filter(user => user.IsActive === true);
-            this.gridView = this.UserDAta
-
-
+            this.Uservalue = data.filter(user => user.IsActive === true);
+            this.loading = false;
         });
 
+
+        this.cols = [
+            { field: 'firstName', header: 'firstNamee' },
+            { field: 'lastName', header: 'lastName' },
+            { field: 'email', header: 'email' }
+        ];
+
+        this._selectedColumns = this.cols;
+
     }
-    get gridData(): GridDataResult {
-        return {
-            data: this.users,
-            total: this.users.length
-        };
+    get selectedColumns(): any[] {
+        return this._selectedColumns;
+    }
+
+    set selectedColumns(val: any[]) {
+        //restore original order
+        this._selectedColumns = this.cols.filter((col) => val.includes(col));
     }
 
 
@@ -88,53 +94,21 @@ export class UserManagementComponent implements OnInit {
         }
     }
 
-    public onFilter(inputValue: string): void {
-        this.gridView = process(this.UserDAta, {
-            filter: {
-                logic: "or",
-                filters: [
 
-                    {
-                        field: "FirstName",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "LastName",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "Email",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "Location",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                ],
-            },
-        }).data;
-
-        this.dataBinding.skip = 0;
-    }
 
     public displayCheckBoxListFunction() {
 
         this.displayCheckBoxList = !this.displayCheckBoxList
 
     }
-
-    public deletedRecords: any[] = [];
-    public deleteRecord(dataItem: any): void {
-        const index = this.gridView.indexOf(dataItem);
-        if (index !== -1) {
-            this.gridView.splice(index, 1);
-            this.deletedRecords.push(dataItem);
-        }
+    clear(table: Table) {
+        table.clear();
     }
+
+    AddUser() {
+        this.Router.navigate(['/add-user'])
+    }
+
 
     editData(SelectedUserData: any) {
 
@@ -145,48 +119,20 @@ export class UserManagementComponent implements OnInit {
     }
 
     deleteUser(userData: any): void {
-        if (confirm("Are you sure you want to delete this user?")) {
-            this.userService.delData(userData).subscribe((response: any) => {
-                if (response != null) {
-                    alert("User Deleted successfully");
-                }
-                else {
-                    alert("not successful")
-                }
-                this.ngOnInit();
-            });
-        }
+        bootbox.confirm('Are you sure you want to delete this user?', (result: boolean) => {
+            if (result) {
+                this.userService.delData(userData).subscribe((response: any) => {
+                    if (response != null) {
+                        bootbox.alert('User deleted successfully');
+                    } else {
+                        bootbox.alert('Deletion not successful');
+                    }
+                    this.ngOnInit();
+                });
+            }
+        });
     }
-
 
 }
 
 
-//to show only valid user (only status is true)
-// ngOnInit() {
-//     this.userService.getUsers().subscribe((data: any[]) => {
-//         this.UserData = data.filter(user => user.IsActive === true);
-//     });
-// }
-
-//     get gridData(): GridDataResult {
-//     return {
-//         data: this.users,
-//         total: this.users.length
-//     };
-// }
-
-//for delete user but not in db
-// deleteUser(userData: any): void {
-//     if(confirm("Are you sure you want to delete this user?")) {
-//     this.userService.delData(userData).subscribe((response: any) => {
-//         if (response != null) {
-//             alert("successful");
-//         }
-//         else {
-//             alert("not successful")
-//         }
-//         this.ngOnInit();
-//     });
-// }
-//     }

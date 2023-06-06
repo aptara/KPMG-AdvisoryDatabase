@@ -29,27 +29,13 @@
 
             <div class="group-row">
                 <div class="p-float-label">
-                    <span style="font-size: 15px; font-weight: 500;">Email<span style="color:red">*</span></span>
-                    <input pInputText id="email-id" formControlName="Email" />
+                    <span style="font-size: 15px; font-weight: 500;">Email<span style="color:red">*</span></span><br>
+                    <input pInputText id="email-id" style="width: 650px;" formControlName="Email" />
                     <div *ngIf="UserUpdate.controls.Email.invalid && UserUpdate.controls.Email.touched"
                         class="text-danger">
                         Email ID is required*
                     </div>
                 </div>
-
-                <div class="p-float-label">
-                    <span style="font-size: 15px; font-weight: 500;">Location<span style="color:red">*</span></span><br>
-                    <select name="location" id="location" formControlName="LocationID">
-                        <option value="0">Choose location*</option>
-                        <option *ngFor="let loc of Location" [value]="loc.LocationID">{{ loc.Location }}</option>
-                    </select>
-                    <!-- <div *ngIf="UserAdd.controls.Email.invalid && UserAdd.controls.Email.touched" class="text-danger">
-                                    Location name is required*
-                                </div> -->
-                </div>
-
-
-
             </div>
             <div class="group-row">
 

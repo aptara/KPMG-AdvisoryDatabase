@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/service/userservice';
+declare var bootbox: any;
 @Component({
     selector: 'app-update-user',
     templateUrl: './update-user.component.html',
@@ -38,12 +39,13 @@ export class UpdateUserComponent implements OnInit {
         this.userService.EditUserData(this.UserUpdate.value).subscribe(response => {
             // console.log(response)
             if (response != null) {
-                alert('User updated succefully');
-
+                //alert('User updated succefully');
+                bootbox.alert("User Update Succesfully!!")
 
             }
             else {
-                alert('Failed!!')
+                //alert('Failed!!')
+                bootbox.alert("User not update succesfully!!")
             }
             this.Router.navigate(['/user-management']);
 

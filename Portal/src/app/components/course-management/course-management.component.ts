@@ -1,7 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { DataBindingDirective } from "@progress/kendo-angular-grid";
-import { State, process } from "@progress/kendo-data-query";
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import { environment } from 'src/environments/environment';
@@ -11,9 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { CourseService } from 'src/app/service/service/course.service';
-import { GroupDescriptor, GroupResult } from "@progress/kendo-data-query";
-import { write } from 'xlsx';
-import { groupBy } from "@progress/kendo-data-query";
+
 
 @Component({
     selector: 'app-course-management',
@@ -21,8 +16,6 @@ import { groupBy } from "@progress/kendo-data-query";
     styleUrls: ['./course-management.component.scss']
 })
 export class CourseManagementComponent implements OnInit {
-    @ViewChild(DataBindingDirective)
-    dataBinding!: DataBindingDirective;
 
     // for download excel file
     data: any;
@@ -101,6 +94,7 @@ export class CourseManagementComponent implements OnInit {
 
         });
     }
+
     getHeaders3() {
         const headers = Object.keys(this.datad[0]).slice(0, 19);
         // console.log('headers:', headers);
@@ -161,49 +155,8 @@ export class CourseManagementComponent implements OnInit {
 
 
 
-    //for search method
-    public onFilter(inputValue: string): void {
-        this.coursView = process(this.coursed, {
-            filter: {
-                logic: "or",
-                filters: [
-                    {
 
-                        field: "CourseID",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "CourseName",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "LDIntakeOwner",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "ProjectManagerContact",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: " BusinessSponsor",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                    {
-                        field: "ProjectStatusID",
-                        operator: "contains",
-                        value: inputValue,
-                    },
-                ],
-            },
-        }).data;
 
-        this.dataBinding.skip = 0;
-    }
     // for delete record on screen not in db
     public deletedRecords: any[] = [];
     public deleteRecord(dataItem: any): void {
