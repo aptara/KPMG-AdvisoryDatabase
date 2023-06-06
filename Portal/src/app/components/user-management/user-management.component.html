@@ -2,7 +2,7 @@
     <p-table #dt [scrollable]="false" [value]="Uservalue" [(selection)]="selectedUser" dataKey="UserMasterID"
         [rowHover]="true" [rows]="100" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,  50, 100]"
         [loading]="loading" [paginator]="false"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="400"
+        currentPageReportTemplate="Showing {last} to {first} of {totalRecords} entries" [filterDelay]="400"
         [globalFilterFields]="['FirstName', 'LastName', 'Email']" [columns]="selectedColumns">
 
         <ng-template pTemplate="caption">

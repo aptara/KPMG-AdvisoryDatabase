@@ -20,7 +20,7 @@ export class CourseComponent implements OnInit {
     public FieldOfFieldOfStudyFormGroup: FormGroup;
     CourseId: number = 0;
     CourseData: Course | undefined;
-
+    submitted: false;
     CourseOwnerMasters: any = [];
     ProgramTypeMasters: any = [];
     DeliveryTypeMasters: any = [];
@@ -291,7 +291,7 @@ export class CourseComponent implements OnInit {
 
     onSubmitCourse() {
         var SaveData = this.BindCourseDataForSaveEdit();
-        debugger
+
         if (this.CourseForm.valid && this.CourseForm.dirty) {
             if (this.CourseId != 0) {
                 this.courseService.createCourse(SaveData).subscribe((data: any) => {
@@ -308,4 +308,18 @@ export class CourseComponent implements OnInit {
             }
         }
     }
+
+
+
+    clearForm() {
+        this.CourseForm.reset();
+        this.submitted = false;
+    }
+
+
+    onCancel() {
+        // Clear the form
+        this.clearForm();
+    }
+
 }

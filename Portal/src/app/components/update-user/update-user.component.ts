@@ -40,14 +40,13 @@ export class UpdateUserComponent implements OnInit {
                 } else {
                     bootbox.alert('Failed!!');
                 }
-                this.router.navigate(['/user-management']);
+                this.Router.navigate(['/user-management']);
             });
         } else {
             this.UserUpdate.markAllAsTouched();
             bootbox.alert('Invalid form data. Please fill in all required fields correctly.');
         }
     }
-
 
 
 
