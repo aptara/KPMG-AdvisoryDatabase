@@ -31,30 +31,20 @@ export class UpdateUserComponent implements OnInit {
     }
 
     onFormSubmit() {
-
-        this.UserUpdate.controls.TaskMasterID.setValue(this.tmId)
-        console.log(this.UserUpdate)
-        // console.log(this.tmId)
-
-        this.userService.EditUserData(this.UserUpdate.value).subscribe(response => {
-            // console.log(response)
-            if (response != null) {
-                //alert('User updated succefully');
-                bootbox.alert("User Update Succesfully!!")
-
-            }
-            else {
-                //alert('Failed!!')
-                bootbox.alert("User not update succesfully!!")
-            }
-            this.Router.navigate(['/user-management']);
-
-        });
+        this.UserUpdate.controls.TaskMasterID.setValue(this.tmId);
         if (this.UserUpdate.valid) {
 
+            this.userService.EditUserData(this.UserUpdate.value).subscribe(data => {
+                if (data != null) {
+                    bootbox.alert('User Updated successfully!!');
+                } else {
+                    bootbox.alert('Failed!!');
+                }
+                this.router.navigate(['/user-management']);
+            });
         } else {
-
             this.UserUpdate.markAllAsTouched();
+            bootbox.alert('Invalid form data. Please fill in all required fields correctly.');
         }
     }
 
@@ -66,10 +56,16 @@ export class UpdateUserComponent implements OnInit {
     ngOnInit(): void {
         this.UserUpdate = new FormGroup({
             'UserMasterID': new FormControl(this.UserID),
-            'FirstName': new FormControl('', Validators.required),
-            'LastName': new FormControl('', Validators.required),
+            'FirstName': new FormControl('', [
+                Validators.required,
+                Validators.pattern('[a-zA-Z]+')
+            ]),
+            'LastName': new FormControl('', [
+                Validators.required,
+                Validators.pattern('[a-zA-Z]+')
+            ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
-            'LocationID': new FormControl('', Validators.required),
+
             'TaskMasterID': new FormControl('', Validators.required)
         })
 

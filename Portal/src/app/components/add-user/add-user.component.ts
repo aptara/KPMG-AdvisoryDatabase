@@ -55,7 +55,7 @@ export class AddUserComponent implements OnInit {
                 Validators.pattern('[a-zA-Z]+')
             ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
-            'LocationID': new FormControl('', Validators.required),
+
             'TaskMasterID': new FormControl('')
 
         });

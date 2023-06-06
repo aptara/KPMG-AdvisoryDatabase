@@ -14,15 +14,27 @@
                         placeholder="Enter your first name.." />
                     <div *ngIf="UserUpdate.controls.FirstName.invalid && UserUpdate.controls.FirstName.touched"
                         class="text-danger">
-                        First name is required*
+                        <div *ngIf="UserUpdate.controls.FirstName.errors.required">
+                            First name is required*
+                        </div>
+                        <div *ngIf="UserUpdate.controls.FirstName.errors.pattern">
+                            Only characters are allowed in the First name field.
+                        </div>
                     </div>
                 </div>
                 <div class="p-float-label">
                     <span style="font-size: 15px; font-weight: 500;">Last Name<span style="color:red">*</span></span>
-                    <input pInputText id="last-name" formControlName="LastName" />
+
+                    <input pInputText id="Last-name" name="Last-name" formControlName="LastName"
+                        placeholder="Enter your Last name.." />
                     <div *ngIf="UserUpdate.controls.LastName.invalid && UserUpdate.controls.LastName.touched"
                         class="text-danger">
-                        Last name is required*
+                        <div *ngIf="UserUpdate.controls.LastName.errors.required">
+                            Last name is required*
+                        </div>
+                        <div *ngIf="UserUpdate.controls.FirstName.errors.pattern">
+                            Only characters are allowed in the Last name field.
+                        </div>
                     </div>
                 </div>
             </div>
