@@ -44,51 +44,52 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             if (operation == OperationType.Get)
             {
                 parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
-                parameters.Add(DbHelper.CreateParameter("IsDeleted", instance.IsDeleted));
+                parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
             }
             else if (operation == OperationType.Add || operation == OperationType.Update)
             {
+
                 parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
                 parameters.Add(DbHelper.CreateParameter("CourseName", instance.CourseName));
-                parameters.Add(DbHelper.CreateParameter("LDIntakeOwner", instance.LDIntakeOwner));
-                parameters.Add(DbHelper.CreateParameter("ProjectManagerContact", instance.ProjectManagerContact));
-                parameters.Add(DbHelper.CreateParameter("BusinessSponsor", instance.BusinessSponsor));
+                parameters.Add(DbHelper.CreateParameter("CourseID", instance.CourseID));
+                parameters.Add(DbHelper.CreateParameter("DeploymentFiscalYear", instance.DeploymentFiscalYear));
+                parameters.Add(DbHelper.CreateParameter("CompetencyMasterID", instance.CompetencyMasterID));
+                parameters.Add(DbHelper.CreateParameter("ProgramKnowledgeLevelMasterID", instance.ProgramKnowledgeLevelMasterID));
+                parameters.Add(DbHelper.CreateParameter("CourseOverviewObjective", instance.CourseOverviewObjective));
+                parameters.Add(DbHelper.CreateParameter("TargetAudience", instance.TargetAudience));
+                parameters.Add(DbHelper.CreateParameter("EstimatedCPE", instance.EstimatedCPE));
+                //parameters.Add(DbHelper.CreateParameter("AudienceLevelMasterID", instance.AudienceLevelMasterID));
+                parameters.Add(DbHelper.CreateParameter("SpecialNoticeMasterID", instance.SpecialNoticeMasterID));
+                parameters.Add(DbHelper.CreateParameter("FunctionMasterID", instance.FunctionMasterID));
+                parameters.Add(DbHelper.CreateParameter("CourseSponsor", instance.CourseSponsor));
+                parameters.Add(DbHelper.CreateParameter("WhichSGSLSNSponsorLearning", instance.WhichSGSLSNSponsorLearning));
+                parameters.Add(DbHelper.CreateParameter("SubjectMatterProfessional", instance.SubjectMatterProfessional));
+                parameters.Add(DbHelper.CreateParameter("Vendor", instance.Vendor));
+                parameters.Add(DbHelper.CreateParameter("ServiceNowID", instance.ServiceNowID));
                 parameters.Add(DbHelper.CreateParameter("Descriptions", instance.Descriptions));
-                parameters.Add(DbHelper.CreateParameter("InstructionalDesigner", instance.InstructionalDesigner));
-                parameters.Add(DbHelper.CreateParameter("CourseOwnerID", instance.CourseOwnerID));
+                parameters.Add(DbHelper.CreateParameter("IsRegulatoryOrLegalRequirement", instance.IsRegulatoryOrLegalRequirement));
                 parameters.Add(DbHelper.CreateParameter("ProgramTypeID", instance.ProgramTypeID));
                 parameters.Add(DbHelper.CreateParameter("DeliveryTypeID", instance.DeliveryTypeID));
-                parameters.Add(DbHelper.CreateParameter("TotalCPECredit", instance.TotalCPECredit));
-                parameters.Add(DbHelper.CreateParameter("CourseNotes", instance.CourseNotes));
-                parameters.Add(DbHelper.CreateParameter("Materials", instance.Materials));
-                parameters.Add(DbHelper.CreateParameter("RoomSetUpComments", instance.RoomSetUpComments));
-                parameters.Add(DbHelper.CreateParameter("CourseID", instance.CourseID));
-                parameters.Add(DbHelper.CreateParameter("Overview", instance.Overview));
-                parameters.Add(DbHelper.CreateParameter("Objectives", instance.Objectives));
+                parameters.Add(DbHelper.CreateParameter("Duration", instance.Duration));
+                parameters.Add(DbHelper.CreateParameter("FirstDeliveryDate", instance.FirstDeliveryDate));
                 parameters.Add(DbHelper.CreateParameter("MaximumAttendeeCount", instance.MaximumAttendeeCount));
                 parameters.Add(DbHelper.CreateParameter("MinimumAttendeeCount", instance.MinimumAttendeeCount));
                 parameters.Add(DbHelper.CreateParameter("MaximumAttendeeWaitlist", instance.MaximumAttendeeWaitlist));
-                parameters.Add(DbHelper.CreateParameter("PrerequisiteCourseID", instance.PrerequisiteCourseID));
-                parameters.Add(DbHelper.CreateParameter("EquivalentCourseID", instance.EquivalentCourseID));
-                parameters.Add(DbHelper.CreateParameter("FirstDeliveryDate", instance.FirstDeliveryDate));
-                parameters.Add(DbHelper.CreateParameter("LevelofEffort", instance.LevelofEffort));
-                parameters.Add(DbHelper.CreateParameter("Vendor", instance.Vendor));
-                parameters.Add(DbHelper.CreateParameter("ProjectStatusID", instance.ProjectStatusID));
-                parameters.Add(DbHelper.CreateParameter("Duration", instance.Duration));
+                parameters.Add(DbHelper.CreateParameter("MaterialMasterID", instance.MaterialMasterID));
                 parameters.Add(DbHelper.CreateParameter("Collateral", instance.Collateral));
-                //parameters.Add(DbHelper.CreateParameter("FocusDomain", instance.FocusDomain));
-                //parameters.Add(DbHelper.CreateParameter("FocusRetired", instance.FocusRetired));
-                //parameters.Add(DbHelper.CreateParameter("FocusDiscFrom", instance.FocusDiscFrom));
-                //parameters.Add(DbHelper.CreateParameter("FocusDisplayedToLearner", instance.FocusDisplayedToLearner));
-                parameters.Add(DbHelper.CreateParameter("CourseRecordURL", instance.CourseRecordURL));
-                parameters.Add(DbHelper.CreateParameter("ServiceNowID", instance.ServiceNowID));
-                parameters.Add(DbHelper.CreateParameter("SubjectMatterProfessional", instance.SubjectMatterProfessional));
-                //parameters.Add(DbHelper.CreateParameter("@Status", instance.Status));
+                parameters.Add(DbHelper.CreateParameter("RoomSetUpComments", instance.RoomSetUpComments));
+                parameters.Add(DbHelper.CreateParameter("DeploymentFacilitatorConsideration", instance.DeploymentFacilitatorConsideration));
+                parameters.Add(DbHelper.CreateParameter("LDIntakeOwner", instance.LDIntakeOwner));
+                parameters.Add(DbHelper.CreateParameter("ProjectManagerContact", instance.ProjectManagerContact));
+                parameters.Add(DbHelper.CreateParameter("InstructionalDesigner", instance.InstructionalDesigner));
+                parameters.Add(DbHelper.CreateParameter("LevelofEffortMasterId", instance.LevelofEffortMasterId));
+                parameters.Add(DbHelper.CreateParameter("CourseNotes", instance.CourseNotes));
+                
 
             }
             else if(operation == OperationType.Delete)
             {
-                parameters.Add(DbHelper.CreateParameter("IsDeleted", instance.IsDeleted));
+                parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
             }
         }
 
@@ -99,49 +100,62 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 {
                     CourseMasterID = row.Read<int>("CourseMasterID"),
                     CourseName = row.ReadString("CourseName"),
-                    LDIntakeOwner = row.ReadString("LDIntakeOwner"),
-                    ProjectManagerContact = row.ReadString("ProjectManagerContact"),
-                    BusinessSponsor = row.ReadString("BusinessSponsor"),
-                    Descriptions = row.ReadString("Descriptions"),
-                    InstructionalDesigner = row.ReadString("InstructionalDesigner"),
-                    CourseOwnerID = row.Read<int?>("CourseOwnerID"),
-                    ProgramTypeID = row.Read<int>("ProgramTypeID"),
-                    DeliveryTypeID = row.Read<int>("DeliveryTypeID"),
-                    TotalCPECredit = row.ReadString("TotalCPECredit"),
-                    CourseNotes = row.ReadString("CourseNotes"),
-                    Materials = row.ReadString("Materials"),
-                    RoomSetUpComments = row.ReadString("RoomSetUpComments"),
                     CourseID = row.ReadString("CourseID"),
-                    Overview = row.ReadString("Overview"),
-                    Objectives = row.ReadString("Objectives"),
-
-                    MaximumAttendeeCount = row.Read<decimal?>("MaximumAttendeeCount"),
-                    MinimumAttendeeCount = row.Read<decimal?>("MinimumAttendeeCount"),
-                    MaximumAttendeeWaitlist = row.Read<decimal?>("MaximumAttendeeWaitlist"),
-
+                    DeploymentFiscalYear = row.ReadString("DeploymentFiscalYear"),
+                    CompetencyMasterID = row.Read<long>("CompetencyMasterID"),
+                    SkillMasterID = row.Read<long>("SkillMasterID"),
+                    IndustryMasterID = row.Read<long>("IndustryMasterID"),
+                    ProgramKnowledgeLevelMasterID = row.Read<long>("ProgramKnowledgeLevelMasterID"),
+                    CourseOverviewObjective = row.ReadString("CourseOverviewObjective"),
+                    TargetAudience = row.ReadString("TargetAudience"),
+                    //AudienceLevelMasterID = row.Read<long>("AudienceLevelMasterID"),
+                    EstimatedCPE = row.ReadString("EstimatedCPE"),
                     PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
                     EquivalentCourseID = row.ReadString("EquivalentCourseID"),
-                    FirstDeliveryDate = row.Read<DateTime>("FirstDeliveryDate"),
-                    LevelofEffort = row.ReadString("LevelofEffort"),
-
+                    SpecialNoticeMasterID = row.Read<long>("SpecialNoticeMasterID"),
+                    FunctionMasterID = row.Read<long>("FunctionMasterID"),
+                    CourseSponsor = row.ReadString("CourseSponsor"),
+                    WhichSGSLSNSponsorLearning = row.ReadString("WhichSGSLSNSponsorLearning"),
+                    SubjectMatterProfessional = row.ReadString("SubjectMatterProfessional"),
                     Vendor = row.ReadString("Vendor"),
-                    ProjectStatusID = row.Read<int?>("ProjectStatusID"),
-                    ProjectStatus = row.ReadString("ProjectStatus"),
-
+                    ServiceNowID = row.ReadString("ServiceNowID"),
+                    Descriptions = row.ReadString("Descriptions"),
+                    IsRegulatoryOrLegalRequirement = row.Read<bool>("IsRegulatoryOrLegalRequirement"),
+                    ProgramTypeID = row.Read<int>("ProgramTypeID"),
+                    DeliveryTypeID = row.Read<int>("DeliveryTypeID"),
                     Duration = row.ReadString("Duration"),
-                    Collateral = row.Read<bool?>("Collateral"),
+                    FirstDeliveryDate = row.Read<DateTime>("FirstDeliveryDate"),
+                    MaximumAttendeeCount = row.Read<decimal>("MaximumAttendeeCount"),
+                    MinimumAttendeeCount = row.Read<decimal>("MinimumAttendeeCount"),
+                    MaximumAttendeeWaitlist = row.Read<decimal>("MaximumAttendeeWaitlist"),
+                    MaterialMasterID = row.Read<long>("MaterialMasterID"),
+                    Collateral = row.Read<bool>("Collateral"),
+                    RoomSetUpComments = row.ReadString("RoomSetUpComments"),
+                    DeploymentFacilitatorConsideration = row.ReadString("DeploymentFacilitatorConsideration"),
+                    LDIntakeOwner = row.ReadString("LDIntakeOwner"),
+                    ProjectManagerContact = row.ReadString("ProjectManagerContact"),
+                    InstructionalDesigner = row.ReadString("InstructionalDesigner"),
+                    LevelofEffortMasterId = row.Read<long>("LevelofEffortMasterId"),
+                    FoucsCourseOwner1 = row.ReadString("FoucsCourseOwner1"),
+                    FocusCourseOwner2 = row.ReadString("FocusCourseOwner2"),
+                    CourseNotes = row.ReadString("CourseNotes"),
+                    ProjectStatusID = row.Read<int>("ProjectStatusID"),
                     FocusDomain = row.ReadString("FocusDomain"),
                     FocusRetired = row.ReadString("FocusRetired"),
                     FocusDiscFrom = row.ReadString("FocusDiscFrom"),
                     FocusDisplayedToLearner = row.ReadString("FocusDisplayedToLearner"),
                     CourseRecordURL = row.ReadString("CourseRecordURL"),
-                    ServiceNowID = row.ReadString("ServiceNowID"),
-                    SubjectMatterProfessional = row.ReadString("SubjectMatterProfessional"),
                     CreatedBy = row.Read<int>("CreatedBy"),
                     CreatedOn = row.Read<DateTime>("CreatedOn"),
                     LastUpdatedBy = row.Read<int>("LastUpdatedBy"),
                     LastUpdatedOn = row.Read<DateTime>("LastUpdatedOn"),
-                    IsDeleted = row.Read<bool>("IsDeleted"),
+                    IsActive = row.Read<bool>("IsActive"),
+                    ClarizenStartDate = row.Read<DateTime>("ClarizenStartDate"),
+                    Price = row.ReadString("Price"),
+                    Currency = row.ReadString("Currency"),
+                    DisplayCallCenter = row.ReadString("DisplayCallCenter"),
+                    FieldOfStudyMasterID = row.Read<int>("FieldOfStudyMasterID"),
+                    FuntionMasterID = row.Read<long>("FuntionMasterID"),
                 }).ToList();
             return GetAllData;
         }
@@ -152,44 +166,62 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
                 CourseMasterID = data.Read<int>("CourseMasterID"),
                 CourseName = data.ReadString("CourseName"),
-                LDIntakeOwner = data.ReadString("LDIntakeOwner"),
-                ProjectManagerContact = data.ReadString("ProjectManagerContact"),
-                BusinessSponsor = data.ReadString("BusinessSponsor"),
-                Descriptions = data.ReadString("Descriptions"),
-                InstructionalDesigner = data.ReadString("InstructionalDesigner"),
-                CourseOwnerID = data.Read<int>("CourseOwnerID"),
-                ProgramTypeID = data.Read<int>("ProgramTypeID"),
-                DeliveryTypeID = data.Read<int>("DeliveryTypeID"),
-                TotalCPECredit = data.ReadString("TotalCPECredit"),
-                CourseNotes = data.ReadString("CourseNotes"),
-                Materials = data.ReadString("Materials"),
-                RoomSetUpComments = data.ReadString("RoomSetUpComments"),
                 CourseID = data.ReadString("CourseID"),
-                Overview = data.ReadString("Overview"),
-                Objectives = data.ReadString("Objectives"),
-                MaximumAttendeeCount = data.Read<decimal?>("MaximumAttendeeCount"),
-                MinimumAttendeeCount = data.Read<decimal?>("MinimumAttendeeCount"),
-                MaximumAttendeeWaitlist = data.Read<decimal?>("MaximumAttendeeWaitlist"),
+                DeploymentFiscalYear = data.ReadString("DeploymentFiscalYear"),
+                CompetencyMasterID = data.Read<long>("CompetencyMasterID"),
+                SkillMasterID = data.Read<long>("SkillMasterID"),
+                IndustryMasterID = data.Read<long>("IndustryMasterID"),
+                ProgramKnowledgeLevelMasterID = data.Read<long>("ProgramKnowledgeLevelMasterID"),
+                CourseOverviewObjective = data.ReadString("CourseOverviewObjective"),
+                TargetAudience = data.ReadString("TargetAudience"),
+                //AudienceLevelMasterID = data.Read<long>("AudienceLevelMasterID "),
+                EstimatedCPE = data.ReadString("EstimatedCPE"),
                 PrerequisiteCourseID = data.ReadString("PrerequisiteCourseID"),
                 EquivalentCourseID = data.ReadString("EquivalentCourseID"),
-                FirstDeliveryDate = data.Read<DateTime>("FirstDeliveryDate"),
-                LevelofEffort = data.ReadString("LevelofEffort"),
+                SpecialNoticeMasterID = data.Read<long>("SpecialNoticeMasterID"),
+                FunctionMasterID = data.Read<long>("FunctionMasterID"),
+                CourseSponsor = data.ReadString("CourseSponsor"),
+                WhichSGSLSNSponsorLearning = data.ReadString("WhichSGSLSNSponsorLearning"),
+                SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional"),
                 Vendor = data.ReadString("Vendor"),
-                ProjectStatusID = data.Read<int?>("ProjectStatusID"),
+                ServiceNowID = data.ReadString("ServiceNowID"),
+                Descriptions = data.ReadString("Descriptions"),
+                IsRegulatoryOrLegalRequirement = data.Read<bool>("IsRegulatoryOrLegalRequirement"),
+                ProgramTypeID = data.Read<int>("ProgramTypeID"),
+                DeliveryTypeID = data.Read<int>("DeliveryTypeID"),
                 Duration = data.ReadString("Duration"),
-                Collateral = data.Read<bool?>("Collateral"),
+                FirstDeliveryDate = data.Read<DateTime>("FirstDeliveryDate"),
+                MaximumAttendeeCount = data.Read<decimal>("MaximumAttendeeCount"),
+                MinimumAttendeeCount = data.Read<decimal>("MinimumAttendeeCount"),
+                MaximumAttendeeWaitlist = data.Read<decimal>("MaximumAttendeeWaitlist"),
+                MaterialMasterID = data.Read<long>("MaterialMasterID"),
+                Collateral = data.Read<bool>("Collateral"),
+                RoomSetUpComments = data.ReadString("RoomSetUpComments"),
+                DeploymentFacilitatorConsideration = data.ReadString("DeploymentFacilitatorConsideration"),
+                LDIntakeOwner = data.ReadString("LDIntakeOwner"),
+                ProjectManagerContact = data.ReadString("ProjectManagerContact"),
+                InstructionalDesigner = data.ReadString("InstructionalDesigner"),
+                LevelofEffortMasterId = data.Read<long>("LevelofEffortMasterId"),
+                FoucsCourseOwner1 = data.ReadString("FoucsCourseOwner1"),
+                FocusCourseOwner2 = data.ReadString("FocusCourseOwner2"),
+                CourseNotes = data.ReadString("CourseNotes"),
+                ProjectStatusID = data.Read<int>("ProjectStatusID"),
                 FocusDomain = data.ReadString("FocusDomain"),
                 FocusRetired = data.ReadString("FocusRetired"),
                 FocusDiscFrom = data.ReadString("FocusDiscFrom"),
                 FocusDisplayedToLearner = data.ReadString("FocusDisplayedToLearner"),
                 CourseRecordURL = data.ReadString("CourseRecordURL"),
-                ServiceNowID = data.ReadString("ServiceNowID"),
-                SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional"),
                 CreatedBy = data.Read<int>("CreatedBy"),
                 CreatedOn = data.Read<DateTime>("CreatedOn"),
                 LastUpdatedBy = data.Read<int>("LastUpdatedBy"),
                 LastUpdatedOn = data.Read<DateTime>("LastUpdatedOn"),
-                //IsDeleted = data.Read<bool>("IsDeleted"),
+                IsActive = data.Read<bool>("IsActive"),
+                ClarizenStartDate = data.Read<DateTime>("ClarizenStartDate"),
+                Price = data.ReadString("Price"),
+                Currency = data.ReadString("Currency"),
+                DisplayCallCenter = data.ReadString("DisplayCallCenter"),
+                FieldOfStudyMasterID = data.Read<int>("FieldOfStudyMasterID"),
+                FuntionMasterID = data.Read<long>("FuntionMasterID"),
             };
         }
     }

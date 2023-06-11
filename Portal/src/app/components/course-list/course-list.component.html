@@ -2,7 +2,7 @@
     <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['CourseMasterID', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'BusinessSponsor', 'ProjectStatusID']">
+        [globalFilterFields]="['CourseMasterID','CourseId', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'CourseSponsor', 'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
                 <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
@@ -30,7 +30,7 @@
                 <th>
                     <div class="flex align-items-center">
                         Course ID
-                        <p-columnFilter type="text" field="CourseMasterID" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="CourseID" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
@@ -53,14 +53,14 @@
                 </th>
                 <th>
                     <div class="flex align-items-center">
-                        Business Sponsor
-                        <p-columnFilter type="text" field="BusinessSponsor" display="menu"></p-columnFilter>
+                        Course Sponsor
+                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center">
-                        Status
-                        <p-columnFilter type="number" field="ProjectStatus" display="menu"></p-columnFilter>
+                        Deployment Year
+                        <p-columnFilter type="number" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
@@ -72,7 +72,7 @@
             <tr>
                 <td>
                     <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
-                        {{ course.CourseMasterID }}</a>
+                        {{ course.CourseID }}</a>
                 </td>
                 <td>
                     <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
@@ -85,7 +85,7 @@
                     {{ course.ProjectManagerContact }}
                 </td>
                 <td>
-                    {{ course.BusinessSponsor }}
+                    {{ course.CourseSponsor }}
                 </td>
                 <td>
                     {{ course.ProjectStatus }}

@@ -8,6 +8,7 @@ import { CourseService } from 'src/app/service/course.service';
 import { DropdownDataService } from 'src/app/service/dropdown-data.service';
 
 import { NgxDropdownConfig } from 'ngx-select-dropdown';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-course',
@@ -16,24 +17,23 @@ import { NgxDropdownConfig } from 'ngx-select-dropdown';
 })
 export class CourseComponent implements OnInit {
     public CourseForm: FormGroup;
-    public ServiceGroupLineNetworkFormGroup: FormGroup;
-    public FieldOfFieldOfStudyFormGroup: FormGroup;
-    CourseId: number = 0;
-    CourseData: Course | undefined;
+    URLParamCourseId: number = 0;
+    CourseData: any;
     submitted: false;
-    CourseOwnerMasters: any = [];
-    ProgramTypeMasters: any = [];
-    DeliveryTypeMasters: any = [];
-    ProjectStatusMasters: any = [];
-    StatusMasters: any = [];
-    CompetencyMasters: any = [];
-    ServiceGroupMasters: any = [];
-    ServiceLineMasters: any = [];
-    ServiceNetworkMasters: any = [];
-    AudienceLevelMasters: any = [];
-    FieldOfFieldOfStudyMaster: any = [];
+    CompetencyMasterData: any = [];
+    SkillMasterData: any = [];
+    IndustryMasterData: any = [];
     ProgramKnowledgeLevelMasterData: any = [];
-    CourseFunctionMasters: any = [];
+    AudienceLevelMasterData: any = [];
+    ServiceGroupMasterData: any = [];
+    ServiceLineMasterData: any = [];
+    ServiceNetworkMasterData: any = [];
+    FieldOfStudyMasterData: any = [];
+    FunctionMasterData: any = [];
+    DeliveryTypeMasterData: any = [];
+    ProgramTypeMasterData: any = [];
+    CourseOwnerMasterData: any = [];
+    MaterialMasterData: any = [];
 
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
@@ -62,186 +62,232 @@ export class CourseComponent implements OnInit {
         private route: ActivatedRoute,
         public courseService: CourseService,
         private router: Router,
+        private datePipe: DatePipe
     ) {
         this.route.queryParams.subscribe(params => {
-            this.CourseId = params['id'];
+            this.URLParamCourseId = params['id'];
         });
 
         this.CourseForm = this.formBuilder.group({
-            CourseID: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            CourseName: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            LDIntakeOwner: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            ServiceNowID: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            BusinessSponsor: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Descriptions: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            ProgramTypeID: ['', Validators.required],
-            DeliveryTypeID: ['', Validators.required],
-            TotalCPECredit: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-
-            ProjectManagerContact: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            InstructionalDesigner: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            CourseOwnerID: [''],
-            CourseNotes: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Materials: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            RoomSetUpComments: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Overview: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Objectives: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            MaximumAttendeeCount: ['', [Validators.pattern('^[0-9]+$')]],
-            MinimumAttendeeCount: ['', [Validators.pattern('^[0-9]+$')]],
-            MaximumAttendeeWaitlist: ['', [Validators.pattern('^[0-9]+$')]],
-            PrerequisiteCourseID: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            EquivalentCourseID: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            FirstDeliveryDate: ['', Validators.required],
-            LevelofEffort: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Vendor: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            ProjectStatusID: [''],
-            Duration: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Collateral: [''],
-            // FocusDomain: [''],
-            // FocusRetired: [''],
-            // FocusDiscFrom: [''],
-            //FocusDisplayedToLearner: [''],
-            CourseRecordURL: [''],
-            SubjectMatterProfessional: ['', [Validators.pattern('^[A-Za-z0-9- ]+$')]],
-            Status: [''],
-
-            ServiceGroupLineNetwork: [''],
-            SubjectMatterProfessionals: [''],
-            IsRegulatoryOrLegalRequirement: [''],
-            Competency: [''],
-            Audience: [''],
-            AudienceLevel: [''],
-            FieldOfStudy: [''],
+            CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             DeploymentFiscalYear: [''],
-            StartDate: [''],
-            Function: [''],
-            DevelopmentYear: [''],
-            Price: [''],
-            Currency: [''],
-            DisplayCallCenter: [''],
-            AudienceType: [''],
-            ProgramKnowledgeLevel: [''],
+            CompetencyMasterID: [''],
+            ProgramKnowledgeLevelMasterID: [''],
+            CourseOverviewObjective: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             TargetAudience: [''],
-            SpecialNotice: [''],
-            AddFormControl: this.formBuilder.array([]),
-            AddFormFieldOfStudyChild: this.formBuilder.array([])
-        })
+            EstimatedCPE: ['', [Validators.required, Validators.pattern(/^[0-9]*$/)]],
+            //AudienceLevelMasterID: [''],
+            SpecialNoticeMasterID: [''],
+            FunctionMasterID: [''],
+            CourseSponsor: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            WhichSGSLSNSponsorLearning: [''],
+            SubjectMatterProfessional: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            Vendor: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            ServiceNowID: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            Descriptions: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            IsRegulatoryOrLegalRequirement: [''],
+            ProgramTypeID: ['', [Validators.required]],
+            DeliveryTypeID: ['', [Validators.required]],
+            Duration: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            FirstDeliveryDate: ['', [Validators.required]],
+            MaximumAttendeeCount: ['', [Validators.pattern(/^[0-9]*$/)]],
+            MinimumAttendeeCount: ['', [Validators.pattern(/^[0-9]*$/)]],
+            MaximumAttendeeWaitlist: ['', [Validators.pattern(/^[0-9]*$/)]],
+            MaterialMasterID: [''],
+            Collateral: [''],
+            RoomSetUpComments: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            DeploymentFacilitatorConsideration: [''],
+            LDIntakeOwner: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            ProjectManagerContact: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            InstructionalDesigner: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            LevelofEffortMasterId: [''],
+            CourseNotes: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            SkillMasterIDs: [''],
+            Industries: [''],
+            AudienceLevels: [''],
+            FunctionMasterIDs: [''],
+            SGSLSNFormGroups: this.formBuilder.array([this.GetSGSNSLFormControl()]),
+            FieldOfStudyFormGroup: this.formBuilder.array([this.GetFieldOfStudyFormGroup()]),
+            PrerequisiteCourseIDFormGroup: this.formBuilder.array([this.GetPrerequisiteCourseIDFormGroup()]),
+            EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup()]),
+            AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup()]),
+            FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()])
 
-        this.ServiceGroupLineNetworkFormGroup = this.formBuilder.group({
+        })
+    }
+
+    GetSGSNSLFormControl() {
+        return this.formBuilder.group({
             ServiceGroup: ['', Validators.required],
             ServiceLine: ['', Validators.required],
             ServiceNetwork: ['', Validators.required],
         })
+    }
 
-        this.FieldOfFieldOfStudyFormGroup = this.formBuilder.group({
+    GetFieldOfStudyFormGroup() {
+        return this.formBuilder.group({
             FieldOfStudy: ['', Validators.required],
             FieldOfStudyCredit: ['', Validators.required],
         });
-
-        this.addNewCourseChild();
-        this.addFormFieldOfStudyChildForm();
     }
 
-    get AddFormControl() {
-        return this.CourseForm.controls["AddFormControl"] as FormArray;
+    GetPrerequisiteCourseIDFormGroup() {
+        return this.formBuilder.group({
+            PrerequisiteCourseID: ['', Validators.required],
+        });
+    }
+
+    GetEquivalentCourseIDFormGroup() {
+        return this.formBuilder.group({
+            EquivalentCourseID: ['', Validators.required],
+        });
+    }
+
+    GetAudienceTypeFormGroup() {
+        return this.formBuilder.group({
+            AudienceType: ['', Validators.required],
+        });
+    }
+
+    GetFOCUSCourseOwnerFormGroup() {
+        return this.formBuilder.group({
+            FOCUSCourseOwner: ['', Validators.required],
+        });
+    }
+
+    get SGSLSNFormGroups() {
+        return this.CourseForm.controls["SGSLSNFormGroups"] as FormArray;
+    }
+
+    get FieldOfStudyFormGroup() {
+        return this.CourseForm.controls["FieldOfStudyFormGroup"] as FormArray;
+    }
+
+    get PrerequisiteCourseIDFormGroup() {
+        return this.CourseForm.controls["PrerequisiteCourseIDFormGroup"] as FormArray;
+    }
+
+    get EquivalentCourseIDFormGroup() {
+        return this.CourseForm.controls["EquivalentCourseIDFormGroup"] as FormArray;
+    }
+
+    get AudienceTypeFormGroup() {
+        return this.CourseForm.controls["AudienceTypeFormGroup"] as FormArray;
+    }
+
+    get FOCUSCourseOwnerFormGroup() {
+        return this.CourseForm.controls["FOCUSCourseOwnerFormGroup"] as FormArray;
     }
 
     removeFormControl(i: any) {
-        this.AddFormControl.removeAt(i);
-    }
-
-    addNewCourseChild() {
-        if (this.AddFormControl.length < 4) {
-            this.AddFormControl.push(this.ServiceGroupLineNetworkFormGroup);
-        }
-    }
-
-    get AddFormFieldOfStudyChild() {
-        return this.CourseForm.controls["AddFormFieldOfStudyChild"] as FormArray;
+        this.SGSLSNFormGroups.removeAt(i);
     }
 
     removeFieldOfStudyFormControl(i: any) {
-        this.AddFormFieldOfStudyChild.removeAt(i);
+        this.FieldOfStudyFormGroup.removeAt(i);
     }
 
-    addFormFieldOfStudyChildForm() {
-        if (this.AddFormFieldOfStudyChild.length < 4) {
-            this.AddFormFieldOfStudyChild.push(this.FieldOfFieldOfStudyFormGroup);
+    removePrerequisiteCourseIDFormControl(i: any) {
+        this.PrerequisiteCourseIDFormGroup.removeAt(i);
+    }
+
+    removeEquivalentCourseIDFormControl(i: any) {
+        this.EquivalentCourseIDFormGroup.removeAt(i);
+    }
+
+    removeAudienceTypeFormControl(i: any) {
+        this.AudienceTypeFormGroup.removeAt(i);
+    }
+
+    removeFOCUSCourseOwnerFormControl(i: any) {
+        this.FOCUSCourseOwnerFormGroup.removeAt(i);
+    }
+
+    addSGSLSNCourseChild() {
+        if (this.SGSLSNFormGroups.length < 4) {
+            this.SGSLSNFormGroups.push(this.GetSGSNSLFormControl());
         }
     }
 
+    addFormFieldOfStudyChildForm() {
+
+        if (this.FieldOfStudyFormGroup.length < 4) {
+            this.FieldOfStudyFormGroup.push(this.GetFieldOfStudyFormGroup());
+        }
+    }
+
+    addPrerequisiteCourseIDChildForm() {
+        if (this.PrerequisiteCourseIDFormGroup.length < 2) {
+            this.PrerequisiteCourseIDFormGroup.push(this.GetPrerequisiteCourseIDFormGroup());
+        }
+    }
+
+    addEquivalentCourseIDChildForm() {
+        if (this.EquivalentCourseIDFormGroup.length < 2) {
+            this.EquivalentCourseIDFormGroup.push(this.GetEquivalentCourseIDFormGroup());
+        }
+    }
+
+    addAudienceTypeChildForm() {
+        if (this.AudienceTypeFormGroup.length < 2) {
+            this.AudienceTypeFormGroup.push(this.GetAudienceTypeFormGroup());
+        }
+    }
+
+    addFOCUSCourseOwnerChildForm() {
+        if (this.FOCUSCourseOwnerFormGroup.length < 2) {
+            this.FOCUSCourseOwnerFormGroup.push(this.GetFOCUSCourseOwnerFormGroup());
+        }
+    }
 
     ngOnInit() {
         this.getDropdownData();
     }
 
     bindFormData() {
-        this.CourseForm.setValue({
+        this.CourseForm.patchValue({
             CourseName: this.CourseData?.CourseName,
-            LDIntakeOwner: this.CourseData?.LDIntakeOwner,
-            ProjectManagerContact: this.CourseData?.ProjectManagerContact,
-            BusinessSponsor: this.CourseData?.BusinessSponsor,
-            Descriptions: this.CourseData?.Descriptions,
-            InstructionalDesigner: this.CourseData?.InstructionalDesigner,
-            TotalCPECredit: this.CourseData?.TotalCPECredit,
-            CourseNotes: this.CourseData?.CourseNotes,
-            Materials: this.CourseData?.Materials,
-            RoomSetUpComments: this.CourseData?.RoomSetUpComments,
             CourseID: this.CourseData?.CourseID,
-            Overview: this.CourseData?.Overview,
-            Objectives: this.CourseData?.Objectives,
+            DeploymentFiscalYear: this.CourseData?.DeploymentFiscalYear,
+            CompetencyMasterID: this.CourseData?.CompetencyMasterID,
+            ProgramKnowledgeLevelMasterID: this.CourseData?.ProgramKnowledgeLevelMasterID,
+            CourseOverviewObjective: this.CourseData?.CourseOverviewObjective,
+            TargetAudience: this.CourseData?.TargetAudience,
+            EstimatedCPE: this.CourseData?.EstimatedCPE,
+            //AudienceLevelMasterID: this.CourseData?.AudienceLevelMasterID,
+            SpecialNoticeMasterID: this.CourseData?.SpecialNoticeMasterID,
+            FunctionMasterID: this.CourseData?.FunctionMasterID,
+            CourseSponsor: this.CourseData?.CourseSponsor,
+            WhichSGSLSNSponsorLearning: this.CourseData?.WhichSGSLSNSponsorLearning,
+            SubjectMatterProfessional: this.CourseData?.SubjectMatterProfessional,
+            Vendor: this.CourseData?.Vendor,
+            ServiceNowID: this.CourseData?.ServiceNowID,
+            Descriptions: this.CourseData?.Descriptions,
+            IsRegulatoryOrLegalRequirement: this.CourseData?.IsRegulatoryOrLegalRequirement,
+            ProgramTypeID: this.CourseData?.ProgramTypeID,
+            DeliveryTypeID: this.CourseData?.DeliveryTypeID,
+            Duration: this.CourseData?.Duration,
+            FirstDeliveryDate: this.datePipe.transform(this.CourseData?.FirstDeliveryDate, 'yyyy-MM-dd'),
             MaximumAttendeeCount: this.CourseData?.MaximumAttendeeCount,
             MinimumAttendeeCount: this.CourseData?.MinimumAttendeeCount,
             MaximumAttendeeWaitlist: this.CourseData?.MaximumAttendeeWaitlist,
-            PrerequisiteCourseID: this.CourseData?.PrerequisiteCourseID,
-            EquivalentCourseID: this.CourseData?.EquivalentCourseID,
-            FirstDeliveryDate: this.CourseData?.FirstDeliveryDate,
-            LevelofEffort: this.CourseData?.LevelofEffort,
-            Vendor: this.CourseData?.Vendor,
-            Duration: this.CourseData?.Duration,
-            // FocusDomain: this.CourseData?.FocusDomain,
-            // FocusRetired: this.CourseData?.FocusRetired,
-            // FocusDiscFrom: this.CourseData?.FocusDiscFrom,
-            // FocusDisplayedToLearner: this.CourseData?.FocusDisplayedToLearner,
-            CourseRecordURL: this.CourseData?.CourseRecordURL,
-            ServiceNowID: this.CourseData?.ServiceNowID,
-            SubjectMatterProfessional: this.CourseData?.SubjectMatterProfessional,
-            Status: this.CourseData?.Status,
-
-            CourseOwnerID: this.CourseData?.CourseOwnerID,
-            ProgramTypeID: this.CourseData?.ProgramTypeID,
-            DeliveryTypeID: this.CourseData?.DeliveryTypeID,
-            ProjectStatusID: this.CourseData?.ProgramTypeID,
-            Collateral: this.collaterals.find(x => x.value === this.CourseData?.Collateral),
-            ServiceGroupLineNetwork: 0,
-            SubjectMatterProfessionals: 0,
-            IsRegulatoryOrLegalRequirement: 0,
-            Competency: 0,
-            Audience: 0,
-            ServiceGroup: 0,
-            ServiceLine: 0,
-            ServiceNetwork: 0,
-            AudienceLevel: 0,
-            FieldOfStudy: 0,
-            DeploymentFiscalYear: 0,
-            StartDate: 0,
-            Function: 0,
-            DevelopmentYear: 0,
-            Price: 0,
-            Currency: 0,
-            DisplayCallCenter: 0,
-            AudienceType: 0,
-            ProgramKnowledgeLevel: 0,
-            TargetAudience: 0,
-            SpecialNotice: 0,
+            MaterialMasterID: this.CourseData?.MaterialMasterID,
+            Collateral: this.CourseData?.Collateral,
+            RoomSetUpComments: this.CourseData?.RoomSetUpComments,
+            DeploymentFacilitatorConsideration: this.CourseData?.DeploymentFacilitatorConsideration,
+            LDIntakeOwner: this.CourseData?.LDIntakeOwner,
+            ProjectManagerContact: this.CourseData?.ProjectManagerContact,
+            InstructionalDesigner: this.CourseData?.InstructionalDesigner,
+            LevelofEffortMasterId: this.CourseData?.LevelofEffortMasterId,
+            CourseNotes: this.CourseData?.CourseNotes,
         });
-
         console.log(this.CourseForm.value)
     }
 
     getCourseDataForEdit() {
-        if (this.CourseId) {
-            return this.courseService.getCourse(this.CourseId).subscribe((data: any) => {
+        if (this.URLParamCourseId) {
+            return this.courseService.getCourse(this.URLParamCourseId).subscribe((data: any) => {
                 if (data.Success) {
                     this.CourseData = data.Data;
                     this.bindFormData();
@@ -256,51 +302,99 @@ export class CourseComponent implements OnInit {
             if (data.Success) {
                 console.log(data.Data)
                 var dropdowndata: any = data?.Data
-                this.CourseOwnerMasters = dropdowndata.CourseOwnerMasters
-                this.ProgramTypeMasters = dropdowndata.ProgramTypeMasters
-                this.DeliveryTypeMasters = dropdowndata.DeliveryTypeMasters
-                this.ProjectStatusMasters = dropdowndata.ProjectStatusMasters
-                this.StatusMasters = dropdowndata.StatusMasters
-                this.CompetencyMasters = dropdowndata.CompetencyMasters
-                this.ServiceGroupMasters = dropdowndata.ServiceGroupMasters
-                this.ServiceLineMasters = dropdowndata.ServiceLineMasters
-                this.ServiceNetworkMasters = dropdowndata.ServiceNetworkMasters
-                this.AudienceLevelMasters = dropdowndata.AudienceLevelMasters
-                this.FieldOfFieldOfStudyMaster = dropdowndata.FieldOfFieldOfStudyMaster
-                this.ProgramKnowledgeLevelMasterData = dropdowndata.ProgramKnowledgeLevelMaster
-                this.CourseFunctionMasters = dropdowndata.CourseFunctionMasters
+                this.CompetencyMasterData = dropdowndata.CompetencyMasterData
+                this.SkillMasterData = dropdowndata.SkillMasterData
+                this.IndustryMasterData = dropdowndata.IndustryMasterData
+                this.ProgramKnowledgeLevelMasterData = dropdowndata.ProgramKnowledgeLevelMasterData
+                this.AudienceLevelMasterData = dropdowndata.AudienceLevelMasterData
+                this.ServiceGroupMasterData = dropdowndata.ServiceGroupMasterData
+                this.ServiceLineMasterData = dropdowndata.ServiceLineMasterData
+                this.ServiceNetworkMasterData = dropdowndata.ServiceNetworkMasterData
+                this.FieldOfStudyMasterData = dropdowndata.FieldOfStudyMasterData
+                this.FunctionMasterData = dropdowndata.FunctionMasterData
+                this.DeliveryTypeMasterData = dropdowndata.DeliveryTypeMasterData
+                this.ProgramTypeMasterData = dropdowndata.ProgramTypeMasterData
+                this.CourseOwnerMasterData = dropdowndata.CourseOwnerMasterData
+                this.MaterialMasterData = dropdowndata.MaterialMasterData
             }
             this.getCourseDataForEdit();
         });
     }
 
     BindCourseDataForSaveEdit() {
-        var saveCourse: any = this.CourseForm.value;
+        var CourseData: any = this.CourseForm.value;
+        let saveCourse: any = {};
+        saveCourse.CourseMasterID = this.URLParamCourseId;
         debugger
-        saveCourse.CourseMasterID = this.CourseId;
-        saveCourse.CourseOwnerID = saveCourse.CourseOwnerID;
-        saveCourse.ProgramTypeID = saveCourse.ProgramTypeID;
-        saveCourse.DeliveryTypeID = saveCourse.DeliveryTypeID;
-        saveCourse.ProjectStatusID = saveCourse.ProjectStatusID;
-        saveCourse.Collateral = saveCourse.Collateral?.value
-        saveCourse.Status = saveCourse.Status?.Id;
+        // saveCourse.CompetencyMasterID = this.GetDropdownDataForSave(CourseData.CompetencyMasterID);
+        // saveCourse.LevelofEffortMasterId = this.GetDropdownDataForSave(CourseData.LevelofEffortMasterId);
+        // saveCourse.FunctionMasterIDs = this.GetDropdownDataForSave(CourseData.FunctionMasterIDs);
+        // saveCourse.ProgramKnowledgeLevelMasterID = this.GetDropdownDataForSave(CourseData.ProgramKnowledgeLevelMasterID);
+        // saveCourse.IsRegulatoryOrLegalRequirement = this.GetDropdownDataForSave(CourseData.IsRegulatoryOrLegalRequirement);
+        // saveCourse.MaterialMasterID = this.GetDropdownDataForSave(CourseData.MaterialMasterID);
+        // saveCourse.FOCUSCourseOwnerFormGroup = this.GetDropdownDataForSave(CourseData.FOCUSCourseOwnerFormGroup);
+        // saveCourse.SkillMasterIDs = this.GetDropdownDataForSave(CourseData.SkillMasterIDs);
+        // saveCourse.Industries = this.GetDropdownDataForSave(CourseData.Industries);
+        // saveCourse.AudienceLevels = this.GetDropdownDataForSave(CourseData.AudienceLevels);
+        // saveCourse.FunctionMasterID = this.GetDropdownDataForSave(saveCourse.FunctionMasterID);
+        //saveCourse.SGSLSNFormGroups = this.GetDropdownDataForSave(saveCourse.SGSLSNFormGroups);
+        saveCourse.CourseName = CourseData.CourseName;
+        saveCourse.CourseID = CourseData.CourseID;
+        saveCourse.DeploymentFiscalYear = CourseData.DeploymentFiscalYear;
+        saveCourse.CourseOverviewObjective = CourseData.CourseOverviewObjective;
+        saveCourse.TargetAudience = CourseData.TargetAudience;
+        saveCourse.EstimatedCPE = CourseData.EstimatedCPE;
+        saveCourse.SpecialNoticeMasterID = CourseData.SpecialNoticeMasterID;
 
+        saveCourse.CourseSponsor = CourseData.CourseSponsor;
+        saveCourse.WhichSGSLSNSponsorLearning = CourseData.WhichSGSLSNSponsorLearning;
+        saveCourse.SubjectMatterProfessional = CourseData.SubjectMatterProfessional;
+        saveCourse.Vendor = CourseData.Vendor;
+        saveCourse.ServiceNowID = CourseData.ServiceNowID;
+        saveCourse.Descriptions = CourseData.Descriptions;
+
+        //saveCourse.ProgramTypeID = CourseData.ProgramTypeID; //TODO - Need to check data
+        //saveCourse.DeliveryTypeID = CourseData.DeliveryTypeID; //TODO - Need to check data
+
+        saveCourse.Duration = CourseData.Duration;
+        saveCourse.FirstDeliveryDate = CourseData.FirstDeliveryDate;
+        saveCourse.MaximumAttendeeCount = CourseData.MaximumAttendeeCount;
+        saveCourse.MinimumAttendeeCount = CourseData.MinimumAttendeeCount;
+        saveCourse.MaximumAttendeeWaitlist = CourseData.MaximumAttendeeWaitlist;
+        saveCourse.RoomSetUpComments = CourseData.RoomSetUpComments;
+        saveCourse.DeploymentFacilitatorConsideration = CourseData.DeploymentFacilitatorConsideration;
+        saveCourse.LDIntakeOwner = CourseData.LDIntakeOwner;
+        saveCourse.ProjectManagerContact = CourseData.ProjectManagerContact;
+        saveCourse.InstructionalDesigner = CourseData.InstructionalDesigner;
+        saveCourse.CourseNotes = CourseData.CourseNotes;
         console.log(saveCourse)
         return saveCourse;
     }
+
+    GetSingleDropdownDataForSave(value: any) {
+        return value.Id
+    }
+
+    GetMultiSelectDropdownDataForSave(value: any) {
+        let ValueIds = [];
+        if (Array.isArray(value)) {
+
+        }
+    }
+
 
     onSubmitCourse() {
         var SaveData = this.BindCourseDataForSaveEdit();
 
         if (this.CourseForm.valid && this.CourseForm.dirty) {
-            if (this.CourseId != 0) {
+            if (this.URLParamCourseId != 0) {
                 this.courseService.createCourse(SaveData).subscribe((data: any) => {
                     if (data.Success) {
                         this.router.navigate(['/course-List']);
                     }
                 });
             } else {
-                this.courseService.updateCourse(this.CourseId, SaveData).subscribe((data: any) => {
+                this.courseService.updateCourse(this.URLParamCourseId, SaveData).subscribe((data: any) => {
                     if (data.Success) {
                         this.router.navigate(['/course-List']);
                     }
