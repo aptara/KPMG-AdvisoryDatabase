@@ -23,11 +23,35 @@ namespace AdvisoryDatabase.Framework.Entities
         public List<CourseMasterData> ProgramTypeMasterData { get; set; }
         public List<CourseMasterData> CourseOwnerMasterData { get; set; }
         public List<CourseMasterData> MaterialMasterData { get; set; }
-
+        public List<CourseMasterData> LevelOfEffortMasterData { get; set; }
     }
 
     public class CourseMasterData : BaseEntity<long>
     {
         public string DisplayName { get; set; }
+    }
+
+    public class PrerequisiteCourseIDFormData
+    {
+        public string PrerequisiteCourseID { get; set; }
+    }
+    public class EquivalentCourseIDFormData
+    {
+        public string EquivalentCourseID { get; set; }
+    }
+    public class AudienceTypeFormData
+    {
+        public string AudienceType { get; set; }
+    }
+    public class SGSLSNFormData : BaseEntity<long>
+    {
+        public CourseMasterData ServiceGroup { get; set; }
+        public CourseMasterData ServiceLine { get; set; }
+        public CourseMasterData ServiceNetwork { get; set; }
+    }
+    public class FieldOfStudyFormData : BaseEntity<long>
+    {
+        public CourseMasterData FieldOfStudy { get; set; }
+        public string FieldOfStudyCredit { get; set; }
     }
 }

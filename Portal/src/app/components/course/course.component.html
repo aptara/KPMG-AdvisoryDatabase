@@ -774,7 +774,7 @@
                     <div class="form-group">
                         <label for="LevelofEffortMasterId">Level Of Effort</label>
                         <ngx-select-dropdown [config]="config" formControlName="LevelofEffortMasterId"
-                            [options]="ProgramTypeMasterData">
+                            [options]="LevelOfEffortMasterData">
                         </ngx-select-dropdown>
                         <div class="message-error"
                             *ngIf="!CourseForm.controls['LevelofEffortMasterId'].valid && CourseForm.controls['LevelofEffortMasterId'].dirty">

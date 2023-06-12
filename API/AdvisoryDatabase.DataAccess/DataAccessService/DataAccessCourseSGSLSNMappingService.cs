@@ -21,6 +21,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 case OperationType.GetAll:
                     spName = "USP_GetCourseSGSLSNMapping";
                     break;
+                case OperationType.Add:
+                    spName = "USP_CourseSGSLSNMapping";
+                    break;
+                case OperationType.Delete:
+                    spName = "USP_CourseSGSLSNMapping";
+                    break;
                 default:
                     spName = string.Empty;
                     break;
@@ -30,8 +36,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override void FillParameters(OperationType operation, CourseSGSLSNMapping instance, List<System.Data.Common.DbParameter> parameters)
         {
-           
-            
+            parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
+            parameters.Add(DbHelper.CreateParameter("ServiceGroupID", instance.ServiceGroupID));
+            parameters.Add(DbHelper.CreateParameter("ServiceLineID", instance.ServiceLineID));
+            parameters.Add(DbHelper.CreateParameter("ServiceNetworkID", instance.ServiceNetworkID));
         }
 
         protected override List<CourseSGSLSNMapping> ParseGetAllData(System.Data.DataSet data)

@@ -137,6 +137,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
+            dropdownData.LevelOfEffortMasterData = data.Tables[14].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
             dropdownDatas.Add(dropdownData);
             return dropdownDatas;
         }

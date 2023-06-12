@@ -18,7 +18,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "UserDetail";
+                    spName = "USP_GetCourseIndustryMapping";
+                    break;
+                case OperationType.Add:
+                    spName = "USP_AudienceLevelMapping";
+                    break;
+                case OperationType.Delete:
+                    spName = "USP_AudienceLevelMapping";
                     break;
                 default:
                     spName = string.Empty;
@@ -29,8 +35,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override void FillParameters(OperationType operation, AudienceLevelMapping instance, List<System.Data.Common.DbParameter> parameters)
         {
-           
-            
+            parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
+            parameters.Add(DbHelper.CreateParameter("AudienceLevelId", instance.AudienceLevelId));
         }
 
         protected override List<AudienceLevelMapping> ParseGetAllData(System.Data.DataSet data)

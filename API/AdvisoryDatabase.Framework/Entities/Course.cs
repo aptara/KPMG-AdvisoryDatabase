@@ -67,12 +67,12 @@ namespace AdvisoryDatabase.Framework.Entities
         public List<CourseMasterData>Industries { get; set; }
         public List<CourseMasterData>AudienceLevels { get; set; }
         public List<CourseMasterData>FunctionMasterIDs { get; set; }
-        public List<CourseMasterData>SGSLSNFormGroups { get; set; }
-        public List<CourseMasterData>FieldOfStudyFormGroup { get; set; }
-        public List<string>PrerequisiteCourseIDFormGroup { get; set; }
-        public List<string> EquivalentCourseIDFormGroup { get; set; }
-        public List<string>AudienceTypeFormGroup { get; set; }
-        public List<string> FOCUSCourseOwnerFormGroup { get; set; }
+        public List<SGSLSNFormData> SGSLSNFormGroups { get; set; }
+        public List<FieldOfStudyFormData> FieldOfStudyFormGroup { get; set; }
+        public List<CourseMasterData> FOCUSCourseOwnerFormGroup { get; set; }
+        public List<PrerequisiteCourseIDFormData> PrerequisiteCourseIDFormGroup { get; set; }
+        public List<EquivalentCourseIDFormData> EquivalentCourseIDFormGroup { get; set; }
+        public List<AudienceTypeFormData> AudienceTypeFormGroup { get; set; }
     }
 }
  

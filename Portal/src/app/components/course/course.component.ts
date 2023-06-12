@@ -34,7 +34,7 @@ export class CourseComponent implements OnInit {
     ProgramTypeMasterData: any = [];
     CourseOwnerMasterData: any = [];
     MaterialMasterData: any = [];
-
+    LevelOfEffortMasterData: any = [];
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
     web = { label: 'google', url: 'https://www.google.com' }
@@ -119,40 +119,40 @@ export class CourseComponent implements OnInit {
 
     GetSGSNSLFormControl() {
         return this.formBuilder.group({
-            ServiceGroup: ['', Validators.required],
-            ServiceLine: ['', Validators.required],
-            ServiceNetwork: ['', Validators.required],
+            ServiceGroup: [''],
+            ServiceLine: [''],
+            ServiceNetwork: [''],
         })
     }
 
     GetFieldOfStudyFormGroup() {
         return this.formBuilder.group({
-            FieldOfStudy: ['', Validators.required],
-            FieldOfStudyCredit: ['', Validators.required],
+            FieldOfStudy: [''],
+            FieldOfStudyCredit: [''],
         });
     }
 
     GetPrerequisiteCourseIDFormGroup() {
         return this.formBuilder.group({
-            PrerequisiteCourseID: ['', Validators.required],
+            PrerequisiteCourseID: [''],
         });
     }
 
     GetEquivalentCourseIDFormGroup() {
         return this.formBuilder.group({
-            EquivalentCourseID: ['', Validators.required],
+            EquivalentCourseID: [''],
         });
     }
 
     GetAudienceTypeFormGroup() {
         return this.formBuilder.group({
-            AudienceType: ['', Validators.required],
+            AudienceType: [''],
         });
     }
 
     GetFOCUSCourseOwnerFormGroup() {
         return this.formBuilder.group({
-            FOCUSCourseOwner: ['', Validators.required],
+            FOCUSCourseOwner: [''],
         });
     }
 
@@ -250,8 +250,6 @@ export class CourseComponent implements OnInit {
             CourseName: this.CourseData?.CourseName,
             CourseID: this.CourseData?.CourseID,
             DeploymentFiscalYear: this.CourseData?.DeploymentFiscalYear,
-            CompetencyMasterID: this.CourseData?.CompetencyMasterID,
-            ProgramKnowledgeLevelMasterID: this.CourseData?.ProgramKnowledgeLevelMasterID,
             CourseOverviewObjective: this.CourseData?.CourseOverviewObjective,
             TargetAudience: this.CourseData?.TargetAudience,
             EstimatedCPE: this.CourseData?.EstimatedCPE,
@@ -264,25 +262,31 @@ export class CourseComponent implements OnInit {
             Vendor: this.CourseData?.Vendor,
             ServiceNowID: this.CourseData?.ServiceNowID,
             Descriptions: this.CourseData?.Descriptions,
-            IsRegulatoryOrLegalRequirement: this.CourseData?.IsRegulatoryOrLegalRequirement,
-            ProgramTypeID: this.CourseData?.ProgramTypeID,
-            DeliveryTypeID: this.CourseData?.DeliveryTypeID,
             Duration: this.CourseData?.Duration,
             FirstDeliveryDate: this.datePipe.transform(this.CourseData?.FirstDeliveryDate, 'yyyy-MM-dd'),
             MaximumAttendeeCount: this.CourseData?.MaximumAttendeeCount,
             MinimumAttendeeCount: this.CourseData?.MinimumAttendeeCount,
             MaximumAttendeeWaitlist: this.CourseData?.MaximumAttendeeWaitlist,
-            MaterialMasterID: this.CourseData?.MaterialMasterID,
             Collateral: this.CourseData?.Collateral,
             RoomSetUpComments: this.CourseData?.RoomSetUpComments,
             DeploymentFacilitatorConsideration: this.CourseData?.DeploymentFacilitatorConsideration,
             LDIntakeOwner: this.CourseData?.LDIntakeOwner,
             ProjectManagerContact: this.CourseData?.ProjectManagerContact,
             InstructionalDesigner: this.CourseData?.InstructionalDesigner,
-            LevelofEffortMasterId: this.CourseData?.LevelofEffortMasterId,
             CourseNotes: this.CourseData?.CourseNotes,
+            CompetencyMasterID: this.GetDropDownObjectForBindData(this.CourseData.CompetencyMasterID, this.CompetencyMasterData),
+            LevelofEffortMasterId: this.GetDropDownObjectForBindData(this.CourseData.LevelofEffortMasterId, this.LevelOfEffortMasterData),
+            ProgramKnowledgeLevelMasterID: this.GetDropDownObjectForBindData(this.CourseData.ProgramKnowledgeLevelMasterID, this.ProgramKnowledgeLevelMasterData),
+            IsRegulatoryOrLegalRequirement: this.GetDropDownObjectForBindData(this.CourseData.IsRegulatoryOrLegalRequirement, this.IsRegulatoryOrLegalRequirementDropdownData),
+            MaterialMasterID: this.GetDropDownObjectForBindData(this.CourseData.MaterialMasterID, this.MaterialMasterData),
+            ProgramTypeID: this.GetDropDownObjectForBindData(this.CourseData.ProgramTypeID, this.ProgramTypeMasterData),
+            DeliveryTypeID: this.GetDropDownObjectForBindData(this.CourseData.DeliveryTypeID, this.DeliveryTypeMasterData)
         });
         console.log(this.CourseForm.value)
+    }
+
+    GetDropDownObjectForBindData(CourseData: any, MasterDataList: any[]) {
+        return MasterDataList.find(x => x.Id == CourseData)
     }
 
     getCourseDataForEdit() {
@@ -316,6 +320,7 @@ export class CourseComponent implements OnInit {
                 this.ProgramTypeMasterData = dropdowndata.ProgramTypeMasterData
                 this.CourseOwnerMasterData = dropdowndata.CourseOwnerMasterData
                 this.MaterialMasterData = dropdowndata.MaterialMasterData
+                this.LevelOfEffortMasterData = dropdowndata.LevelOfEffortMasterData
             }
             this.getCourseDataForEdit();
         });
@@ -325,19 +330,26 @@ export class CourseComponent implements OnInit {
         var CourseData: any = this.CourseForm.value;
         let saveCourse: any = {};
         saveCourse.CourseMasterID = this.URLParamCourseId;
+        saveCourse.CompetencyMasterID = this.GetSingleDropdownDataForSave(CourseData.CompetencyMasterID);
+        saveCourse.LevelofEffortMasterId = this.GetSingleDropdownDataForSave(CourseData.LevelofEffortMasterId);
+        saveCourse.ProgramKnowledgeLevelMasterID = this.GetSingleDropdownDataForSave(CourseData.ProgramKnowledgeLevelMasterID);
+        saveCourse.IsRegulatoryOrLegalRequirement = this.GetSingleDropdownDataForSave(CourseData.IsRegulatoryOrLegalRequirement);
+        saveCourse.MaterialMasterID = this.GetSingleDropdownDataForSave(CourseData.MaterialMasterID);
+        saveCourse.ProgramTypeID = this.GetSingleDropdownDataForSave(CourseData.ProgramTypeID);
+        saveCourse.DeliveryTypeID = this.GetSingleDropdownDataForSave(CourseData.DeliveryTypeID);
+        saveCourse.FOCUSCourseOwnerFormGroup = this.GetAlphaNumaricDataForSave(CourseData.FOCUSCourseOwnerFormGroup);
+        saveCourse.SkillMasterIDs = CourseData.SkillMasterIDs;
+        saveCourse.Industries = CourseData.Industries;
+        saveCourse.AudienceLevels = CourseData.AudienceLevels;
+        saveCourse.FunctionMasterIDs = CourseData.FunctionMasterIDs;
+        saveCourse.FieldOfStudyFormGroup = CourseData.FieldOfStudyFormGroup;
+        saveCourse.SGSLSNFormGroups = CourseData.SGSLSNFormGroups;
+        saveCourse.PrerequisiteCourseIDFormGroup = CourseData.PrerequisiteCourseIDFormGroup
+        saveCourse.EquivalentCourseIDFormGroup = CourseData.EquivalentCourseIDFormGroup
+        saveCourse.AudienceTypeFormGroup = CourseData.AudienceTypeFormGroup
         debugger
-        // saveCourse.CompetencyMasterID = this.GetDropdownDataForSave(CourseData.CompetencyMasterID);
-        // saveCourse.LevelofEffortMasterId = this.GetDropdownDataForSave(CourseData.LevelofEffortMasterId);
-        // saveCourse.FunctionMasterIDs = this.GetDropdownDataForSave(CourseData.FunctionMasterIDs);
-        // saveCourse.ProgramKnowledgeLevelMasterID = this.GetDropdownDataForSave(CourseData.ProgramKnowledgeLevelMasterID);
-        // saveCourse.IsRegulatoryOrLegalRequirement = this.GetDropdownDataForSave(CourseData.IsRegulatoryOrLegalRequirement);
-        // saveCourse.MaterialMasterID = this.GetDropdownDataForSave(CourseData.MaterialMasterID);
-        // saveCourse.FOCUSCourseOwnerFormGroup = this.GetDropdownDataForSave(CourseData.FOCUSCourseOwnerFormGroup);
-        // saveCourse.SkillMasterIDs = this.GetDropdownDataForSave(CourseData.SkillMasterIDs);
-        // saveCourse.Industries = this.GetDropdownDataForSave(CourseData.Industries);
-        // saveCourse.AudienceLevels = this.GetDropdownDataForSave(CourseData.AudienceLevels);
-        // saveCourse.FunctionMasterID = this.GetDropdownDataForSave(saveCourse.FunctionMasterID);
         //saveCourse.SGSLSNFormGroups = this.GetDropdownDataForSave(saveCourse.SGSLSNFormGroups);
+
         saveCourse.CourseName = CourseData.CourseName;
         saveCourse.CourseID = CourseData.CourseID;
         saveCourse.DeploymentFiscalYear = CourseData.DeploymentFiscalYear;
@@ -345,17 +357,12 @@ export class CourseComponent implements OnInit {
         saveCourse.TargetAudience = CourseData.TargetAudience;
         saveCourse.EstimatedCPE = CourseData.EstimatedCPE;
         saveCourse.SpecialNoticeMasterID = CourseData.SpecialNoticeMasterID;
-
         saveCourse.CourseSponsor = CourseData.CourseSponsor;
         saveCourse.WhichSGSLSNSponsorLearning = CourseData.WhichSGSLSNSponsorLearning;
         saveCourse.SubjectMatterProfessional = CourseData.SubjectMatterProfessional;
         saveCourse.Vendor = CourseData.Vendor;
         saveCourse.ServiceNowID = CourseData.ServiceNowID;
         saveCourse.Descriptions = CourseData.Descriptions;
-
-        //saveCourse.ProgramTypeID = CourseData.ProgramTypeID; //TODO - Need to check data
-        //saveCourse.DeliveryTypeID = CourseData.DeliveryTypeID; //TODO - Need to check data
-
         saveCourse.Duration = CourseData.Duration;
         saveCourse.FirstDeliveryDate = CourseData.FirstDeliveryDate;
         saveCourse.MaximumAttendeeCount = CourseData.MaximumAttendeeCount;
@@ -372,8 +379,29 @@ export class CourseComponent implements OnInit {
     }
 
     GetSingleDropdownDataForSave(value: any) {
-        return value.Id
+        return value?.Id
     }
+
+    GetAlphaNumaricDataForSave(value: any) {
+        let arrayList: any = [];
+        value.forEach((x: any) => {
+            arrayList.push(x.FOCUSCourseOwner);
+        });
+        return arrayList;
+    }
+
+    // GetFieldOfStudyDataForSave(value: any) {
+    //     let arrayList: any = [];
+    //     debugger
+    //     value.forEach((x: any) => {
+    //         var FieldOfStudyObj = {
+    //             x.FieldOfStudy,
+    //             x.FieldOfStudyCredit
+    //         }
+    //         arrayList.push(FieldOfStudyObj);
+    //     });
+    //     return arrayList;
+    // }
 
     GetMultiSelectDropdownDataForSave(value: any) {
         let ValueIds = [];
