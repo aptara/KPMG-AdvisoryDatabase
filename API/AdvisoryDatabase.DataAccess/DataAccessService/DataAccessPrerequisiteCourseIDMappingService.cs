@@ -18,7 +18,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "UserDetail";
+                    spName = "USP_GetPrerequisiteCourseIDMapping";
+                    break;
+                case OperationType.Add:
+                    spName = "USP_PrerequisiteCourseIDMapping";
+                    break;
+                case OperationType.Delete:
+                    spName = "USP_PrerequisiteCourseIDMapping";
                     break;
                 default:
                     spName = string.Empty;

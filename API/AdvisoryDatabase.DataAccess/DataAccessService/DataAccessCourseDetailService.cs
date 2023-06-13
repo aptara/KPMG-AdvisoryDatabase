@@ -41,7 +41,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         }
         protected override void FillParameters(OperationType operation, Course instance, List<DbParameter> parameters)
         {
-            if (operation == OperationType.Get)
+            if (operation == OperationType.Get || operation == OperationType.GetAll)
             {
                 parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
@@ -84,10 +84,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("InstructionalDesigner", instance.InstructionalDesigner));
                 parameters.Add(DbHelper.CreateParameter("LevelofEffortMasterId", instance.LevelofEffortMasterId));
                 parameters.Add(DbHelper.CreateParameter("CourseNotes", instance.CourseNotes));
-                
+
 
             }
-            else if(operation == OperationType.Delete)
+            else if (operation == OperationType.Delete)
             {
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
             }
@@ -95,6 +95,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override List<Course> ParseGetAllData(System.Data.DataSet data)
         {
+            List<Course> courses = new List<Course>();
+            Course course = new Course();
+
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                 new Course
                 {
@@ -157,7 +160,123 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     FieldOfStudyMasterID = row.Read<int>("FieldOfStudyMasterID"),
                     FuntionMasterID = row.Read<long>("FuntionMasterID"),
                 }).ToList();
-            return GetAllData;
+            if (GetAllData.Count == 1)
+            {
+                course = GetAllData.SingleOrDefault();
+            }
+            if (data.Tables[1].Rows.Count > 0)
+            {
+                course.AudienceLevels = data.Tables[1].AsEnumerable().Select(row =>
+                new CourseMasterData
+                {
+                    Id = row.Read<int>("Id"),
+                    DisplayName = row.ReadString("DisplayName"),
+                }).ToList();
+            }
+            if (data.Tables[2].Rows.Count > 0)
+            {
+                course.AudienceTypeFormGroup = data.Tables[2].AsEnumerable().Select(row =>
+            new AudienceTypeFormData
+            {
+                AudienceType = row.ReadString("AudienceType"),
+            }).ToList();
+            }
+            if (data.Tables[3].Rows.Count > 0)
+            {
+                course.FieldOfStudyFormGroup = data.Tables[3].AsEnumerable().Select(row =>
+            new FieldOfStudyFormData
+            {
+                FieldOfStudy = new CourseMasterData
+                {
+                    Id = row.Read<long>("Id"),
+                    DisplayName = row.ReadString("DisplayName")
+                },
+                FieldOfStudyCredit = row.ReadString("FOSCredit"),
+            }).ToList();
+            }
+            if (data.Tables[4].Rows.Count > 0)
+            {
+                course.FunctionMasterIDs = data.Tables[4].AsEnumerable().Select(row =>
+               new CourseMasterData
+               {
+                   Id = row.Read<int>("Id"),
+                   DisplayName = row.ReadString("DisplayName"),
+               }).ToList();
+            }
+            if (data.Tables[5].Rows.Count > 0)
+            {
+                course.Industries = data.Tables[5].AsEnumerable().Select(row =>
+               new CourseMasterData
+               {
+                   Id = row.Read<int>("Id"),
+                   DisplayName = row.ReadString("DisplayName"),
+               }).ToList();
+            }
+            if (data.Tables[6].Rows.Count > 0)
+            {
+                course.SGSLSNFormGroups = data.Tables[6].AsEnumerable().Select(row =>
+               new SGSLSNFormData
+               {
+                   ServiceGroup = new CourseMasterData
+                   {
+                       Id = row.Read<long>("ServiceGroupId"),
+                       DisplayName = row.ReadString("ServiceGroup")
+                   },
+                   ServiceLine = new CourseMasterData
+                   {
+                       Id = row.Read<long>("ServiceLineId"),
+                       DisplayName = row.ReadString("ServiceLine")
+                   },
+                   ServiceNetwork = new CourseMasterData
+                   {
+                       Id = row.Read<long>("ServiceNetworkID"),
+                       DisplayName = row.ReadString("ServiceNetwork")
+                   },
+               }).ToList();
+            }
+            if (data.Tables[7].Rows.Count > 0)
+            {
+                course.SkillMasterIDs = data.Tables[7].AsEnumerable().Select(row =>
+               new CourseMasterData
+               {
+                   Id = row.Read<long>("Id"),
+                   DisplayName = row.ReadString("DisplayName"),
+               }).ToList();
+            }
+            if (data.Tables[8].Rows.Count > 0)
+            {
+                course.EquivalentCourseIDFormGroup = data.Tables[8].AsEnumerable().Select(row =>
+               new EquivalentCourseIDFormData
+               {
+                   EquivalentCourseID = row.ReadString("EquivalentCourseID"),
+               }).ToList();
+            }
+            if (data.Tables[9].Rows.Count > 0)
+            {
+                course.FOCUSCourseOwnerFormGroup = data.Tables[9].AsEnumerable().Select(row =>
+                new CourseMasterData
+                {
+                    Id = row.Read<long>("Id"),
+                    DisplayName = row.ReadString("DisplayName"),
+                }).ToList();
+            }
+            if (data.Tables[10].Rows.Count > 0)
+            {
+                course.PrerequisiteCourseIDFormGroup = data.Tables[10].AsEnumerable().Select(row =>
+               new PrerequisiteCourseIDFormData
+               {
+                   PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
+               }).ToList();
+            }
+            if (GetAllData.Count == 1)
+            {
+                courses.Add(course);
+                return courses;
+            }
+            else
+            {
+                return GetAllData;
+            }
         }
 
         protected override Course Parse(System.Data.DataRow data)

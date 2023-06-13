@@ -43,13 +43,13 @@ namespace AdvisoryDatabase.Framework.Entities
     {
         public string AudienceType { get; set; }
     }
-    public class SGSLSNFormData : BaseEntity<long>
+    public class SGSLSNFormData
     {
         public CourseMasterData ServiceGroup { get; set; }
         public CourseMasterData ServiceLine { get; set; }
         public CourseMasterData ServiceNetwork { get; set; }
     }
-    public class FieldOfStudyFormData : BaseEntity<long>
+    public class FieldOfStudyFormData
     {
         public CourseMasterData FieldOfStudy { get; set; }
         public string FieldOfStudyCredit { get; set; }

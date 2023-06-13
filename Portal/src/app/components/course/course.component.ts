@@ -280,9 +280,60 @@ export class CourseComponent implements OnInit {
             IsRegulatoryOrLegalRequirement: this.GetDropDownObjectForBindData(this.CourseData.IsRegulatoryOrLegalRequirement, this.IsRegulatoryOrLegalRequirementDropdownData),
             MaterialMasterID: this.GetDropDownObjectForBindData(this.CourseData.MaterialMasterID, this.MaterialMasterData),
             ProgramTypeID: this.GetDropDownObjectForBindData(this.CourseData.ProgramTypeID, this.ProgramTypeMasterData),
-            DeliveryTypeID: this.GetDropDownObjectForBindData(this.CourseData.DeliveryTypeID, this.DeliveryTypeMasterData)
+            DeliveryTypeID: this.GetDropDownObjectForBindData(this.CourseData.DeliveryTypeID, this.DeliveryTypeMasterData),
+            SkillMasterIDs: this.CourseData.SkillMasterIDs,
+            Industries: this.CourseData.Industries,
+            AudienceLevels: this.CourseData.AudienceLevels,
+            FunctionMasterIDs: this.CourseData.FunctionMasterIDs,
+
         });
+        if (this.FieldOfStudyFormGroup.length == 1 && this.CourseData.FieldOfStudyFormGroup.length) {
+            this.FieldOfStudyFormGroup.clear();
+        }
+
+        for (let item of this.CourseData?.FieldOfStudyFormGroup) {
+            this.FieldOfStudyFormGroup.push(this.formBuilder.group(item));
+        }
+
+        if (this.SGSLSNFormGroups.length == 1 && this.CourseData.SGSLSNFormGroups.length) {
+            this.SGSLSNFormGroups.clear();
+        }
+        for (let item of this.CourseData?.SGSLSNFormGroups) {
+            this.SGSLSNFormGroups.push(this.formBuilder.group(item));
+        }
+
+        if (this.PrerequisiteCourseIDFormGroup.length == 1 && this.CourseData.PrerequisiteCourseIDFormGroup.length) {
+            this.PrerequisiteCourseIDFormGroup.clear();
+        }
+        for (let item of this.CourseData?.PrerequisiteCourseIDFormGroup) {
+            this.PrerequisiteCourseIDFormGroup.push(this.formBuilder.group(item));
+        }
+
+        if (this.EquivalentCourseIDFormGroup.length == 1 && this.CourseData.EquivalentCourseIDFormGroup.length) {
+            this.EquivalentCourseIDFormGroup.clear();
+        }
+        for (let item of this.CourseData?.EquivalentCourseIDFormGroup) {
+            this.EquivalentCourseIDFormGroup.push(this.formBuilder.group(item));
+        }
+
+        if (this.AudienceTypeFormGroup.length == 1 && this.CourseData.AudienceTypeFormGroup.length) {
+            this.AudienceTypeFormGroup.clear();
+        }
+        for (let item of this.CourseData?.AudienceTypeFormGroup) {
+            this.AudienceTypeFormGroup.push(this.formBuilder.group(item));
+        }
+
         console.log(this.CourseForm.value)
+    }
+
+    setValuetoDynamicControl() {
+        debugger
+        (this.CourseForm.controls['FieldOfStudyFormGroup'].value).forEach((key: any) => {
+            this.FieldOfStudyFormGroup.push(<FormArray>(<FormArray>this.CourseForm.controls['FieldOfStudyFormGroup']).controls[key]);
+            for (let city of this.CourseData?.FieldOfStudyFormGroup) {
+                this.FieldOfStudyFormGroup.push(new FormControl(city))
+            }
+        });
     }
 
     GetDropDownObjectForBindData(CourseData: any, MasterDataList: any[]) {
@@ -338,6 +389,7 @@ export class CourseComponent implements OnInit {
         saveCourse.ProgramTypeID = this.GetSingleDropdownDataForSave(CourseData.ProgramTypeID);
         saveCourse.DeliveryTypeID = this.GetSingleDropdownDataForSave(CourseData.DeliveryTypeID);
         saveCourse.FOCUSCourseOwnerFormGroup = this.GetAlphaNumaricDataForSave(CourseData.FOCUSCourseOwnerFormGroup);
+
         saveCourse.SkillMasterIDs = CourseData.SkillMasterIDs;
         saveCourse.Industries = CourseData.Industries;
         saveCourse.AudienceLevels = CourseData.AudienceLevels;
@@ -347,8 +399,6 @@ export class CourseComponent implements OnInit {
         saveCourse.PrerequisiteCourseIDFormGroup = CourseData.PrerequisiteCourseIDFormGroup
         saveCourse.EquivalentCourseIDFormGroup = CourseData.EquivalentCourseIDFormGroup
         saveCourse.AudienceTypeFormGroup = CourseData.AudienceTypeFormGroup
-        debugger
-        //saveCourse.SGSLSNFormGroups = this.GetDropdownDataForSave(saveCourse.SGSLSNFormGroups);
 
         saveCourse.CourseName = CourseData.CourseName;
         saveCourse.CourseID = CourseData.CourseID;

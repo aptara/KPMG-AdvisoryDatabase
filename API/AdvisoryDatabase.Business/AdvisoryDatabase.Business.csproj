@@ -73,6 +73,7 @@
     <Compile Include="Service\API\MeterReadingService.cs" />
     <Compile Include="Service\API\TaskService.cs" />
     <Compile Include="Service\AudienceLevelMappingService.cs" />
+    <Compile Include="Service\CourseFunctionMasterMappingService.cs" />
     <Compile Include="Service\FOCUSCourseOwnerMappingService.cs" />
     <Compile Include="Service\AudienceTypeMappingService.cs" />
     <Compile Include="Service\EquivalentCourseIDMappingService.cs" />

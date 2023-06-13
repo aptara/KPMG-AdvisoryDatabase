@@ -18,7 +18,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "UserDetail";
+                    spName = "USP_GetEquivalentCourseIDMapping";
+                    break;
+                case OperationType.Add:
+                    spName = "USP_EquivalentCourseIDMapping";
+                    break;
+                case OperationType.Delete:
+                    spName = "USP_EquivalentCourseIDMapping";
                     break;
                 default:
                     spName = string.Empty;
@@ -29,8 +35,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override void FillParameters(OperationType operation, EquivalentCourseIDMapping instance, List<System.Data.Common.DbParameter> parameters)
         {
-           
-            
+            parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
+            parameters.Add(DbHelper.CreateParameter("EquivalentCourseID", instance.EquivalentCourseID));
         }
 
         protected override List<EquivalentCourseIDMapping> ParseGetAllData(System.Data.DataSet data)
@@ -38,7 +44,6 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new EquivalentCourseIDMapping
                      {
-
                          CourseMasterID = row.Read<int>("CourseMasterID"),
                          EquivalentCourseID = row.ReadString("EquivalentCourseID"),
                      }).ToList();

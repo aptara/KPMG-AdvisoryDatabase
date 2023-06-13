@@ -92,6 +92,7 @@
     <Compile Include="Entities\Course.cs" />
     <Compile Include="Entities\CourseAudienceTypeMapping.cs" />
     <Compile Include="Entities\CourseFieldOfStudyMapping.cs" />
+    <Compile Include="Entities\CourseFunctionMapping.cs" />
     <Compile Include="Entities\CourseIndustryMapping.cs" />
     <Compile Include="Entities\CourseOwner.cs" />
     <Compile Include="Entities\CourseSGSLSNMapping.cs" />

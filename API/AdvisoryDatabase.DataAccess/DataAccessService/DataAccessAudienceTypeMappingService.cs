@@ -18,7 +18,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "UserDetail";
+                    spName = "USP_GetAudienceTypeMapping";
+                    break;
+                case OperationType.Add:
+                    spName = "USP_AudienceTypeMapping";
+                    break;
+                case OperationType.Delete:
+                    spName = "USP_AudienceTypeMapping";
                     break;
                 default:
                     spName = string.Empty;

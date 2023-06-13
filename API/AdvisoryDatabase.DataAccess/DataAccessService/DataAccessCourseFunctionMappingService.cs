@@ -7,10 +7,11 @@ using AdvisoryDatabase.DataAccess.Common;
 using AdvisoryDatabase.DataAccess.Repository;
 using AdvisoryDatabase.Framework.Entities;
 using System.Data;
+using System.Data.Common;
 
 namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
-    public class DataAccessFOCUSCourseOwnerMappingService : DataAccessRepository<FOCUSCourseOwnerMapping, Int32>
+    public class DataAccessCourseFunctionMappingService : DataAccessRepository<CourseFunctionMapping, long>
     {
         protected override string GetProcedureName(OperationType operation)
         {
@@ -18,13 +19,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "USP_GetFOCUSCourseOwnerMapping";
+                    spName = "USP_GetCourseFunctionMasterMapping";
                     break;
                 case OperationType.Add:
-                    spName = "USP_FOCUSCourseOwnerMapping";
+                    spName = "USP_CourseFunctionMasterMapping";
                     break;
                 case OperationType.Delete:
-                    spName = "USP_FOCUSCourseOwnerMapping";
+                    spName = "USP_CourseFunctionMasterMapping";
                     break;
                 default:
                     spName = string.Empty;
@@ -33,28 +34,27 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             return spName;
         }
 
-        protected override void FillParameters(OperationType operation, FOCUSCourseOwnerMapping instance, List<System.Data.Common.DbParameter> parameters)
+        protected override void FillParameters(OperationType operation, CourseFunctionMapping instance, List<System.Data.Common.DbParameter> parameters)
         {
             parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
-            parameters.Add(DbHelper.CreateParameter("FOCUSCourseOwnerId", instance.FOCUSCourseOwnerId));
+            parameters.Add(DbHelper.CreateParameter("FunctionMasterID", instance.FunctionMasterID));
         }
 
-        protected override List<FOCUSCourseOwnerMapping> ParseGetAllData(System.Data.DataSet data)
+        protected override List<CourseFunctionMapping> ParseGetAllData(System.Data.DataSet data)
         {
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
-                     new FOCUSCourseOwnerMapping
+                     new CourseFunctionMapping
                      {
-
                          CourseMasterID = row.Read<int>("CourseMasterID"),
-                         FOCUSCourseOwnerId = row.Read<int>("FOCUSCourseOwnerId"),
+                         FunctionMasterID = row.Read<int>("FunctionMasterID"),
                      }).ToList();
 
             return GetAllData;
         }
 
-        protected override FOCUSCourseOwnerMapping Parse(System.Data.DataRow data)
+        protected override CourseFunctionMapping Parse(System.Data.DataRow data)
         {
-            return new FOCUSCourseOwnerMapping();
+            return new CourseFunctionMapping();
         }
     }
 }
