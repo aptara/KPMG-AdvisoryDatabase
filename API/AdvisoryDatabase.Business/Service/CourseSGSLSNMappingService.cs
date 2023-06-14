@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +11,11 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Service
 {
-    public class CourseDropdownMasterDataService : Repository<DropdownData, long>
+    public class CourseSGSLSNMappingService : Repository<CourseSGSLSNMapping, Int32>
     {
-        protected override DataAccess.Repository.DataAccessRepository<DropdownData, long> CreateDalManager()
+        protected override DataAccess.Repository.DataAccessRepository<CourseSGSLSNMapping, int> CreateDalManager()
         {
-            return new DataAccessCourseDropdownMasterDataService();
+            return new DataAccessCourseSGSLSNMappingService();
         }
     }
 }

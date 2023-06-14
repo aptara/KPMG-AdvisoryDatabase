@@ -6,19 +6,27 @@
     padding: 30px;
 }
 
-.add-course .col-md-3{
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     float: left;
-    padding: 10px;
-}
-
-.add-course .col-md-12{
-    clear: both;
 }
 
 .form-control{
     padding: 5px;
     border-radius: 0px;
     height: 35px;
+}
+
+textarea.form-control{
+    padding: 5px;
+    border-radius: 0px;
+    height: 80px;
+    resize: none;
 }
 
 .clear{
@@ -31,6 +39,10 @@
 
 .panel-default {
     border-color: #ddd;
+}
+
+.dynamic-btn{
+    margin-top: 20px;
 }
 .panel {
     margin-bottom: 20px;
@@ -54,57 +66,29 @@
     padding: 15px;
 }
 
-// .p-inputtext {
-//     width: 100%;
-//     height: 35px;
-//     padding: 5px !important;
-//     margin: 13px 0px;
-//     border-radius: 0px;
-// }
-
-// textarea.p-inputtext {
-//     width: 100%;
-//     height: 60px;
-//     padding: 5px;
-//     margin: 13px 0px;
-//     border-radius: 0px;
-// }
-
-// .course-drop-down .p-inputtext {
-//     width: 100%;
-//     height: 35px;
-//     padding: 5px !important;
-//     margin: 13px 0px;
-//     border-radius: 0px;
-// }
-
-// .corse-submit-btn{
-//     width: 80px;
-//     margin: 10px;
-// }
-
-// .corse-submit-btn:disabled{
-//     cursor: not-allowed !important;
-//     background: #4f6dd675 !important;
-// }
-
-// .textAlign{
-//     text-align: right;
-// }
-
-.message-error{
-    position: relative;
-    border-bottom: 1px dotted rgba(255, 255, 255, 0.627);
-    margin-top: -14px;
-    background-color: transparent;
+/* Error Tool Tip Styles*/
+.error-tooltips {
+  font-family: Helvetica;
+    font-size: 10px;
+    font-weight: bold;
+    color: #cc0033;
+    line-height: 10px;
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    float: left;
+    position: absolute;
+    padding: 5px 10px 5px;
+    margin-left: 0px;
 }
 
-.message-error .error-tooltips {
-  width: auto;
-  background-color: rgb(255, 255, 255);
-  color: rgb(255, 0, 0);
-  text-align: center;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
+.error-tooltips:after {
+  border-right: 7px solid #fce4e4;
+  left: -14px;
+}
+.error-tooltips:before {
+  border-right: 7px solid #fcc2c3;
+  left: -15px;
 }

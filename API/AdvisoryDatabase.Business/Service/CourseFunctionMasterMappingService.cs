@@ -11,11 +11,11 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Service
 {
-    public class CourseDropdownMasterDataService : Repository<DropdownData, long>
+    public class CourseFunctionMasterMappingService : Repository<CourseFunctionMapping, long>
     {
-        protected override DataAccess.Repository.DataAccessRepository<DropdownData, long> CreateDalManager()
+        protected override DataAccess.Repository.DataAccessRepository<CourseFunctionMapping, long> CreateDalManager()
         {
-            return new DataAccessCourseDropdownMasterDataService();
+            return new DataAccessCourseFunctionMappingService();
         }
     }
 }

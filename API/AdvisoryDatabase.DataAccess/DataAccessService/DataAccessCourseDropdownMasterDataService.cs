@@ -11,7 +11,7 @@ using System.Data;
 
 namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
-    public class DataAccessCourseDropdownMasterDataService : DataAccessRepository<DropdownData, Int32>
+    public class DataAccessCourseDropdownMasterDataService : DataAccessRepository<DropdownData, long>
     {
         protected override string GetProcedureName(OperationType operation)
         {
@@ -37,90 +37,110 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         {
             List<DropdownData> dropdownDatas = new List<DropdownData>();
             DropdownData dropdownData = new DropdownData();
-            dropdownData.CourseOwnerMasters = data.Tables[0].AsEnumerable().Select(row =>
+            dropdownData.CompetencyMasterData = data.Tables[0].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
                          
                      }).ToList();
-
-            dropdownData.ProjectStatusMasters = data.Tables[1].AsEnumerable().Select(row =>
+            
+            dropdownData.SkillMasterData = data.Tables[1].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
-                         DisplayName = row.ReadString("DisplayName"),
-
-                     }).ToList();
-
-            dropdownData.StatusMasters = data.Tables[2].AsEnumerable().Select(row =>
-                     new CourseMasterData
-                     {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
             
-            dropdownData.DeliveryTypeMasters = data.Tables[3].AsEnumerable().Select(row =>
+            dropdownData.IndustryMasterData = data.Tables[2].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.ProgramTypeMasters = data.Tables[4].AsEnumerable().Select(row =>
+            dropdownData.ProgramKnowledgeLevelMasterData = data.Tables[3].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.ServiceGroupMasters = data.Tables[5].AsEnumerable().Select(row =>
+            dropdownData.AudienceLevelMasterData = data.Tables[4].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.ServiceLineMasters = data.Tables[6].AsEnumerable().Select(row =>
+            dropdownData.ServiceGroupMasterData = data.Tables[5].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.ServiceNetworkMasters = data.Tables[7].AsEnumerable().Select(row =>
+            dropdownData.ServiceLineMasterData = data.Tables[6].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.AudienceLevelMasters = data.Tables[8].AsEnumerable().Select(row =>
+            dropdownData.ServiceNetworkMasterData = data.Tables[7].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.FieldOfFieldOfStudyMaster = data.Tables[9].AsEnumerable().Select(row =>
+            dropdownData.FieldOfStudyMasterData = data.Tables[8].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.ProgramKnowledgeLevelMaster = data.Tables[10].AsEnumerable().Select(row =>
+            dropdownData.FunctionMasterData = data.Tables[9].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
-            dropdownData.CourseFunctionMasters = data.Tables[11].AsEnumerable().Select(row =>
+            dropdownData.DeliveryTypeMasterData = data.Tables[10].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<Int32>("Id"),
+                         Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
+            dropdownData.ProgramTypeMasterData = data.Tables[11].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
+            dropdownData.CourseOwnerMasterData = data.Tables[12].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
+            dropdownData.MaterialMasterData = data.Tables[13].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
+            dropdownData.LevelOfEffortMasterData = data.Tables[14].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();

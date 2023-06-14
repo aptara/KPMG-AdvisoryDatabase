@@ -72,6 +72,17 @@
     <Compile Include="Security\CryptoServices.cs" />
     <Compile Include="Service\API\MeterReadingService.cs" />
     <Compile Include="Service\API\TaskService.cs" />
+    <Compile Include="Service\AudienceLevelMappingService.cs" />
+    <Compile Include="Service\CourseFunctionMasterMappingService.cs" />
+    <Compile Include="Service\FOCUSCourseOwnerMappingService.cs" />
+    <Compile Include="Service\AudienceTypeMappingService.cs" />
+    <Compile Include="Service\EquivalentCourseIDMappingService.cs" />
+    <Compile Include="Service\PrerequisiteCourseIDMappingService.cs" />
+    <Compile Include="Service\CourseSkillMappingService.cs" />
+    <Compile Include="Service\CourseIndustryMappingService.cs" />
+    <Compile Include="Service\CourseAudienceTypeMappingService.cs" />
+    <Compile Include="Service\CourseFieldOfStudyMappingService.cs" />
+    <Compile Include="Service\CourseSGSLSNMappingService.cs" />
     <Compile Include="Service\BayDataService.cs" />
     <Compile Include="Service\CourseDataService.cs" />
     <Compile Include="Service\CourseOwnerDataService.cs" />

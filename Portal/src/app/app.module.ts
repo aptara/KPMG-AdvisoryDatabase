@@ -33,10 +33,8 @@ import { UserManagementComponent } from './components/user-management/user-manag
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './service/userservice';
-import { AddCourseComponent } from './components/add-course/add-course.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
-import { UpdateCourseComponent } from './components/update-course/update-course.component';
 import { CourseManagementComponent } from './components/course-management/course-management.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
@@ -48,16 +46,15 @@ import { MessageService } from 'primeng/api';
 import { CourseService } from './service/course.service';
 import { DownloadExcelService } from './service/service/download-excel.service';
 import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { DatePipe } from '@angular/common';
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
         UserDisplayComponent,
         UserManagementComponent,
-        AddCourseComponent,
         AddUserComponent,
         UpdateUserComponent,
-        UpdateCourseComponent,
         CourseListComponent,
         CourseComponent,
         CourseManagementComponent,
@@ -100,8 +97,6 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
                 { path: "add-user", component: AddUserComponent },
                 { path: "update-user/:UserMasterID", component: UpdateUserComponent },
                 { path: "user-management", component: UserManagementComponent },
-                { path: "add-course", component: AddCourseComponent },
-                { path: "update-course", component: UpdateCourseComponent },
                 { path: "course-management", component: CourseListComponent },
                 { path: "course-details", component: CourseComponent },
 
@@ -114,7 +109,8 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
         UserService,
         MessageService,
         CourseService,
-        DownloadExcelService
+        DownloadExcelService,
+        DatePipe
     ],
     bootstrap: [AppComponent]
 })

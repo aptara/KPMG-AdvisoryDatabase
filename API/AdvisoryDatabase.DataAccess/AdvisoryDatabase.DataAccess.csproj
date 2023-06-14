@@ -52,6 +52,17 @@
   <ItemGroup>
     <Compile Include="Common\DbHelper.cs" />
     <Compile Include="DataAccessAPIService\DataAccessMeterReadingService.cs" />
+    <Compile Include="DataAccessService\DataAccessAudienceLevelMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseAudienceTypeMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseFunctionMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessFOCUSCourseOwnerMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessAudienceTypeMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessEquivalentCourseIDMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessPrerequisiteCourseIDMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseSkillMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseIndustryMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseFieldOfStudyMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseSGSLSNMappingService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseDetailService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseOwnerDetailsService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseDropdownMasterDataService.cs" />
