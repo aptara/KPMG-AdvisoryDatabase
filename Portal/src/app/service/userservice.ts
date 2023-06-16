@@ -74,4 +74,26 @@ export class UserService {
         var req = environment.baseUrl + 'WebUser/ShowData'
         return this.http.get<any[]>(req);
     }
+
+
+
+
+    public emailDataUrl = environment.baseUrl + 'WebUser/EmailData';
+    getDataByEmail(empData: any) {
+
+        var req = this.emailDataUrl + '?Email=' + empData
+        // console.log(empData)
+        return this.http.get(req, { headers: this.headers });
+    }
+    // private apiUrl = environment.baseUrl + 'WebUser/GetDataByEmail';
+
+
+
+    // GetDataByEmail() {
+    //     const email = localStorage.getItem('email');
+    //     const params = new HttpParams().set('email', email);
+
+    //     return this.http.get(this.apiUrl, { params: params });
+    // }
 }
+
