@@ -256,7 +256,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 course.FOCUSCourseOwnerFormGroup = data.Tables[9].AsEnumerable().Select(row =>
                 new CourseMasterData
                 {
-                    Id = row.Read<long>("Id"),
+                    Id = row.Read<int>("Id"),
                     DisplayName = row.ReadString("DisplayName"),
                 }).ToList();
             }

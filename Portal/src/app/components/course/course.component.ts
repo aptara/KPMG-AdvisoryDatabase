@@ -55,6 +55,7 @@ export class CourseComponent implements OnInit {
         clearOnSelection: false,
         inputDirection: ''
     }
+    IsSubmit: boolean = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -113,7 +114,6 @@ export class CourseComponent implements OnInit {
             EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup()]),
             AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup()]),
             FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()])
-
         })
     }
 
@@ -152,7 +152,7 @@ export class CourseComponent implements OnInit {
 
     GetFOCUSCourseOwnerFormGroup() {
         return this.formBuilder.group({
-            FOCUSCourseOwner: [''],
+            CourseOwner: [''],
         });
     }
 
@@ -323,11 +323,19 @@ export class CourseComponent implements OnInit {
             this.AudienceTypeFormGroup.push(this.formBuilder.group(item));
         }
 
+        if (this.FOCUSCourseOwnerFormGroup.length == 1 && this.CourseData.FOCUSCourseOwnerFormGroup.length) {
+            this.FOCUSCourseOwnerFormGroup.clear();
+        }
+        for (let item of this.CourseData?.FOCUSCourseOwnerFormGroup) {
+            this.FOCUSCourseOwnerFormGroup.push(this.formBuilder.group(this.formBuilder.group({
+                CourseOwner: [item],
+            })));
+        }
+        debugger
         console.log(this.CourseForm.value)
     }
 
     setValuetoDynamicControl() {
-        debugger
         (this.CourseForm.controls['FieldOfStudyFormGroup'].value).forEach((key: any) => {
             this.FieldOfStudyFormGroup.push(<FormArray>(<FormArray>this.CourseForm.controls['FieldOfStudyFormGroup']).controls[key]);
             for (let city of this.CourseData?.FieldOfStudyFormGroup) {
@@ -388,7 +396,7 @@ export class CourseComponent implements OnInit {
         saveCourse.MaterialMasterID = this.GetSingleDropdownDataForSave(CourseData.MaterialMasterID);
         saveCourse.ProgramTypeID = this.GetSingleDropdownDataForSave(CourseData.ProgramTypeID);
         saveCourse.DeliveryTypeID = this.GetSingleDropdownDataForSave(CourseData.DeliveryTypeID);
-        saveCourse.FOCUSCourseOwnerFormGroup = this.GetAlphaNumaricDataForSave(CourseData.FOCUSCourseOwnerFormGroup);
+
 
         saveCourse.SkillMasterIDs = CourseData.SkillMasterIDs;
         saveCourse.Industries = CourseData.Industries;
@@ -399,6 +407,7 @@ export class CourseComponent implements OnInit {
         saveCourse.PrerequisiteCourseIDFormGroup = CourseData.PrerequisiteCourseIDFormGroup
         saveCourse.EquivalentCourseIDFormGroup = CourseData.EquivalentCourseIDFormGroup
         saveCourse.AudienceTypeFormGroup = CourseData.AudienceTypeFormGroup
+        saveCourse.FOCUSCourseOwnerFormGroup = CourseData.FOCUSCourseOwnerFormGroup
 
         saveCourse.CourseName = CourseData.CourseName;
         saveCourse.CourseID = CourseData.CourseID;
@@ -440,19 +449,6 @@ export class CourseComponent implements OnInit {
         return arrayList;
     }
 
-    // GetFieldOfStudyDataForSave(value: any) {
-    //     let arrayList: any = [];
-    //     debugger
-    //     value.forEach((x: any) => {
-    //         var FieldOfStudyObj = {
-    //             x.FieldOfStudy,
-    //             x.FieldOfStudyCredit
-    //         }
-    //         arrayList.push(FieldOfStudyObj);
-    //     });
-    //     return arrayList;
-    // }
-
     GetMultiSelectDropdownDataForSave(value: any) {
         let ValueIds = [];
         if (Array.isArray(value)) {
@@ -462,9 +458,9 @@ export class CourseComponent implements OnInit {
 
 
     onSubmitCourse() {
+        this.IsSubmit = true;
         var SaveData = this.BindCourseDataForSaveEdit();
-
-        if (this.CourseForm.valid && this.CourseForm.dirty) {
+        if (!this.CourseForm.invalid) {
             if (this.URLParamCourseId != 0) {
                 this.courseService.createCourse(SaveData).subscribe((data: any) => {
                     if (data.Success) {

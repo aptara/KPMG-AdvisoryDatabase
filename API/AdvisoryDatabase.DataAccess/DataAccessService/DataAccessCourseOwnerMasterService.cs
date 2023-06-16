@@ -21,7 +21,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 case OperationType.GetAll:
                     spName = "USP_GetCourseOwnerMasterData";
                     break;
-                
+                case OperationType.Add:
+                    spName = "USP_GetCourseOwnerMasterData";
+                    break;
+                case OperationType.Delete:
+                    spName = "USP_GetCourseOwnerMasterData";
+                    break;
                 default:
                     spName = string.Empty;
                     break;
@@ -31,6 +36,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override void FillParameters(OperationType operation, CourseOwnerMaster instance, List<System.Data.Common.DbParameter> parameters)
         {
+            parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
+            parameters.Add(DbHelper.CreateParameter("CourseOwnerId", instance.CourseOwnerId));
         }
 
         protected override List<CourseOwnerMaster> ParseGetAllData(System.Data.DataSet data)
@@ -38,21 +45,15 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new CourseOwnerMaster
                      {
-                         Id = row.Read<Int32>("CourseOwnerId"),
-                         CourseOwner = row.ReadString("CourseOwner"),
-                         
+                         CourseMasterID = row.Read<int>("CourseMasterID"),
+                         CourseOwnerId = row.Read<long>("CourseOwnerId"),
                      }).ToList();
-
             return GetAllData;
         }
 
         protected override CourseOwnerMaster Parse(System.Data.DataRow data)
         {
-            return new CourseOwnerMaster
-            {
-                Id = data.Read<Int32>("Id"),
-                CourseOwner = data.ReadString("CourseOwner"),
-            };
+            return new CourseOwnerMaster();
         }
     }
 }
