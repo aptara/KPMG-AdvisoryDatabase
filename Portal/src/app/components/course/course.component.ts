@@ -35,6 +35,7 @@ export class CourseComponent implements OnInit {
     CourseOwnerMasterData: any = [];
     MaterialMasterData: any = [];
     LevelOfEffortMasterData: any = [];
+    SpecialNoticeMasterData: any = [];
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
     web = { label: 'google', url: 'https://www.google.com' }
@@ -56,6 +57,8 @@ export class CourseComponent implements OnInit {
         inputDirection: ''
     }
     IsSubmit: boolean = false;
+    IsRequiredsgslsnFormControl: boolean = false;
+    IsRequiredfOSFormGroup: boolean = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -128,25 +131,25 @@ export class CourseComponent implements OnInit {
     GetFieldOfStudyFormGroup() {
         return this.formBuilder.group({
             FieldOfStudy: [''],
-            FieldOfStudyCredit: [''],
+            FieldOfStudyCredit: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetPrerequisiteCourseIDFormGroup() {
         return this.formBuilder.group({
-            PrerequisiteCourseID: [''],
+            PrerequisiteCourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetEquivalentCourseIDFormGroup() {
         return this.formBuilder.group({
-            EquivalentCourseID: [''],
+            EquivalentCourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetAudienceTypeFormGroup() {
         return this.formBuilder.group({
-            AudienceType: [''],
+            AudienceType: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
@@ -205,14 +208,15 @@ export class CourseComponent implements OnInit {
     }
 
     addSGSLSNCourseChild() {
-        if (this.SGSLSNFormGroups.length < 4) {
+        this.ValidatesgslsnFormControl(true);
+        if (!this.IsRequiredsgslsnFormControl && this.SGSLSNFormGroups.length < 4) {
             this.SGSLSNFormGroups.push(this.GetSGSNSLFormControl());
         }
     }
 
     addFormFieldOfStudyChildForm() {
-
-        if (this.FieldOfStudyFormGroup.length < 4) {
+        this.ValidatefOSFormGroup(true);
+        if (!this.IsRequiredfOSFormGroup && this.FieldOfStudyFormGroup.length < 4) {
             this.FieldOfStudyFormGroup.push(this.GetFieldOfStudyFormGroup());
         }
     }
@@ -331,17 +335,7 @@ export class CourseComponent implements OnInit {
                 CourseOwner: [item],
             })));
         }
-        debugger
         console.log(this.CourseForm.value)
-    }
-
-    setValuetoDynamicControl() {
-        (this.CourseForm.controls['FieldOfStudyFormGroup'].value).forEach((key: any) => {
-            this.FieldOfStudyFormGroup.push(<FormArray>(<FormArray>this.CourseForm.controls['FieldOfStudyFormGroup']).controls[key]);
-            for (let city of this.CourseData?.FieldOfStudyFormGroup) {
-                this.FieldOfStudyFormGroup.push(new FormControl(city))
-            }
-        });
     }
 
     GetDropDownObjectForBindData(CourseData: any, MasterDataList: any[]) {
@@ -380,6 +374,8 @@ export class CourseComponent implements OnInit {
                 this.CourseOwnerMasterData = dropdowndata.CourseOwnerMasterData
                 this.MaterialMasterData = dropdowndata.MaterialMasterData
                 this.LevelOfEffortMasterData = dropdowndata.LevelOfEffortMasterData
+                this.SpecialNoticeMasterData = dropdowndata.SpecialNoticeMasterData
+                debugger
             }
             this.getCourseDataForEdit();
         });
@@ -473,6 +469,27 @@ export class CourseComponent implements OnInit {
                         this.router.navigate(['/course-List']);
                     }
                 });
+            }
+        }
+    }
+
+    ValidatesgslsnFormControl(validate: boolean) {
+        debugger
+        for (let control of this.CourseForm?.get("SGSLSNFormGroups")?.value) {
+            if (control?.ServiceGroup === "" || control?.ServiceLine === "" || control?.ServiceNetwork === "") {
+                this.IsRequiredsgslsnFormControl = true
+            } else {
+                this.IsRequiredsgslsnFormControl = false
+            }
+        }
+    }
+
+    ValidatefOSFormGroup(validate: boolean) {
+        for (let control of this.CourseForm?.get("FieldOfStudyFormGroup")?.value) {
+            if (control?.FieldOfStudy === "" || control?.FieldOfStudyCredit === "") {
+                this.IsRequiredfOSFormGroup = true
+            } else {
+                this.IsRequiredfOSFormGroup = false
             }
         }
     }

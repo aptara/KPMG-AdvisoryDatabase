@@ -144,6 +144,13 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();
+            dropdownData.SpecialNoticeMasterData = data.Tables[15].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
             dropdownDatas.Add(dropdownData);
             return dropdownDatas;
         }

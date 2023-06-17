@@ -185,6 +185,10 @@
                             </div>
                         </div>
                     </div>
+                    <div *ngIf="IsRequiredsgslsnFormControl" style="font-size: 12px; color: red;">
+                        Service Group, Service Line and Service Network is
+                        required.
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -194,7 +198,7 @@
                             <div>
                                 <div class="col-md-4" [formGroupName]="i">
                                     <div class="form-group">
-                                        <label for="SpecialNotice">Field of Study {{ i + 1}}</label>
+                                        <label for="FieldOfStudy">Field of Study {{ i + 1}}</label>
                                         <ngx-select-dropdown [config]="config" formControlName="FieldOfStudy"
                                             [options]="FieldOfStudyMasterData">
                                         </ngx-select-dropdown>
@@ -202,9 +206,15 @@
                                 </div>
                                 <div class="col-md-4" [formGroupName]="i">
                                     <div class="form-group">
-                                        <label for="SpecialNotice">Field of Study Credit {{ i + 1}}</label>
+                                        <label for="FieldOfStudyCredit">Field of Study Credit {{ i + 1}}</label>
                                         <input type="text" class="form-control" formControlName="FieldOfStudyCredit"
-                                            id="TargetAudience">
+                                            id="FieldOfStudyCredit">
+                                    </div>
+                                    <div class="message-error">
+                                        <div class="error-tooltips"
+                                            *ngIf="IsSubmit && fOSFormGroup.get('FieldOfStudyCredit')?.hasError('pattern')">
+                                            Field of Study Credit should be Alpha Numeric.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -222,6 +232,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div *ngIf="IsRequiredfOSFormGroup" style="font-size: 12px; color: red;">
+                            Field of Study and Field of Study Credit is required.
                         </div>
                     </div>
                 </div>
@@ -242,13 +255,19 @@
             </div>
             <div class="row">
                 <div formArrayName="PrerequisiteCourseIDFormGroup">
-                    <div *ngFor="let fOSFormGroup of PrerequisiteCourseIDFormGroup.controls; let i=index;">
+                    <div *ngFor="let PCIDFormGroup of PrerequisiteCourseIDFormGroup.controls; let i=index;">
                         <div>
                             <div class="col-md-3" [formGroupName]="i">
                                 <div class="form-group">
                                     <label for="PrerequisiteCourseID">Prerequisite CourseId {{ i + 1}}</label>
                                     <input type="text" class="form-control" formControlName="PrerequisiteCourseID"
                                         id="PrerequisiteCourseID">
+                                </div>
+                                <div class="message-error">
+                                    <div class="error-tooltips"
+                                        *ngIf="IsSubmit && PCIDFormGroup.get('PrerequisiteCourseID')?.hasError('pattern')">
+                                        Prerequisite CourseId should be Alpha Numeric.
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3" [formGroupName]="i">
@@ -271,13 +290,19 @@
             </div>
             <div class="row">
                 <div formArrayName="EquivalentCourseIDFormGroup">
-                    <div *ngFor="let fOSFormGroup of EquivalentCourseIDFormGroup.controls; let i=index;">
+                    <div *ngFor="let ECIDFormGroup of EquivalentCourseIDFormGroup.controls; let i=index;">
                         <div [formGroupName]="i">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="PrerequisiteCourseID">Equivalent CourseId {{ i + 1}}</label>
+                                    <label for="EquivalentCourseID">Equivalent CourseId {{ i + 1}}</label>
                                     <input type="text" class="form-control" formControlName="EquivalentCourseID"
-                                        id="PrerequisiteCourseID">
+                                        id="EquivalentCourseID">
+                                </div>
+                                <div class="message-error">
+                                    <div class="error-tooltips"
+                                        *ngIf="IsSubmit && ECIDFormGroup.get('EquivalentCourseID')?.hasError('pattern')">
+                                        Equivalent CourseId should be Alpha Numeric.
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -302,40 +327,11 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="SpecialNotice">Special Notice</label>
-                        <br><br>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="SpecialNoticeMasterID"
-                                id="SpecialNoticeMasterID" />
-                            <label class="form-check-label" for="SpecialNoticeMasterID">This course
-                                awards CPE credit. </label>
-                        </div>
-                        <br>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="SpecialNoticeMasterID"
-                                id="SpecialNoticeMasterID" />
-                            <label class="form-check-label" for="SpecialNoticeMasterID"> CPE credit will be
-                                awarded
-                                for
-                                this
-                                self-study upon successful completion of the content and passing the exam with a
-                                grade of 70 or higher and must be within one year of enrollment.
-                            </label>
-                        </div>
-                        <br>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="SpecialNoticeMasterID"
-                                id="SpecialNoticeMasterID" />
-                            <label class="form-check-label" for="SpecialNoticeMasterID"> This course does not
-                                award
-                                CPE
-                                credit.
-                            </label>
-                        </div>
-                        <br>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="SpecialNoticeMasterID"
-                                id="SpecialNoticeMasterID" />
-                            <label class="form-check-label" for="SpecialNoticeMasterID"> None.</label>
+                        <div class="form-check" *ngFor="let SpecialNotes of SpecialNoticeMasterData">
+                            <input class="form-check-input" type="radio" [value]="SpecialNotes.Id"
+                                formControlName="SpecialNoticeMasterID" id="SpecialNoticeMasterID" />
+                            <label class="form-check-label"
+                                for="SpecialNoticeMasterID">{{SpecialNotes.DisplayName}}</label>
                         </div>
                     </div>
                 </div>
@@ -365,6 +361,12 @@
                                     <label for="AudienceType">Audience Type {{ i + 1}}</label>
                                     <input type="text" class="form-control" formControlName="AudienceType"
                                         id="AudienceType">
+                                </div>
+                                <div class="message-error">
+                                    <div class="error-tooltips"
+                                        *ngIf="IsSubmit && fOSFormGroup.get('AudienceType')?.hasError('pattern')">
+                                        Audience Type should be Alpha Numeric.
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
