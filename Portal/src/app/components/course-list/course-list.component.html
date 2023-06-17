@@ -16,6 +16,8 @@
                 <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()">
                     Export RDI for Deployment
                 </button>
+                <button pButton class="btn-excel-width" (click)="cancelSelection()">Cancel</button>
+
                 <span class="p-input-icon-left ml-auto filter-bar">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
@@ -27,6 +29,9 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
+                <th>
+
+                </th>
                 <th>
                     <div class="flex align-items-center">
                         Course ID
@@ -70,6 +75,13 @@
         </ng-template>
         <ng-template pTemplate="body" let-course>
             <tr>
+                <td>
+                    <span class="edit-btn">
+                        <input type="checkbox" (change)="toggleCourseSelection(course.CourseMasterID)"
+                            [checked]="isCourseSelected(course.CourseMasterID)">
+
+                    </span>
+                </td>
                 <td>
                     <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
                         {{ course.CourseID }}</a>
