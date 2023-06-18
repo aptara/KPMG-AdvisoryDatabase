@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../domain/user';
+import { CoursePermission, User } from '../domain/user';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -11,16 +11,13 @@ export class UserService {
     headers = new HttpHeaders()
         .set('content-type', 'application/json')
     constructor(private http: HttpClient) {
-
-
+        this.setUserToLocalStorage();
     }
-
 
     getUsersData() {
         console.log(this.userData)
         return Promise.resolve(this.userData);
     }
-
 
     public url = environment.baseUrl + 'WebUser/ShowData'
     getData() {
@@ -32,6 +29,42 @@ export class UserService {
     getUData(UserID: any) {
         var req = this.GetDataByUrl + "/" + UserID;
         return this.http.get(req, UserID)
+    }
+
+    setUserToLocalStorage(): void {
+        let User =
+        {
+            "Email": "Pushpraj.Jagadale@ap",
+        }
+        if (!localStorage.getItem("UserData")) {
+            this.getDataByEmail(User.Email).subscribe(user => {
+                localStorage.setItem('UserData', JSON.stringify(user))
+            });
+        }
+    }
+
+    GetUserPermission() {
+        let userPermission = new CoursePermission();
+        let UserData = this.ReadUserData();
+        if (UserData) {
+            let permissions = UserData?.TaskMasterID?.split(",")
+            userPermission.hasPermissionCreateCourse = permissions.some((x: any) => x?.trim() === "1")
+            userPermission.hasPermissionUpdateCourse = permissions.some((x: any) => x?.trim() === "2");
+            userPermission.hasPermissionDisableCourse = permissions.some((x: any) => x?.trim() === "3");
+            userPermission.hasPermissionReviewCourse = permissions.some((x: any) => x?.trim() === "8");
+            userPermission.hasPermissionEnableCourse = permissions.some((x: any) => x?.trim() === "13");
+            userPermission.hasPermissionAddUpdateCourseID = permissions.some((x: any) => x?.trim() === "15");
+            userPermission.hasPermissionExportCourse = permissions.some((x: any) => x?.trim() === "4");
+            userPermission.hasPermissionDownloadCourseRDIforFocus = permissions.some((x: any) => x?.trim() === "5");
+            userPermission.hasPermissionDownloadCourseRDIforClarizen = permissions.some((x: any) => x?.trim() === "6");
+            userPermission.hasPermissionDownloadCourse = permissions.some((x: any) => x?.trim() === "7");
+        }
+        return userPermission;
+    }
+
+    ReadUserData(): any {
+        let userData: any = localStorage.getItem('UserData');
+        return JSON.parse(userData);
     }
 
 
@@ -74,9 +107,6 @@ export class UserService {
         var req = environment.baseUrl + 'WebUser/ShowData'
         return this.http.get<any[]>(req);
     }
-
-
-
 
     public emailDataUrl = environment.baseUrl + 'WebUser/EmailData';
     getDataByEmail(empData: any) {

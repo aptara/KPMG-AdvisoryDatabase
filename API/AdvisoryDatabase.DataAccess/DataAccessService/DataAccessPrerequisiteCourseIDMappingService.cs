@@ -35,8 +35,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override void FillParameters(OperationType operation, PrerequisiteCourseIDMapping instance, List<System.Data.Common.DbParameter> parameters)
         {
-           
-            
+            parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
+            parameters.Add(DbHelper.CreateParameter("PrerequisiteCourseID", instance.PrerequisiteCourseID));
         }
 
         protected override List<PrerequisiteCourseIDMapping> ParseGetAllData(System.Data.DataSet data)
