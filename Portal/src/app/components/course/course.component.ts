@@ -68,9 +68,10 @@ export class CourseComponent implements OnInit {
         private router: Router,
         private datePipe: DatePipe
     ) {
-        this.route.queryParams.subscribe(params => {
-            this.URLParamCourseId = params['id'];
-        });
+        // this.route.queryParams.subscribe(params => {
+        //     this.URLParamCourseId = params['id'];
+        // });
+        this.URLParamCourseId = this.route.snapshot.params['id'];
 
         this.CourseForm = this.formBuilder.group({
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],

@@ -46,6 +46,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
       };
     }
 
+    
+
 
 
     //Action method for Add Data
@@ -118,6 +120,10 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
       };
     }
+
+    [System.Web.Http.HttpGet]
+    
+  
 
     //Action method for Update data
     [System.Web.Mvc.HttpPost]
@@ -205,5 +211,39 @@ namespace AdvisoryDatabase.WebAPI.Controllers
       };
     }
 
+    [System.Web.Http.HttpGet]
+    public HttpResponseMessage EmailData(string Email)
+    {
+      try
+      {
+        AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
+        UserDetail ObjInputParameters = new UserDetail();
+        ObjInputParameters.LastUpdatedBy = 1;
+        ObjInputParameters.IsActive = true;
+        // ObjInputParameters.UserMasterID = id;
+        ObjInputParameters.Email = Email;
+
+
+        List<UserDetail> outputData = ObjBayDetai.GetUserDetails(ObjInputParameters);
+        UserDetail UserData = new UserDetail();
+        UserData = outputData.Where(a => a.Email == Email).FirstOrDefault();
+        //UserData = outputData.Where(a => a.UserMasterID == id).FirstOrDefault();
+
+
+
+        string jsonData = JsonConvert.SerializeObject(UserData);
+        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+        response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        return response;
+
+      }
+      catch (Exception ex)
+      {
+        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
+        return errorResponse;
+
+      };
+    }
   }
 }

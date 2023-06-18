@@ -5,6 +5,7 @@ import { Table } from 'primeng/table';
 import { Course } from 'src/app/domain/Course';
 import { CourseService } from 'src/app/service/course.service';
 import { DownloadExcelService } from 'src/app/service/service/download-excel.service';
+import { UserService } from 'src/app/service/userservice';
 
 import * as XLSX from 'xlsx';
 
@@ -23,11 +24,19 @@ export class CourseListComponent implements OnInit {
         public service: CourseService,
         private route: ActivatedRoute,
         private router: Router,
-        private downloadExcelService: DownloadExcelService
+        private downloadExcelService: DownloadExcelService,
+        private Userservice: UserService
     ) { }
 
     ngOnInit(): void {
         this.GetAllCourse()
+        localStorage.setItem('Me', JSON.stringify(this.User))
+
+
+
+        var Userdata = JSON.parse(localStorage.getItem('Me')!)
+        console.log(Userdata.FirstName)
+        this.setUserToLocalStorage()
     }
 
     GetAllCourse() {
@@ -154,47 +163,21 @@ export class CourseListComponent implements OnInit {
         });
     }
 
-    // public onFilter(inputValue: string): void {
-    //     this.CourseData = process(this.CourseData, {
-    //         filter: {
-    //             logic: "or",
-    //             filters: [
-    //                 {
+    User =
+        {
+            "Email": "Pushpraj.Jagadale@ap",
+        }
+    setUserToLocalStorage(): void {
 
-    //                     field: "CourseID",
-    //                     operator: "contains",
-    //                     value: inputValue,
-    //                 },
-    //                 {
-    //                     field: "CourseName",
-    //                     operator: "contains",
-    //                     value: inputValue,
-    //                 },
-    //                 {
-    //                     field: "LDIntakeOwner",
-    //                     operator: "contains",
-    //                     value: inputValue,
-    //                 },
-    //                 {
-    //                     field: "ProjectManagerContact",
-    //                     operator: "contains",
-    //                     value: inputValue,
-    //                 },
-    //                 {
-    //                     field: " BusinessSponsor",
-    //                     operator: "contains",
-    //                     value: inputValue,
-    //                 },
-    //                 {
-    //                     field: "ProjectStatusID",
-    //                     operator: "contains",
-    //                     value: inputValue,
-    //                 },
-    //             ],
-    //         },
-    //     }).data;
 
-    //     this.dataBinding.skip = 0;
-    // }
+        this.Userservice.getDataByEmail(this.User.Email).subscribe(
+
+            response => {
+                console.log("hey" + JSON.stringify(response));
+                localStorage.setItem('UserData', JSON.stringify(response))
+            }
+
+        );
+    }
 
 }
