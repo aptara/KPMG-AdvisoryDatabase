@@ -9,6 +9,8 @@ import { DropdownDataService } from 'src/app/service/dropdown-data.service';
 
 import { NgxDropdownConfig } from 'ngx-select-dropdown';
 import { DatePipe } from '@angular/common';
+import { UserService } from 'src/app/service/userservice';
+import { CoursePermission } from 'src/app/domain/user';
 
 @Component({
     selector: 'app-course',
@@ -59,6 +61,8 @@ export class CourseComponent implements OnInit {
     IsSubmit: boolean = false;
     IsRequiredsgslsnFormControl: boolean = false;
     IsRequiredfOSFormGroup: boolean = false;
+    UseData: string | null;
+    hasPermission: CoursePermission;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -66,13 +70,14 @@ export class CourseComponent implements OnInit {
         private route: ActivatedRoute,
         public courseService: CourseService,
         private router: Router,
-        private datePipe: DatePipe
+        private datePipe: DatePipe,
+        private userService: UserService
     ) {
         // this.route.queryParams.subscribe(params => {
         //     this.URLParamCourseId = params['id'];
         // });
         this.URLParamCourseId = this.route.snapshot.params['id'];
-
+        this.hasPermission = new CoursePermission();
         this.CourseForm = this.formBuilder.group({
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
@@ -119,6 +124,14 @@ export class CourseComponent implements OnInit {
             AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup()]),
             FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()])
         })
+    }
+
+    ngOnInit() {
+        this.getDropdownData();
+        this.hasPermission = this.userService.GetUserPermission();
+        if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
+            this.CourseForm.disable()
+        }
     }
 
     GetSGSNSLFormControl() {
@@ -246,9 +259,6 @@ export class CourseComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
-        this.getDropdownData();
-    }
 
     bindFormData() {
         this.CourseForm.patchValue({

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Table } from 'primeng/table';
 import { Course } from 'src/app/domain/Course';
+import { CoursePermission } from 'src/app/domain/user';
 import { CourseService } from 'src/app/service/course.service';
 import { DownloadExcelService } from 'src/app/service/service/download-excel.service';
 import { UserService } from 'src/app/service/userservice';
@@ -19,24 +20,21 @@ export class CourseListComponent implements OnInit {
     statuses: any = [];
     loading: boolean = false;
     activityValues: number[] = [0, 100];
+    hasPermission: CoursePermission;
 
     constructor(
         public service: CourseService,
         private route: ActivatedRoute,
         private router: Router,
         private downloadExcelService: DownloadExcelService,
-        private Userservice: UserService
-    ) { }
+        private userservice: UserService
+    ) {
+        this.hasPermission = new CoursePermission();
+    }
 
     ngOnInit(): void {
+        this.hasPermission = this.userservice.GetUserPermission();
         this.GetAllCourse()
-        localStorage.setItem('Me', JSON.stringify(this.User))
-
-
-
-        var Userdata = JSON.parse(localStorage.getItem('Me')!)
-        console.log(Userdata.FirstName)
-        this.setUserToLocalStorage()
     }
 
     GetAllCourse() {
@@ -55,6 +53,10 @@ export class CourseListComponent implements OnInit {
 
     EditCourse(CourseId: any) {
         console.log("Edit ", CourseId)
+        this.router.navigate(['/course-details', { id: CourseId }]);
+    }
+
+    ViewCourse(CourseId: any) {
         this.router.navigate(['/course-details', { id: CourseId }]);
     }
 
@@ -162,22 +164,4 @@ export class CourseListComponent implements OnInit {
             }
         });
     }
-
-    User =
-        {
-            "Email": "Pushpraj.Jagadale@ap",
-        }
-    setUserToLocalStorage(): void {
-
-
-        this.Userservice.getDataByEmail(this.User.Email).subscribe(
-
-            response => {
-                console.log("hey" + JSON.stringify(response));
-                localStorage.setItem('UserData', JSON.stringify(response))
-            }
-
-        );
-    }
-
 }
