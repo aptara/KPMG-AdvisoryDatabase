@@ -327,7 +327,7 @@ export class CourseComponent implements OnInit {
             this.AudienceTypeFormGroup.push(this.formBuilder.group(item));
         }
 
-        if (this.FOCUSCourseOwnerFormGroup.length == 1 && this.CourseData.FOCUSCourseOwnerFormGroup.length) {
+        if (this.FOCUSCourseOwnerFormGroup?.length == 1 && this.CourseData.FOCUSCourseOwnerFormGroup?.length) {
             this.FOCUSCourseOwnerFormGroup.clear();
         }
         for (let item of this.CourseData?.FOCUSCourseOwnerFormGroup) {
@@ -375,10 +375,19 @@ export class CourseComponent implements OnInit {
                 this.MaterialMasterData = dropdowndata.MaterialMasterData
                 this.LevelOfEffortMasterData = dropdowndata.LevelOfEffortMasterData
                 this.SpecialNoticeMasterData = dropdowndata.SpecialNoticeMasterData
-                debugger
             }
             this.getCourseDataForEdit();
         });
+    }
+
+    ServiceLineMasterDataOption: any = [];
+    OnChangedServiceGroup(data: any) {
+        this.ServiceLineMasterDataOption = this.ServiceLineMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
+    }
+
+    ServiceNetworkMasterDataOption: any = [];
+    OnChangedServiceLine(data: any) {
+        this.ServiceNetworkMasterDataOption = this.ServiceNetworkMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
     }
 
     BindCourseDataForSaveEdit() {
@@ -429,6 +438,7 @@ export class CourseComponent implements OnInit {
         saveCourse.ProjectManagerContact = CourseData.ProjectManagerContact;
         saveCourse.InstructionalDesigner = CourseData.InstructionalDesigner;
         saveCourse.CourseNotes = CourseData.CourseNotes;
+        saveCourse.Collateral = CourseData.Collateral;
         console.log(saveCourse)
         return saveCourse;
     }
@@ -470,11 +480,23 @@ export class CourseComponent implements OnInit {
                     }
                 });
             }
+        } else {
+            this.findInvalidControls()
         }
     }
 
+    public findInvalidControls() {
+        const invalid = [];
+        const controls = this.CourseForm.controls;
+        for (const name in controls) {
+            if (controls[name].invalid) {
+                invalid.push(name);
+            }
+        }
+        console.log("Invalids control", invalid);
+    }
+
     ValidatesgslsnFormControl(validate: boolean) {
-        debugger
         for (let control of this.CourseForm?.get("SGSLSNFormGroups")?.value) {
             if (control?.ServiceGroup === "" || control?.ServiceLine === "" || control?.ServiceNetwork === "") {
                 this.IsRequiredsgslsnFormControl = true

@@ -150,7 +150,7 @@
                             <div class="form-group">
                                 <label for="ServiceGroup">Service Group {{ i + 1}}</label>
                                 <ngx-select-dropdown [config]="config" formControlName="ServiceGroup"
-                                    [options]="ServiceGroupMasterData">
+                                    (change)="OnChangedServiceGroup($event)" [options]="ServiceGroupMasterData">
                                 </ngx-select-dropdown>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                             <div class="form-group">
                                 <label for="ServiceLine">Service Line {{ i + 1}}</label>
                                 <ngx-select-dropdown [config]="config" formControlName="ServiceLine"
-                                    [options]="ServiceLineMasterData">
+                                    (change)="OnChangedServiceLine($event)" [options]="ServiceLineMasterDataOption">
                                 </ngx-select-dropdown>
                             </div>
                         </div>
@@ -166,7 +166,7 @@
                             <div class="form-group">
                                 <label for="ServiceNetwork">Service Network {{ i + 1}}</label>
                                 <ngx-select-dropdown [config]="config" formControlName="ServiceNetwork"
-                                    [options]="ServiceNetworkMasterData">
+                                    [options]="ServiceNetworkMasterDataOption">
                                 </ngx-select-dropdown>
                             </div>
                         </div>

@@ -30,6 +30,7 @@ namespace AdvisoryDatabase.Framework.Entities
     public class CourseMasterData : BaseEntity<long>
     {
         public string DisplayName { get; set; }
+        public int ParentId { get; set; }
     }
 
     public class PrerequisiteCourseIDFormData

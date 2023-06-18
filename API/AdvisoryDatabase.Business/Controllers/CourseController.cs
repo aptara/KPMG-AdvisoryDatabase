@@ -89,192 +89,220 @@ namespace AdvisoryDatabase.Business.Controllers
             }
         }
 
-        private void SaveUpdateSkillMasterIDs(Course course)
+        private async Task SaveUpdateSkillMasterIDs(Course course)
         {
-            CourseSkillMappingService SkillService = new CourseSkillMappingService();
-            if (course.SkillMasterIDs != null && course.SkillMasterIDs.Any())
+            await Task.Run(() =>
             {
-                SkillService.Remove(course.CourseMasterID);
-                foreach (var item in course.SkillMasterIDs)
+                CourseSkillMappingService SkillService = new CourseSkillMappingService();
+                if (course.SkillMasterIDs != null && course.SkillMasterIDs.Any())
                 {
-                    if (item.Id != 0)
+                    SkillService.Remove(course.CourseMasterID);
+                    foreach (var item in course.SkillMasterIDs)
                     {
-                        CourseSkillMapping courseSkillMapping = new CourseSkillMapping();
-                        courseSkillMapping.CourseMasterID = course.CourseMasterID;
-                        courseSkillMapping.SkillMasterID = (int)item.Id;
-                        SkillService.Add(courseSkillMapping);
+                        if (item !=null && item?.Id != 0)
+                        {
+                            CourseSkillMapping courseSkillMapping = new CourseSkillMapping();
+                            courseSkillMapping.CourseMasterID = course.CourseMasterID;
+                            courseSkillMapping.SkillMasterID = (int)item.Id;
+                            SkillService.Add(courseSkillMapping);
+                        }
                     }
                 }
-            }
+            });
         }
-        private void SaveUpdateIndustries(Course course)
+        private async Task SaveUpdateIndustries(Course course)
         {
-            CourseIndustryMappingService IndustryService = new CourseIndustryMappingService();
-            if (course.Industries != null && course.Industries.Any())
+            await Task.Run(() =>
             {
-                IndustryService.Remove(course.CourseMasterID);
-                foreach (var item in course.Industries)
+                CourseIndustryMappingService IndustryService = new CourseIndustryMappingService();
+                if (course.Industries != null && course.Industries.Any())
                 {
-                    if (item.Id != 0)
+                    IndustryService.Remove(course.CourseMasterID);
+                    foreach (var item in course.Industries)
                     {
-                        CourseIndustryMapping courseIndustryMapping = new CourseIndustryMapping();
-                        courseIndustryMapping.CourseMasterID = course.CourseMasterID;
-                        courseIndustryMapping.IndustryID = (int)item.Id;
-                        IndustryService.Add(courseIndustryMapping);
+                        if (item != null && item?.Id != 0)
+                        {
+                            CourseIndustryMapping courseIndustryMapping = new CourseIndustryMapping();
+                            courseIndustryMapping.CourseMasterID = course.CourseMasterID;
+                            courseIndustryMapping.IndustryID = (int)item.Id;
+                            IndustryService.Add(courseIndustryMapping);
+                        }
                     }
                 }
-            }
+            });
         }
-        private void SaveUpdateAudienceLevels(Course course)
+        private async Task SaveUpdateAudienceLevels(Course course)
         {
-            AudienceLevelMappingService audienceLevelService = new AudienceLevelMappingService();
-            if (course.AudienceLevels != null && course.AudienceLevels.Any())
+            await Task.Run(() =>
             {
-                audienceLevelService.Remove(course.CourseMasterID);
-                foreach (var item in course.AudienceLevels)
+                AudienceLevelMappingService audienceLevelService = new AudienceLevelMappingService();
+                if (course.AudienceLevels != null && course.AudienceLevels.Any())
                 {
-                    if (item.Id != 0)
+                    audienceLevelService.Remove(course.CourseMasterID);
+                    foreach (var item in course.AudienceLevels)
                     {
-                        AudienceLevelMapping audienceLevelMapping = new AudienceLevelMapping();
-                        audienceLevelMapping.CourseMasterID = course.CourseMasterID;
-                        audienceLevelMapping.AudienceLevelId = (int)item.Id;
-                        audienceLevelService.Add(audienceLevelMapping);
+                        if (item !=null && item?.Id != 0)
+                        {
+                            AudienceLevelMapping audienceLevelMapping = new AudienceLevelMapping();
+                            audienceLevelMapping.CourseMasterID = course.CourseMasterID;
+                            audienceLevelMapping.AudienceLevelId = (int)item.Id;
+                            audienceLevelService.Add(audienceLevelMapping);
+                        }
                     }
                 }
-            }
+            });
         }
-        private void SaveUpdateFOSService(Course course)
+        private async Task SaveUpdateFOSService(Course course)
         {
-            CourseFieldOfStudyMappingService FOSService = new CourseFieldOfStudyMappingService();
-            if (course.FieldOfStudyFormGroup != null && course.FieldOfStudyFormGroup.Any())
+            await Task.Run(() =>
             {
-                FOSService.Remove(course.CourseMasterID);
-                foreach (var item in course.FieldOfStudyFormGroup)
+                CourseFieldOfStudyMappingService FOSService = new CourseFieldOfStudyMappingService();
+                if (course.FieldOfStudyFormGroup != null && course.FieldOfStudyFormGroup.Any())
                 {
-                    if (item.FieldOfStudy.Id != 0)
+                    FOSService.Remove(course.CourseMasterID);
+                    foreach (var item in course.FieldOfStudyFormGroup)
                     {
-                        CourseFieldOfStudyMapping FOSMapping = new CourseFieldOfStudyMapping();
-                        FOSMapping.CourseMasterID = course.CourseMasterID;
-                        FOSMapping.FieldOfStudyMasterID = (int)item.FieldOfStudy.Id;
-                        FOSMapping.FOSCredit = item.FieldOfStudyCredit;
-                        FOSService.Add(FOSMapping);
+                        if (item.FieldOfStudy !=null && item.FieldOfStudy?.Id != 0)
+                        {
+                            CourseFieldOfStudyMapping FOSMapping = new CourseFieldOfStudyMapping();
+                            FOSMapping.CourseMasterID = course.CourseMasterID;
+                            FOSMapping.FieldOfStudyMasterID = (int)item.FieldOfStudy.Id;
+                            FOSMapping.FOSCredit = item.FieldOfStudyCredit;
+                            FOSService.Add(FOSMapping);
+                        }
                     }
                 }
-            }
+            });
         }
-        private void SaveUpdateSGSLSNFormGroups(Course course)
+        private async Task SaveUpdateSGSLSNFormGroups(Course course)
         {
-            CourseSGSLSNMappingService SGSLSNService = new CourseSGSLSNMappingService();
-            if (course.SGSLSNFormGroups != null && course.SGSLSNFormGroups.Any())
+            await Task.Run(() =>
             {
-                SGSLSNService.Remove(course.CourseMasterID);
-                foreach (var item in course.SGSLSNFormGroups)
+                CourseSGSLSNMappingService SGSLSNService = new CourseSGSLSNMappingService();
+                if (course.SGSLSNFormGroups != null && course.SGSLSNFormGroups.Any())
                 {
-                    if (item.ServiceGroup.Id != 0)
+                    SGSLSNService.Remove(course.CourseMasterID);
+                    foreach (var item in course.SGSLSNFormGroups)
                     {
-                        CourseSGSLSNMapping SGSLSNMapping = new CourseSGSLSNMapping();
-                        SGSLSNMapping.CourseMasterID = course.CourseMasterID;
-                        SGSLSNMapping.ServiceGroupID = (int)item.ServiceGroup.Id;
-                        SGSLSNMapping.ServiceLineID = (int)item.ServiceLine.Id;
-                        SGSLSNMapping.ServiceNetworkID = (int)item.ServiceNetwork.Id;
-                        SGSLSNService.Add(SGSLSNMapping);
+                        if (item != null && item.ServiceGroup !=null && item.ServiceGroup?.Id != 0)
+                        {
+                            CourseSGSLSNMapping SGSLSNMapping = new CourseSGSLSNMapping();
+                            SGSLSNMapping.CourseMasterID = course.CourseMasterID;
+                            SGSLSNMapping.ServiceGroupID = (int)item.ServiceGroup.Id;
+                            SGSLSNMapping.ServiceLineID = (int)item.ServiceLine.Id;
+                            SGSLSNMapping.ServiceNetworkID = (int)item.ServiceNetwork.Id;
+                            SGSLSNService.Add(SGSLSNMapping);
+                        }
                     }
                 }
-            }
+            });
         }
-        private void SaveUpdateEquivalentCourseIDService(Course course)
+        private async Task SaveUpdateEquivalentCourseIDService(Course course)
         {
-            EquivalentCourseIDMappingService equivalentCourseIDService = new EquivalentCourseIDMappingService();
-            if (course.EquivalentCourseIDFormGroup != null && course.EquivalentCourseIDFormGroup.Any())
+            await Task.Run(() =>
             {
-                equivalentCourseIDService.Remove(course.CourseMasterID);
-                foreach (var item in course.EquivalentCourseIDFormGroup)
+                EquivalentCourseIDMappingService equivalentCourseIDService = new EquivalentCourseIDMappingService();
+                if (course.EquivalentCourseIDFormGroup != null && course.EquivalentCourseIDFormGroup.Any())
                 {
-                    if (item.EquivalentCourseID != null && item.EquivalentCourseID != "")
+                    equivalentCourseIDService.Remove(course.CourseMasterID);
+                    foreach (var item in course.EquivalentCourseIDFormGroup)
                     {
-                        EquivalentCourseIDMapping equivalentCourseID = new EquivalentCourseIDMapping();
-                        equivalentCourseID.CourseMasterID = course.CourseMasterID;
-                        equivalentCourseID.EquivalentCourseID = item.EquivalentCourseID;
-                        equivalentCourseIDService.Add(equivalentCourseID);
+                        if (item!= null && item.EquivalentCourseID != null && item.EquivalentCourseID != "")
+                        {
+                            EquivalentCourseIDMapping equivalentCourseID = new EquivalentCourseIDMapping();
+                            equivalentCourseID.CourseMasterID = course.CourseMasterID;
+                            equivalentCourseID.EquivalentCourseID = item.EquivalentCourseID;
+                            equivalentCourseIDService.Add(equivalentCourseID);
+                        }
                     }
                 }
-            }
+            });
         }
-        private void SaveUpdatePrerequisiteCourseIDService(Course course)
+        private async Task SaveUpdatePrerequisiteCourseIDService(Course course)
         {
-            PrerequisiteCourseIDMappingService prerequisiteCourseIDService = new PrerequisiteCourseIDMappingService();
-            if (course.PrerequisiteCourseIDFormGroup != null && course.PrerequisiteCourseIDFormGroup.Any())
+            await Task.Run(() =>
             {
-                prerequisiteCourseIDService.Remove(course.CourseMasterID);
-                foreach (var item in course.PrerequisiteCourseIDFormGroup)
+                PrerequisiteCourseIDMappingService prerequisiteCourseIDService = new PrerequisiteCourseIDMappingService();
+                if (course.PrerequisiteCourseIDFormGroup != null && course.PrerequisiteCourseIDFormGroup.Any())
                 {
-                    if (item.PrerequisiteCourseID != null && item.PrerequisiteCourseID != "")
+                    prerequisiteCourseIDService.Remove(course.CourseMasterID);
+                    foreach (var item in course.PrerequisiteCourseIDFormGroup)
                     {
-                        PrerequisiteCourseIDMapping prerequisiteCourseID = new PrerequisiteCourseIDMapping();
-                        prerequisiteCourseID.CourseMasterID = course.CourseMasterID;
-                        prerequisiteCourseID.PrerequisiteCourseID = item.PrerequisiteCourseID;
-                        prerequisiteCourseIDService.Add(prerequisiteCourseID);
+                        if (item != null && item.PrerequisiteCourseID != null && item.PrerequisiteCourseID != "")
+                        {
+                            PrerequisiteCourseIDMapping prerequisiteCourseID = new PrerequisiteCourseIDMapping();
+                            prerequisiteCourseID.CourseMasterID = course.CourseMasterID;
+                            prerequisiteCourseID.PrerequisiteCourseID = item.PrerequisiteCourseID;
+                            prerequisiteCourseIDService.Add(prerequisiteCourseID);
+                        }
                     }
                 }
-            }
+            });
         }
-        private void SaveUpdateaudienceTypeService(Course course)
+        private async Task SaveUpdateaudienceTypeService(Course course)
         {
-            AudienceTypeMappingService audienceTypeService = new AudienceTypeMappingService();
+            await Task.Run(() =>
+            {
+                AudienceTypeMappingService audienceTypeService = new AudienceTypeMappingService();
+                if (course.AudienceTypeFormGroup != null && course.AudienceTypeFormGroup.Any())
+                {
+                    audienceTypeService.Remove(course.CourseMasterID);
+                    foreach (var item in course.AudienceTypeFormGroup)
+                    {
+                        if (item != null && item.AudienceType != null && item.AudienceType != "")
+                        {
+                            AudienceTypeMapping audienceType = new AudienceTypeMapping();
+                            audienceType.CourseMasterID = course.CourseMasterID;
+                            audienceType.AudienceType = item.AudienceType;
+                            audienceTypeService.Add(audienceType);
+                        }
+                    }
+                }
+            });
+        }
+        private async Task SaveUpdateCourseFunctionService(Course course)
+        {
+            await Task.Run(() =>
+            {
+                CourseFunctionMasterMappingService courseFunctionService = new CourseFunctionMasterMappingService();
+                if (course.FunctionMasterIDs != null && course.FunctionMasterIDs.Any())
+                {
+                    courseFunctionService.Remove(course.CourseMasterID);
+                    foreach (var item in course.FunctionMasterIDs)
+                    {
+                        if (item != null && item?.Id != 0)
+                        {
+                            CourseFunctionMapping functionMapping = new CourseFunctionMapping();
+                            functionMapping.CourseMasterID = course.CourseMasterID;
+                            functionMapping.FunctionMasterID = (int)item.Id;
+                            courseFunctionService.Add(functionMapping);
+                        }
+                    }
+                }
+            });
+        }
+        private async Task SaveUpdateCourseOwnerService(Course course)
+        {
+            await Task.Run(() =>
+            {
+                FOCUSCourseOwnerMappingService courseOwnerService = new FOCUSCourseOwnerMappingService();
+                if (course.FOCUSCourseOwnerFormGroup != null && course.FOCUSCourseOwnerFormGroup.Any())
+                {
+                    courseOwnerService.Remove(course.CourseMasterID);
+                    foreach (var item in course.FOCUSCourseOwnerFormGroup)
+                    {
+                        if (item !=null && item?.Id != 0)
+                        {
+                            FOCUSCourseOwnerMapping courseOwner = new FOCUSCourseOwnerMapping();
+                            courseOwner.CourseMasterID = course.CourseMasterID;
+                            courseOwner.FOCUSCourseOwnerId = (int)item.Id;
+                            courseOwnerService.Add(courseOwner);
+                        }
+                    }
+                }
+            });
+        }
 
-            if (course.AudienceTypeFormGroup != null && course.AudienceTypeFormGroup.Any())
-            {
-                audienceTypeService.Remove(course.CourseMasterID);
-                foreach (var item in course.AudienceTypeFormGroup)
-                {
-                    if (item.AudienceType != null && item.AudienceType != "")
-                    {
-                        AudienceTypeMapping audienceType = new AudienceTypeMapping();
-                        audienceType.CourseMasterID = course.CourseMasterID;
-                        audienceType.AudienceType = item.AudienceType;
-                        audienceTypeService.Add(audienceType);
-                    }
-                }
-            }
-        }
-        private void SaveUpdateCourseFunctionService(Course course)
-        {
-            CourseFunctionMasterMappingService courseFunctionService = new CourseFunctionMasterMappingService();
-
-            if (course.FunctionMasterIDs != null && course.FunctionMasterIDs.Any())
-            {
-                courseFunctionService.Remove(course.CourseMasterID);
-                foreach (var item in course.FunctionMasterIDs)
-                {
-                    if (item?.Id != 0)
-                    {
-                        CourseFunctionMapping functionMapping = new CourseFunctionMapping();
-                        functionMapping.CourseMasterID = course.CourseMasterID;
-                        functionMapping.FunctionMasterID = (int)item.Id;
-                        courseFunctionService.Add(functionMapping);
-                    }
-                }
-            }
-        }
-        private void SaveUpdateCourseOwnerService(Course course)
-        {
-            FOCUSCourseOwnerMappingService courseOwnerService = new FOCUSCourseOwnerMappingService();
-
-            if (course.FOCUSCourseOwnerFormGroup != null && course.FOCUSCourseOwnerFormGroup.Any())
-            {
-                courseOwnerService.Remove(course.CourseMasterID);
-                foreach (var item in course.FOCUSCourseOwnerFormGroup)
-                {
-                    if (item?.Id != 0)
-                    {
-                        FOCUSCourseOwnerMapping courseOwner = new FOCUSCourseOwnerMapping();
-                        courseOwner.CourseMasterID = course.CourseMasterID;
-                        courseOwner.FOCUSCourseOwnerId = (int)item.Id;
-                        courseOwnerService.Add(courseOwner);
-                    }
-                }
-            }
-        }
         public APIResponse<string> DeleteCourse(int CourseMasterID)
         {
             try
