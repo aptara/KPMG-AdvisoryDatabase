@@ -10,7 +10,7 @@ using System.Data;
 
 namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
-   public class DataAccessExcelForClarizenFieldDetailsService : DataAccessRepository<ExcelForClarizen, Int32>
+    public class DataAccessExcelForClarizenFieldDetailsService : DataAccessRepository<ExcelForClarizen, Int32>
     {
         protected override string GetProcedureName(OperationType operation)
         {
@@ -18,7 +18,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                   
+
                     spName = "ExcelForClarizen";
                     break;
                 default:
@@ -36,28 +36,27 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>
                      new ExcelForClarizen
                      {
-
+                         CourseMasterID = Int32.Parse(row.ReadString("CourseMasterID")),
                          CourseName = row.ReadString("CourseName"),
                          LDIntakeOwner = row.ReadString("LDIntakeOwner"),
                          ProjectManagerContact = row.ReadString("ProjectManagerContact"),
-
-                         BusinessSponsor = row.ReadString("BusinessSponsor"),
+                         CourseSponsor = row.ReadString("CourseSponsor"),
+                         Descriptions = row.ReadString("Descriptions"),
 
                          InstructionalDesigner = row.ReadString("InstructionalDesigner"),
-
-
-
-                       ProgramType = row.ReadString("ProgramType"),
+                         SubjectMatterProfessional = row.ReadString("SubjectMatterProfessional"),
+                         ProgramType = row.ReadString("ProgramType"),
 
                          DeliveryType = row.ReadString("DeliveryType"),
-                         TotalCPECredit = row.ReadString("TotalCPECredit"),
+                         EstimatedCPE = row.ReadString("EstimatedCPE"),
                          CourseID = row.ReadString("CourseID"),
                          FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
-                         LevelofEffort = row.ReadString("LevelofEffort"),
-                         Duration = row.ReadString("Duration")
+                         DeploymentFiscalYear = row.ReadString("DeploymentFiscalYear"),
+                         LevelofEffortMasterID = row.ReadString("LevelofEffortMasterID"),
+                         Duration = row.ReadString("Duration"),
+                         ClarizenStartDate = row.ReadString("ClarizenStartDate"),
+                         Status = row.ReadString("Status")
 
-
-                        
                      }).ToList();
 
             return GetAllData;
@@ -68,27 +67,29 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
 
 
-
+                CourseMasterID = Int32.Parse(data.ReadString("CourseMasterID")),
                 CourseName = data.ReadString("CourseName"),
                 LDIntakeOwner = data.ReadString("LDIntakeOwner"),
 
                 ProjectManagerContact = data.ReadString("ProjectManagerContact"),
-                BusinessSponsor = data.ReadString("BusinessSponsor"),
+                CourseSponsor = data.ReadString("CourseSponsor"),
+                Descriptions = data.ReadString("Descriptions"),
                 InstructionalDesigner = data.ReadString("InstructionalDesigner"),
 
+                SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional"),
                 ProgramType = data.ReadString("ProgramType"),
                 DeliveryType = data.ReadString("DeliveryType"),
 
-                TotalCPECredit = data.ReadString("TotalCPECredit"),
+                EstimatedCPE = data.ReadString("EstimatedCPE"),
                 CourseID = data.ReadString("CourseID"),
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
-                LevelofEffort = data.ReadString("LevelofEffort"),
-                Duration = data.ReadString("Duration")
-
-              
+                DeploymentFiscalYear = data.ReadString("DeploymentFiscalYear"),
+                LevelofEffortMasterID = data.ReadString("LevelofEffortMasterID"),
+                Duration = data.ReadString("Duration"),
+                ClarizenStartDate = data.ReadString("ClarizenStartDate"),
+                Status = data.ReadString("Status")
 
             };
         }
     }
 }
-
