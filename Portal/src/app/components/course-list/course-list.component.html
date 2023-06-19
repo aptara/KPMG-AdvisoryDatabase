@@ -7,13 +7,16 @@
             <div class="flex">
                 <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
                     (click)="clear(dt1)"></button>
-                <button pButton class="btn-excel-width" (click)="downloadExceloffocus()">
+                <button pButton class="btn-excel-width" (click)="downloadExceloffocus()"
+                    *ngIf="hasPermission.hasPermissionDownloadCourseRDIforFocus">
                     Export RDI for Focus
                 </button>
-                <button pButton class="btn-excel-width" (click)="downloadExcelofClarizen()">
+                <button pButton class="btn-excel-width" (click)="downloadExcelofClarizen()"
+                    *ngIf="hasPermission.hasPermissionDownloadCourseRDIforClarizen">
                     Export RDI for Clarizen
                 </button>
-                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()">
+                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()"
+                    *ngIf="hasPermission.hasPermissionDownloadCourse">
                     Export RDI for Deployment
                 </button>
                 <button pButton class="btn-excel-width" (click)="cancelSelection()">Cancel</button>
@@ -22,7 +25,8 @@
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
                         placeholder="Search keyword" />
-                    <button pButton class="p-button-outlined btn-width" icon="pi pi-plus" (click)="AddCourse()">
+                    <button pButton class="p-button-outlined btn-width" icon="pi pi-plus" (click)="AddCourse()"
+                        *ngIf="hasPermission.hasPermissionCreateCourse">
                     </button>
                 </span>
             </div>
@@ -76,6 +80,7 @@
         <ng-template pTemplate="body" let-course>
             <tr>
                 <td>
+
                     <span class="edit-btn">
                         <input type="checkbox" (change)="toggleCourseSelection(course.CourseMasterID)"
                             [checked]="isCourseSelected(course.CourseMasterID)">
@@ -85,10 +90,14 @@
                 <td>
                     <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
                         {{ course.CourseID }}</a>
+
+                    {{ course.CourseID }}
+
                 </td>
                 <td>
-                    <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
-                        {{ course.CourseName }}</a>
+                    <!-- <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}"> -->
+                    {{ course.CourseName }}
+                    <!--</a>-->
                 </td>
                 <td>
                     {{ course.LDIntakeOwner }}
@@ -104,10 +113,16 @@
                 </td>
                 <td style="text-align: center">
                     <span class="edit-btn">
-                        <i class="pi pi-pencil" (click)="EditCourse(course.CourseMasterID)"></i>
+                        <i class="pi pi-eye" *ngIf="hasPermission.hasPermissionReviewCourse"
+                            (click)="ViewCourse(course.CourseMasterID)"></i>
                     </span>
                     <span class="edit-btn">
-                        <i class="pi pi-trash" (click)="DeleteCourse(course.CourseMasterID)"></i>
+                        <i class="pi pi-pencil" *ngIf="hasPermission.hasPermissionUpdateCourse"
+                            (click)="EditCourse(course.CourseMasterID)"></i>
+                    </span>
+                    <span class="edit-btn">
+                        <i class="pi pi-trash" *ngIf="hasPermission.hasPermissionDisableCourse"
+                            (click)="DeleteCourse(course.CourseMasterID)"></i>
                     </span>
                 </td>
             </tr>

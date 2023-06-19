@@ -10,6 +10,6 @@ namespace AdvisoryDatabase.Framework.Entities
     public class FOCUSCourseOwnerMapping : BaseEntity<Int32>
     {
         public int CourseMasterID { get; set; }
-        public int FOCUSCourseOwnerId { get; set; }
+        public long FOCUSCourseOwnerId { get; set; }
     }
 }

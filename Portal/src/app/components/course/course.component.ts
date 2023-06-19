@@ -9,6 +9,8 @@ import { DropdownDataService } from 'src/app/service/dropdown-data.service';
 
 import { NgxDropdownConfig } from 'ngx-select-dropdown';
 import { DatePipe } from '@angular/common';
+import { UserService } from 'src/app/service/userservice';
+import { CoursePermission } from 'src/app/domain/user';
 
 @Component({
     selector: 'app-course',
@@ -35,6 +37,7 @@ export class CourseComponent implements OnInit {
     CourseOwnerMasterData: any = [];
     MaterialMasterData: any = [];
     LevelOfEffortMasterData: any = [];
+    SpecialNoticeMasterData: any = [];
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
     web = { label: 'google', url: 'https://www.google.com' }
@@ -55,6 +58,11 @@ export class CourseComponent implements OnInit {
         clearOnSelection: false,
         inputDirection: ''
     }
+    IsSubmit: boolean = false;
+    IsRequiredsgslsnFormControl: boolean = false;
+    IsRequiredfOSFormGroup: boolean = false;
+    UseData: string | null;
+    hasPermission: CoursePermission;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -62,13 +70,14 @@ export class CourseComponent implements OnInit {
         private route: ActivatedRoute,
         public courseService: CourseService,
         private router: Router,
-        private datePipe: DatePipe
+        private datePipe: DatePipe,
+        private userService: UserService
     ) {
         // this.route.queryParams.subscribe(params => {
         //     this.URLParamCourseId = params['id'];
         // });
         this.URLParamCourseId = this.route.snapshot.params['id'];
-
+        this.hasPermission = new CoursePermission();
         this.CourseForm = this.formBuilder.group({
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
@@ -114,8 +123,15 @@ export class CourseComponent implements OnInit {
             EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup()]),
             AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup()]),
             FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()])
-
         })
+    }
+
+    ngOnInit() {
+        this.getDropdownData();
+        this.hasPermission = this.userService.GetUserPermission();
+        if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
+            this.CourseForm.disable()
+        }
     }
 
     GetSGSNSLFormControl() {
@@ -129,31 +145,31 @@ export class CourseComponent implements OnInit {
     GetFieldOfStudyFormGroup() {
         return this.formBuilder.group({
             FieldOfStudy: [''],
-            FieldOfStudyCredit: [''],
+            FieldOfStudyCredit: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetPrerequisiteCourseIDFormGroup() {
         return this.formBuilder.group({
-            PrerequisiteCourseID: [''],
+            PrerequisiteCourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetEquivalentCourseIDFormGroup() {
         return this.formBuilder.group({
-            EquivalentCourseID: [''],
+            EquivalentCourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetAudienceTypeFormGroup() {
         return this.formBuilder.group({
-            AudienceType: [''],
+            AudienceType: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetFOCUSCourseOwnerFormGroup() {
         return this.formBuilder.group({
-            FOCUSCourseOwner: [''],
+            CourseOwner: [''],
         });
     }
 
@@ -206,14 +222,15 @@ export class CourseComponent implements OnInit {
     }
 
     addSGSLSNCourseChild() {
-        if (this.SGSLSNFormGroups.length < 4) {
+        this.ValidatesgslsnFormControl(true);
+        if (!this.IsRequiredsgslsnFormControl && this.SGSLSNFormGroups.length < 4) {
             this.SGSLSNFormGroups.push(this.GetSGSNSLFormControl());
         }
     }
 
     addFormFieldOfStudyChildForm() {
-
-        if (this.FieldOfStudyFormGroup.length < 4) {
+        this.ValidatefOSFormGroup(true);
+        if (!this.IsRequiredfOSFormGroup && this.FieldOfStudyFormGroup.length < 4) {
             this.FieldOfStudyFormGroup.push(this.GetFieldOfStudyFormGroup());
         }
     }
@@ -242,9 +259,6 @@ export class CourseComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
-        this.getDropdownData();
-    }
 
     bindFormData() {
         this.CourseForm.patchValue({
@@ -324,17 +338,15 @@ export class CourseComponent implements OnInit {
             this.AudienceTypeFormGroup.push(this.formBuilder.group(item));
         }
 
+        if (this.FOCUSCourseOwnerFormGroup?.length == 1 && this.CourseData.FOCUSCourseOwnerFormGroup?.length) {
+            this.FOCUSCourseOwnerFormGroup.clear();
+        }
+        for (let item of this.CourseData?.FOCUSCourseOwnerFormGroup) {
+            this.FOCUSCourseOwnerFormGroup.push(this.formBuilder.group(this.formBuilder.group({
+                CourseOwner: [item],
+            })));
+        }
         console.log(this.CourseForm.value)
-    }
-
-    setValuetoDynamicControl() {
-        debugger
-        (this.CourseForm.controls['FieldOfStudyFormGroup'].value).forEach((key: any) => {
-            this.FieldOfStudyFormGroup.push(<FormArray>(<FormArray>this.CourseForm.controls['FieldOfStudyFormGroup']).controls[key]);
-            for (let city of this.CourseData?.FieldOfStudyFormGroup) {
-                this.FieldOfStudyFormGroup.push(new FormControl(city))
-            }
-        });
     }
 
     GetDropDownObjectForBindData(CourseData: any, MasterDataList: any[]) {
@@ -373,9 +385,20 @@ export class CourseComponent implements OnInit {
                 this.CourseOwnerMasterData = dropdowndata.CourseOwnerMasterData
                 this.MaterialMasterData = dropdowndata.MaterialMasterData
                 this.LevelOfEffortMasterData = dropdowndata.LevelOfEffortMasterData
+                this.SpecialNoticeMasterData = dropdowndata.SpecialNoticeMasterData
             }
             this.getCourseDataForEdit();
         });
+    }
+
+    ServiceLineMasterDataOption: any = [];
+    OnChangedServiceGroup(data: any) {
+        this.ServiceLineMasterDataOption = this.ServiceLineMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
+    }
+
+    ServiceNetworkMasterDataOption: any = [];
+    OnChangedServiceLine(data: any) {
+        this.ServiceNetworkMasterDataOption = this.ServiceNetworkMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
     }
 
     BindCourseDataForSaveEdit() {
@@ -389,7 +412,7 @@ export class CourseComponent implements OnInit {
         saveCourse.MaterialMasterID = this.GetSingleDropdownDataForSave(CourseData.MaterialMasterID);
         saveCourse.ProgramTypeID = this.GetSingleDropdownDataForSave(CourseData.ProgramTypeID);
         saveCourse.DeliveryTypeID = this.GetSingleDropdownDataForSave(CourseData.DeliveryTypeID);
-        saveCourse.FOCUSCourseOwnerFormGroup = this.GetAlphaNumaricDataForSave(CourseData.FOCUSCourseOwnerFormGroup);
+
 
         saveCourse.SkillMasterIDs = CourseData.SkillMasterIDs;
         saveCourse.Industries = CourseData.Industries;
@@ -400,6 +423,7 @@ export class CourseComponent implements OnInit {
         saveCourse.PrerequisiteCourseIDFormGroup = CourseData.PrerequisiteCourseIDFormGroup
         saveCourse.EquivalentCourseIDFormGroup = CourseData.EquivalentCourseIDFormGroup
         saveCourse.AudienceTypeFormGroup = CourseData.AudienceTypeFormGroup
+        saveCourse.FOCUSCourseOwnerFormGroup = CourseData.FOCUSCourseOwnerFormGroup
 
         saveCourse.CourseName = CourseData.CourseName;
         saveCourse.CourseID = CourseData.CourseID;
@@ -425,6 +449,7 @@ export class CourseComponent implements OnInit {
         saveCourse.ProjectManagerContact = CourseData.ProjectManagerContact;
         saveCourse.InstructionalDesigner = CourseData.InstructionalDesigner;
         saveCourse.CourseNotes = CourseData.CourseNotes;
+        saveCourse.Collateral = CourseData.Collateral;
         console.log(saveCourse)
         return saveCourse;
     }
@@ -441,19 +466,6 @@ export class CourseComponent implements OnInit {
         return arrayList;
     }
 
-    // GetFieldOfStudyDataForSave(value: any) {
-    //     let arrayList: any = [];
-    //     debugger
-    //     value.forEach((x: any) => {
-    //         var FieldOfStudyObj = {
-    //             x.FieldOfStudy,
-    //             x.FieldOfStudyCredit
-    //         }
-    //         arrayList.push(FieldOfStudyObj);
-    //     });
-    //     return arrayList;
-    // }
-
     GetMultiSelectDropdownDataForSave(value: any) {
         let ValueIds = [];
         if (Array.isArray(value)) {
@@ -463,9 +475,9 @@ export class CourseComponent implements OnInit {
 
 
     onSubmitCourse() {
+        this.IsSubmit = true;
         var SaveData = this.BindCourseDataForSaveEdit();
-
-        if (this.CourseForm.valid && this.CourseForm.dirty) {
+        if (!this.CourseForm.invalid) {
             if (this.URLParamCourseId != 0) {
                 this.courseService.createCourse(SaveData).subscribe((data: any) => {
                     if (data.Success) {
@@ -478,6 +490,39 @@ export class CourseComponent implements OnInit {
                         this.router.navigate(['/course-List']);
                     }
                 });
+            }
+        } else {
+            this.findInvalidControls()
+        }
+    }
+
+    public findInvalidControls() {
+        const invalid = [];
+        const controls = this.CourseForm.controls;
+        for (const name in controls) {
+            if (controls[name].invalid) {
+                invalid.push(name);
+            }
+        }
+        console.log("Invalids control", invalid);
+    }
+
+    ValidatesgslsnFormControl(validate: boolean) {
+        for (let control of this.CourseForm?.get("SGSLSNFormGroups")?.value) {
+            if (control?.ServiceGroup === "" || control?.ServiceLine === "" || control?.ServiceNetwork === "") {
+                this.IsRequiredsgslsnFormControl = true
+            } else {
+                this.IsRequiredsgslsnFormControl = false
+            }
+        }
+    }
+
+    ValidatefOSFormGroup(validate: boolean) {
+        for (let control of this.CourseForm?.get("FieldOfStudyFormGroup")?.value) {
+            if (control?.FieldOfStudy === "" || control?.FieldOfStudyCredit === "") {
+                this.IsRequiredfOSFormGroup = true
+            } else {
+                this.IsRequiredfOSFormGroup = false
             }
         }
     }

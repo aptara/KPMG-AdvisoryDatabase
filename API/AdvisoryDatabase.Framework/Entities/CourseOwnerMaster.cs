@@ -9,6 +9,7 @@ namespace AdvisoryDatabase.Framework.Entities
 {
     public class CourseOwnerMaster: BaseEntity<Int32>
     {
-        public string CourseOwner { get; set; }
+        public int CourseMasterID { get; set; }
+        public long CourseOwnerId { get; set; }
     }
 }

@@ -35,8 +35,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override void FillParameters(OperationType operation, AudienceTypeMapping instance, List<System.Data.Common.DbParameter> parameters)
         {
-           
-            
+            parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
+            parameters.Add(DbHelper.CreateParameter("AudienceType", instance.AudienceType));
         }
 
         protected override List<AudienceTypeMapping> ParseGetAllData(System.Data.DataSet data)

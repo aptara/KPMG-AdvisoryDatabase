@@ -53,7 +53,6 @@
     <Compile Include="Controllers\ProjectStatusMasterController.cs" />
     <Compile Include="Controllers\DeliveryTypeMasterController.cs" />
     <Compile Include="Controllers\ProgramTypeMasterController.cs" />
-    <Compile Include="Controllers\CourseOwnerMasterController.cs" />
     <Compile Include="Controllers\CourseOwnerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\GETExcelForClarizenFieldsController.cs" />
