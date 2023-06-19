@@ -22,7 +22,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "getexcelforfocus";
+                    spName = "USP_ExcelForFocus";
                     break;
                 /*  case OperationType.GetAll:
                       spName = "CourseOwnerDetail";

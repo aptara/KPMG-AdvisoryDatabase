@@ -32,11 +32,8 @@ export class CourseListComponent implements OnInit {
         private router: Router,
         private downloadExcelService: DownloadExcelService,
 
-        private Userservice: UserService,
+        private userservice: UserService,
         private http: HttpClient
-    ) { }
-
-        private userservice: UserService
     ) {
         this.hasPermission = new CoursePermission();
     }
@@ -189,12 +186,12 @@ export class CourseListComponent implements OnInit {
 
     User =
         {
-            "Email": "Pushpraj.Jagadale@ap",
+            "Email": "sdemotest34@gmail.com",
         }
     setUserToLocalStorage(): void {
 
 
-        this.Userservice.getDataByEmail(this.User.Email).subscribe(
+        this.userservice.getDataByEmail(this.User.Email).subscribe(
 
             response => {
                 console.log("hey" + JSON.stringify(response));
@@ -209,7 +206,7 @@ export class CourseListComponent implements OnInit {
 
 
 
-
+    // -------new methods fro RDI -------
 
 
 

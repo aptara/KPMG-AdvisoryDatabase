@@ -64,7 +64,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.FirstName = user.FirstName;
         ObjInputParameters.LastName = user.LastName;
         ObjInputParameters.Email = user.Email;
-        ObjInputParameters.LocationID = user.LocationID;
+       ObjInputParameters.LocationID = user.LocationID;
      
         ObjInputParameters.TaskMasterID = user.TaskMasterID;
 
@@ -121,7 +121,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
       };
     }
 
-    [System.Web.Http.HttpGet]
+
     
   
 
