@@ -30,7 +30,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FirstDeliveryDate { get; set; }
         public string DeploymentFiscalYear { get; set; }
 
-        public string LevelofEffortMasterID { get; set; }
+        public string LevelOfEffort { get; set; }
         public string Duration { get; set; }
 
 

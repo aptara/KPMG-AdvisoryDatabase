@@ -14,7 +14,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string LDIntakeOwner { get; set; }
         public string ProjectManagerContact { get; set; }
 
-        //public string CourseSponsor { get; set; }
+        public string CourseSponsor { get; set; }
         public string InstructionalDesigner { get; set; }
         public string EstimatedCPE { get; set; }
 

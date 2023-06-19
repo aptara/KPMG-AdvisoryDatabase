@@ -19,7 +19,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
                 case OperationType.GetAll:
 
-                    spName = "ExcelForClarizen";
+                    spName = "USP_ExcelForClarizen";
                     break;
                 default:
                     spName = string.Empty;
@@ -52,7 +52,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          CourseID = row.ReadString("CourseID"),
                          FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
                          DeploymentFiscalYear = row.ReadString("DeploymentFiscalYear"),
-                         LevelofEffortMasterID = row.ReadString("LevelofEffortMasterID"),
+                         LevelOfEffort = row.ReadString("LevelOfEffort"),
                          Duration = row.ReadString("Duration"),
                          ClarizenStartDate = row.ReadString("ClarizenStartDate"),
                          Status = row.ReadString("Status")
@@ -84,7 +84,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 CourseID = data.ReadString("CourseID"),
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
                 DeploymentFiscalYear = data.ReadString("DeploymentFiscalYear"),
-                LevelofEffortMasterID = data.ReadString("LevelofEffortMasterID"),
+                LevelOfEffort = data.ReadString("LevelOfEffort"),
                 Duration = data.ReadString("Duration"),
                 ClarizenStartDate = data.ReadString("ClarizenStartDate"),
                 Status = data.ReadString("Status")
