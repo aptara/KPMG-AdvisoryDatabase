@@ -89,8 +89,9 @@ export class UserService {
 
     public EditData = environment.baseUrl + 'WebUser/UpdateData'
     EditUserData(UserData: any) {
+
         var req = this.EditData;
-        return this.http.post(req, UserData)
+        return this.http.post(req, UserData, { headers: this.headers })
     }
 
 

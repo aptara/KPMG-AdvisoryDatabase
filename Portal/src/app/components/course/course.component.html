@@ -24,7 +24,7 @@
                         <input type="text" class="form-control" formControlName="CourseID" id="CourseID">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['CourseID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseID?.errors?.required">
-                                Course ID is reuired.
+                                Course ID is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseID?.errors?.pattern">
                                 Course ID should be Alpha Numeric.
@@ -34,8 +34,8 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="DeploymentFiscalYear">Deployment Year</label>
-                        <input type="text" class="form-control" formControlName="DeploymentFiscalYear"
+                        <label for="DeploymentFiscalYear">Deployment Fiscal Year</label>
+                        <input type="date" class="form-control" formControlName="DeploymentFiscalYear"
                             id="DeploymentFiscalYear">
                         <div class="message-error"
                             *ngIf="IsSubmit &&  CourseForm.controls['DeploymentFiscalYear'].errors">
@@ -240,11 +240,11 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="EstimatedCPE">Toal CPE Credit <span style="color:red;">*</span></label>
+                        <label for="EstimatedCPE">Estimated CPE <span style="color:red;">*</span></label>
                         <input type="number" class="form-control" formControlName="EstimatedCPE" id="EstimatedCPE">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['EstimatedCPE'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.EstimatedCPE?.errors?.required">
-                                Toal CPE Credit is reuired.
+                                Estimated CPE is reuired.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.EstimatedCPE?.errors?.pattern">
                                 Toal CPE Credit should be Alpha Numeric.
@@ -358,9 +358,10 @@
                         <div [formGroupName]="i">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="AudienceType">Audience Type {{ i + 1}}</label>
+                                    <label for="AudienceType">Audience Type {{ i + 1}}<span
+                                            style="color:red;">*</span></label>
                                     <input type="text" class="form-control" formControlName="AudienceType"
-                                        id="AudienceType">
+                                        id="AudienceType" value="US Only">
                                 </div>
                                 <div class="message-error">
                                     <div class="error-tooltips"
@@ -489,7 +490,7 @@
                         <label for="Descriptions">Please provide a description/the business need related to this
                             request
                             <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" formControlName="Descriptions" id="Descriptions">
+                        <textarea type="text" class="form-control" formControlName="Descriptions" id="Descriptions">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Descriptions'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.required">
                                 Business Description is reuired.
@@ -649,9 +650,10 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" formControlName="Collateral"
-                                id="Collateral">
+                            <!-- <input class="form-check-input" type="checkbox" formControlName="Collateral"
+                                id="Collateral"> -->
                             <label class="form-check-label" for="Collateral">Additional Collateral</label>
+                            <ngx-select-dropdown [config]="config" formControlName="Collateral"></ngx-select-dropdown>
                         </div>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Collateral'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Collateral?.errors?.required">
@@ -706,9 +708,11 @@
             <div class="panel-heading">Project Team</div>
             <div class="row">
                 <div class="col-md-3">
+
                     <div class="form-group">
                         <label for="LDIntakeOwner">L&D Intake Owner <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" formControlName="LDIntakeOwner" id="LDIntakeOwner">
+                        <ngx-select-dropdown [config]="config" formControlName="LDIntakeOwner">L&D Intake
+                            Owner</ngx-select-dropdown>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['LDIntakeOwner'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.required">
                                 L&D-Intake-Owner is reuired.
@@ -718,12 +722,14 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="ProjectManagerContact">Project Manager Contact</label>
-                        <input type="text" class="form-control" formControlName="ProjectManagerContact"
-                            id="ProjectManagerContact">
+                        <ngx-select-dropdown [config]="config" formControlName="ProjectManagerContact">Project Manager
+                            Contact
+                        </ngx-select-dropdown>
                         <div class="message-error"
                             *ngIf="IsSubmit && CourseForm.controls['ProjectManagerContact'].errors">
                             <div class="error-tooltips"
@@ -737,11 +743,14 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="InstructionalDesigner">Instructional Designer</label>
-                        <input type="text" class="form-control" formControlName="InstructionalDesigner"
-                            id="InstructionalDesigner">
+                        <ngx-select-dropdown [config]="config" formControlName="InstructionalDesigner">r
+                            Instructional Designe
+                        </ngx-select-dropdown>
                         <div class="message-error"
                             *ngIf="IsSubmit && CourseForm.controls['InstructionalDesigner'].errors">
                             <div class="error-tooltips"
