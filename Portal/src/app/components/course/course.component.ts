@@ -40,6 +40,10 @@ export class CourseComponent implements OnInit {
     MaterialMasterData: any = [];
     LevelOfEffortMasterData: any = [];
     SpecialNoticeMasterData: any = [];
+    InstructionalDesignerMaster: any = [];
+    ProjectManagerContactMaster: any = [];
+    LDIntakeOwnerMaster: any = [];
+    StatusMasterData: any = [];
     CurrentDate: any;
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
@@ -80,13 +84,13 @@ export class CourseComponent implements OnInit {
         this.CurrentDate = new Date();
         const today = new Date();
         this.discontinuedDate = this.formatDate(today);
-        // this.route.queryParams.subscribe(params => {
-        //     this.URLParamCourseId = params['id'];
-        // });
-        this.URLParamCourseId = this.route.snapshot.params['id'];
+        this.route.queryParams.subscribe(params => {
+            this.URLParamCourseId = params['id'];
+        });
+        //this.URLParamCourseId = this.route.snapshot.params['id'];
         this.hasPermission = new CoursePermission();
         this.CourseForm = this.formBuilder.group({
-            Status: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            StatusMasterID: ['', [Validators.required]],
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             DeploymentFiscalYear: [''],
@@ -94,7 +98,7 @@ export class CourseComponent implements OnInit {
             ProgramKnowledgeLevelMasterID: [''],
             CourseOverviewObjective: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             TargetAudience: [''],
-            EstimatedCPE: ['', [Validators.required, Validators.pattern(/^[0-9]*$/)]],
+            EstimatedCPE: ['', [Validators.pattern(/^[0-9]*$/)]],
             //AudienceLevelMasterID: [''],
             SpecialNoticeMasterID: [''],
             FunctionMasterID: [''],
@@ -116,9 +120,9 @@ export class CourseComponent implements OnInit {
             Collateral: [''],
             RoomSetUpComments: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             DeploymentFacilitatorConsideration: [''],
-            LDIntakeOwner: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
-            ProjectManagerContact: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
-            InstructionalDesigner: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            LDIntakeOwner: ['', [Validators.required]],
+            ProjectManagerContact: [''],
+            InstructionalDesigner: [''],
             LevelofEffortMasterId: [''],
             CourseNotes: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             SkillMasterIDs: [''],
@@ -307,9 +311,9 @@ export class CourseComponent implements OnInit {
             Collateral: this.CourseData?.Collateral,
             RoomSetUpComments: this.CourseData?.RoomSetUpComments,
             DeploymentFacilitatorConsideration: this.CourseData?.DeploymentFacilitatorConsideration,
-            LDIntakeOwner: this.CourseData?.LDIntakeOwner,
-            ProjectManagerContact: this.CourseData?.ProjectManagerContact,
-            InstructionalDesigner: this.CourseData?.InstructionalDesigner,
+            LDIntakeOwner: this.GetDropDownObjectForBindData(this.CourseData?.LDIntakeOwner, this.LDIntakeOwnerMaster),
+            ProjectManagerContact: this.GetDropDownObjectForBindData(this.CourseData?.ProjectManagerContact, this.ProjectManagerContactMaster),
+            InstructionalDesigner: this.GetDropDownObjectForBindData(this.CourseData?.InstructionalDesigner, this.InstructionalDesignerMaster),
             CourseNotes: this.CourseData?.CourseNotes,
             CompetencyMasterID: this.GetDropDownObjectForBindData(this.CourseData.CompetencyMasterID, this.CompetencyMasterData),
             LevelofEffortMasterId: this.GetDropDownObjectForBindData(this.CourseData.LevelofEffortMasterId, this.LevelOfEffortMasterData),
@@ -322,6 +326,7 @@ export class CourseComponent implements OnInit {
             Industries: this.CourseData.Industries,
             AudienceLevels: this.CourseData.AudienceLevels,
             FunctionMasterIDs: this.CourseData.FunctionMasterIDs,
+            StatusMasterID: this.GetDropDownObjectForBindData(this.CourseData.StatusMasterID, this.StatusMasterData),
 
         });
         if (this.FieldOfStudyFormGroup.length == 1 && this.CourseData.FieldOfStudyFormGroup.length) {
@@ -408,6 +413,10 @@ export class CourseComponent implements OnInit {
                 this.MaterialMasterData = dropdowndata.MaterialMasterData
                 this.LevelOfEffortMasterData = dropdowndata.LevelOfEffortMasterData
                 this.SpecialNoticeMasterData = dropdowndata.SpecialNoticeMasterData
+                this.InstructionalDesignerMaster = dropdowndata.InstructionalDesignerMaster
+                this.ProjectManagerContactMaster = dropdowndata.ProjectManagerContactMaster
+                this.LDIntakeOwnerMaster = dropdowndata.LDIntakeOwnerMaster
+                this.StatusMasterData = dropdowndata.StatusMasterData
             }
             this.getCourseDataForEdit();
         });
@@ -434,7 +443,10 @@ export class CourseComponent implements OnInit {
         saveCourse.MaterialMasterID = this.GetSingleDropdownDataForSave(CourseData.MaterialMasterID);
         saveCourse.ProgramTypeID = this.GetSingleDropdownDataForSave(CourseData.ProgramTypeID);
         saveCourse.DeliveryTypeID = this.GetSingleDropdownDataForSave(CourseData.DeliveryTypeID);
-
+        saveCourse.LDIntakeOwner = this.GetSingleDropdownDataForSave(CourseData.LDIntakeOwner);
+        saveCourse.ProjectManagerContact = this.GetSingleDropdownDataForSave(CourseData.ProjectManagerContact);
+        saveCourse.InstructionalDesigner = this.GetSingleDropdownDataForSave(CourseData.InstructionalDesigner);
+        saveCourse.StatusMasterID = this.GetSingleDropdownDataForSave(CourseData.StatusMasterID);
 
         saveCourse.SkillMasterIDs = CourseData.SkillMasterIDs;
         saveCourse.Industries = CourseData.Industries;
@@ -467,9 +479,6 @@ export class CourseComponent implements OnInit {
         saveCourse.MaximumAttendeeWaitlist = CourseData.MaximumAttendeeWaitlist;
         saveCourse.RoomSetUpComments = CourseData.RoomSetUpComments;
         saveCourse.DeploymentFacilitatorConsideration = CourseData.DeploymentFacilitatorConsideration;
-        saveCourse.LDIntakeOwner = CourseData.LDIntakeOwner;
-        saveCourse.ProjectManagerContact = CourseData.ProjectManagerContact;
-        saveCourse.InstructionalDesigner = CourseData.InstructionalDesigner;
         saveCourse.CourseNotes = CourseData.CourseNotes;
         saveCourse.Collateral = CourseData.Collateral;
         console.log(saveCourse)

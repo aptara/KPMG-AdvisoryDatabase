@@ -86,14 +86,14 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                      {
                          Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
-                         ParentId = row.Read<int>("ParentId")
+
                      }).ToList();
             dropdownData.ServiceNetworkMasterData = data.Tables[7].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
                          Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
-                         ParentId = row.Read<int>("ParentId")
+
                      }).ToList();
             dropdownData.FieldOfStudyMasterData = data.Tables[8].AsEnumerable().Select(row =>
                      new CourseMasterData
@@ -148,6 +148,32 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                      new CourseMasterData
                      {
                          Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+                     }).ToList();
+            dropdownData.InstructionalDesignerMaster = data.Tables[16].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<int>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+                     }).ToList();
+            dropdownData.ProjectManagerContactMaster = data.Tables[17].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<int>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
+            dropdownData.LDIntakeOwnerMaster = data.Tables[18].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<int>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+
+                     }).ToList();
+            dropdownData.StatusMasterData = data.Tables[19].AsEnumerable().Select(row =>
+                     new CourseMasterData
+                     {
+                         Id = row.Read<int>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
 
                      }).ToList();

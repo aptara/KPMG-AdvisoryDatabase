@@ -61,6 +61,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string Currency { get; set; }
         public string DisplayCallCenter { get; set; }
         public int? FieldOfStudyMasterID { get; set; }
+        public int? StatusMasterID { get; set; }
         public long? FuntionMasterID { get; set; }
 
         public List<CourseMasterData>SkillMasterIDs { get; set; }

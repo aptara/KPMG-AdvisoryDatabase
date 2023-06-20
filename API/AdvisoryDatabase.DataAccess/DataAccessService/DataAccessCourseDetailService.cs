@@ -58,6 +58,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("CourseOverviewObjective", instance.CourseOverviewObjective));
                 parameters.Add(DbHelper.CreateParameter("TargetAudience", instance.TargetAudience));
                 parameters.Add(DbHelper.CreateParameter("EstimatedCPE", instance.EstimatedCPE));
+                parameters.Add(DbHelper.CreateParameter("StatusMasterID", instance.StatusMasterID));
                 //parameters.Add(DbHelper.CreateParameter("AudienceLevelMasterID", instance.AudienceLevelMasterID));
                 parameters.Add(DbHelper.CreateParameter("SpecialNoticeMasterID", instance.SpecialNoticeMasterID));
                 parameters.Add(DbHelper.CreateParameter("FunctionMasterID", instance.FunctionMasterID));
@@ -159,6 +160,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     DisplayCallCenter = row.ReadString("DisplayCallCenter"),
                     FieldOfStudyMasterID = row.Read<int>("FieldOfStudyMasterID"),
                     FuntionMasterID = row.Read<long>("FuntionMasterID"),
+                    StatusMasterID = row.Read<int>("StatusMasterID"),
                 }).ToList();
             if (GetAllData.Count == 1)
             {
@@ -256,7 +258,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 course.FOCUSCourseOwnerFormGroup = data.Tables[9].AsEnumerable().Select(row =>
                 new CourseMasterData
                 {
-                    Id = row.Read<int>("Id"),
+                    Id = row.Read<long>("Id"),
                     DisplayName = row.ReadString("DisplayName"),
                 }).ToList();
             }

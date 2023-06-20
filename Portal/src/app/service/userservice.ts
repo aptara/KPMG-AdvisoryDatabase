@@ -34,7 +34,7 @@ export class UserService {
     setUserToLocalStorage(): void {
         let User =
         {
-            "Email": "Pushpraj.Jagadale@ap",
+            "Email": "sdemotest34@gmail.com",
         }
         if (!localStorage.getItem("UserData")) {
             this.getDataByEmail(User.Email).subscribe(user => {
@@ -89,9 +89,8 @@ export class UserService {
 
     public EditData = environment.baseUrl + 'WebUser/UpdateData'
     EditUserData(UserData: any) {
-
         var req = this.EditData;
-        return this.http.post(req, UserData, { headers: this.headers })
+        return this.http.post(req, UserData)
     }
 
 

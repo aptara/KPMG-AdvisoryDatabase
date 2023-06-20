@@ -24,13 +24,16 @@ namespace AdvisoryDatabase.Framework.Entities
         public List<CourseMasterData> CourseOwnerMasterData { get; set; }
         public List<CourseMasterData> MaterialMasterData { get; set; }
         public List<CourseMasterData> LevelOfEffortMasterData { get; set; }
+        public List<CourseMasterData> InstructionalDesignerMaster { get; set; }
+        public List<CourseMasterData> ProjectManagerContactMaster { get; set; }
+        public List<CourseMasterData> LDIntakeOwnerMaster { get; set; }
         public List<CourseMasterData> SpecialNoticeMasterData { get; set; }
+        public List<CourseMasterData> StatusMasterData { get; set; }
     }
 
     public class CourseMasterData : BaseEntity<long>
     {
         public string DisplayName { get; set; }
-        public int ParentId { get; set; }
     }
 
     public class PrerequisiteCourseIDFormData

@@ -101,14 +101,15 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Project Status</label>
-                        <ngx-select-dropdown [config]="config" formControlName="Status">
+                        <ngx-select-dropdown [config]="config" formControlName="StatusMasterID"
+                            [options]="StatusMasterData">
                             Project Status
                         </ngx-select-dropdown>
-                        <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Status'].errors">
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Status?.errors?.required">
+                        <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['StatusMasterID'].errors">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.StatusMasterID?.errors?.required">
                                 Project status is reuired.
                             </div>
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Status?.errors?.pattern">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.StatusMasterID?.errors?.pattern">
                                 Project status should be Alpha Numeric.
                             </div>
                         </div>
@@ -142,10 +143,10 @@
                         <input type="text" class="form-control" formControlName="TargetAudience" id="TargetAudience">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['TargetAudience'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.TargetAudience?.errors?.required">
-                                Project Status is reuired.
+                                Target Audience is reuired.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.TargetAudience?.errors?.pattern">
-                                Overview should be Alpha Numeric.
+                                Target Audience should be Alpha Numeric.
                             </div>
                         </div>
                     </div>
@@ -256,7 +257,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="EstimatedCPE">Estimated CPE <span style="color:red;">*</span></label>
+                        <label for="EstimatedCPE">Estimated CPE</label>
                         <input type="number" class="form-control" formControlName="EstimatedCPE" id="EstimatedCPE">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['EstimatedCPE'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.EstimatedCPE?.errors?.required">
@@ -727,8 +728,8 @@
 
                     <div class="form-group">
                         <label for="LDIntakeOwner">L&D Intake Owner <span style="color:red;">*</span></label>
-                        <ngx-select-dropdown [config]="config" formControlName="LDIntakeOwner">L&D Intake
-                            Owner</ngx-select-dropdown>
+                        <ngx-select-dropdown [config]="config" formControlName="LDIntakeOwner"
+                            [options]="LDIntakeOwnerMaster"></ngx-select-dropdown>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['LDIntakeOwner'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.required">
                                 L&D-Intake-Owner is reuired.
@@ -743,8 +744,8 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="ProjectManagerContact">Project Manager Contact</label>
-                        <ngx-select-dropdown [config]="config" formControlName="ProjectManagerContact">Project Manager
-                            Contact
+                        <ngx-select-dropdown [config]="config" formControlName="ProjectManagerContact"
+                            [options]="ProjectManagerContactMaster">
                         </ngx-select-dropdown>
                         <div class="message-error"
                             *ngIf="IsSubmit && CourseForm.controls['ProjectManagerContact'].errors">
@@ -759,12 +760,11 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="InstructionalDesigner">Instructional Designer</label>
-                        <ngx-select-dropdown [config]="config" formControlName="InstructionalDesigner">r
+                        <ngx-select-dropdown [config]="config" formControlName="InstructionalDesigner"
+                            [options]="InstructionalDesignerMaster">
                             Instructional Designe
                         </ngx-select-dropdown>
                         <div class="message-error"
@@ -858,23 +858,20 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Domain</label><br>
-                        <input type="text" value="04-Course Development" [disabled]="true">
-                        <div>{{CourseData?.FocusDomain}}</div>
+                        <div>04-Course Development</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Discontinued Form</label>
-                        <input type="text" [value]="CurrentDate | date:'yyyy-MM-dd'" [disabled]="true">
-                        <div>{{CourseData?.FocusDiscFrom}}</div>
+                        <div>{{CurrentDate | date:'yyyy-MM-dd'}}</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Displayed to Learner</label>
-                        <input type="text" value="False" [disabled]="true">
                         <div>
-                            {{CourseData?.FocusDisplayedToLearner}}
+                            False
                         </div>
                     </div>
                 </div>

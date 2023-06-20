@@ -46,13 +46,6 @@ export class CourseListComponent implements OnInit {
         this.ExcelOfClarizen()
         this.ExcelOfFocus()
         //this.ExcelOfDeployment()
-
-        localStorage.setItem('Me', JSON.stringify(this.User))
-
-        var Userdata = JSON.parse(localStorage.getItem('Me')!)
-        console.log(Userdata.FirstName)
-        this.setUserToLocalStorage()
-
     }
 
     GetAllCourse() {
@@ -184,22 +177,22 @@ export class CourseListComponent implements OnInit {
     }
 
 
-    User =
-        {
-            "Email": "priya@gmail.com",
-        }
-    setUserToLocalStorage(): void {
+    // User =
+    //     {
+    //         "Email": "sdemotest34@gmail.com",
+    //     }
+    // setUserToLocalStorage(): void {
 
 
-        this.userservice.getDataByEmail(this.User.Email).subscribe(
+    //     this.userservice.getDataByEmail(this.User.Email).subscribe(
 
-            response => {
-                console.log("hey" + JSON.stringify(response));
-                localStorage.setItem('UserData', JSON.stringify(response))
-            }
+    //         response => {
+    //             console.log("hey" + JSON.stringify(response));
+    //             localStorage.setItem('UserData', JSON.stringify(response))
+    //         }
 
-        );
-    }
+    //     );
+    // }
 
 
 
