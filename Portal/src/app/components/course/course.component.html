@@ -98,6 +98,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Project Status</label>
+                        <ngx-select-dropdown [config]="config" formControlName="Status">
+                            Project Status
+                        </ngx-select-dropdown>
+                        <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Status'].errors">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Status?.errors?.required">
+                                Project status is reuired.
+                            </div>
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Status?.errors?.pattern">
+                                Project status should be Alpha Numeric.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -841,19 +857,22 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label>Domain</label>
+                        <label>Domain</label><br>
+                        <input type="text" value="04-Course Development" [disabled]="true">
                         <div>{{CourseData?.FocusDomain}}</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Discontinued Form</label>
+                        <input type="text" [value]="CurrentDate | date:'yyyy-MM-dd'" [disabled]="true">
                         <div>{{CourseData?.FocusDiscFrom}}</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Displayed to Learner</label>
+                        <input type="text" value="False" [disabled]="true">
                         <div>
                             {{CourseData?.FocusDisplayedToLearner}}
                         </div>

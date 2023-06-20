@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
@@ -18,6 +18,8 @@ import { CoursePermission } from 'src/app/domain/user';
     styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
+    @ViewChild('discontinuedInput', { static: true }) discontinuedInput: ElementRef;
+    discontinuedDate: string;
     public CourseForm: FormGroup;
     URLParamCourseId: number = 0;
     CourseData: any;
@@ -38,6 +40,7 @@ export class CourseComponent implements OnInit {
     MaterialMasterData: any = [];
     LevelOfEffortMasterData: any = [];
     SpecialNoticeMasterData: any = [];
+    CurrentDate: any;
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
     web = { label: 'google', url: 'https://www.google.com' }
@@ -63,6 +66,7 @@ export class CourseComponent implements OnInit {
     IsRequiredfOSFormGroup: boolean = false;
     UseData: string | null;
     hasPermission: CoursePermission;
+    False: any;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -73,12 +77,16 @@ export class CourseComponent implements OnInit {
         private datePipe: DatePipe,
         private userService: UserService
     ) {
+        this.CurrentDate = new Date();
+        const today = new Date();
+        this.discontinuedDate = this.formatDate(today);
         // this.route.queryParams.subscribe(params => {
         //     this.URLParamCourseId = params['id'];
         // });
         this.URLParamCourseId = this.route.snapshot.params['id'];
         this.hasPermission = new CoursePermission();
         this.CourseForm = this.formBuilder.group({
+            Status: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             DeploymentFiscalYear: [''],
@@ -122,11 +130,25 @@ export class CourseComponent implements OnInit {
             PrerequisiteCourseIDFormGroup: this.formBuilder.array([this.GetPrerequisiteCourseIDFormGroup()]),
             EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup()]),
             AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup()]),
-            FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()])
+            FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()]),
+            // Discontinued: ['', (this.discontinuedDate)]
         })
     }
 
+    formatDate(date: Date): string {
+        const year = date.getFullYear();
+        const month = this.padZero(date.getMonth() + 1);
+        const day = this.padZero(date.getDate());
+        return `${year}-${month}-${day}`;
+    }
+
+    padZero(value: number): string {
+        return value < 10 ? `0${value}` : value.toString();
+    }
+
+
     ngOnInit() {
+
         this.getDropdownData();
         this.hasPermission = this.userService.GetUserPermission();
         if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
