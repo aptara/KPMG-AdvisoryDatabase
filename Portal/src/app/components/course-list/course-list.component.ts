@@ -12,7 +12,6 @@ import * as XLSX from 'xlsx';
 
 
 
-
 declare var bootbox: any;
 @Component({
     selector: 'app-course-list',
@@ -100,45 +99,7 @@ export class CourseListComponent implements OnInit {
         this.router.navigate(['/course-details'])
     }
 
-    // downloadExceloffocus() {
 
-    //     this.downloadExcelService.getAllCoursesForDataOfFocus().subscribe((data: any) => {
-    //         if (data) {
-    //             var courseData: any = data;
-    //             const headers = Object.keys(courseData[0]).slice(0, 14);
-    //             const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
-    //             const worksheetName = 'Data Of Focus Fields';
-    //             const fileName = 'Excel of Focus Fields.xlsx';
-    //             const worksheet = XLSX.utils.aoa_to_sheet([headers, ...excelData]);
-    //             // Set column widths
-    //             const columnWidths = headers.map(() => ({ width: 23 }));
-    //             worksheet['!cols'] = columnWidths;
-    //             const workbook = XLSX.utils.book_new();
-
-    //             XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
-    //             XLSX.writeFile(workbook, fileName);
-    //         }
-    //     });
-    // }
-
-    // downloadExcelofClarizen() {
-    //     this.downloadExcelService.getAllCoursesForClarizen().subscribe((data: any) => {
-    //         if (data) {
-    //             var courseData: any = data;
-    //             const headers = Object.keys(courseData[0]).slice(0, 12);;
-    //             const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
-    //             const worksheetName = 'Data Of Clarizen Fields';
-    //             const fileName = 'Excel For Clarizen Fields.xlsx';
-    //             const worksheet = XLSX.utils.aoa_to_sheet([headers, ...excelData]);
-    //             // Set column widths
-    //             const columnWidths = headers.map(() => ({ width: 20 }));
-    //             worksheet['!cols'] = columnWidths
-    //             const workbook = XLSX.utils.book_new();
-    //             XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
-    //             XLSX.writeFile(workbook, fileName);
-    //         }
-    //     });
-    // }
 
     downloadExcelofDeployment() {
 
@@ -218,7 +179,7 @@ export class CourseListComponent implements OnInit {
         });
     }
     getHeaders() {
-        const headers = Object.keys(this.dataf[0]).slice(1, 28); //1,28
+        const headers = Object.keys(this.dataf[0]).slice(1, 26); //1,28
 
         return headers;
     }
@@ -278,7 +239,7 @@ export class CourseListComponent implements OnInit {
             'CUSTOM3', 'OFFERING_TEMPLATE_NO', ' DESCRIPTION', 'MAX_CT', 'MIN_CT', 'WAITLIST_MAX', 'Ower1', 'Ower2',
             'AVAIL_FORM', 'DT_DURATION1', ' Domain', 'DISC_FORM', 'DISPLAY_LEARNER', 'CUSTOM0', 'CUSTOM1', 'PRICE', 'CURRENCY',
             'DISPLAY_CALL_CENTER',
-            'AUDIENCE_TYPE1', 'AUDIENCE_TYPE2',
+
             'CUSTOM2', 'CUSTOM5', 'CUSTOM8'];
 
         // const data = this.data.map((obj: any) => headers.map(key => obj[key]));
@@ -398,9 +359,7 @@ export class CourseListComponent implements OnInit {
     }
 
 
-
-
-
+    selectAll: boolean = false;
 
     toggleCourseSelection(courseId: string) {
         if (this.isCourseSelected(courseId)) {
@@ -409,6 +368,16 @@ export class CourseListComponent implements OnInit {
             this.selectedCourseIds.push(courseId);
         }
     }
+    toggleSelectAll() {
+        if (this.selectAll) {
+            // Add all course IDs to the selectedCourseIds array
+            this.selectedCourseIds = this.CourseData.map((course: { CourseMasterID: any; }) => course.CourseMasterID);
+        } else {
+            // Clear the selectedCourseIds array to unselect all checkboxes
+            this.selectedCourseIds = [];
+        }
+    }
+
 
     isCourseSelected(courseId: string): boolean {
         return this.selectedCourseIds.includes(courseId);
@@ -417,8 +386,8 @@ export class CourseListComponent implements OnInit {
 
     cancelSelection() {
         this.selectedCourseIds = []; // Clear the selectedCourseIds array to unselect all checkboxes
+        this.selectAll = false; // Uncheck the "Select All" checkbox
     }
-
 
 
 

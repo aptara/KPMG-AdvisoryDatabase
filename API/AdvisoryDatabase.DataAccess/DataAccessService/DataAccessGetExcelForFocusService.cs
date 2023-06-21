@@ -22,7 +22,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             switch (operation)
             {
                 case OperationType.GetAll:
-                    spName = "getexcelforfocus";
+                    spName = "USP_ExcelForFocus";
                     break;
                 /*  case OperationType.GetAll:
                       spName = "CourseOwnerDetail";
@@ -86,8 +86,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          Currency = row.ReadString("Currency"),
                          DisplayCallCenter = row.ReadString("DisplayCallCenter"),
                          TargetAudience = row.ReadString("TargetAudience"),
-                         AudienceType1 = row.ReadString("AudienceType"),
-                         AudienceType2 = row.ReadString("AudienceType"),
+                        /* AudienceType1 = row.ReadString("AudienceType"),
+                         AudienceType2 = row.ReadString("AudienceType"),*/
                          FunctionName = row.ReadString("FunctionName"),
 
                          ProgramKnowledgeLevel = row.ReadString("ProgramKnowledgeLevel"),
@@ -143,8 +143,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 Currency = data.ReadString("Currency"),
                 DisplayCallCenter = data.ReadString("DisplayCallCenter"),
                 TargetAudience = data.ReadString("TargetAudience"),
-                AudienceType1 = data.ReadString("AudienceType"),
-                AudienceType2 = data.ReadString("AudienceType"),
+              /*  AudienceType1 = data.ReadString("AudienceType"),
+                AudienceType2 = data.ReadString("AudienceType"),*/
                 FunctionName = data.ReadString("FunctionName"),
 
                 ProgramKnowledgeLevel = data.ReadString("ProgramKnowledgeLevel"),

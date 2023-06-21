@@ -1,12 +1,12 @@
 <div class="card">
     <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" scrollHeight="200"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['CourseMasterID','CourseId', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'CourseSponsor', 'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
-                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
-                    (click)="clear(dt1)"></button>
+                <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                    (click)="clear(dt1)"></button> -->
                 <button pButton class="btn-excel-width" (click)="downloadExceloffocus()"
                     *ngIf="hasPermission.hasPermissionDownloadCourseRDIforFocus">
                     Export RDI for Focus
@@ -19,7 +19,7 @@
                     *ngIf="hasPermission.hasPermissionDownloadCourse">
                     Export RDI for Deployment
                 </button>
-                <button pButton class="btn-excel-width" (click)="cancelSelection()">Cancel</button>
+                <button pButton class="btn-excel-width" (click)="cancelSelection()">Reset</button>
 
                 <span class="p-input-icon-left ml-auto filter-bar">
                     <i class="pi pi-search"></i>
@@ -34,7 +34,10 @@
         <ng-template pTemplate="header">
             <tr>
                 <th>
-
+                    <div class="flex align-items-center">
+                        <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()">
+                        Select All
+                    </div>
                 </th>
                 <th>
                     <div class="flex align-items-center">
@@ -88,10 +91,10 @@
                     </span>
                 </td>
                 <td>
-                    <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
-                        {{ course.CourseID }}</a>
+                    <!-- <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
+                        {{ course.CourseID }}</a> -->
 
-                    <!-- {{ course.CourseID }} -->
+                    {{ course.CourseID }}
 
                 </td>
                 <td>
