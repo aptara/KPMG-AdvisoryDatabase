@@ -19,7 +19,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
                 case OperationType.GetAll:
 
-                    spName = "ExcelForClarizen";
+                    spName = "USP_ExcelForClarizen";
                     break;
                 default:
                     spName = string.Empty;

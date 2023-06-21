@@ -50,10 +50,10 @@ namespace AdvisoryDatabase.Framework.Entities
 
         public string DisplayCallCenter { get; set; }
 
-        public string AudienceType1 { get; set; }
+    /*    public string AudienceType1 { get; set; }
         public string AudienceType2 { get; set; }
 
-
+*/
         public string ProgramKnowledgeLevel { get; set; }
         public string TargetAudience { get; set; }
         public string SpecialNotice { get; set; }
