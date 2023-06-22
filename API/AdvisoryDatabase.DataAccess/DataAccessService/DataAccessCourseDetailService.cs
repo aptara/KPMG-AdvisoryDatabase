@@ -161,6 +161,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     FieldOfStudyMasterID = row.Read<int>("FieldOfStudyMasterID"),
                     FuntionMasterID = row.Read<long>("FuntionMasterID"),
                     StatusMasterID = row.Read<int>("StatusMasterID"),
+                    LDIIntakeOwnerText = row.ReadString("LDIIntakeOwnerText"),
+                    ProjectManagerContactMasterText = row.ReadString("ProjectManagerContactMasterText"),
+                    StatusText = row.ReadString("StatusText"),
+
                 }).ToList();
             if (GetAllData.Count == 1)
             {

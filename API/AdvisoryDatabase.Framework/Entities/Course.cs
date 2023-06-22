@@ -63,6 +63,9 @@ namespace AdvisoryDatabase.Framework.Entities
         public int? FieldOfStudyMasterID { get; set; }
         public int? StatusMasterID { get; set; }
         public long? FuntionMasterID { get; set; }
+        public string LDIIntakeOwnerText { get; set; }
+        public string ProjectManagerContactMasterText { get; set; }
+        public string StatusText { get; set; }
 
         public List<CourseMasterData>SkillMasterIDs { get; set; }
         public List<CourseMasterData>Industries { get; set; }

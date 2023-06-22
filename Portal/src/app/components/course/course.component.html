@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label>Project Status</label>
+                        <label>Project Status<span style="color:red;">*</span></label>
                         <ngx-select-dropdown [config]="config" formControlName="StatusMasterID"
                             [options]="StatusMasterData">
                             Project Status
@@ -507,7 +507,8 @@
                         <label for="Descriptions">Please provide a description/the business need related to this
                             request
                             <span style="color:red;">*</span></label>
-                        <textarea type="text" class="form-control" formControlName="Descriptions" id="Descriptions">
+                        <textarea type="text" class="form-control" formControlName="Descriptions"
+                            id="Descriptions"></textarea>
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Descriptions'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.required">
                                 Business Description is reuired.
@@ -670,7 +671,8 @@
                             <!-- <input class="form-check-input" type="checkbox" formControlName="Collateral"
                                 id="Collateral"> -->
                             <label class="form-check-label" for="Collateral">Additional Collateral</label>
-                            <ngx-select-dropdown [config]="config" formControlName="Collateral"></ngx-select-dropdown>
+                            <ngx-select-dropdown [config]="config" formControlName="Collateral" [options]="collaterals">
+                            </ngx-select-dropdown>
                         </div>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Collateral'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Collateral?.errors?.required">

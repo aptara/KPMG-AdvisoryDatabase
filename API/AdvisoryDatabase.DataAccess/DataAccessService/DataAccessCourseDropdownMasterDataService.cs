@@ -79,6 +79,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                      {
                          Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
+                         
 
                      }).ToList();
             dropdownData.ServiceLineMasterData = data.Tables[6].AsEnumerable().Select(row =>
@@ -86,14 +87,14 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                      {
                          Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
-
+                         ParentId = row.Read<int>("ParentId")
                      }).ToList();
             dropdownData.ServiceNetworkMasterData = data.Tables[7].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
                          Id = row.Read<long>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
-
+                         ParentId = row.Read<int>("ParentId")
                      }).ToList();
             dropdownData.FieldOfStudyMasterData = data.Tables[8].AsEnumerable().Select(row =>
                      new CourseMasterData
