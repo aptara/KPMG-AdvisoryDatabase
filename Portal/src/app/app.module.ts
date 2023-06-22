@@ -99,7 +99,6 @@ import { DatePipe } from '@angular/common';
                 { path: "user-management", component: UserManagementComponent },
                 { path: "course-management", component: CourseListComponent },
                 { path: "course-details", component: CourseComponent },
-
                 { path: '**', component: CourseListComponent }
 
             ]),

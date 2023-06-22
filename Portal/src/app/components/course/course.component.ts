@@ -46,7 +46,7 @@ export class CourseComponent implements OnInit {
     StatusMasterData: any = [];
     CurrentDate: any;
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
-    collaterals: any[] = [{ label: 'Yes', value: true }, { label: 'No', value: false }];
+    collaterals: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     web = { label: 'google', url: 'https://www.google.com' }
     config: NgxDropdownConfig = {
         displayKey: "DisplayName",
@@ -84,10 +84,10 @@ export class CourseComponent implements OnInit {
         this.CurrentDate = new Date();
         const today = new Date();
         this.discontinuedDate = this.formatDate(today);
-        this.route.queryParams.subscribe(params => {
-            this.URLParamCourseId = params['id'];
-        });
-        //this.URLParamCourseId = this.route.snapshot.params['id'];
+        // this.route.queryParams.subscribe(params => {
+        //     this.URLParamCourseId = params['id'];
+        // });
+        this.URLParamCourseId = this.route.snapshot.params['id'];
         this.hasPermission = new CoursePermission();
         this.CourseForm = this.formBuilder.group({
             StatusMasterID: ['', [Validators.required]],
@@ -480,7 +480,7 @@ export class CourseComponent implements OnInit {
         saveCourse.RoomSetUpComments = CourseData.RoomSetUpComments;
         saveCourse.DeploymentFacilitatorConsideration = CourseData.DeploymentFacilitatorConsideration;
         saveCourse.CourseNotes = CourseData.CourseNotes;
-        saveCourse.Collateral = CourseData.Collateral;
+        saveCourse.Collateral = CourseData.Collateral?.Id;
         console.log(saveCourse)
         return saveCourse;
     }
