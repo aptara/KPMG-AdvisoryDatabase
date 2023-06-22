@@ -15,15 +15,16 @@ namespace AdvisoryDatabase.Framework.Entities
         public int CourseMasterID { get; set; }
         public string CourseName { get; set; }
 
-        // public string FieldOfStudy { get; set; }
-        /*      public string FOS_DEFAULT_CREDITS1 { get; set; }
-              public string FOS_DEFAULT_CREDITS2 { get; set; }
-              public string FOS_DEFAULT_CREDITS3 { get; set; }
-              public string FOS_DEFAULT_CREDITS4 { get; set; }*/
+ 
+         public string FieldOfStudy1 { get; set; }
+         public string FieldOfStudy2 { get; set; }
+         public string FieldOfStudy3 { get; set; }
+         public string FieldOfStudy4 { get; set; }
 
-
-        public string PrerequisiteCourseID { get; set; }
-        public string EquivalentCourseID { get; set; }
+        public string PrerequisiteCourseID1 { get; set; }
+        public string PrerequisiteCourseID2 { get; set; }
+        public string EquivalentCourseID1 { get; set; }
+        public string EquivalentCourseID2 { get; set; }
         // public string CourseOwner { get; set; }
         public string DeliveryType { get; set; }
         public string EstimatedCPE { get; set; }
@@ -50,10 +51,10 @@ namespace AdvisoryDatabase.Framework.Entities
 
         public string DisplayCallCenter { get; set; }
 
-    /*    public string AudienceType1 { get; set; }
+        public string AudienceType1 { get; set; }
         public string AudienceType2 { get; set; }
 
-*/
+
         public string ProgramKnowledgeLevel { get; set; }
         public string TargetAudience { get; set; }
         public string SpecialNotice { get; set; }

@@ -26,8 +26,10 @@ namespace AdvisoryDatabase.Framework.Entities
         public string MaximumAttendeeCount { get; set; }
         public string MinimumAttendeeCount { get; set; }
         public string MaximumAttendeeWaitlist { get; set; }
-        public string PrerequisiteCourseID { get; set; }
-        public string EquivalentCourseID { get; set; }
+        public string PrerequisiteCourseID1 { get; set; }
+        public string PrerequisiteCourseID2 { get; set; }
+        public string EquivalentCourseID1 { get; set; }
+        public string EquivalentCourseID2 { get; set; }
         public string FirstDeliveryDate { get; set; }
         public string Duration { get; set; }
         public string Collateral { get; set; }
@@ -38,9 +40,3 @@ namespace AdvisoryDatabase.Framework.Entities
 }
 
 
-/*CourseMaster.CourseMasterID,CourseMaster.CourseName,CourseMaster.LDIntakeOwner,CourseMaster.ProjectManagerContact,CourseMaster.CourseSponsor,
- CourseMaster.InstructionalDesigner,CourseMaster.EstimatedCPE,CourseMaster.RoomSetUpComments,CourseMaster.CourseID,
- CourseMaster.CourseOverviewObjective,CourseMaster.MaximumAttendeeCount,CourseMaster.MinimumAttendeeCount,CourseMaster.MaximumAttendeeWaitlist,CourseMaster.PrerequisiteCourseID,
- CourseMaster.EquivalentCourseID,CourseMaster.FirstDeliveryDate,CourseMaster.Duration,CourseMaster.Collateral,
- 
- MaterialMaster.Material*/
