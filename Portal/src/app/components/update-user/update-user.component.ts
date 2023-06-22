@@ -65,7 +65,7 @@ export class UpdateUserComponent implements OnInit {
             ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
 
-            'TaskMasterID': new FormControl('', Validators.required)
+            'TaskMasterID': new FormControl('')
         })
 
 

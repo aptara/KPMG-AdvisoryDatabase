@@ -1,5 +1,9 @@
 <div class="add-course">
-    <!-- <div class="course-field"> -->
+    <div class="LastUpdatedData">
+
+        <p style="margin: 0 20px 0 0;">Last Updated By: {{ UserData.FirstName }}</p>
+        <p>Last Updated On: {{ UserData.LastUpdatedOn }}</p>
+    </div>
     <form #userForm="ngForm" (ngSubmit)="onSubmitCourse()" [formGroup]="CourseForm">
         <div class="panel panel-default">
             <div class="panel-heading">Course Details</div>
@@ -10,7 +14,7 @@
                         <input type="text" class="form-control" formControlName="CourseName" id="CourseName">
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['CourseName'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseName?.errors?.required">
-                                Course Name is reuired.
+                                Course Name is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseName?.errors?.pattern">
                                 Course Name should be Alpha Numeric.
@@ -41,7 +45,7 @@
                             *ngIf="IsSubmit &&  CourseForm.controls['DeploymentFiscalYear'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.DeploymentFiscalYear?.errors?.required">
-                                Project Status is reuired.
+                                Project Status is required.
                             </div>
                         </div>
                     </div>
@@ -56,7 +60,7 @@
                             *ngIf="IsSubmit &&  CourseForm.controls['CompetencyMasterID'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.CompetencyMasterID?.errors?.required">
-                                Project Status is reuired.
+                                Project Status is required.
                             </div>
                         </div>
                     </div>
@@ -89,7 +93,7 @@
                             *ngIf="IsSubmit &&  CourseForm.controls['ProgramKnowledgeLevelMasterID'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.ProgramKnowledgeLevelMasterID?.errors?.required">
-                                Program Knowledge Level is reuired.
+                                Program Knowledge Level is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.ProgramKnowledgeLevelMasterID?.errors?.pattern">
@@ -107,7 +111,7 @@
                         </ngx-select-dropdown>
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['StatusMasterID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.StatusMasterID?.errors?.required">
-                                Project status is reuired.
+                                Project status is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.StatusMasterID?.errors?.pattern">
                                 Project status should be Alpha Numeric.
@@ -143,7 +147,7 @@
                         <input type="text" class="form-control" formControlName="TargetAudience" id="TargetAudience">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['TargetAudience'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.TargetAudience?.errors?.required">
-                                Target Audience is reuired.
+                                Target Audience is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.TargetAudience?.errors?.pattern">
                                 Target Audience should be Alpha Numeric.
@@ -261,7 +265,7 @@
                         <input type="number" class="form-control" formControlName="EstimatedCPE" id="EstimatedCPE">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['EstimatedCPE'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.EstimatedCPE?.errors?.required">
-                                Estimated CPE is reuired.
+                                Estimated CPE is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.EstimatedCPE?.errors?.pattern">
                                 Toal CPE Credit should be Alpha Numeric.
@@ -363,7 +367,7 @@
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['FunctionMasterIDs'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.FunctionMasterIDs?.errors?.required">
-                                Project Status is reuired.
+                                Project Status is required.
                             </div>
                         </div>
                     </div>
@@ -415,7 +419,7 @@
                         <input type="text" class="form-control" formControlName="CourseSponsor" id="CourseSponsor">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['CourseSponsor'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseSponsor?.errors?.required">
-                                Course Sponsor is reuired.
+                                Course Sponsor is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseSponsor?.errors?.pattern">
                                 Course Sponsor should be Alpha Numeric.
@@ -436,7 +440,7 @@
                             *ngIf="IsSubmit &&  CourseForm.controls['WhichSGSLSNSponsorLearning'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.WhichSGSLSNSponsorLearning?.errors?.required">
-                                Subject Matter Professional is reuired.
+                                Subject Matter Professional is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.WhichSGSLSNSponsorLearning?.errors?.pattern">
@@ -456,7 +460,7 @@
                             *ngIf="IsSubmit &&  CourseForm.controls['SubjectMatterProfessional'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.required">
-                                Subject Matter Professional is reuired.
+                                Subject Matter Professional is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.SubjectMatterProfessional?.errors?.pattern">
@@ -473,7 +477,7 @@
                         <input type="text" class="form-control" formControlName="Vendor" id="Vendor">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Vendor'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.required">
-                                Vendor(s) is reuired.
+                                Vendor(s) is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.pattern">
                                 Vendor(s) should be Alpha Numeric.
@@ -489,7 +493,7 @@
                         <input type="text" class="form-control" formControlName="ServiceNowID" id="ServiceNowID">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['ServiceNowID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.required">
-                                Service ID is reuired.
+                                Service ID is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.pattern">
                                 Service ID should be Alpha Numeric.
@@ -511,7 +515,7 @@
                             id="Descriptions"></textarea>
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Descriptions'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.required">
-                                Business Description is reuired.
+                                Business Description is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.pattern">
                                 Business Description should be Alpha Numeric.
@@ -530,7 +534,7 @@
                             *ngIf="IsSubmit && CourseForm.controls['IsRegulatoryOrLegalRequirement'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.IsRegulatoryOrLegalRequirement?.errors?.required">
-                                Project Status is reuired.
+                                Project Status is required.
                             </div>
                         </div>
                     </div>
@@ -548,7 +552,7 @@
                         </ngx-select-dropdown>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['ProgramTypeID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ProgramTypeID?.errors?.required">
-                                Program Type is reuired.
+                                Program Type is required.
                             </div>
                         </div>
                     </div>
@@ -561,7 +565,7 @@
                         </ngx-select-dropdown>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['DeliveryTypeID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.DeliveryTypeID?.errors?.required">
-                                Delivery Type is reuired.
+                                Delivery Type is required.
                             </div>
                         </div>
                     </div>
@@ -572,7 +576,7 @@
                         <input type="text" class="form-control" formControlName="Duration" id="Duration">
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
-                                Duration is reuired.
+                                Duration is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.pattern">
                                 Duration should be Alpha Numeric.
@@ -589,7 +593,7 @@
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['FirstDeliveryDate'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.FirstDeliveryDate?.errors?.required">
-                                First Delivery Date is reuired.
+                                First Delivery Date is required.
                             </div>
                         </div>
                     </div>
@@ -605,7 +609,7 @@
                             *ngIf="IsSubmit && CourseForm.controls['MaximumAttendeeCount'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.MaximumAttendeeCount?.errors?.required">
-                                Maximum Attendee Count is reuired.
+                                Maximum Attendee Count is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.MaximumAttendeeCount?.errors?.pattern">
@@ -623,7 +627,7 @@
                             *ngIf="IsSubmit && CourseForm.controls['MinimumAttendeeCount'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.MinimumAttendeeCount?.errors?.required">
-                                Minimum Attendee Count is reuired.
+                                Minimum Attendee Count is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.MinimumAttendeeCount?.errors?.pattern">
@@ -641,7 +645,7 @@
                             *ngIf="IsSubmit && CourseForm.controls['MaximumAttendeeWaitlist'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.MaximumAttendeeWaitlist?.errors?.required">
-                                Maximum Attendee Waitlist is reuired.
+                                Maximum Attendee Waitlist is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.MaximumAttendeeWaitlist?.errors?.pattern">
@@ -660,7 +664,7 @@
                         </ngx-select-dropdown>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['MaterialMasterID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.MaterialMasterID?.errors?.required">
-                                Course Materials is reuired.
+                                Course Materials is required.
                             </div>
                         </div>
                     </div>
@@ -676,7 +680,7 @@
                         </div>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Collateral'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Collateral?.errors?.required">
-                                Collateral is reuired.
+                                Collateral is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Collateral?.errors?.pattern">
                                 Collateral should be Alpha Numeric.
@@ -694,7 +698,7 @@
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['RoomSetUpComments'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.RoomSetUpComments?.errors?.required">
-                                Room Set Up Comments is reuired.
+                                Room Set Up Comments is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.RoomSetUpComments?.errors?.pattern">
                                 Room Set Up Comments should be Alpha Numeric.
@@ -734,7 +738,7 @@
                             [options]="LDIntakeOwnerMaster"></ngx-select-dropdown>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['LDIntakeOwner'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.required">
-                                L&D-Intake-Owner is reuired.
+                                L&D-Intake-Owner is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.pattern">
                                 L&D-Intake-Owner should be Alpha Numeric.
@@ -753,7 +757,7 @@
                             *ngIf="IsSubmit && CourseForm.controls['ProjectManagerContact'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.ProjectManagerContact?.errors?.required">
-                                Project Manager Contact is reuired.
+                                Project Manager Contact is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.ProjectManagerContact?.errors?.pattern">
@@ -773,7 +777,7 @@
                             *ngIf="IsSubmit && CourseForm.controls['InstructionalDesigner'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.InstructionalDesigner?.errors?.required">
-                                Instructional Designer is reuired.
+                                Instructional Designer is required.
                             </div>
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.InstructionalDesigner?.errors?.pattern">
@@ -792,7 +796,7 @@
                             *ngIf="IsSubmit && CourseForm.controls['LevelofEffortMasterId'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.LevelofEffortMasterId?.errors?.required">
-                                Level Of Effort is reuired.
+                                Level Of Effort is required.
                             </div>
                         </div>
                     </div>
@@ -838,7 +842,7 @@
                         <textarea class="form-control" formControlName="CourseNotes" id="CourseNotes"> </textarea>
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['CourseNotes'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseNotes?.errors?.required">
-                                Course Notes/ Additional Information is reuired.
+                                Course Notes/ Additional Information is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseNotes?.errors?.pattern">
                                 Course Notes/ Additional Information should be Alpha Numeric.

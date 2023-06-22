@@ -32,11 +32,13 @@ export class UserService {
     }
 
     setUserToLocalStorage(): void {
+
         let User =
         {
-            "Email": "sdemotest34@gmail.com",
+            "Email": "demo@user.com",
         }
-        if (!localStorage.getItem("UserData")) {
+        if (!localStorage.getItem("User")) {
+
             this.getDataByEmail(User.Email).subscribe(user => {
                 localStorage.setItem('UserData', JSON.stringify(user))
             });

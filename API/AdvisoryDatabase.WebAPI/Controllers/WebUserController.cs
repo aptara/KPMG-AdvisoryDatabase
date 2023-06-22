@@ -121,7 +121,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
       };
     }
 
-    [System.Web.Http.HttpGet]
+   
     
   
 
