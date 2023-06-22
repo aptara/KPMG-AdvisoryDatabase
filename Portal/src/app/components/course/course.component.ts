@@ -158,6 +158,7 @@ export class CourseComponent implements OnInit {
         if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
             this.CourseForm.disable()
         }
+        this.setUserToLocalStorage();
     }
 
     GetSGSNSLFormControl() {
@@ -570,5 +571,23 @@ export class CourseComponent implements OnInit {
         // Clear the form
         this.clearForm();
     }
+    User =
+        {
+            "Email": "demo@user.com",
+        }
+    UserData: any;
+    setUserToLocalStorage(): void {
 
+
+        this.userService.getDataByEmail(this.User.Email).subscribe(
+
+            response => {
+                this.UserData = response
+                console.log("hey" + JSON.stringify(this.UserData));
+                localStorage.setItem('UserData', JSON.stringify(this.UserData))
+            }
+
+        );
+
+    }
 }

@@ -26,9 +26,9 @@ export class AddUserComponent implements OnInit {
 
 
     onFormSubmit() {
-
+        this.UserAdd.controls.TaskMasterID.setValue(this.tmId);
         if (this.UserAdd.valid) {
-            this.UserAdd.controls.TaskMasterID.setValue(this.tmId);
+
             this.userService.PostUserData(this.UserAdd.value).subscribe(data => {
                 if (data != null) {
                     bootbox.alert('User Added successfully!!');
@@ -56,7 +56,7 @@ export class AddUserComponent implements OnInit {
             ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
 
-            'TaskMasterID': new FormControl('')
+            'TaskMasterID': new FormControl('', Validators.required)
 
         });
 

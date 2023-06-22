@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -91,7 +91,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             else if (operation == OperationType.Delete)
             {
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
-            }
+                parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
+
+      }
         }
 
         protected override List<Course> ParseGetAllData(System.Data.DataSet data)

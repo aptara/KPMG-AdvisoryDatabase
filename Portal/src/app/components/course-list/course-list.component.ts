@@ -9,7 +9,7 @@ import { DownloadExcelService } from 'src/app/service/service/download-excel.ser
 import { UserService } from 'src/app/service/userservice';
 import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
-
+declare var bootbox: any;
 
 
 declare var bootbox: any;
@@ -72,25 +72,23 @@ export class CourseListComponent implements OnInit {
 
     DeleteCourse(CourseId: any) {
 
-        // this.confirmationService.confirm({
-        //     message: 'Do you want to delete this record?',
-        //     header: 'Delete Confirmation',
-        //     accept: () => {
-        return this.service.deleteCourse(CourseId).subscribe((data: any) => {
-            this.GetAllCourse();
+
+        bootbox.confirm('Are you sure you want to delete this user?', (result: boolean) => {
+            if (result) {
+                return this.service.deleteCourse(CourseId).subscribe((data: any) => {
+                    if (data != null) {
+                        bootbox.alert('User deleted successfully');
+                    } else {
+                        bootbox.alert('Deletion not successful');
+                    }
+                    this.ngOnInit();
+                });
+            }
+
+            return;
         });
-        //     },
-        //     reject: (type: any) => {
-        //         switch (type) {
-        //             case ConfirmEventType.REJECT:
-        //                 this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
-        //                 break;
-        //             case ConfirmEventType.CANCEL:
-        //                 this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'You have cancelled' });
-        //                 break;
-        //         }
-        //     }
-        // });
+
+
 
 
     }
