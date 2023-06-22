@@ -51,15 +51,15 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          //CourseOwner = row.ReadString("CourseOwner"),
                          // FieldOfStudy = row.ReadString("FieldOfStudy"),
 
-                         /*   FOS_DEFAULT_CREDITS1 = row.ReadString("FieldOfStudy"),
+                         FieldOfStudy1 = row.ReadString("FieldOfStudy1"),
 
-                            FOS_DEFAULT_CREDITS2 = row.ReadString("FieldOfStudy"),
+                         FieldOfStudy2 = row.ReadString("FieldOfStudy2"),
 
-                            FOS_DEFAULT_CREDITS3 = row.ReadString("FieldOfStudy"),
+                         FieldOfStudy3 = row.ReadString("FieldOfStudy3"),
 
-                            FOS_DEFAULT_CREDITS4 = row.ReadString("FieldOfStudy"),
+                         FieldOfStudy4 = row.ReadString("FieldOfStudy4"),
 
-   */
+
 
 
 
@@ -71,8 +71,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          MaximumAttendeeCount = row.ReadString("MaximumAttendeeCount"),
                          MaximumAttendeeWaitlist = row.ReadString("MaximumAttendeeWaitlist"),
                          MinimumAttendeeCount = row.ReadString("MinimumAttendeeCount"),
-                         PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
-                         EquivalentCourseID = row.ReadString("EquivalentCourseID"),
+                         PrerequisiteCourseID1 = row.ReadString("PrerequisiteCourseID1"),
+                         PrerequisiteCourseID2 = row.ReadString("PrerequisiteCourseID2"),
+                         EquivalentCourseID1 = row.ReadString("EquivalentCourseID1"),
+                         EquivalentCourseID2 = row.ReadString("EquivalentCourseID2"),
                          FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
 
                          Duration = row.ReadString("Duration"),
@@ -86,8 +88,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          Currency = row.ReadString("Currency"),
                          DisplayCallCenter = row.ReadString("DisplayCallCenter"),
                          TargetAudience = row.ReadString("TargetAudience"),
-                        /* AudienceType1 = row.ReadString("AudienceType"),
-                         AudienceType2 = row.ReadString("AudienceType"),*/
+                         AudienceType1 = row.ReadString("AudienceType1"),
+                         AudienceType2 = row.ReadString("AudienceType2"),
                          FunctionName = row.ReadString("FunctionName"),
 
                          ProgramKnowledgeLevel = row.ReadString("ProgramKnowledgeLevel"),
@@ -113,12 +115,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 //CourseOwner = data.ReadString("CourseOwner"),
                 // FieldOfStudy = data.ReadString("FieldOfStudy"),
 
-                /*    FOS_DEFAULT_CREDITS1 = data.ReadString("FieldOfStudy"),
-                    FOS_DEFAULT_CREDITS2 = data.ReadString("FieldOfStudy"),
-                    FOS_DEFAULT_CREDITS3 = data.ReadString("FieldOfStudy"),
-                    FOS_DEFAULT_CREDITS4 = data.ReadString("FieldOfStudy"),
+                FieldOfStudy1 = data.ReadString("FieldOfStudy1"),
+                FieldOfStudy2 = data.ReadString("FieldOfStudy2"),
+                FieldOfStudy3 = data.ReadString("FieldOfStudy3"),
+                FieldOfStudy4 = data.ReadString("FieldOfStudy4"),
 
-    */
+
                 DeliveryType = data.ReadString("DeliveryType"),
                 EstimatedCPE = data.ReadString("EstimatedCPE"),
                 CourseID = data.ReadString("CourseID"),
@@ -127,8 +129,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 MaximumAttendeeCount = data.ReadString("MaximumAttendeeCount"),
                 MaximumAttendeeWaitlist = data.ReadString("MaximumAttendeeWaitlist"),
                 MinimumAttendeeCount = data.ReadString("MinimumAttendeeCount"),
-                PrerequisiteCourseID = data.ReadString("PrerequisiteCourseID"),
-                EquivalentCourseID = data.ReadString("EquivalentCourseID"),
+                PrerequisiteCourseID1 = data.ReadString("PrerequisiteCourseID1"),
+                PrerequisiteCourseID2 = data.ReadString("PrerequisiteCourseID2"),
+                EquivalentCourseID1 = data.ReadString("EquivalentCourseID1"),
+                EquivalentCourseID2 = data.ReadString("EquivalentCourseID2"),
+
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
 
 
@@ -143,8 +148,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 Currency = data.ReadString("Currency"),
                 DisplayCallCenter = data.ReadString("DisplayCallCenter"),
                 TargetAudience = data.ReadString("TargetAudience"),
-              /*  AudienceType1 = data.ReadString("AudienceType"),
-                AudienceType2 = data.ReadString("AudienceType"),*/
+                AudienceType1 = data.ReadString("AudienceType1"),
+                AudienceType2 = data.ReadString("AudienceType2"),
                 FunctionName = data.ReadString("FunctionName"),
 
                 ProgramKnowledgeLevel = data.ReadString("ProgramKnowledgeLevel"),

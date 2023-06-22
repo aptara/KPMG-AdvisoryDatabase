@@ -104,7 +104,7 @@ export class CourseListComponent implements OnInit {
         this.downloadExcelService.getAllCoursesForDataOfDeployment().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
-                const headers = Object.keys(courseData[0]).slice(0, 19);
+                const headers = Object.keys(courseData[0]).slice(1, 21);
                 const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
                 const worksheetName = 'Data Of Deployment Field';
                 const fileName = 'Excel For Deployment Fields.xlsx';
@@ -177,7 +177,7 @@ export class CourseListComponent implements OnInit {
         });
     }
     getHeaders() {
-        const headers = Object.keys(this.dataf[0]).slice(1, 26); //1,28
+        const headers = Object.keys(this.dataf[0]).slice(1, 34); //1,28
 
         return headers;
     }
@@ -192,31 +192,31 @@ export class CourseListComponent implements OnInit {
 
         //const filteredData = this.data.filter((obj: { Status: string; }) => obj.Status === 'Project Initiated' || obj.Status === 'Course Updated');
 
-        const filteredData = selectedData.filter((obj: { Status: string; }) => obj.Status === 'Project Initiated' || obj.Status === 'Course Updated');
+        // const filteredData = selectedData.filter((obj: { Status: string; }) => obj.Status === 'Project Initiated' || obj.Status === 'Course Updated');
 
-        const invalidStatusData = selectedData.filter((obj: any) => !filteredData.includes(obj));
-        const invalidStatusCourseIds = invalidStatusData.map((obj: any) => `${obj.CourseName}`);
+        // const invalidStatusData = selectedData.filter((obj: any) => !filteredData.includes(obj));
+        // const invalidStatusCourseIds = invalidStatusData.map((obj: any) => `${obj.CourseName}`);
 
-        if (invalidStatusCourseIds.length > 0) {
-            const errorMessage = 'Invalid status for the following Course:- ' + invalidStatusCourseIds.join(', ');
-            bootbox.alert(errorMessage);
-            return;
-        }
+        // if (invalidStatusCourseIds.length > 0) {
+        //     const errorMessage = 'Invalid status for the following Course:- ' + invalidStatusCourseIds.join(', ');
+        //     bootbox.alert(errorMessage);
+        //     return;
+        // }
 
         const headers = this.getHeaders();
 
 
         //  For not accpect any null values for all columns in selected records
 
-        const nullFieldCourses = selectedData
-            .filter((obj: any) => headers.some(key => obj[key] === null))
-            .map((obj: any) => obj.CourseName);
+        // const nullFieldCourses = selectedData
+        //     .filter((obj: any) => headers.some(key => obj[key] === null))
+        //     .map((obj: any) => obj.CourseName);
 
-        if (nullFieldCourses.length > 0) {
-            const errorMessage = 'The following courses have null fields:- ' + nullFieldCourses.join(', ');
-            bootbox.alert(errorMessage);
-            return;
-        }
+        // if (nullFieldCourses.length > 0) {
+        //     const errorMessage = 'The following courses have null fields:- ' + nullFieldCourses.join(', ');
+        //     bootbox.alert(errorMessage);
+        //     return;
+        // }
 
         // For not accpect any null values but ignore below list of columns which is null
         // const columnTitle = ['DESCRIPTION'];
@@ -232,16 +232,19 @@ export class CourseListComponent implements OnInit {
         // }
 
 
-        const columnTitles = ['Title',
-            'PREREQUISITE1', 'EQUIVALENT1', 'DELIVERY_TYPE1',
+        const columnTitles = ['Title', 'FIELD_OF_STUDY1/FOS_DEFAULT_CREDITS1',
+            'FIELD_OF_STUDY2/FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3/FOS_DEFAULT_CREDITS3',
+            'FIELD_OF_STUDY4/FOS_DEFAULT_CREDITS4',
+            'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1',
             'CUSTOM3', 'OFFERING_TEMPLATE_NO', ' DESCRIPTION', 'MAX_CT', 'MIN_CT', 'WAITLIST_MAX', 'Ower1', 'Ower2',
             'AVAIL_FORM', 'DT_DURATION1', ' Domain', 'DISC_FORM', 'DISPLAY_LEARNER', 'CUSTOM0', 'CUSTOM1', 'PRICE', 'CURRENCY',
-            'DISPLAY_CALL_CENTER',
+            'DISPLAY_CALL_CENTER', 'AUDIENCE_TYPE1', 'AUDIENCE_TYPE2',
 
             'CUSTOM2', 'CUSTOM5', 'CUSTOM8'];
 
         // const data = this.data.map((obj: any) => headers.map(key => obj[key]));
-        const data = filteredData.map((obj: any) => headers.map((key, index) => {
+        // const data = filteredData.map((obj: any) => headers.map((key, index) => {
+        const data = selectedData.map((obj: any) => headers.map((key, index) => {
             //const data = this.data.map((obj: any) => headers.map((key, index) => {
             const columnTitle = columnTitles[index] || key;
             return { columnTitle, value: obj[key] };
@@ -293,29 +296,29 @@ export class CourseListComponent implements OnInit {
 
         const selectedData = this.datac.filter((obj: any) => this.selectedCourseIds.includes(obj['CourseMasterID']));
 
-        const filteredData = selectedData.filter((obj: { Status: string; }) => obj.Status === 'Focus Course Created' || obj.Status === 'Course Updated');
+        // const filteredData = selectedData.filter((obj: { Status: string; }) => obj.Status === 'Focus Course Created' || obj.Status === 'Course Updated');
 
-        const invalidStatusData = selectedData.filter((obj: any) => !filteredData.includes(obj));
-        const invalidStatusCourseIds = invalidStatusData.map((obj: any) => `${obj.CourseName}`);
+        // const invalidStatusData = selectedData.filter((obj: any) => !filteredData.includes(obj));
+        // const invalidStatusCourseIds = invalidStatusData.map((obj: any) => `${obj.CourseName}`);
 
-        if (invalidStatusCourseIds.length > 0) {
-            const errorMessage = 'Invalid status for the following Course:- ' + invalidStatusCourseIds.join(', ');
-            bootbox.alert(errorMessage);
-            return;
-        }
+        // if (invalidStatusCourseIds.length > 0) {
+        //     const errorMessage = 'Invalid status for the following Course:- ' + invalidStatusCourseIds.join(', ');
+        //     bootbox.alert(errorMessage);
+        //     return;
+        // }
 
         const headers = this.getHeaders2();
 
         // For not accpect null values with show coursename
-        const nullFieldCourses = filteredData
-            .filter((obj: any) => headers.some(key => obj[key] === null))
-            .map((obj: any) => obj.CourseName);
+        // const nullFieldCourses = filteredData
+        //     .filter((obj: any) => headers.some(key => obj[key] === null))
+        //     .map((obj: any) => obj.CourseName);
 
-        if (nullFieldCourses.length > 0) {
-            const errorMessage = 'The following courses have null fields:- ' + nullFieldCourses.join(', ');
-            bootbox.alert(errorMessage);
-            return;
-        }
+        // if (nullFieldCourses.length > 0) {
+        //     const errorMessage = 'The following courses have null fields:- ' + nullFieldCourses.join(', ');
+        //     bootbox.alert(errorMessage);
+        //     return;
+        // }
 
 
         // for set title
@@ -325,7 +328,7 @@ export class CourseListComponent implements OnInit {
             'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort', 'Course Duration?', 'Start Date'];
 
 
-        const Datam = filteredData.map((obj: any) => headers.map((key, index) => {
+        const Datam = selectedData.map((obj: any) => headers.map((key, index) => {
             const columnTitle = columnTitles[index] || key;
             return { columnTitle, value: obj[key] };
         }));
@@ -339,7 +342,7 @@ export class CourseListComponent implements OnInit {
         const fileName = 'Excel For Clarizen Fields.xlsx';
         //  const worksheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
         const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
-        const columnWidths = headers.map(() => ({ width: 20 }));
+        const columnWidths = headers.map(() => ({ width: 26 }));
         worksheet['!cols'] = columnWidths;
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
