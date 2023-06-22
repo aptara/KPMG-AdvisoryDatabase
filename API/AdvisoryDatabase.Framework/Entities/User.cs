@@ -16,11 +16,13 @@ namespace AdvisoryDatabase.Framework.Entities
         public int LocationID { get; set; }
         public string TaskMasterID { get; set; }
        public string Location { get; set; }
-
+     
+      public int LastUpdatedBy { get; set; }
+    public DateTime LastUpdatedOn { get; set; }
 
 
   }
 
- 
+
 
 }

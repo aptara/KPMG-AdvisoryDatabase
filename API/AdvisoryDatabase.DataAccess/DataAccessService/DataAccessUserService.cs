@@ -53,8 +53,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                        LocationID = Int32.Parse(row.ReadString("LocationID")),
                        Location = row.ReadString("Location"),
                        IsActive = Boolean.Parse(row.ReadString("IsActive")),
-                       TaskMasterID = row.ReadString("TaskMasterID")
-                      
+                       TaskMasterID = row.ReadString("TaskMasterID"),
+                       LastUpdatedBy = Int32.Parse(row.ReadString("LastUpdatedBy")),
+                       LastUpdatedOn = DateTime.Parse(row.ReadString("LastUpdatedOn"))
+
 
                      }).ToList();
 
@@ -72,7 +74,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 LastName = data.ReadString("LastName"),
               LocationID = Int32.Parse(data.ReadString("LocationID")),
               Location = data.ReadString("Location"),
-              TaskMasterID = data.ReadString("TaskMasterID")
+              TaskMasterID = data.ReadString("TaskMasterID"),
+             /* LastUpdatedBy = Int32.Parse(data.ReadString("LastUpdatedBy")),
+              LastUpdatedOn = DateTime.Parse(data.ReadString("LastUpdatedOn"))*/
+
 
             };
         }
