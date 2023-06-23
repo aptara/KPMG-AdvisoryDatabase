@@ -10,7 +10,7 @@ export class DownloadExcelService {
     apiURL = environment.baseUrl;
 
     readonly getAllShowDataofclarizenAPI = this.apiURL + "GETExcelForClarizenFields/ShowDataofclarizen/";
-    readonly getAllShowDataoffocusAPI = this.apiURL + "GetExcelForFocus/ShowDataoffocus/";
+    readonly getAllShowDataoffocusAPI = this.apiURL + "GetExcelForFocus/ShowDataoffocus2/";
     readonly getAllShowDataofdeploymentAPI = this.apiURL + "GetExcelForDeploymentReport/ShowDataofdeployment/";
 
     constructor(private http: HttpClient) {
@@ -29,11 +29,13 @@ export class DownloadExcelService {
             .pipe(retry(1), catchError(this.handleError));
     }
 
-    getAllCoursesForDataOfFocus(): Observable<any> {
+    getAllCoursesForDataOfFocus(courseId: any): Observable<any> {
+        const url = this.getAllShowDataoffocusAPI;
         return this.http
-            .get<any>(this.getAllShowDataoffocusAPI)
+            .get<any>(url, courseId)
             .pipe(retry(1), catchError(this.handleError));
     }
+
 
     getAllCoursesForDataOfDeployment(): Observable<any> {
         return this.http
