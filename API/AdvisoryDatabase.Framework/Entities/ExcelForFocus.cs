@@ -11,12 +11,12 @@ namespace AdvisoryDatabase.Framework.Entities
     {
 
 
-
+        public string CourseMasterIDs { get; set; }
         public int CourseMasterID { get; set; }
         public string CourseName { get; set; }
 
-          public string CourseMasterIDs { get; set; }
-    public string FieldOfStudy1 { get; set; }
+         
+        public string FieldOfStudy1 { get; set; }
          public string FieldOfStudy2 { get; set; }
          public string FieldOfStudy3 { get; set; }
          public string FieldOfStudy4 { get; set; }
@@ -58,12 +58,16 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ProgramKnowledgeLevel { get; set; }
         public string TargetAudience { get; set; }
         public string SpecialNotice { get; set; }
-
+        public string FocusTemplateName { get; set; }
+        public string ErrorMessage { get; set; }
+        public string IsAllowedToFocusRDI { get; set; }
         public string Status { get; set; }
         // public string SubjectMatterProfessional { get; set; }
 
 
-
+  /*      IsAllowedToFocusRDI NCHAR(10),
+			ErrorMessage NVARCHAR(MAX),
+			FocusTemplateName NVARCHAR(MAX),*/
 
 
     }

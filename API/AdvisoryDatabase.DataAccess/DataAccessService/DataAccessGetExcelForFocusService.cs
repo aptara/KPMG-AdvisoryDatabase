@@ -110,10 +110,18 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                          ProgramKnowledgeLevel = row.ReadString("ProgramKnowledgeLevel"),
                          SpecialNotice = row.ReadString("SpecialNotice"),
-                         Status = row.ReadString("Status"),
-                      /* CourseMasterIDs = row.ReadString("CourseMasterIDs")*/
+                         FocusTemplateName = row.ReadString("FocusTemplateName"),
+                         ErrorMessage = row.ReadString("ErrorMessage"),
+                       
+                         IsAllowedToFocusRDI = row.ReadString("IsAllowedToFocusRDI")
+                         /* CourseMasterIDs = row.ReadString("CourseMasterIDs")*/
 
-                       // SubjectMatterProfessional = row.ReadString("SubjectMatterProfessional")
+                         // SubjectMatterProfessional = row.ReadString("SubjectMatterProfessional")
+                      /*   IsAllowedToFocusRDI NCHAR(10),
+                         ErrorMessage NVARCHAR(MAX),
+                         FocusTemplateName NVARCHAR(MAX),
+                         */
+
 
 
                      }).ToList();
@@ -172,8 +180,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                 ProgramKnowledgeLevel = data.ReadString("ProgramKnowledgeLevel"),
                 SpecialNotice = data.ReadString("SpecialNotice"),
-           /* CourseMasterIDs = data.ReadString("CourseMasterIDs")*/
-              //SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional")
+                FocusTemplateName = data.ReadString("FocusTemplateName"),
+                ErrorMessage = data.ReadString("ErrorMessage"),
+                IsAllowedToFocusRDI = data.ReadString("IsAllowedToFocusRDI"),
+                /* CourseMasterIDs = data.ReadString("CourseMasterIDs")*/
+                //SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional")
 
 
             };
