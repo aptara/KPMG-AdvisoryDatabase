@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,27 +10,30 @@ using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.Business.Controllers
 {
-   public class GETExcelForFocusController : BaseController
+  public class GETExcelForFocusController : BaseController
+  {
+    public List<GetExcelForFocusInfo> GetExcelForFocusInfoDetails(GetExcelForFocusInfo ObjInputParameters)
     {
-        public List<GetExcelForFocusInfo> GetExcelForFocusInfoDetails(GetExcelForFocusInfo ObjInputParameters)
-        {
-            List<GetExcelForFocusInfo> excelinfoData = new List<GetExcelForFocusInfo>();
-            try
-            {
-                ExcelForFocusDataService service = new ExcelForFocusDataService();
-                excelinfoData = service.GetAll();
+      List<GetExcelForFocusInfo> excelinfoData = new List<GetExcelForFocusInfo>();
+      try
+      {
+        ExcelForFocusDataService service = new ExcelForFocusDataService();
+        excelinfoData = service.GetAll(ObjInputParameters);
 
-            }
-            catch (Exception ex)
-            {
+      }
+      catch (Exception ex)
+      {
 
-                Log4NetLogger.Error(ex.Message);
-            }
+        Log4NetLogger.Error(ex.Message);
+      }
 
-            return excelinfoData;
-        }
+      return excelinfoData;
     }
+  }
+ 
 }
+
+  
 
 
 

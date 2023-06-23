@@ -75,6 +75,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
         ObjInputParameters.CourseMasterIDs = courseId;
+
+
         ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
 
 

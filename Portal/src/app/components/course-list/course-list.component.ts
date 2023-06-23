@@ -389,7 +389,62 @@ export class CourseListComponent implements OnInit {
         this.selectedCourseIds = []; // Clear the selectedCourseIds array to unselect all checkboxes
         this.selectAll = false; // Uncheck the "Select All" checkbox
     }
+    downloadMultipleExcelFiles1() {
+        this.downloadExcelService.getAllCoursesForDataOfFocus(this.selectedCourseIds).subscribe((data: any) => {
+            console.log(data)
+            var courseData: any = data;
+            const headers1 = Object.keys(courseData[0]).slice(1, 34); // First 10 columns
+            const headers2 = Object.keys(courseData[0]).slice(1, 16); // First 15 columns
 
+            // Custom titles for each column
+            const columnTitles1 = ['Title', 'FIELD_OF_STUDY1/FOS_DEFAULT_CREDITS1',
+                'FIELD_OF_STUDY2/FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3/FOS_DEFAULT_CREDITS3',
+                'FIELD_OF_STUDY4/FOS_DEFAULT_CREDITS4',
+                'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1',
+                'CUSTOM3', 'OFFERING_TEMPLATE_NO', ' DESCRIPTION', 'MAX_CT', 'MIN_CT', 'WAITLIST_MAX', 'Ower1', 'Ower2',
+                'AVAIL_FORM', 'DT_DURATION1', ' Domain', 'DISC_FORM', 'DISPLAY_LEARNER', 'CUSTOM0', 'CUSTOM1', 'PRICE', 'CURRENCY',
+                'DISPLAY_CALL_CENTER', 'AUDIENCE_TYPE1', 'AUDIENCE_TYPE2',
+
+                'CUSTOM2', 'CUSTOM5', 'CUSTOM8'];
+
+            const columnTitles2 = ['Title', 'FIELD_OF_STUDY1/FOS_DEFAULT_CREDITS1',
+                'FIELD_OF_STUDY2/FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3/FOS_DEFAULT_CREDITS3',
+                'FIELD_OF_STUDY4/FOS_DEFAULT_CREDITS4',
+                'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1',
+                'CUSTOM3', 'OFFERING_TEMPLATE_NO', ' DESCRIPTION', 'MAX_CT', 'MIN_CT', 'WAITLIST_MAX', 'Ower1', 'Ower2',
+                'AVAIL_FORM', 'DT_DURATION1', ' Domain', 'DISC_FORM', 'DISPLAY_LEARNER', 'CUSTOM0', 'CUSTOM1', 'PRICE', 'CURRENCY',
+                'DISPLAY_CALL_CENTER', 'AUDIENCE_TYPE1', 'AUDIENCE_TYPE2',
+
+                'CUSTOM2', 'CUSTOM5', 'CUSTOM8'];
+
+
+            const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
+            const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
+
+            const worksheetName1 = 'Data Of Focus Field 1';
+            const worksheetName2 = 'Data Of Focus Field 2';
+            const fileName1 = 'Excel1 For Focus Fields.xlsx';
+            const fileName2 = 'Excel2 For Focus Fields.xlsx';
+
+            const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...excelData1]);
+            const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...excelData2]);
+
+            // Set column widths
+            const columnWidths1 = headers1.map(() => ({ width: 24 }));
+            const columnWidths2 = headers2.map(() => ({ width: 24 }));
+            worksheet1['!cols'] = columnWidths1;
+            worksheet2['!cols'] = columnWidths2;
+
+            const workbook1 = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook1, worksheet1, worksheetName1);
+            XLSX.writeFile(workbook1, fileName1);
+
+            const workbook2 = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
+            XLSX.writeFile(workbook2, fileName2);
+
+        });
+    }
 
 
 }

@@ -30,9 +30,10 @@ export class DownloadExcelService {
     }
 
     getAllCoursesForDataOfFocus(courseId: any): Observable<any> {
-        const url = this.getAllShowDataoffocusAPI;
+        const url = this.getAllShowDataoffocusAPI + "?courseId=" + courseId;
+        console.log(url)
         return this.http
-            .get<any>(url, courseId)
+            .get<any>(url)
             .pipe(retry(1), catchError(this.handleError));
     }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +14,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 {
     public class DataAccessGetExcelForFocusDetails : DataAccessRepository<GetExcelForFocusInfo, Int32>
     {
-        public int FIELD_OF_STUDY1 { get; private set; }
+        
 
         protected override string GetProcedureName(OperationType operation)
         {
@@ -36,8 +36,24 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         protected override void FillParameters(OperationType operation, GetExcelForFocusInfo instance, List<System.Data.Common.DbParameter> parameters)
         {
+      switch (operation)
+      {
+        case OperationType.GetAll:
 
-        }
+          parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterIDs));
+          break;
+
+        
+
+        case OperationType.Get:
+          parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterIDs));
+          break;
+
+        default:
+          break;
+      }
+      
+    }
 
         protected override List<GetExcelForFocusInfo> ParseGetAllData(System.Data.DataSet data)
         {
@@ -95,7 +111,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          ProgramKnowledgeLevel = row.ReadString("ProgramKnowledgeLevel"),
                          SpecialNotice = row.ReadString("SpecialNotice"),
                          Status = row.ReadString("Status"),
-                         // SubjectMatterProfessional = row.ReadString("SubjectMatterProfessional")
+                      /* CourseMasterIDs = row.ReadString("CourseMasterIDs")*/
+
+                       // SubjectMatterProfessional = row.ReadString("SubjectMatterProfessional")
 
 
                      }).ToList();
@@ -154,8 +172,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                 ProgramKnowledgeLevel = data.ReadString("ProgramKnowledgeLevel"),
                 SpecialNotice = data.ReadString("SpecialNotice"),
-                Status = data.ReadString("Status"),
-                //SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional")
+           /* CourseMasterIDs = data.ReadString("CourseMasterIDs")*/
+              //SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional")
 
 
             };

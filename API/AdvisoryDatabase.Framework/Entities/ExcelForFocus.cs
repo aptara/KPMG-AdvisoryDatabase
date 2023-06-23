@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +15,8 @@ namespace AdvisoryDatabase.Framework.Entities
         public int CourseMasterID { get; set; }
         public string CourseName { get; set; }
 
- 
-         public string FieldOfStudy1 { get; set; }
+          public string CourseMasterIDs { get; set; }
+    public string FieldOfStudy1 { get; set; }
          public string FieldOfStudy2 { get; set; }
          public string FieldOfStudy3 { get; set; }
          public string FieldOfStudy4 { get; set; }
