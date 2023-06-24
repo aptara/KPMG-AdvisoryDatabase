@@ -212,7 +212,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     }
 
     [System.Web.Http.HttpGet]
-    public HttpResponseMessage EmailData(string Email)
+    public HttpResponseMessage GetAutherizedUser()
     {
       try
       {
@@ -220,15 +220,19 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
-        // ObjInputParameters.UserMasterID = id;
-        ObjInputParameters.Email = Email;
+        var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];
+        headerUserName = "DESKTOP-FAFDNCO\\shivani.ghewari";
 
+
+
+        ObjInputParameters.NetworkID = headerUserName;
+        
 
         List<UserDetail> outputData = ObjBayDetai.GetUserDetails(ObjInputParameters);
         UserDetail UserData = new UserDetail();
-        UserData = outputData.Where(a => a.Email == Email).FirstOrDefault();
+        UserData = outputData.Where(a => a.NetworkID == headerUserName).FirstOrDefault();
         //UserData = outputData.Where(a => a.UserMasterID == id).FirstOrDefault();
-
+       
 
 
         string jsonData = JsonConvert.SerializeObject(UserData);

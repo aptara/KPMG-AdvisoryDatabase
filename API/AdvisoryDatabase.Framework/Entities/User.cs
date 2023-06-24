@@ -6,20 +6,17 @@ using AdvisoryDatabase.Framework.Common;
 
 namespace AdvisoryDatabase.Framework.Entities
 {
-/*  [Serializable]*/
+  /*  [Serializable]*/
   public class UserDetail : BaseEntity<Int32>
-    {
-        public int UserMasterID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public int LocationID { get; set; }
-        public string TaskMasterID { get; set; }
-       public string Location { get; set; }
-     
-      public int LastUpdatedBy { get; set; }
-    public DateTime LastUpdatedOn { get; set; }
-
+  {
+    public string NetworkID { get; set; }
+    public int UserMasterID { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
+    public int LocationID { get; set; }
+    public string TaskMasterID { get; set; }
+    public string Location { get; set; }
 
   }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './service/userservice';
 
 @Component({
     selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'kpmg-advisory-database-2023';
+   
+    constructor(private userService: UserService) {
+    }
 }

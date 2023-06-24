@@ -33,13 +33,11 @@ export class UserService {
 
     setUserToLocalStorage(): void {
 
-        let User =
-        {
-            "Email": "sdemotest34@gmail.com",
-        }
-        if (!localStorage.getItem("User")) {
-            this.getDataByEmail(User.Email).subscribe(user => {
+        if (!localStorage.getItem("UserData")) {
+
+            this.WindowAuthentication().subscribe(user => {
                 localStorage.setItem('UserData', JSON.stringify(user))
+                alert('UserData' + JSON.stringify(user))
             });
         }
     }
@@ -118,13 +116,14 @@ export class UserService {
     }
     // private apiUrl = environment.baseUrl + 'WebUser/GetDataByEmail';
 
+    public GetAuthUser = environment.baseUrl + "WebUser/GetAutherizedUser";
+
+    WindowAuthentication() {
+        return this.http.get(this.GetAuthUser, { headers: this.headers })
+
+    }
 
 
-    // GetDataByEmail() {
-    //     const email = localStorage.getItem('email');
-    //     const params = new HttpParams().set('email', email);
 
-    //     return this.http.get(this.apiUrl, { params: params });
-    // }
 }
 

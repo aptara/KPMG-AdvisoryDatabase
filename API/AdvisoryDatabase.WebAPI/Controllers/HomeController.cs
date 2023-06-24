@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Http;
 
 namespace WKFS.WebAPI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ApiController
     {
-        public ActionResult Index()
-        {
-            ViewBag.Title = "RCM Client API";
-            return View();
-        }
+
+    [System.Web.Http.HttpGet]
+    public string Index()
+    {
+      return "Advisory Databasr API is running";
+    }
 
     [System.Web.Http.HttpGet]
     // [System.Web.Http.ActionName("GetWindowsUser")]
     public string GetWindowsUser()
     {
-      var headerUserName = HttpContext.Request.ServerVariables["AUTH_USER"];
+      var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];
       return headerUserName;
 
     }
+
   }
 }
