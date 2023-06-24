@@ -53,6 +53,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("CourseName", instance.CourseName));
                 parameters.Add(DbHelper.CreateParameter("CourseID", instance.CourseID));
                 parameters.Add(DbHelper.CreateParameter("DeploymentFiscalYear", instance.DeploymentFiscalYear));
+                parameters.Add(DbHelper.CreateParameter("DevelopmentYear", instance.DevelopmentYear));
                 parameters.Add(DbHelper.CreateParameter("CompetencyMasterID", instance.CompetencyMasterID));
                 parameters.Add(DbHelper.CreateParameter("ProgramKnowledgeLevelMasterID", instance.ProgramKnowledgeLevelMasterID));
                 parameters.Add(DbHelper.CreateParameter("CourseOverviewObjective", instance.CourseOverviewObjective));
@@ -93,7 +94,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
                 parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
 
-      }
+            }
         }
 
         protected override List<Course> ParseGetAllData(System.Data.DataSet data)
@@ -262,11 +263,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             if (data.Tables[9].Rows.Count > 0)
             {
                 course.FOCUSCourseOwnerFormGroup = data.Tables[9].AsEnumerable().Select(row =>
-                new CourseMasterData
-                {
-                    Id = row.Read<long>("Id"),
-                    DisplayName = row.ReadString("DisplayName"),
-                }).ToList();
+                     new CourseMasterData
+                     {
+                         Id = row.Read<long>("Id"),
+                         DisplayName = row.ReadString("DisplayName"),
+                     }).ToList();
             }
             if (data.Tables[10].Rows.Count > 0)
             {

@@ -13,6 +13,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string CourseName { get; set; }
         public string CourseID { get; set; }
         public string DeploymentFiscalYear { get; set; }
+        public string DevelopmentYear { get; set; }
         public long? CompetencyMasterID { get; set; } 
         public long? SkillMasterID { get; set; }
         public long? IndustryMasterID { get; set; }

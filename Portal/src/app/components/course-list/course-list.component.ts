@@ -9,8 +9,6 @@ import { DownloadExcelService } from 'src/app/service/service/download-excel.ser
 import { UserService } from 'src/app/service/userservice';
 import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
-declare var bootbox: any;
-
 
 declare var bootbox: any;
 @Component({
@@ -73,11 +71,12 @@ export class CourseListComponent implements OnInit {
     DeleteCourse(CourseId: any) {
 
 
-        bootbox.confirm('Are you sure you want to delete this user?', (result: boolean) => {
+        bootbox.confirm('Are you sure you want to delete Course?', (result: boolean) => {
             if (result) {
                 return this.service.deleteCourse(CourseId).subscribe((data: any) => {
                     if (data != null) {
-                        bootbox.alert('User deleted successfully');
+                        bootbox.alert('Course deleted successfully');
+                        this.GetAllCourse();
                     } else {
                         bootbox.alert('Deletion not successful');
                     }
@@ -134,34 +133,6 @@ export class CourseListComponent implements OnInit {
             }
         });
     }
-
-
-    // User =
-    //     {
-    //         "Email": "sdemotest34@gmail.com",
-    //     }
-    // setUserToLocalStorage(): void {
-
-
-    //     this.userservice.getDataByEmail(this.User.Email).subscribe(
-
-    //         response => {
-    //             console.log("hey" + JSON.stringify(response));
-    //             localStorage.setItem('UserData', JSON.stringify(response))
-    //         }
-
-    //     );
-    // }
-
-
-
-
-
-
-
-
-
-
 
     dataf: any;
     datac: any;

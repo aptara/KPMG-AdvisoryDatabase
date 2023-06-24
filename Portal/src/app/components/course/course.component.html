@@ -1,9 +1,8 @@
 <div class="add-course">
-    <div class="LastUpdatedData">
-
-        <p style="margin: 0 20px 0 0;">Last Updated By: {{ UserData.FirstName }}</p>
-        <p>Last Updated On: {{ UserData.LastUpdatedOn }}</p>
-    </div>
+    <!-- <div class="LastUpdatedData">
+        <p style="margin: 0 20px 0 0;">Last Updated By: {{ UserData?.FirstName }}</p>
+        <p>Last Updated On: {{ UserData?.LastUpdatedOn }}</p>
+    </div> -->
     <form #userForm="ngForm" (ngSubmit)="onSubmitCourse()" [formGroup]="CourseForm">
         <div class="panel panel-default">
             <div class="panel-heading">Course Details</div>
@@ -163,6 +162,21 @@
                         </ngx-select-dropdown>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="DevelopmentYear">Development Year</label>
+                        <input type="number" class="form-control" formControlName="DevelopmentYear"
+                            id="DevelopmentYear">
+                        <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['DevelopmentYear'].errors">
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.DevelopmentYear?.errors?.required">
+                                Development Year is required.
+                            </div>
+                            <div class="error-tooltips" *ngIf="CourseForm.controls?.DevelopmentYear?.errors?.pattern">
+                                Development Year should be Numeric.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div formArrayName="SGSLSNFormGroups">
@@ -171,7 +185,8 @@
                             <div class="form-group">
                                 <label for="ServiceGroup">Service Group {{ i + 1}}</label>
                                 <ngx-select-dropdown [config]="config" formControlName="ServiceGroup"
-                                    (change)="OnChangedServiceGroup($event)" [options]="ServiceGroupMasterData">
+                                    (change)="OnChangedServiceGroup($event, sgslsnFormGroup)"
+                                    [options]="ServiceGroupMasterData">
                                 </ngx-select-dropdown>
                             </div>
                         </div>
@@ -179,7 +194,8 @@
                             <div class="form-group">
                                 <label for="ServiceLine">Service Line {{ i + 1}}</label>
                                 <ngx-select-dropdown [config]="config" formControlName="ServiceLine"
-                                    (change)="OnChangedServiceLine($event)" [options]="ServiceLineMasterDataOption">
+                                    (change)="OnChangedServiceLine($event, sgslsnFormGroup)"
+                                    [options]="GetServiceLineDropdownOptions(sgslsnFormGroup)">
                                 </ngx-select-dropdown>
                             </div>
                         </div>
@@ -187,7 +203,7 @@
                             <div class="form-group">
                                 <label for="ServiceNetwork">Service Network {{ i + 1}}</label>
                                 <ngx-select-dropdown [config]="config" formControlName="ServiceNetwork"
-                                    [options]="ServiceNetworkMasterDataOption">
+                                    [options]="GetServiceNetworkDropdownOptions(sgslsnFormGroup)">
                                 </ngx-select-dropdown>
                             </div>
                         </div>
@@ -229,7 +245,7 @@
                                     <div class="form-group">
                                         <label for="FieldOfStudyCredit">Field of Study Credit {{ i + 1}}</label>
                                         <input type="text" class="form-control" formControlName="FieldOfStudyCredit"
-                                            id="FieldOfStudyCredit">
+                                            id="FieldOfStudyCredit" (change)="OnChangesFieldOfStudyCredit($event)">
                                     </div>
                                     <div class="message-error">
                                         <div class="error-tooltips"
@@ -489,14 +505,14 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="ServiceNowID">Service ID <span style="color:red;">*</span></label>
+                        <label for="ServiceNowID">Service Now ID <span style="color:red;">*</span></label>
                         <input type="text" class="form-control" formControlName="ServiceNowID" id="ServiceNowID">
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['ServiceNowID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.required">
-                                Service ID is required.
+                                Service Now ID is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.pattern">
-                                Service ID should be Alpha Numeric.
+                                Service Now ID should be Alpha Numeric.
                             </div>
                         </div>
                     </div>
@@ -573,7 +589,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="Duration">Duration</label>
-                        <input type="text" class="form-control" formControlName="Duration" id="Duration">
+                        <input class="form-control" type="time" formControlName="Duration" id="Duration">
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
                                 Duration is required.
@@ -688,6 +704,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="LevelofEffortMasterId">Level Of Effort</label>
+                        <ngx-select-dropdown [config]="config" formControlName="LevelofEffortMasterId"
+                            [options]="LevelOfEffortMasterData">
+                        </ngx-select-dropdown>
+                        <div class="message-error"
+                            *ngIf="IsSubmit && CourseForm.controls['LevelofEffortMasterId'].errors">
+                            <div class="error-tooltips"
+                                *ngIf="CourseForm.controls?.LevelofEffortMasterId?.errors?.required">
+                                Level Of Effort is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -786,29 +817,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="LevelofEffortMasterId">Level Of Effort</label>
-                        <ngx-select-dropdown [config]="config" formControlName="LevelofEffortMasterId"
-                            [options]="LevelOfEffortMasterData">
-                        </ngx-select-dropdown>
-                        <div class="message-error"
-                            *ngIf="IsSubmit && CourseForm.controls['LevelofEffortMasterId'].errors">
-                            <div class="error-tooltips"
-                                *ngIf="CourseForm.controls?.LevelofEffortMasterId?.errors?.required">
-                                Level Of Effort is required.
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <!-- <div class="row">
+            <div class="row">
                 <div formArrayName="FOCUSCourseOwnerFormGroup">
                     <div *ngFor="let fOSFormGroup of FOCUSCourseOwnerFormGroup.controls; let i=index;">
                         <div>
                             <div class="col-md-3" [formGroupName]="i">
                                 <div class="form-group">
-                                    <label for="CourseOwnerID">Course Owner {{i + 1}}</label>
+                                    <label for="CourseOwner">Course Owner {{i + 1}}</label>
                                     <ngx-select-dropdown [config]="config" formControlName="CourseOwner"
                                         [options]="CourseOwnerMasterData">
                                     </ngx-select-dropdown>
@@ -831,7 +847,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">Work Notes</div>

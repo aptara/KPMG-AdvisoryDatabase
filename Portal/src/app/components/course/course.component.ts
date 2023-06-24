@@ -11,6 +11,7 @@ import { NgxDropdownConfig } from 'ngx-select-dropdown';
 import { DatePipe } from '@angular/common';
 import { UserService } from 'src/app/service/userservice';
 import { CoursePermission } from 'src/app/domain/user';
+declare var bootbox: any;
 
 @Component({
     selector: 'app-course',
@@ -63,7 +64,7 @@ export class CourseComponent implements OnInit {
         searchPlaceholder: '',
         searchOnKey: '',
         clearOnSelection: false,
-        inputDirection: ''
+        inputDirection: '',
     }
     IsSubmit: boolean = false;
     IsRequiredsgslsnFormControl: boolean = false;
@@ -94,6 +95,7 @@ export class CourseComponent implements OnInit {
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             DeploymentFiscalYear: [''],
+            DevelopmentYear: ['', [Validators.pattern(/^[0-9]*$/)]],
             CompetencyMasterID: [''],
             ProgramKnowledgeLevelMasterID: [''],
             CourseOverviewObjective: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
@@ -150,15 +152,13 @@ export class CourseComponent implements OnInit {
         return value < 10 ? `0${value}` : value.toString();
     }
 
-
     ngOnInit() {
-
         this.getDropdownData();
+        this.CourseForm.controls?.EstimatedCPE?.disable()
         this.hasPermission = this.userService.GetUserPermission();
         if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
             this.CourseForm.disable()
         }
-        this.setUserToLocalStorage();
     }
 
     GetSGSNSLFormControl() {
@@ -292,6 +292,7 @@ export class CourseComponent implements OnInit {
             CourseName: this.CourseData?.CourseName,
             CourseID: this.CourseData?.CourseID,
             DeploymentFiscalYear: this.CourseData?.DeploymentFiscalYear,
+            DevelopmentYear: this.CourseData?.DevelopmentYear,
             CourseOverviewObjective: this.CourseData?.CourseOverviewObjective,
             TargetAudience: this.CourseData?.TargetAudience,
             EstimatedCPE: this.CourseData?.EstimatedCPE,
@@ -309,7 +310,7 @@ export class CourseComponent implements OnInit {
             MaximumAttendeeCount: this.CourseData?.MaximumAttendeeCount,
             MinimumAttendeeCount: this.CourseData?.MinimumAttendeeCount,
             MaximumAttendeeWaitlist: this.CourseData?.MaximumAttendeeWaitlist,
-            Collateral: this.CourseData?.Collateral,
+            Collateral: this.GetDropDownObjectForBindData(this.CourseData?.Collateral, this.collaterals),
             RoomSetUpComments: this.CourseData?.RoomSetUpComments,
             DeploymentFacilitatorConsideration: this.CourseData?.DeploymentFacilitatorConsideration,
             LDIntakeOwner: this.GetDropDownObjectForBindData(this.CourseData?.LDIntakeOwner, this.LDIntakeOwnerMaster),
@@ -333,7 +334,6 @@ export class CourseComponent implements OnInit {
         if (this.FieldOfStudyFormGroup.length == 1 && this.CourseData.FieldOfStudyFormGroup.length) {
             this.FieldOfStudyFormGroup.clear();
         }
-
         for (let item of this.CourseData?.FieldOfStudyFormGroup) {
             this.FieldOfStudyFormGroup.push(this.formBuilder.group(item));
         }
@@ -365,14 +365,11 @@ export class CourseComponent implements OnInit {
         for (let item of this.CourseData?.AudienceTypeFormGroup) {
             this.AudienceTypeFormGroup.push(this.formBuilder.group(item));
         }
-
         if (this.FOCUSCourseOwnerFormGroup?.length == 1 && this.CourseData.FOCUSCourseOwnerFormGroup?.length) {
             this.FOCUSCourseOwnerFormGroup.clear();
         }
         for (let item of this.CourseData?.FOCUSCourseOwnerFormGroup) {
-            this.FOCUSCourseOwnerFormGroup.push(this.formBuilder.group(this.formBuilder.group({
-                CourseOwner: [item],
-            })));
+            this.FOCUSCourseOwnerFormGroup.push(this.formBuilder.group(item));
         }
         console.log(this.CourseForm.value)
     }
@@ -424,13 +421,26 @@ export class CourseComponent implements OnInit {
     }
 
     ServiceLineMasterDataOption: any = [];
-    OnChangedServiceGroup(data: any) {
+    OnChangedServiceGroup(data: any, formControl: any) {
+        formControl.controls.ServiceLine.reset()
+        formControl.controls.ServiceNetwork.reset()
         this.ServiceLineMasterDataOption = this.ServiceLineMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
     }
 
     ServiceNetworkMasterDataOption: any = [];
-    OnChangedServiceLine(data: any) {
+    OnChangedServiceLine(data: any, formControl: any) {
+        formControl.controls.ServiceNetwork.reset()
         this.ServiceNetworkMasterDataOption = this.ServiceNetworkMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
+    }
+
+    GetServiceLineDropdownOptions(formControl: any) {
+        let ServiceGroup = formControl.controls.ServiceGroup.value;
+        return this.ServiceLineMasterData.filter((x: { ParentId: any; }) => x.ParentId === ServiceGroup?.Id)
+    }
+
+    GetServiceNetworkDropdownOptions(formControl: any) {
+        let serviceLine = formControl.controls.ServiceLine.value;
+        return this.ServiceNetworkMasterData.filter((x: { ParentId: any; }) => x.ParentId === serviceLine?.Id)
     }
 
     BindCourseDataForSaveEdit() {
@@ -463,6 +473,7 @@ export class CourseComponent implements OnInit {
         saveCourse.CourseName = CourseData.CourseName;
         saveCourse.CourseID = CourseData.CourseID;
         saveCourse.DeploymentFiscalYear = CourseData.DeploymentFiscalYear;
+        saveCourse.DevelopmentYear = CourseData.DevelopmentYear;
         saveCourse.CourseOverviewObjective = CourseData.CourseOverviewObjective;
         saveCourse.TargetAudience = CourseData.TargetAudience;
         saveCourse.EstimatedCPE = CourseData.EstimatedCPE;
@@ -505,22 +516,42 @@ export class CourseComponent implements OnInit {
         }
     }
 
+    OnChangesFieldOfStudyCredit(event: any) {
+        let totalCPE: number = 0;
+        if (this.CourseForm?.get("FieldOfStudyFormGroup")?.value) {
+            for (let control of this.CourseForm?.get("FieldOfStudyFormGroup")?.value) {
+                totalCPE = totalCPE + Number(control.FieldOfStudyCredit)
+            }
+        }
+        this.CourseForm.controls?.EstimatedCPE?.setValue(totalCPE);
+    }
+
 
     onSubmitCourse() {
         this.IsSubmit = true;
         var SaveData = this.BindCourseDataForSaveEdit();
         if (!this.CourseForm.invalid) {
-            if (this.URLParamCourseId != 0) {
-                this.courseService.createCourse(SaveData).subscribe((data: any) => {
-                    if (data.Success) {
-                        this.router.navigate(['/course-List']);
+            if (this.URLParamCourseId == undefined || this.URLParamCourseId == 0) {
+                bootbox.confirm('Are you sure you want to Add Course?', (result: boolean) => {
+                    if (result) {
+                        this.courseService.createCourse(SaveData).subscribe((data: any) => {
+                            if (data.Success) {
+                                this.router.navigate(['/course-List']);
+                            }
+                        });
                     }
+                    return;
                 });
             } else {
-                this.courseService.updateCourse(this.URLParamCourseId, SaveData).subscribe((data: any) => {
-                    if (data.Success) {
-                        this.router.navigate(['/course-List']);
+                bootbox.confirm('Are you sure you want to Update Course?', (result: boolean) => {
+                    if (result) {
+                        this.courseService.createCourse(SaveData).subscribe((data: any) => {
+                            if (data.Success) {
+                                this.router.navigate(['/course-List']);
+                            }
+                        });
                     }
+                    return;
                 });
             }
         } else {
@@ -566,28 +597,8 @@ export class CourseComponent implements OnInit {
         this.submitted = false;
     }
 
-
     onCancel() {
         // Clear the form
         this.clearForm();
-    }
-    User =
-        {
-            "Email": "demo@user.com",
-        }
-    UserData: any;
-    setUserToLocalStorage(): void {
-
-
-        this.userService.getDataByEmail(this.User.Email).subscribe(
-
-            response => {
-                this.UserData = response
-                console.log("hey" + JSON.stringify(this.UserData));
-                localStorage.setItem('UserData', JSON.stringify(this.UserData))
-            }
-
-        );
-
     }
 }
