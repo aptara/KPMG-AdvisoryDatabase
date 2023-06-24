@@ -126,7 +126,7 @@ export class CourseComponent implements OnInit {
             ProjectManagerContact: [''],
             InstructionalDesigner: [''],
             LevelofEffortMasterId: [''],
-            CourseNotes: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            CourseNotes: [''],
             SkillMasterIDs: [''],
             Industries: [''],
             AudienceLevels: [''],
@@ -154,6 +154,7 @@ export class CourseComponent implements OnInit {
 
     ngOnInit() {
         this.getDropdownData();
+        this.CourseForm.controls.CourseNotes.disable();
         this.hasPermission = this.userService.GetUserPermission();
         if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
             this.CourseForm.disable()
@@ -195,7 +196,7 @@ export class CourseComponent implements OnInit {
 
     GetFOCUSCourseOwnerFormGroup() {
         return this.formBuilder.group({
-            CourseOwner: [''],
+            CourseOwner: ['', [Validators.required]],
         });
     }
 
@@ -333,10 +334,12 @@ export class CourseComponent implements OnInit {
         if (this.FieldOfStudyFormGroup?.length == 1 && this.CourseData.FieldOfStudyFormGroup?.length) {
             this.FieldOfStudyFormGroup.clear();
         }
+        let totalCPE = 0;
         for (let item of this.CourseData?.FieldOfStudyFormGroup) {
             this.FieldOfStudyFormGroup.push(this.formBuilder.group(item));
+            totalCPE = totalCPE + Number(item.FieldOfStudyCredit);
         }
-
+        this.CourseForm.controls?.EstimatedCPE?.setValue(totalCPE);
         if (this.SGSLSNFormGroups?.length == 1 && this.CourseData.SGSLSNFormGroups?.length) {
             this.SGSLSNFormGroups.clear();
         }
@@ -367,7 +370,6 @@ export class CourseComponent implements OnInit {
         if (this.FOCUSCourseOwnerFormGroup?.length == 1 && this.CourseData.FOCUSCourseOwnerFormGroup?.length) {
             this.FOCUSCourseOwnerFormGroup.clear();
         }
-        debugger
         for (let item of this.CourseData?.FOCUSCourseOwnerFormGroup) {
             this.FOCUSCourseOwnerFormGroup.push(this.formBuilder.group({
                 CourseOwner: [item],
@@ -448,6 +450,7 @@ export class CourseComponent implements OnInit {
     BindCourseDataForSaveEdit() {
         var CourseData: any = this.CourseForm.value;
         let saveCourse: any = {};
+        let UserData: any = localStorage.getItem("UserData");
         saveCourse.CourseMasterID = this.URLParamCourseId;
         saveCourse.CompetencyMasterID = this.GetSingleDropdownDataForSave(CourseData.CompetencyMasterID);
         saveCourse.LevelofEffortMasterId = this.GetSingleDropdownDataForSave(CourseData.LevelofEffortMasterId);
@@ -495,6 +498,8 @@ export class CourseComponent implements OnInit {
         saveCourse.DeploymentFacilitatorConsideration = CourseData.DeploymentFacilitatorConsideration;
         saveCourse.CourseNotes = CourseData.CourseNotes;
         saveCourse.Collateral = CourseData.Collateral?.Id;
+        saveCourse.LastUpdatedBy = 1 //TODO - UserData.Id
+        saveCourse.CreatedBy = 1 //TODO - UserData.Id
         console.log(saveCourse)
         return saveCourse;
     }

@@ -820,14 +820,21 @@
             </div>
             <div class="row">
                 <div formArrayName="FOCUSCourseOwnerFormGroup">
-                    <div *ngFor="let fOSFormGroup of FOCUSCourseOwnerFormGroup.controls; let i=index;">
+                    <div *ngFor="let fCOFormGroup of FOCUSCourseOwnerFormGroup.controls; let i=index;">
                         <div>
                             <div class="col-md-3" [formGroupName]="i">
                                 <div class="form-group">
-                                    <label for="CourseOwner">Course Owner {{i + 1}}</label>
+                                    <label for="CourseOwner">Course Owner {{i + 1}} <span
+                                            style="color:red;">*</span></label>
                                     <ngx-select-dropdown [config]="config" formControlName="CourseOwner"
                                         [options]="CourseOwnerMasterData">
                                     </ngx-select-dropdown>
+                                    <div class="message-error">
+                                        <div class="error-tooltips"
+                                            *ngIf="IsSubmit && fCOFormGroup.get('CourseOwner')?.hasError('required')">
+                                            Course Owner is required.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
