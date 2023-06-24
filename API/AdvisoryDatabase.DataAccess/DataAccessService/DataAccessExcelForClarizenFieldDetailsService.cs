@@ -27,8 +27,28 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             }
             return spName;
         }
+   /*     protected override void FillParameters(OperationType operation, ExcelForClarizen instance, List<System.Data.Common.DbParameter> parameters)
+        {
+
+        }*/
         protected override void FillParameters(OperationType operation, ExcelForClarizen instance, List<System.Data.Common.DbParameter> parameters)
         {
+            switch (operation)
+            {
+                case OperationType.GetAll:
+
+                    parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterIDs));
+                    break;
+
+
+
+                case OperationType.Get:
+                    parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterIDs));
+                    break;
+
+                default:
+                    break;
+            }
 
         }
         protected override List<ExcelForClarizen> ParseGetAllData(System.Data.DataSet data)
@@ -52,11 +72,14 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          CourseID = row.ReadString("CourseID"),
                          FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
                          DeploymentFiscalYear = row.ReadString("DeploymentFiscalYear"),
-                         LevelofEffortMasterID = row.ReadString("LevelofEffortMasterID"),
+                         LevelofEffort = row.ReadString("LevelofEffort"),
                          Duration = row.ReadString("Duration"),
                          ClarizenStartDate = row.ReadString("ClarizenStartDate"),
-                         Status = row.ReadString("Status")
-
+                         ErrorMessage = row.ReadString("ErrorMessage"),
+                         Status = row.ReadString("Status"),
+                         //ProjectStatusID = row.ReadString("ProjectStatusID"),
+                         ServiceNowID = row.ReadString("ServiceNowID"),
+                         CourseRecordURL = row.ReadString("CourseRecordURL")
                      }).ToList();
 
             return GetAllData;
@@ -84,12 +107,20 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 CourseID = data.ReadString("CourseID"),
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
                 DeploymentFiscalYear = data.ReadString("DeploymentFiscalYear"),
-                LevelofEffortMasterID = data.ReadString("LevelofEffortMasterID"),
+                LevelofEffort = data.ReadString("LevelofEffort"),
                 Duration = data.ReadString("Duration"),
                 ClarizenStartDate = data.ReadString("ClarizenStartDate"),
-                Status = data.ReadString("Status")
+                ErrorMessage = data.ReadString("ErrorMessage"),
+                Status = data.ReadString("Status"),
+                //ProjectStatusID = data.ReadString("ProjectStatusID"),
+                ServiceNowID = data.ReadString("ServiceNowID"),
+                CourseRecordURL = data.ReadString("CourseRecordURL")
 
-            };
-        }
+
+
+
+            }; 
+
     }
+}
 }

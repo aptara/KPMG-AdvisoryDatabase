@@ -11,7 +11,6 @@ namespace AdvisoryDatabase.Framework.Entities
     {
 
 
-        public int CourseMasterID { get; set; }
         public string CourseName { get; set; }
 
         public string LDIntakeOwner { get; set; }
@@ -30,14 +29,19 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FirstDeliveryDate { get; set; }
         public string DeploymentFiscalYear { get; set; }
 
-        public string LevelofEffortMasterID { get; set; }
+        public string LevelofEffort { get; set; }
         public string Duration { get; set; }
 
-
         public string ClarizenStartDate { get; set; }
+
+        public string ErrorMessage { get; set; }
         public string Status { get; set; }
+        //public string ProjectStatusID { get; set; }
+        public string ServiceNowID { get; set; }
+        public string CourseRecordURL { get; set; }
 
-
+        public string CourseMasterIDs { get; set; }
+        public int CourseMasterID { get; set; }
 
 
 

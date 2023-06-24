@@ -9,6 +9,9 @@ import { DownloadExcelService } from 'src/app/service/service/download-excel.ser
 import { UserService } from 'src/app/service/userservice';
 import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
+import { filter } from 'rxjs';
+import { DatePipe } from '@angular/common';
+
 declare var bootbox: any;
 
 
@@ -32,7 +35,8 @@ export class CourseListComponent implements OnInit {
         private downloadExcelService: DownloadExcelService,
 
         private userservice: UserService,
-        private http: HttpClient
+        private http: HttpClient,
+        private datePipe: DatePipe
     ) {
         this.hasPermission = new CoursePermission();
     }
@@ -152,12 +156,6 @@ export class CourseListComponent implements OnInit {
 
     //     );
     // }
-
-
-
-
-
-
 
 
 
@@ -369,15 +367,15 @@ export class CourseListComponent implements OnInit {
             this.selectedCourseIds.push(courseId);
         }
     }
-    // toggleSelectAll() {
-    //     if (this.selectAll) {
-    //         // Add all course IDs to the selectedCourseIds array
-    //         this.selectedCourseIds = this.CourseData.map((course: { CourseMasterID: any; }) => course.CourseMasterID);
-    //     } else {
-    //         // Clear the selectedCourseIds array to unselect all checkboxes
-    //         this.selectedCourseIds = [];
-    //     }
-    // }
+    toggleSelectAll() {
+        if (this.selectAll) {
+            // Add all course IDs to the selectedCourseIds array
+            this.selectedCourseIds = this.CourseData.map((course: { CourseMasterID: any; }) => course.CourseMasterID);
+        } else {
+            // Clear the selectedCourseIds array to unselect all checkboxes
+            this.selectedCourseIds = [];
+        }
+    }
 
 
     isCourseSelected(courseId: string): boolean {
@@ -386,15 +384,15 @@ export class CourseListComponent implements OnInit {
 
     cancelSelection() {
         this.selectedCourseIds = []; // Clear the selectedCourseIds array to unselect all checkboxes
-        //this.selectAll = false; // Uncheck the "Select All" checkbox
+        this.selectAll = false; // Uncheck the "Select All" checkbox
     }
     downloadExceloffocusN() {
 
         this.downloadExcelService.getAllCoursesForDataOfFocus(this.selectedCourseIds).subscribe((data: any) => {
             console.log(data)
             var courseData: any = data;
-            const headers1 = Object.keys(courseData[0]).slice(2, 34); // First 10 columns
-            const headers2 = Object.keys(courseData[0]).slice(2, 35); // First 15 columns
+            const headers1 = Object.keys(courseData[0]).slice(0, 36); // First 10 columns
+            const headers2 = Object.keys(courseData[0]).slice(0, 35); // First 15 columns
 
             // Custom titles for each column
             const columnTitles1 = ['Title', 'FIELD_OF_STUDY1/FOS_DEFAULT_CREDITS1',
@@ -421,13 +419,26 @@ export class CourseListComponent implements OnInit {
             const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
             const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
 
-            const worksheetName1 = 'Data Of Focus Field 1';
-            const worksheetName2 = 'Error Of Focus Field 2';
-            const fileName1 = 'Excel1 For Focus Fields.xlsx';
-            const fileName2 = 'Error For Focus Fields.xlsx';
 
-            const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...excelData1]);
-            const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...excelData2]);
+            const filteredData1 = excelData1.filter((obj: any) => obj[34] == null);
+            const filteredData2 = excelData2.filter((obj: any) => obj[34] !== null);
+
+
+            let id;
+            for (let i = 0; i < 4; i++) {
+                id = crypto.randomUUID();
+                console.log(id);
+            }
+            const currentDate = new Date();
+            const myDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd');
+
+            const worksheetName1 = 'Focus Field 1';
+            const worksheetName2 = '  Focus Field Error ';
+            const fileName1 = 'Focus_Records_' + myDate + '_' + id?.substring(0, 8) + '.xlsx';
+            const fileName2 = 'Focus_ErrorRecords_' + myDate + '_' + id?.substring(0, 8) + '.xlsx';
+
+            const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...filteredData1]);
+            const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...filteredData2]);
 
             // Set column widths
             const columnWidths1 = headers1.map(() => ({ width: 40 }));
@@ -443,6 +454,7 @@ export class CourseListComponent implements OnInit {
             XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
             XLSX.writeFile(workbook2, fileName2);
             this.selectedCourseIds = [];
+            bootbox.alert("Download data of focus");
         });
 
 
@@ -451,11 +463,11 @@ export class CourseListComponent implements OnInit {
 
     downloadExcelofClarizeN() {
 
-        this.downloadExcelService.getAllCoursesForClarizen().subscribe((data: any) => {
+        this.downloadExcelService.getAllCoursesForClarizen(this.selectedCourseIds).subscribe((data: any) => {
             console.log(data)
             var courseData: any = data;
-            const headers1 = Object.keys(courseData[0]).slice(2, 17); // First 10 columns
-            const headers2 = Object.keys(courseData[0]).slice(2, 20); // First 15 columns
+            const headers1 = Object.keys(courseData[0]).slice(0, 20); // First 16 columns
+            const headers2 = Object.keys(courseData[0]).slice(0, 19); // First 17 columns
 
             // Custom titles for each column
             const columnTitles1 = ['Name', 'Business Relationship Director', 'Owner',
@@ -468,20 +480,32 @@ export class CourseListComponent implements OnInit {
                 'Course Sponser', ' Description', 'InstructionalDesigner', 'Lead SMP', 'ProgramType',
                 'Delivery  Type(Single Pick)', 'CPE creadits', 'Course #',
                 'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort', 'Course Duration?', 'Start Date'
-                , 'Focus Template Name', 'ErrorMessage'];
+                , 'ErrorMessage'];
 
 
 
             const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
             const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
 
-            const worksheetName1 = 'Data Of Clarizen Field 1';
-            const worksheetName2 = 'Error Of Clarizen Field 2';
-            const fileName1 = 'Excel1 For Clarizen Fields.xlsx';
-            const fileName2 = 'Error For Clarizen Fields.xlsx';
+            const filteredData1 = excelData1.filter((obj: any) => obj[19] == null);
+            const filteredData2 = excelData2.filter((obj: any) => obj[19] !== null);
 
-            const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...excelData1]);
-            const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...excelData2]);
+            let id;
+            for (let i = 0; i < 4; i++) {
+                id = crypto.randomUUID();
+                console.log(id);
+            }
+            const currentDate = new Date();
+            const myDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd');
+
+            const worksheetName1 = ' Clarizen Field ';
+            const worksheetName2 = 'Clarizen Field Error  ';
+            const fileName1 = 'Clarizen_Records_' + myDate + '_' + id?.substring(0, 8) + '.xlsx';
+            const fileName2 = 'Clarizen_ErrorRecords_' + myDate + '_' + id?.substring(0, 8) + '.xlsx';
+
+
+            const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...filteredData1]);
+            const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...filteredData2]);
 
             // Set column widths
             const columnWidths1 = headers1.map(() => ({ width: 40 }));
@@ -497,32 +521,20 @@ export class CourseListComponent implements OnInit {
             XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
             XLSX.writeFile(workbook2, fileName2);
             this.selectedCourseIds = [];
+            bootbox.alert("Download data Clarizen Records");
         });
 
 
     }
-    // downloadExcelofClarizen() {
-    //     this.downloadExcelService.getAllCoursesForClarizen().subscribe((data: any) => {
-    //         if (data) {
-    //             var courseData: any = data;
-    //             const headers = Object.keys(courseData[0]).slice(0, 12);;
-    //             const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
-    //             const worksheetName = 'Data Of Clarizen Fields';
-    //             const fileName = 'Excel For Clarizen Fields.xlsx';
-    //             const worksheet = XLSX.utils.aoa_to_sheet([headers, ...excelData]);
-    //             // Set column widths
-    //             const columnWidths = headers.map(() => ({ width: 20 }));
-    //             worksheet['!cols'] = columnWidths
-    //             const workbook = XLSX.utils.book_new();
-    //             XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
-    //             XLSX.writeFile(workbook, fileName);
-    //         }
-    //     });
-    // }
 
 
 }
 
-	// IsAllowedToFocusRDI NCHAR(10),
-    // ErrorMessage NVARCHAR(MAX),
-    //     FocusTemplateName NVARCHAR(MAX),
+
+// if (filteredData2Count > 0) {
+//     const workbook2 = XLSX.utils.book_new();
+//     XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
+//     XLSX.writeFile(workbook2, fileName2);
+// } else {
+//     console.log('No data in filteredData2.');
+// }

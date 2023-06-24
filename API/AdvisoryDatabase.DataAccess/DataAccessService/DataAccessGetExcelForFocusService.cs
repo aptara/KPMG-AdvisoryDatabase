@@ -37,7 +37,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         protected override void FillParameters(OperationType operation, GetExcelForFocusInfo instance, List<System.Data.Common.DbParameter> parameters)
         {
       switch (operation)
-      {
+        {
         case OperationType.GetAll:
 
           parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterIDs));
@@ -51,9 +51,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         default:
           break;
-      }
+         }
       
-    }
+        }
 
         protected override List<GetExcelForFocusInfo> ParseGetAllData(System.Data.DataSet data)
         {

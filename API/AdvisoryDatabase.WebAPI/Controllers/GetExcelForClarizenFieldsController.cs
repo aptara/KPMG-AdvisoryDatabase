@@ -57,6 +57,42 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
         }
 
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage ShowDataofclarizen2(string courseId)
+        /*public ActionResult Index()*/
+        {
+
+            try
+            {
+                AdvisoryDatabase.Business.Controllers.GETExcelForClarizenFieldsController ObjBayDetai = new Business.Controllers.GETExcelForClarizenFieldsController();
+                ExcelForClarizen ObjInputParameters = new ExcelForClarizen();
+                ObjInputParameters.LastUpdatedBy = 1;
+                ObjInputParameters.IsActive = true;
+                ObjInputParameters.CourseMasterIDs = courseId;
+
+
+                ObjBayDetai.ExcelforclarizenfeildsDetails(ObjInputParameters);
+
+
+
+
+                List<ExcelForClarizen> outputData = ObjBayDetai.ExcelforclarizenfeildsDetails(ObjInputParameters);
+
+                string jsonData = JsonConvert.SerializeObject(outputData);
+                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
+                return errorResponse;
+
+            };
+        }
+
 
 
 

@@ -11,8 +11,6 @@ namespace AdvisoryDatabase.Framework.Entities
     {
 
 
-        public string CourseMasterIDs { get; set; }
-        public int CourseMasterID { get; set; }
         public string CourseName { get; set; }
 
          
@@ -62,12 +60,12 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ErrorMessage { get; set; }
         public string IsAllowedToFocusRDI { get; set; }
         public string Status { get; set; }
+        public string CourseMasterIDs { get; set; }
+        public int CourseMasterID { get; set; }
         // public string SubjectMatterProfessional { get; set; }
 
 
-  /*      IsAllowedToFocusRDI NCHAR(10),
-			ErrorMessage NVARCHAR(MAX),
-			FocusTemplateName NVARCHAR(MAX),*/
+       
 
 
     }
