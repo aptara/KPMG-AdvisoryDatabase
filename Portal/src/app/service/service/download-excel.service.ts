@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class DownloadExcelService {
     apiURL = environment.baseUrl;
 
-    readonly getAllShowDataofclarizenAPI = this.apiURL + "GETExcelForClarizenFields/ShowDataofclarizen/";
+    readonly getAllShowDataofclarizenAPI = this.apiURL + "GETExcelForClarizenFields/ShowDataofclarizen2/";
     readonly getAllShowDataoffocusAPI = this.apiURL + "GetExcelForFocus/ShowDataoffocus2/";
     readonly getAllShowDataofdeploymentAPI = this.apiURL + "GetExcelForDeploymentReport/ShowDataofdeployment/";
 
@@ -23,9 +23,11 @@ export class DownloadExcelService {
         }),
     };
 
-    getAllCoursesForClarizen(): Observable<any> {
+    getAllCoursesForClarizen(courseId: any): Observable<any> {
+        const url = this.getAllShowDataofclarizenAPI + "?courseId=" + courseId;
+        console.log(url)
         return this.http
-            .get<any>(this.getAllShowDataofclarizenAPI)
+            .get<any>(url)
             .pipe(retry(1), catchError(this.handleError));
     }
 
