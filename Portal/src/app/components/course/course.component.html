@@ -589,7 +589,8 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="Duration">Duration</label>
-                        <input class="form-control" type="time" formControlName="Duration" id="Duration">
+                        <input class="form-control" type="text" placeholder="HH:MM" formControlName="Duration"
+                            id="Duration">
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
                                 Duration is required.
