@@ -182,100 +182,139 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     DisplayName = row.ReadString("DisplayName"),
                 }).ToList();
             }
+            else{
+                course.AudienceLevels = new List<CourseMasterData>();
+            }
             if (data.Tables[2].Rows.Count > 0)
             {
                 course.AudienceTypeFormGroup = data.Tables[2].AsEnumerable().Select(row =>
-            new AudienceTypeFormData
+                new AudienceTypeFormData
+                {
+                    AudienceType = row.ReadString("AudienceType"),
+                }).ToList();
+            }
+            else
             {
-                AudienceType = row.ReadString("AudienceType"),
-            }).ToList();
+                course.AudienceTypeFormGroup = new List<AudienceTypeFormData>();
             }
             if (data.Tables[3].Rows.Count > 0)
             {
                 course.FieldOfStudyFormGroup = data.Tables[3].AsEnumerable().Select(row =>
-            new FieldOfStudyFormData
-            {
-                FieldOfStudy = new CourseMasterData
+                new FieldOfStudyFormData
                 {
-                    Id = row.Read<long>("Id"),
-                    DisplayName = row.ReadString("DisplayName")
-                },
-                FieldOfStudyCredit = row.ReadString("FOSCredit"),
-            }).ToList();
+                    FieldOfStudy = new CourseMasterData
+                    {
+                        Id = row.Read<long>("Id"),
+                        DisplayName = row.ReadString("DisplayName")
+                    },
+                    FieldOfStudyCredit = row.ReadString("FOSCredit"),
+                }).ToList();
+            }
+            else
+            {
+                course.FieldOfStudyFormGroup = new List<FieldOfStudyFormData>();
             }
             if (data.Tables[4].Rows.Count > 0)
             {
                 course.FunctionMasterIDs = data.Tables[4].AsEnumerable().Select(row =>
-               new CourseMasterData
-               {
-                   Id = row.Read<int>("Id"),
-                   DisplayName = row.ReadString("DisplayName"),
-               }).ToList();
+                   new CourseMasterData
+                   {
+                       Id = row.Read<int>("Id"),
+                       DisplayName = row.ReadString("DisplayName"),
+                   }).ToList();
+            }
+            else
+            {
+                course.FunctionMasterIDs = new List<CourseMasterData>();
             }
             if (data.Tables[5].Rows.Count > 0)
             {
                 course.Industries = data.Tables[5].AsEnumerable().Select(row =>
-               new CourseMasterData
-               {
-                   Id = row.Read<int>("Id"),
-                   DisplayName = row.ReadString("DisplayName"),
-               }).ToList();
+                   new CourseMasterData
+                   {
+                       Id = row.Read<int>("Id"),
+                       DisplayName = row.ReadString("DisplayName"),
+                   }).ToList();
+            }
+            else
+            {
+                course.Industries = new List<CourseMasterData>();
             }
             if (data.Tables[6].Rows.Count > 0)
             {
                 course.SGSLSNFormGroups = data.Tables[6].AsEnumerable().Select(row =>
-               new SGSLSNFormData
-               {
-                   ServiceGroup = new CourseMasterData
+                   new SGSLSNFormData
                    {
-                       Id = row.Read<long>("ServiceGroupId"),
-                       DisplayName = row.ReadString("ServiceGroup")
-                   },
-                   ServiceLine = new CourseMasterData
-                   {
-                       Id = row.Read<long>("ServiceLineId"),
-                       DisplayName = row.ReadString("ServiceLine")
-                   },
-                   ServiceNetwork = new CourseMasterData
-                   {
-                       Id = row.Read<long>("ServiceNetworkID"),
-                       DisplayName = row.ReadString("ServiceNetwork")
-                   },
-               }).ToList();
+                       ServiceGroup = new CourseMasterData
+                       {
+                           Id = row.Read<long>("ServiceGroupId"),
+                           DisplayName = row.ReadString("ServiceGroup")
+                       },
+                       ServiceLine = new CourseMasterData
+                       {
+                           Id = row.Read<long>("ServiceLineId"),
+                           DisplayName = row.ReadString("ServiceLine")
+                       },
+                       ServiceNetwork = new CourseMasterData
+                       {
+                           Id = row.Read<long>("ServiceNetworkID"),
+                           DisplayName = row.ReadString("ServiceNetwork")
+                       },
+                   }).ToList();
+            }
+            else
+            {
+                course.SGSLSNFormGroups = new List<SGSLSNFormData>();
             }
             if (data.Tables[7].Rows.Count > 0)
             {
                 course.SkillMasterIDs = data.Tables[7].AsEnumerable().Select(row =>
-               new CourseMasterData
-               {
-                   Id = row.Read<long>("Id"),
-                   DisplayName = row.ReadString("DisplayName"),
-               }).ToList();
+                   new CourseMasterData
+                   {
+                       Id = row.Read<long>("Id"),
+                       DisplayName = row.ReadString("DisplayName"),
+                   }).ToList();
+            }
+            else
+            {
+                course.SkillMasterIDs = new List<CourseMasterData>();
             }
             if (data.Tables[8].Rows.Count > 0)
             {
                 course.EquivalentCourseIDFormGroup = data.Tables[8].AsEnumerable().Select(row =>
-               new EquivalentCourseIDFormData
-               {
-                   EquivalentCourseID = row.ReadString("EquivalentCourseID"),
-               }).ToList();
+                   new EquivalentCourseIDFormData
+                   {
+                       EquivalentCourseID = row.ReadString("EquivalentCourseID"),
+                   }).ToList();
+            }
+            else
+            {
+                course.EquivalentCourseIDFormGroup = new List<EquivalentCourseIDFormData>();
             }
             if (data.Tables[9].Rows.Count > 0)
             {
                 course.FOCUSCourseOwnerFormGroup = data.Tables[9].AsEnumerable().Select(row =>
                      new CourseMasterData
                      {
-                         Id = row.Read<long>("Id"),
+                         Id = row.Read<int>("Id"),
                          DisplayName = row.ReadString("DisplayName"),
                      }).ToList();
+            }
+            else
+            {
+                course.FOCUSCourseOwnerFormGroup = new List<CourseMasterData>();
             }
             if (data.Tables[10].Rows.Count > 0)
             {
                 course.PrerequisiteCourseIDFormGroup = data.Tables[10].AsEnumerable().Select(row =>
-               new PrerequisiteCourseIDFormData
-               {
-                   PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
-               }).ToList();
+                   new PrerequisiteCourseIDFormData
+                   {
+                       PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),
+                   }).ToList();
+            }
+            else
+            {
+                course.PrerequisiteCourseIDFormGroup = new List<PrerequisiteCourseIDFormData>();
             }
             if (GetAllData.Count == 1)
             {

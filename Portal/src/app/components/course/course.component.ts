@@ -154,7 +154,6 @@ export class CourseComponent implements OnInit {
 
     ngOnInit() {
         this.getDropdownData();
-        this.CourseForm.controls?.EstimatedCPE?.disable()
         this.hasPermission = this.userService.GetUserPermission();
         if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
             this.CourseForm.disable()
@@ -331,35 +330,35 @@ export class CourseComponent implements OnInit {
             StatusMasterID: this.GetDropDownObjectForBindData(this.CourseData.StatusMasterID, this.StatusMasterData),
 
         });
-        if (this.FieldOfStudyFormGroup.length == 1 && this.CourseData.FieldOfStudyFormGroup.length) {
+        if (this.FieldOfStudyFormGroup?.length == 1 && this.CourseData.FieldOfStudyFormGroup?.length) {
             this.FieldOfStudyFormGroup.clear();
         }
         for (let item of this.CourseData?.FieldOfStudyFormGroup) {
             this.FieldOfStudyFormGroup.push(this.formBuilder.group(item));
         }
 
-        if (this.SGSLSNFormGroups.length == 1 && this.CourseData.SGSLSNFormGroups.length) {
+        if (this.SGSLSNFormGroups?.length == 1 && this.CourseData.SGSLSNFormGroups?.length) {
             this.SGSLSNFormGroups.clear();
         }
         for (let item of this.CourseData?.SGSLSNFormGroups) {
             this.SGSLSNFormGroups.push(this.formBuilder.group(item));
         }
 
-        if (this.PrerequisiteCourseIDFormGroup.length == 1 && this.CourseData.PrerequisiteCourseIDFormGroup.length) {
+        if (this.PrerequisiteCourseIDFormGroup?.length == 1 && this.CourseData.PrerequisiteCourseIDFormGroup?.length) {
             this.PrerequisiteCourseIDFormGroup.clear();
         }
         for (let item of this.CourseData?.PrerequisiteCourseIDFormGroup) {
             this.PrerequisiteCourseIDFormGroup.push(this.formBuilder.group(item));
         }
 
-        if (this.EquivalentCourseIDFormGroup.length == 1 && this.CourseData.EquivalentCourseIDFormGroup.length) {
+        if (this.EquivalentCourseIDFormGroup?.length == 1 && this.CourseData.EquivalentCourseIDFormGroup?.length) {
             this.EquivalentCourseIDFormGroup.clear();
         }
         for (let item of this.CourseData?.EquivalentCourseIDFormGroup) {
             this.EquivalentCourseIDFormGroup.push(this.formBuilder.group(item));
         }
 
-        if (this.AudienceTypeFormGroup.length == 1 && this.CourseData.AudienceTypeFormGroup.length) {
+        if (this.AudienceTypeFormGroup?.length == 1 && this.CourseData.AudienceTypeFormGroup?.length) {
             this.AudienceTypeFormGroup.clear();
         }
         for (let item of this.CourseData?.AudienceTypeFormGroup) {
@@ -368,8 +367,11 @@ export class CourseComponent implements OnInit {
         if (this.FOCUSCourseOwnerFormGroup?.length == 1 && this.CourseData.FOCUSCourseOwnerFormGroup?.length) {
             this.FOCUSCourseOwnerFormGroup.clear();
         }
+        debugger
         for (let item of this.CourseData?.FOCUSCourseOwnerFormGroup) {
-            this.FOCUSCourseOwnerFormGroup.push(this.formBuilder.group(item));
+            this.FOCUSCourseOwnerFormGroup.push(this.formBuilder.group({
+                CourseOwner: [item],
+            }));
         }
         console.log(this.CourseForm.value)
     }
@@ -468,7 +470,7 @@ export class CourseComponent implements OnInit {
         saveCourse.PrerequisiteCourseIDFormGroup = CourseData.PrerequisiteCourseIDFormGroup
         saveCourse.EquivalentCourseIDFormGroup = CourseData.EquivalentCourseIDFormGroup
         saveCourse.AudienceTypeFormGroup = CourseData.AudienceTypeFormGroup
-        saveCourse.FOCUSCourseOwnerFormGroup = CourseData.FOCUSCourseOwnerFormGroup
+        saveCourse.FOCUSCourseOwnerFormGroup = this.GetAlphaNumaricDataForSave(CourseData.FOCUSCourseOwnerFormGroup)
 
         saveCourse.CourseName = CourseData.CourseName;
         saveCourse.CourseID = CourseData.CourseID;
@@ -504,7 +506,7 @@ export class CourseComponent implements OnInit {
     GetAlphaNumaricDataForSave(value: any) {
         let arrayList: any = [];
         value.forEach((x: any) => {
-            arrayList.push(x.FOCUSCourseOwner);
+            arrayList.push(x.CourseOwner);
         });
         return arrayList;
     }
