@@ -51,6 +51,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             }
 
         }
+      
         protected override List<ExcelForClarizen> ParseGetAllData(System.Data.DataSet data)
         {
             var GetAllData = data.Tables[0].AsEnumerable().Select(row =>

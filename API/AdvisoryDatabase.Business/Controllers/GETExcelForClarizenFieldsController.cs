@@ -17,7 +17,7 @@ namespace AdvisoryDatabase.Business.Controllers
             try
             {
                 ExcelForClarizenFeildDataService service = new ExcelForClarizenFeildDataService();
-                ClarizenFieldsData = service.GetAll();
+                ClarizenFieldsData = service.GetAll(ObjInputParameters);
 
             }
             catch (Exception ex)
