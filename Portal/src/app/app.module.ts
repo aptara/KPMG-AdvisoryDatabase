@@ -61,6 +61,7 @@ import { DatePipe } from '@angular/common';
         CourseManagementComponent,
         NavMenuComponent,
         MainBodyComponent,
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,
@@ -100,7 +101,8 @@ import { DatePipe } from '@angular/common';
                 { path: "user-management", component: UserManagementComponent },
                 { path: "course-management", component: CourseListComponent },
                 { path: "course-details", component: CourseComponent },
-                { path: '**', component: CourseListComponent }
+                // { path: '**', component: CourseListComponent },
+                { path: 'PageNotFoundComponent', component: PageNotFoundComponent }
 
             ]),
 

@@ -20,3 +20,25 @@ C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\Ad
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.CopyComplete
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.dll
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Business.dll.config
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Business.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Business.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.DataAccess.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Framework.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\log4net.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.DataAccess.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.DataAccess.dll.config
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Framework.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\AdvisoryDatabase.Framework.dll.config
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\log4net.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.AssemblyReference.cache
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.CoreCompileInputs.cache
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.csproj.CopyComplete
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Business\obj\Debug\AdvisoryDatabase.Business.pdb

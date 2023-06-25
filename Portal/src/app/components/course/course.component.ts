@@ -387,6 +387,7 @@ export class CourseComponent implements OnInit {
             return this.courseService.getCourse(this.URLParamCourseId).subscribe((data: any) => {
                 if (data.Success) {
                     this.CourseData = data.Data;
+                    debugger
                     this.bindFormData();
                 }
             });

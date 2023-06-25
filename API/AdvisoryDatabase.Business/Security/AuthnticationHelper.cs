@@ -48,12 +48,12 @@ namespace AdvisoryDatabase.Business.Security
             }
             catch (SqlException ex)
             {
-                MSBLogger.WriteError("AutheticateUser", ex);
+                AdvisoryLogger.WriteError("AutheticateUser", ex);
                 return new LoginResponse { ErrorMessage = "DbConnectionError" };//, IsConnectionIssue = true };
             }
             catch (Exception ex)
             {
-                MSBLogger.WriteError("AutheticateUser", ex);
+                AdvisoryLogger.WriteError("AutheticateUser", ex);
                 return new LoginResponse { ErrorMessage = "ServerError" };
             }
         }

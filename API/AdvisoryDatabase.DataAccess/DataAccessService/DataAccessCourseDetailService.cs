@@ -115,6 +115,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     ProgramKnowledgeLevelMasterID = row.Read<long>("ProgramKnowledgeLevelMasterID"),
                     CourseOverviewObjective = row.ReadString("CourseOverviewObjective"),
                     TargetAudience = row.ReadString("TargetAudience"),
+                    DevelopmentYear = row.ReadString("DevelopmentYear"),
                     //AudienceLevelMasterID = row.Read<long>("AudienceLevelMasterID"),
                     EstimatedCPE = row.ReadString("EstimatedCPE"),
                     PrerequisiteCourseID = row.ReadString("PrerequisiteCourseID"),

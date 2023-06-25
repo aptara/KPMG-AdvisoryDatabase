@@ -37,7 +37,7 @@ namespace AdvisoryDatabase.Business.Controllers
             var msbException = ex as MSBException;
             if (null != msbException)
             {
-                MSBLogger.WriteError(msbException.Message, msbException);
+                AdvisoryLogger.WriteError(msbException.Message, msbException);
                 return msbException.Message;
             }
             string detailsMessageError;
@@ -49,7 +49,7 @@ namespace AdvisoryDatabase.Business.Controllers
             {
                 detailsMessageError = ex.StackTrace;
             }
-            MSBLogger.WriteError(detailsMessageError, ex);
+            AdvisoryLogger.WriteError(detailsMessageError, ex);
             return detailsMessageError;
 
         }

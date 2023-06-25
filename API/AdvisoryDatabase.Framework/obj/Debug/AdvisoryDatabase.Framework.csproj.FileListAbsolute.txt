@@ -31,3 +31,36 @@ C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\A
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CopyComplete
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.dll
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\AdvisoryDatabase.Framework.dll.config
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\AdvisoryDatabase.Framework.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\AdvisoryDatabase.Framework.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\log4net.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\log4net.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.AssemblyReference.cache
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CoreCompileInputs.cache
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CopyComplete
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.pdb

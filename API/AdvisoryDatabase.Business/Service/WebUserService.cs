@@ -45,12 +45,12 @@ namespace AdvisoryDatabase.Business.Service
       }
       catch (SqlException sqlEx)
       {
-        MSBLogger.WriteError("Failed to Authenticate", sqlEx);
+                AdvisoryLogger.WriteError("Failed to Authenticate", sqlEx);
         throw;
       }
       catch (Exception ex)
       {
-        MSBLogger.WriteError("Failed to Authenticate", ex);
+                AdvisoryLogger.WriteError("Failed to Authenticate", ex);
         throw;
       }
       return ObjUser;

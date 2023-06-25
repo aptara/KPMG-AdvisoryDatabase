@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.WebAPI
 {
@@ -13,6 +14,12 @@ namespace AdvisoryDatabase.WebAPI
     {
         protected void Application_Start()
         {
+            var path = Server.MapPath("~/web.config");
+            Log4NetLogger.Init(path);
+
+            Log4NetLogger.Info("-------------------------------------------------------");
+            Log4NetLogger.Info("********* Initializing Application... *********");
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

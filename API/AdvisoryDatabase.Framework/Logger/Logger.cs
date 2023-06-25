@@ -12,7 +12,7 @@ namespace AdvisoryDatabase.Framework.Logger
     using System.Diagnostics;
     using System.Runtime.CompilerServices;
 
-    public static class MSBLogger
+    public static class AdvisoryLogger
     {
         private static bool LogAudit
         {
@@ -39,7 +39,7 @@ namespace AdvisoryDatabase.Framework.Logger
         }
 
 
-        static MSBLogger()
+        static AdvisoryLogger()
         {
             DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory());
             Logger.SetLogWriter(new LogWriterFactory().Create());

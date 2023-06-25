@@ -17,3 +17,22 @@ C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CopyComplete
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.dll
 C:\Samir\Aptara\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.dll.config
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.DataAccess.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.Framework.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\log4net.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.Framework.pdb
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\AdvisoryDatabase.Framework.dll.config
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\log4net.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.AssemblyReference.cache
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CoreCompileInputs.cache
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.csproj.CopyComplete
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.dll
+D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.DataAccess\obj\Debug\AdvisoryDatabase.DataAccess.pdb
