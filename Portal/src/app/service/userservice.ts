@@ -11,7 +11,7 @@ export class UserService {
     headers = new HttpHeaders()
         .set('content-type', 'application/json')
     constructor(private http: HttpClient) {
-        this.setUserToLocalStorage();
+        // this.setUserToLocalStorage();
     }
 
     getUsersData() {
@@ -31,16 +31,20 @@ export class UserService {
         return this.http.get(req, UserID)
     }
 
-    setUserToLocalStorage(): void {
+    // setUserToLocalStorage(): void {
 
-        if (!localStorage.getItem("UserData")) {
+    //     if (!localStorage.getItem("UserData")) {
 
-            this.WindowAuthentication().subscribe(user => {
-                localStorage.setItem('UserData', JSON.stringify(user))
-                alert('UserData' + JSON.stringify(user))
-            });
-        }
-    }
+    //         this.WindowAuthentication().subscribe(user => {
+    //             localStorage.setItem('UserData', JSON.stringify(user))
+    //             alert('UserData' + JSON.stringify(user))
+    //         });
+    //     }
+    // }
+
+
+
+
 
     GetUserPermission() {
         let userPermission = new CoursePermission();
@@ -119,7 +123,7 @@ export class UserService {
     public GetAuthUser = environment.baseUrl + "WebUser/GetAutherizedUser";
 
     WindowAuthentication() {
-        return this.http.get(this.GetAuthUser, { headers: this.headers })
+        return this.http.get(this.GetAuthUser)
 
     }
 
