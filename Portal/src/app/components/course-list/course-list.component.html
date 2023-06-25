@@ -16,10 +16,10 @@
                     *ngIf="hasPermission.hasPermissionDownloadCourseRDIforClarizen">
                     Export RDI for Clarizen
                 </button>
-                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()"
+                <!-- <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()"
                     *ngIf="hasPermission.hasPermissionDownloadCourse">
                     Export RDI for Deployment
-                </button>
+                </button> -->
                 <button pButton class="btn-excel-width" (click)="cancelSelection()">Reset</button>
 
                 <span class="p-input-icon-left ml-auto filter-bar">
@@ -37,7 +37,7 @@
                 <th>
                     <div class="flex align-items-center">
                         <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()">
-                        Select All
+                        <span class="select-all-text">Select All</span>
                     </div>
                 </th>
                 <th>
