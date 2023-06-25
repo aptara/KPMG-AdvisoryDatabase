@@ -1,7 +1,7 @@
 <div class="card">
     <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" scrollHeight="200"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [tableStyle]="{'min-height': '30rem'}"
         [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'CourseSponsor', 'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
@@ -55,7 +55,7 @@
                 <th>
                     <div class="flex align-items-center">
                         L&D Intake Owner
-                        <p-columnFilter type="date" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
@@ -72,8 +72,8 @@
                 </th>
                 <th>
                     <div class="flex align-items-center">
-                        Deployment Year
-                        <p-columnFilter type="number" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                        Project Status
+                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th style="width:140px">
