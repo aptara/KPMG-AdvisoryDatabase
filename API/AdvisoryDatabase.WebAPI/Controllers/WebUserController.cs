@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using AdvisoryDatabase.Business;
 using System.Web.Http;
+using AdvisoryDatabase.Framework.Logger;
 
 namespace AdvisoryDatabase.WebAPI.Controllers
 {
@@ -221,11 +222,12 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
         var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];
-        headerUserName = "DESKTOP-FAFDNCO\\shivani.ghewari";
+                //headerUserName = "DESKTOP-FAFDNCO\\shivani.ghewari";
+                AdvisoryLogger.WriteInfo("Server Variables:" + HttpContext.Current.Request.ServerVariables.ToString());
+                AdvisoryLogger.WriteInfo("Header User Name:" + headerUserName);
+                AdvisoryLogger.WriteInfo("User Identity Name:" + User.Identity.Name);
 
-
-
-        ObjInputParameters.NetworkID = headerUserName;
+                ObjInputParameters.NetworkID = headerUserName;
         
 
         List<UserDetail> outputData = ObjBayDetai.GetUserDetails(ObjInputParameters);
@@ -243,6 +245,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
       }
       catch (Exception ex)
       {
+
+                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError(ex.Message, ex);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;
