@@ -56,7 +56,8 @@ export class AddUserComponent implements OnInit {
             ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
 
-            'TaskMasterID': new FormControl('', Validators.required)
+            'TaskMasterID': new FormControl('', Validators.required),
+            'NetworkID': new FormControl('', Validators.required)
 
         });
 

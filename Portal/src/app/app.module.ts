@@ -101,8 +101,8 @@ import { DatePipe } from '@angular/common';
                 { path: "user-management", component: UserManagementComponent },
                 { path: "course-management", component: CourseListComponent },
                 { path: "course-details", component: CourseComponent },
-                // { path: '**', component: CourseListComponent },
-                { path: 'PageNotFoundComponent', component: PageNotFoundComponent }
+                { path: 'UserAuthentication', component: PageNotFoundComponent },
+                { path: '**', component: CourseListComponent }
 
             ]),
 

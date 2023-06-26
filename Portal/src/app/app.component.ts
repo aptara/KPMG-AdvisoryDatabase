@@ -19,9 +19,11 @@ export class AppComponent {
             data => {
                 if (data) {
                     localStorage.setItem('UserData', JSON.stringify(data));
-                    alert('User is authorized. UserData: ' + JSON.stringify(data));
+                    // alert('User is authorized. UserData: ' + JSON.stringify(data));
                 } else {
-                    this.router.navigate(['PageNotFoundComponent']);
+                    console.clear()
+                    this.router.navigate(['UserAuthentication']);
+
                 }
             },
             error => {

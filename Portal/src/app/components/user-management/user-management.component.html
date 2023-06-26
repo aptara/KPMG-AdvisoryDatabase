@@ -55,7 +55,7 @@
                 </th>
                 <th>
                     <div class="flex justify-content-between align-items-center">
-                        Email
+                        NetworkID
 
                         <p-columnFilter type="text" field="Email" display="menu"></p-columnFilter>
                     </div>
@@ -69,11 +69,12 @@
                     <span class="edit-btn">
                         <i class="pi pi-pencil" (click)="editData(UserValue.UserMasterID)"></i>
                     </span>
+                    <span class="space"></span> <!-- Add an empty span for spacing -->
                     <span class="edit-btn">
                         <i class="pi pi-trash" (click)="deleteUser(UserValue)"></i>
                     </span>
-
                 </td>
+
                 <td>
                     <span class="p-column-title">First Name</span>
                     {{ UserValue.FirstName }}
@@ -83,8 +84,8 @@
                     {{ UserValue.LastName }}
                 </td>
                 <td>
-                    <span class="p-column-title">Email</span>
-                    {{ UserValue.Email }}
+                    <span class="p-column-title">NetworkID</span>
+                    {{ UserValue.NetworkID }}
                 </td>
             </tr>
         </ng-template>
