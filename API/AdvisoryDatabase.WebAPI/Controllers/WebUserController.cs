@@ -222,7 +222,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
         var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];
-                //headerUserName = "DESKTOP-FAFDNCO\\shivani.ghewari";
+              //headerUserName = "Siddesh.Gaikwad";
                 AdvisoryLogger.WriteInfo("Server Variables:" + HttpContext.Current.Request.ServerVariables.ToString());
                 AdvisoryLogger.WriteInfo("Header User Name:" + headerUserName);
                 AdvisoryLogger.WriteInfo("User Identity Name:" + User.Identity.Name);

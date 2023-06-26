@@ -19,7 +19,7 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
@@ -182,6 +182,7 @@
     <Compile Include="Controllers\NewGetExcelForFocusController.cs" />
     <Compile Include="Controllers\oldUserController.cs" />
     <Compile Include="Controllers\TaskLocationMasterController.cs" />
+    <Compile Include="Controllers\UnlockCourseController.cs" />
     <Compile Include="Controllers\WebUserController.cs" />
     <Compile Include="ExcelForClarizen1_Result.cs" />
     <Compile Include="ExcelForClarizen_Result.cs" />
@@ -221,6 +222,7 @@
     <Folder Include="Views\NewGetExcelForFocus\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\TaskLocationMaster\" />
+    <Folder Include="Views\UnlockCourse\" />
     <Folder Include="Views\User\" />
     <Folder Include="Views\webcourse\" />
     <Folder Include="Views\WebUser\" />
