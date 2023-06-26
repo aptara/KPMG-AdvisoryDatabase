@@ -53,24 +53,28 @@
 
             <div class="group-row">
                 <div class="p-float-label">
-                    <span style="font-size: 15px; font-weight: 500;">Email<span style="color:red">*</span></span><br>
-                    <input pInputText id="email-id" style="width: 650px;" formControlName="Email"
-                        (input)="validateEmail()" />
+                    <span>Email<span style="color:red">*</span></span><br>
+                    <input pInputText id="email-id" formControlName="Email" />
                     <div *ngIf="UserAdd.controls.Email.invalid && UserAdd.controls.Email.touched" class="text-danger">
                         Email ID is required*
                     </div>
-
                 </div>
 
-
-
+                <div class="p-float-label">
+                    <span>NetworkID<span style="color:red">*</span></span><br>
+                    <input pInputText id="email-id" formControlName="NetworkID" />
+                    <div *ngIf="UserAdd.controls.NetworkID.invalid && UserAdd.controls.NetworkID.touched"
+                        class="text-danger">
+                        NetworkID is required*
+                    </div>
+                </div>
             </div>
             <div class="group-row">
 
 
                 <table>
                     <tr>
-                        <th>Check</th>
+                        <th></th>
                         <th>Task Name</th>
                     </tr>
 
@@ -93,7 +97,7 @@
 
             <button label="add user" class="user-btn p-button " routerLink="/user-management" (click)="onCancel()"
                 style="margin-left: 50px;">
-                <span class="p-button-label">cancel</span>
+                <span class="p-button-label">Cancel</span>
             </button>
 
         </form>

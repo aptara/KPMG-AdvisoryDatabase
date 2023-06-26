@@ -65,7 +65,8 @@ export class UpdateUserComponent implements OnInit {
             ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
 
-            'TaskMasterID': new FormControl('')
+            'TaskMasterID': new FormControl(''),
+            'NetworkID': new FormControl('', Validators.required)
         })
 
 
@@ -81,7 +82,7 @@ export class UpdateUserComponent implements OnInit {
             this.UserUpdate.controls.FirstName.setValue(this.data.FirstName)
             this.UserUpdate.controls.LastName.setValue(this.data.LastName)
             this.UserUpdate.controls.Email.setValue(this.data.Email)
-            this.UserUpdate.controls.LocationID.setValue(this.data.LocationID)
+            this.UserUpdate.controls.NetworkID.setValue(this.data.NetworkID)
 
         })
 
