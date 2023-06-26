@@ -59,7 +59,6 @@ D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debu
 D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.xml
 D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.xml
-D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.AssemblyReference.cache
 D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CoreCompileInputs.cache
 D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CopyComplete
 D:\Siddesh Gaikwad\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.dll
