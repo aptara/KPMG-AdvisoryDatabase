@@ -382,8 +382,23 @@ export class CourseListComponent implements OnInit {
     }
 
     cancelSelection() {
+        // if (this.selectedCourseIds.length == 0) {
+        //     //Show for no select
+        //     bootbox.alert({
+        //         size: "heigh",
+        //         //title: "Export RDI for Clarizen -  File Download is in progress.",
+        //         message: "Please Select At Least One Record.",
+        //         closeButton: false,
+        //         className: 'center-alert-box',
+        //         centerVertical: true,
+        //     });
+
+
+        // }
         this.selectedCourseIds = []; // Clear the selectedCourseIds array to unselect all checkboxes
         this.selectAll = false; // Uncheck the "Select All" checkbox
+
+
     }
     downloadExceloffocusN() {
         if (this.selectedCourseIds.length !== 0) {
@@ -488,7 +503,17 @@ export class CourseListComponent implements OnInit {
 
             });
         }
+        else {
 
+            bootbox.alert({
+                size: "heigh",
+                //title: "Export RDI for Clarizen -  File Download is in progress.",
+                message: "Please Select At Least One Record.",
+                closeButton: false,
+                className: 'center-alert-box',
+                centerVertical: true,
+            });
+        }
 
 
 
@@ -585,6 +610,17 @@ export class CourseListComponent implements OnInit {
             });
             return;
         }
+        else {
+
+            bootbox.alert({
+                size: "heigh",
+                //title: "Export RDI for Clarizen -  File Download is in progress.",
+                message: "Please Select At Least One Record.",
+                closeButton: false,
+                className: 'center-alert-box',
+                centerVertical: true,
+            });
+        }
 
     }
 
@@ -606,6 +642,17 @@ export class CourseListComponent implements OnInit {
 
             });
             return;
+        }
+        else {
+
+            bootbox.alert({
+                size: "heigh",
+                //title: "Export RDI for Clarizen -  File Download is in progress.",
+                message: "Please Select At Least One Record.",
+                closeButton: false,
+                className: 'center-alert-box',
+                centerVertical: true,
+            });
         }
 
     }
