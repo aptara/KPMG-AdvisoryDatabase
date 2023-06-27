@@ -79,8 +79,10 @@
     <Compile Include="DataAccessService\DataAccessBayDetailsService.cs" />
     <Compile Include="DataAccessService\DataAccessDashboardService.cs" />
     <Compile Include="DataAccessService\DataAccessMeterDetailService.cs" />
+    <Compile Include="DataAccessService\DataAccessUnlockCourseService.cs" />
     <Compile Include="DataAccessService\DataAccessUserService.cs" />
     <Compile Include="DataAccessService\NewGetExcelForFocusService.cs" />
+    <Compile Include="DataAccessService\WebDataAccessUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DataAccessRepository.cs" />
     <Compile Include="Repository\IDataAccessRepository.cs" />

@@ -12,6 +12,7 @@ export class DownloadExcelService {
     readonly getAllShowDataofclarizenAPI = this.apiURL + "GETExcelForClarizenFields/ShowDataofclarizen2/";
     readonly getAllShowDataoffocusAPI = this.apiURL + "GetExcelForFocus/ShowDataoffocus2/";
     readonly getAllShowDataofdeploymentAPI = this.apiURL + "GetExcelForDeploymentReport/ShowDataofdeployment/";
+    readonly getAllShowDataofUnlockAPI = this.apiURL + "UnlockCourse/UnlockCourse/";
 
     constructor(private http: HttpClient) {
 
@@ -23,6 +24,13 @@ export class DownloadExcelService {
         }),
     };
 
+    getUnlockAllCourses(courseId: any): Observable<any> {
+        const url = this.getAllShowDataofUnlockAPI + "?courseId=" + courseId;
+        console.log(url)
+        return this.http
+            .get<any>(url)
+            .pipe(retry(1), catchError(this.handleError));
+    }
     getAllCoursesForClarizen(courseId: any): Observable<any> {
         const url = this.getAllShowDataofclarizenAPI + "?courseId=" + courseId;
         console.log(url)

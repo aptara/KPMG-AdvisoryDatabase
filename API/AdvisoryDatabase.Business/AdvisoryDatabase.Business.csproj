@@ -62,6 +62,7 @@
     <Compile Include="Controllers\NewGetExcelForClarizenFields.cs" />
     <Compile Include="Controllers\NewGetExcelForFocus.cs" />
     <Compile Include="Controllers\TaskLocationMasterController.cs" />
+    <Compile Include="Controllers\UnlockCourseMasterController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WebUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Service\MeterDataService.cs" />
     <Compile Include="Service\NewExcelForClarizenFieldsControllerDataService.cs" />
     <Compile Include="Service\NewGetExcelForFous.cs" />
+    <Compile Include="Service\UnlockCourseDataService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\WebUserService.cs" />
     <Compile Include="Utillity.cs" />

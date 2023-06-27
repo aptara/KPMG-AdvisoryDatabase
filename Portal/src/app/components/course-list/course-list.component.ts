@@ -382,8 +382,23 @@ export class CourseListComponent implements OnInit {
     }
 
     cancelSelection() {
+        // if (this.selectedCourseIds.length == 0) {
+        //     //Show for no select
+        //     bootbox.alert({
+        //         size: "heigh",
+        //         //title: "Export RDI for Clarizen -  File Download is in progress.",
+        //         message: "Please Select At Least One Record.",
+        //         closeButton: false,
+        //         className: 'center-alert-box',
+        //         centerVertical: true,
+        //     });
+
+
+        // }
         this.selectedCourseIds = []; // Clear the selectedCourseIds array to unselect all checkboxes
         this.selectAll = false; // Uncheck the "Select All" checkbox
+
+
     }
     downloadExceloffocusN() {
         if (this.selectedCourseIds.length !== 0) {
@@ -455,14 +470,14 @@ export class CourseListComponent implements OnInit {
                 worksheet2['!cols'] = columnWidths2;
 
 
-                const confirmMessage = `<br>File Download is in progress.<br><br>` +
-                    `Success records count: ${filteredData1.length}<br><br>` +
-                    `Error records count: ${filteredData2.length}`;
+                const confirmMessage = `<br>` +
+                    `Success Records Count: ${filteredData1.length}<br><br>` +
+                    `Error Records Count: ${filteredData2.length}`;
 
                 bootbox.alert({
 
                     size: "heigh",
-
+                    title: "Export RDI for Focus -  File Download is in Progress",
                     message: confirmMessage,
                     closeButton: false,
                     centerVertical: true,
@@ -488,7 +503,17 @@ export class CourseListComponent implements OnInit {
 
             });
         }
+        else {
 
+            bootbox.alert({
+                size: "heigh",
+                //title: "Export RDI for Clarizen -  File Download is in progress.",
+                message: "Please Select At Least One Record.",
+                closeButton: false,
+                className: 'center-alert-box',
+                centerVertical: true,
+            });
+        }
 
 
 
@@ -554,11 +579,12 @@ export class CourseListComponent implements OnInit {
                 worksheet1['!cols'] = columnWidths1;
                 worksheet2['!cols'] = columnWidths2;
 
-                const confirmMessage = `<br>File Download is in progress.<br><br>` +
-                    `Success records count: ${filteredData1.length}<br><br>` +
-                    `Error records count: ${filteredData2.length}`;
+                const confirmMessage = `<br><br>` +
+                    `Success Records Count: ${filteredData1.length}<br><br>` +
+                    `Error Records Count: ${filteredData2.length}`;
                 bootbox.alert({
                     size: "heigh",
+                    title: "Export RDI for Clarizen -  File Download is in Progress.",
                     message: confirmMessage,
                     closeButton: false,
                     className: 'center-alert-box',
@@ -580,31 +606,56 @@ export class CourseListComponent implements OnInit {
                     }
                 })
 
+
             });
             return;
+        }
+        else {
+
+            bootbox.alert({
+                size: "heigh",
+                //title: "Export RDI for Clarizen -  File Download is in progress.",
+                message: "Please Select At Least One Record.",
+                closeButton: false,
+                className: 'center-alert-box',
+                centerVertical: true,
+            });
+        }
+
+    }
+
+    UnlockCourse() {
+        if (this.selectedCourseIds.length !== 0) {
+            // No checkboxes are selected, do not proceed with the download
+            this.downloadExcelService.getUnlockAllCourses(this.selectedCourseIds).subscribe((data: any) => {
+                console.log(data)
+
+
+                bootbox.alert({
+                    size: "heigh",
+                    //title: "Export RDI for Clarizen -  File Download is in progress.",
+                    message: "Record/s are unlocked.",
+                    closeButton: false,
+                    className: 'center-alert-box',
+                    centerVertical: true,
+                });
+
+            });
+            return;
+        }
+        else {
+
+            bootbox.alert({
+                size: "heigh",
+                //title: "Export RDI for Clarizen -  File Download is in progress.",
+                message: "Please Select At Least One Record.",
+                closeButton: false,
+                className: 'center-alert-box',
+                centerVertical: true,
+            });
         }
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

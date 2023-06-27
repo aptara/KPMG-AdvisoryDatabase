@@ -114,6 +114,7 @@
     <Compile Include="Entities\MeterDetails.cs" />
     <Compile Include="Entities\NewExcelForFocus.cs" />
     <Compile Include="Entities\TaskLocation.cs" />
+    <Compile Include="Entities\UnlockCourse.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Logger\Log4NetLogger.cs" />
     <Compile Include="Logger\Logger.cs" />

@@ -1,12 +1,15 @@
 <div class="card">
     <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" scrollHeight="200"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [tableStyle]="{'min-height': '30rem'}"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [tableStyle]="{'min-height': '30rem'}"
         [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'CourseSponsor', 'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
                 <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
                     (click)="clear(dt1)"></button> -->
+                <button pButton class="btn-excel-width" (click)=" UnlockCourse()">Unlock Course</button>
+
                 <button pButton class="btn-excel-width" (click)="downloadExceloffocusN()"
                     *ngIf="hasPermission.hasPermissionDownloadCourseRDIforFocus">
                     Export RDI for Focus
