@@ -66,7 +66,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastName = user.LastName;
         ObjInputParameters.Email = user.Email;
         ObjInputParameters.LocationID = user.LocationID;
-     
+        ObjInputParameters.NetworkID = user.NetworkID;
         ObjInputParameters.TaskMasterID = user.TaskMasterID;
 
         List<UserDetail> outputData = ObjBayDetai.PostUserDetail(ObjInputParameters);
@@ -144,6 +144,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.Email = user.Email;
         ObjInputParameters.LocationID = user.LocationID;
         ObjInputParameters.TaskMasterID = user.TaskMasterID;
+        ObjInputParameters.NetworkID = user.NetworkID;
 
         UserDetail UserDataByUID = new UserDetail();
         var UserId = user.UserMasterID;
@@ -185,6 +186,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastName = user.LastName;
         ObjInputParameters.Email = user.Email;
         ObjInputParameters.LocationID = user.LocationID;
+        ObjInputParameters.NetworkID = user.NetworkID;
 
         if (ObjInputParameters.IsActive)
         {

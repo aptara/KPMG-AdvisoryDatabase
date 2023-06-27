@@ -99,6 +99,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
           parameters.Add(DbHelper.CreateParameter("Email", instance.Email));
           parameters.Add(DbHelper.CreateParameter("LocationID", instance.LocationID));
           parameters.Add(DbHelper.CreateParameter("TaskMasterID", instance.TaskMasterID));
+          parameters.Add(DbHelper.CreateParameter("NetworkID", instance.NetworkID));
 
           break;
 
@@ -111,6 +112,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
           parameters.Add(DbHelper.CreateParameter("LocationID", instance.LocationID));
           parameters.Add(DbHelper.CreateParameter("TaskMasterID", instance.TaskMasterID));
           parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
+          parameters.Add(DbHelper.CreateParameter("NetworkID", instance.NetworkID));
           break;
 
         case OperationType.Delete:
