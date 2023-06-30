@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="overflow-x: auto; ">
     <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" scrollHeight="200"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -6,6 +6,9 @@
         [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'CourseSponsor', 'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
+                <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                    selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}"
+                    placeholder="Choose Columns"></p-multiSelect>
                 <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
                     (click)="clear(dt1)"></button> -->
                 <button pButton class="btn-excel-width" (click)=" UnlockCourse()">Unlock Course</button>
@@ -19,10 +22,12 @@
                     *ngIf="hasPermission.hasPermissionDownloadCourseRDIforClarizen">
                     Export RDI for Clarizen
                 </button>
-                <!-- <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()"
-                    *ngIf="hasPermission.hasPermissionDownloadCourse">
-                    Export RDI for Deployment
-                </button> -->
+                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()">
+                    Export RDI for All Courses
+                </button>
+                <button pButton class="btn-excel-width" (click)="downloadExcelofFilter()">
+                    Export RDI Filter
+                </button>
                 <button pButton class="btn-excel-width" (click)="cancelSelection()">Reset</button>
 
                 <span class="p-input-icon-left ml-auto filter-bar">
@@ -34,59 +39,151 @@
                     </button>
                 </span>
             </div>
+
         </ng-template>
         <ng-template pTemplate="header">
-            <tr>
-                <th>
-                    <div class="flex align-items-center">
+            <tr class="sticky-header">
+
+                <th class=" sticky-col first-col ">
+                    <div class="flex align-items-center ">
                         <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()">
                         <span class="select-all-text">Select All</span>
                     </div>
                 </th>
-                <th>
-                    <div class="flex align-items-center">
+                <th style="width:140px" class="sticky-col second-col">
+                    Action
+                </th>
+                <th class="sticky-col third-col">
+                    <div class="flex align-items-center  ">
                         Course ID
                         <p-columnFilter type="text" field="CourseID" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <th>
-                    <div class="flex align-items-center">
+                <th class="sticky-col fourth-col">
+                    <div class="flex align-items-center  sticky-header">
                         Course Name
                         <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center">
+                    <div class="flex align-items-center sticky-header">
+                        Target Audience
+                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        First Delivery Date
+                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Estimated CPE
+                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Skill
+                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Program Type
+                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Delivery Type
+                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
                         L&D Intake Owner
                         <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center">
+                    <div class="flex align-items-center sticky-header">
+                        Program Knowladge Level
+                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Instructional Designer
+                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Competency
+                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Industry
+                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
                         Project Manager Contact
                         <p-columnFilter type="text" field="ProjectManagerContact" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center">
+                    <div class="flex align-items-center sticky-header">
                         Course Sponsor
                         <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center">
-                        Project Status
+                    <div class="flex align-items-center sticky-header">
+                        Vendor
                         <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <th style="width:140px">
-                    Action
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        ServiceNowID
+                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Duration
+                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Domain
+                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Field Of Study
+                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center sticky-header">
+                        Project Status
+                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                    </div>
                 </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-course>
             <tr>
-                <td>
+                <td class="sticky-col first-col">
 
                     <span class="edit-btn">
                         <input type="checkbox" (change)="toggleCourseSelection(course.CourseMasterID)"
@@ -94,31 +191,7 @@
 
                     </span>
                 </td>
-                <td>
-                    <!-- <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}">
-                        {{ course.CourseID }}</a> -->
-
-                    {{ course.CourseID }}
-
-                </td>
-                <td>
-                    <!-- <a [routerLink]="['/course-details']" [queryParams]="{id: course.CourseMasterID}"> -->
-                    {{ course.CourseName }}
-                    <!--</a>-->
-                </td>
-                <td>
-                    {{ course.LDIIntakeOwnerText }}
-                </td>
-                <td>
-                    {{ course.ProjectManagerContactMasterText }}
-                </td>
-                <td>
-                    {{ course.CourseSponsor }}
-                </td>
-                <td>
-                    {{ course.StatusText }}
-                </td>
-                <td style="text-align: center;width:140px">
+                <td style="text-align: center;width:140px" class="sticky-col second-col">
                     <span class="edit-btn">
                         <i class="pi pi-eye" *ngIf="hasPermission.hasPermissionReviewCourse"
                             (click)="ViewCourse(course.CourseMasterID)"></i>
@@ -132,6 +205,71 @@
                             (click)="DeleteCourse(course.CourseMasterID)"></i>
                     </span>
                 </td>
+
+                <td class="sticky-col third-col">
+                    {{ course.CourseID }}
+                </td>
+                <td class="sticky-col fourth-col">
+                    {{ course.CourseName }}
+                </td>
+                <td>
+                    {{ course.TargetAudience }}
+                </td>
+                <td>
+                    {{ course.FirstDeliveryDate }}
+                </td>
+                <td>
+                    {{ course.EstimatedCPE }}
+                </td>
+                <td>
+                    {{ course.SkillMasterID }}
+                </td>
+                <td>
+                    {{ course.ProgramTypeID }}
+                </td>
+                <td>
+                    {{ course.DeliveryTypeID }}
+                </td>
+                <td>
+                    {{ course.LDIIntakeOwnerText }}
+                </td>
+                <td>
+                    {{ course.InstructionalDesigner }}
+                </td>
+                <td>
+                    {{ course.CompentencyMasterID }}
+                </td>
+                <td>
+                    {{ course.IndustryMasterID }}
+                </td>
+                <td>
+                    {{ course.ProgramKnowledgeLevelMasterID }}
+                </td>
+                <td>
+                    {{ course.ProjectManagerContactMasterText }}
+                </td>
+                <td>
+                    {{ course.CourseSponsor }}
+                </td>
+                <td>
+                    {{ course.Vendor }}
+                </td>
+                <td>
+                    {{ course.ServiceNowID }}
+                </td>
+                <td>
+                    {{ course.Duration }}
+                </td>
+                <td>
+                    {{ course.FocusDomain }}
+                </td>
+                <td>
+                    {{ course.FieldOfStudyMasterID }}
+                </td>
+                <td>
+                    {{ course.StatusText }}
+                </td>
+
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
@@ -141,3 +279,31 @@
         </ng-template>
     </p-table>
 </div>
+
+
+
+<!-- <div class="card">
+    <p-table [columns]="selectedColumns" [value]="products" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="caption">
+            <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}"
+                placeholder="Choose Columns"></p-multiSelect>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Code</th>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td>{{product.code}}</td>
+                <td *ngFor="let col of columns">
+                    {{product[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div> -->

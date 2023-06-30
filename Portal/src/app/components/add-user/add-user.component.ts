@@ -48,11 +48,11 @@ export class AddUserComponent implements OnInit {
         this.UserAdd = new FormGroup({
             'FirstName': new FormControl('', [
                 Validators.required,
-                Validators.pattern('[a-zA-Z]+')
+                //Validators.pattern('[a-zA-Z]+')
             ]),
             'LastName': new FormControl('', [
                 Validators.required,
-                Validators.pattern('[a-zA-Z]+')
+                // Validators.pattern('[a-zA-Z]+')
             ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
 

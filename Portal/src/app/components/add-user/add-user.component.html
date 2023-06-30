@@ -28,9 +28,9 @@
                         <div *ngIf="UserAdd.controls.FirstName.errors.required">
                             First name is required*
                         </div>
-                        <div *ngIf="UserAdd.controls.FirstName.errors.pattern">
+                        <!-- <div *ngIf="UserAdd.controls.FirstName.errors.pattern">
                             Only characters are allowed in the First name field.
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="p-float-label">
@@ -43,9 +43,9 @@
                         <div *ngIf="UserAdd.controls.LastName.errors.required">
                             Last name is required*
                         </div>
-                        <div *ngIf="UserAdd.controls.FirstName.errors.pattern">
+                        <!-- <div *ngIf="UserAdd.controls.FirstName.errors.pattern">
                             Only characters are allowed in the Last name field.
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -63,10 +63,10 @@
                 <div class="p-float-label">
                     <span>NetworkID<span style="color:red">*</span></span><br>
                     <input pInputText id="email-id" formControlName="NetworkID" />
-                    <div *ngIf="UserAdd.controls.NetworkID.invalid && UserAdd.controls.NetworkID.touched"
+                    <!-- <div *ngIf="UserAdd.controls.NetworkID.invalid && UserAdd.controls.NetworkID.touched"
                         class="text-danger">
                         NetworkID is required*
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="group-row">

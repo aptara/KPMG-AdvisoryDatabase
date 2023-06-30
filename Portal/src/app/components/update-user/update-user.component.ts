@@ -57,11 +57,11 @@ export class UpdateUserComponent implements OnInit {
             'UserMasterID': new FormControl(this.UserID),
             'FirstName': new FormControl('', [
                 Validators.required,
-                Validators.pattern('[a-zA-Z]+')
+                //Validators.pattern('[a-zA-Z]+')
             ]),
             'LastName': new FormControl('', [
                 Validators.required,
-                Validators.pattern('[a-zA-Z]+')
+                //Validators.pattern('[a-zA-Z]+')
             ]),
             'Email': new FormControl('', [Validators.required, Validators.email]),
 

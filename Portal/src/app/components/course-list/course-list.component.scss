@@ -68,4 +68,50 @@
   color: white;
 }
 
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+  z-index: 1
 
+}
+
+.first-col {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  left: 0px;
+  z-index: 2;
+
+}
+
+.second-col {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  left: 100px;
+  z-index: 2;
+}
+
+.third-col {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  left: 250px;
+  z-index: 2
+}
+
+.fourth-col {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  left: 450px;
+  z-index: 2
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+}
