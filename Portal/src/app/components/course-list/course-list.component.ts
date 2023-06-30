@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Table } from 'primeng/table';
@@ -17,18 +17,23 @@ import { Divider } from 'primeng/divider';
 
 declare var bootbox: any;
 
-declare var bootbox: any;
+interface Column {
+    field: string;
+    header: string;
+}
 @Component({
     selector: 'app-course-list',
     templateUrl: './course-list.component.html',
     styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
+    @ViewChild('dt1') dt1!: Table;
     CourseData: any = [];
     statuses: any = [];
     loading: boolean = false;
     activityValues: number[] = [0, 100];
     hasPermission: CoursePermission;
+
 
     constructor(
         public service: CourseService,
@@ -52,6 +57,18 @@ export class CourseListComponent implements OnInit {
         //this.ExcelOfFocus()
         //this.ExcelOfDeployment()
     }
+
+    @Input() get selectedColumns(): any[] {
+        return this._selectedColumns;
+    }
+    cols!: Column[];
+
+    _selectedColumns!: Column[];
+    set selectedColumns(val: any[]) {
+        //restore original order
+        this._selectedColumns = this.cols.filter((col) => val.includes(col));
+    }
+
 
     GetAllCourse() {
         this.loading = true;
@@ -110,7 +127,7 @@ export class CourseListComponent implements OnInit {
         this.downloadExcelService.getAllCoursesForDataOfDeployment().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
-                const headers = Object.keys(courseData[0]).slice(1, 21);
+                const headers = Object.keys(courseData[0]).slice(1, 23);
                 const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
                 function generateRandom(maxLimit = 100) {
                     let rand = Math.random() * maxLimit;
@@ -127,10 +144,10 @@ export class CourseListComponent implements OnInit {
                 const random = (generateRandom());
                 const currentDate = new Date();
                 const myDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd');
-                const fileName = 'Deployment_Records_' + myDate + '_' + random + '.xlsx';
+                const fileName = 'All_Course_Records_' + myDate + '_' + random + '.xlsx';
 
-                const worksheetName = 'Data Of Deployment Field';
-                //const fileName = 'Excel For Deployment Fields.xlsx';
+                const worksheetName = 'Data All_Course_Records_ Field';
+
 
                 const worksheet = XLSX.utils.aoa_to_sheet([headers, ...excelData]);
 
@@ -159,6 +176,10 @@ export class CourseListComponent implements OnInit {
             this.selectAll = false
         });
     }
+
+
+
+
 
     dataf: any;
     datac: any;
@@ -402,40 +423,92 @@ export class CourseListComponent implements OnInit {
     }
     downloadExceloffocusN() {
         if (this.selectedCourseIds.length !== 0) {
+            if (this.selectedCourseIds.length > 450) {
+                bootbox.alert({
+                    size: "heigh",
+                    message: "Please select a maximum of 450 records for download.",
+                    closeButton: false,
+                    className: 'center-alert-box',
+                    centerVertical: true,
+                });
+                return;
+            }
+
             this.downloadExcelService.getAllCoursesForDataOfFocus(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
                 const headers1 = Object.keys(courseData[0]).slice(0, 35); // First 10 columns
-                const headers2 = Object.keys(courseData[0]).slice(0, 36); // First 15 columns
+                const headers2 = Object.keys(courseData[0]).slice(0, 35); // First 15 columns
 
                 // Custom titles for each column
-                const columnTitles1 = ['Title', 'FIELD_OF_STUDY1/FOS_DEFAULT_CREDITS1',
-                    'FIELD_OF_STUDY2/FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3/FOS_DEFAULT_CREDITS3',
-                    'FIELD_OF_STUDY4/FOS_DEFAULT_CREDITS4',
-                    'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1',
-                    'CUSTOM3', 'OFFERING_TEMPLATE_NO', ' DESCRIPTION', 'MAX_CT', 'MIN_CT', 'WAITLIST_MAX', 'Ower1', 'Ower2',
-                    'AVAIL_FORM', 'DT_DURATION1', ' Domain', 'DISC_FORM', 'DISPLAY_LEARNER', 'CUSTOM0', 'CUSTOM1', 'PRICE', 'CURRENCY',
-                    'DISPLAY_CALL_CENTER', 'AUDIENCE_TYPE1', 'AUDIENCE_TYPE2',
+                const columnTitles1 = ['ID', 'OFFERING_TEMPLATE_NO',
+                    'VERSION', 'TITLE',
+                    'DOMAIN',
+                    'AVAIL_FROM', 'DISC_FROM', 'CURRENCY', 'PRICE', 'DESCRIPTION',
 
-                    'CUSTOM2', 'CUSTOM5', 'CUSTOM8', 'Focus Template Name '];
+                    'DISPLAY_LEARNER', 'DISPLAY_CALL_CENTER', ' AUDIENCE_TYPE1', 'AUDIENCE_TYPE2', 'VENDOR', 'CUSTOM0', 'CUSTOM1', 'CUSTOM2',
 
-                const columnTitles2 = ['Title', 'FIELD_OF_STUDY1/FOS_DEFAULT_CREDITS1',
-                    'FIELD_OF_STUDY2/FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3/FOS_DEFAULT_CREDITS3',
-                    'FIELD_OF_STUDY4/FOS_DEFAULT_CREDITS4',
-                    'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1',
-                    'CUSTOM3', 'OFFERING_TEMPLATE_NO', ' DESCRIPTION', 'MAX_CT', 'MIN_CT', 'WAITLIST_MAX', 'Ower1', 'Ower2',
-                    'AVAIL_FORM', 'DT_DURATION1', ' Domain', 'DISC_FORM', 'DISPLAY_LEARNER', 'CUSTOM0', 'CUSTOM1', 'PRICE', 'CURRENCY',
-                    'DISPLAY_CALL_CENTER', 'AUDIENCE_TYPE1', 'AUDIENCE_TYPE2',
+                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'EQUIVALENT1', 'DELIVERY_TYPE1', 'DT_DURATION1',
 
-                    'CUSTOM2', 'CUSTOM5', 'CUSTOM8', 'Focus Template Name', 'Error Message'];
+                    'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 
+                    'FOS_DEFAULT_CREDITS2', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'Error Message'];
+
+                const columnTitles2 = ['ID', 'OFFERING_TEMPLATE_NO',
+                    'VERSION', 'TITLE',
+                    'DOMAIN',
+                    'AVAIL_FROM', 'DISC_FROM', 'CURRENCY', 'PRICE', 'DESCRIPTION',
+
+                    'DISPLAY_LEARNER', 'DISPLAY_CALL_CENTER', ' AUDIENCE_TYPE1', 'AUDIENCE_TYPE2', 'VENDOR', 'CUSTOM0', 'CUSTOM1', 'CUSTOM2',
+
+                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'EQUIVALENT1', 'DELIVERY_TYPE1', 'DT_DURATION1',
+
+                    'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
+
+                    'FOS_DEFAULT_CREDITS2', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'Error Message'];
+
+                // ID	OFFERING_TEMPLATE_NO	VERSION	TITLE	DOMAIN	AVAIL_FROM	DISC_FROM	CURRENCY	PRICE	DESCRIPTION	DISPLAY_LEARNER	DISPLAY_CALL_CENTER
+
+                // AUDIENCE_TYPE1	AUDIENCE_TYPE2	VENDOR	CUSTOM0	CUSTOM1	CUSTOM2	CUSTOM3	CUSTOM5	CUSTOM8	OWNER1	Owner two	PREREQUISITE1	EQUIVALENT1
+
+                // DELIVERY_TYPE1	DT_DURATION1	FIELD_OF_STUDY1	FOS_DEFAULT_CREDITS1	FIELD_OF_STUDY2	FOS_DEFAULT_CREDITS2	MIN_CT	MAX_CT	MAX_CT
 
                 const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
                 const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
 
 
-                const filteredData1 = excelData1.filter((obj: any) => obj[34] == null);
-                const filteredData2 = excelData2.filter((obj: any) => obj[34] !== null);
+
+
+                // let ErrorMessage = " ";
+                // let result = ErrorMessage.trim();
+
+
+                // const filteredData1 = excelData1.filter((obj: any) => obj[35] == null);
+
+                // const filteredData2 = excelData2.filter((obj: any) => obj[35] !== null);
+
+                // let filteredData1 = excelData1.filter((row: string[]) => row[34].trim() === "");
+                // let filteredData2 = excelData2.filter((row: string[]) => row[34].trim() !== "");
+
+
+                let filteredData1 = excelData1.filter((row: string[]) => {
+                    const value = row[34]?.trim(); // Access column number 35 and trim the value
+                    return value === "" || value === null; // Filter empty string values and null values
+                });
+
+                let filteredData2 = excelData2.filter((row: string[]) => {
+                    const value = row[34]?.trim(); // Access column number 35 and trim the value
+                    return value !== "" && value !== null; // Filter non-empty string values and non-null values
+                });
+
+
+
+
+
+
+
+
+
 
 
                 function generateRandom(maxLimit = 99) {
@@ -494,7 +567,7 @@ export class CourseListComponent implements OnInit {
                             XLSX.writeFile(workbook2, fileName2);
                         }
                         this.selectedCourseIds = []
-                        this.selectAll = false
+
                     }
 
 
@@ -522,30 +595,58 @@ export class CourseListComponent implements OnInit {
 
     downloadExcelofClarizeN() {
         if (this.selectedCourseIds.length !== 0) {
+            if (this.selectedCourseIds.length > 450) {
+                bootbox.alert({
+                    size: "heigh",
+                    message: "Please select a maximum of 450 records for download.",
+                    closeButton: false,
+                    className: 'center-alert-box',
+                    centerVertical: true,
+                });
+                return;
+            }
+
             // No checkboxes are selected, do not proceed with the download
             this.downloadExcelService.getAllCoursesForClarizen(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
-                const headers1 = Object.keys(courseData[0]).slice(0, 20); // First 16 columns
-                const headers2 = Object.keys(courseData[0]).slice(0, 19); // First 17 columns
+                const headers1 = Object.keys(courseData[0]).slice(0, 17); // First 16 columns
+                const headers2 = Object.keys(courseData[0]).slice(0, 17); // First 17 columns
 
                 // Custom titles for each column
                 const columnTitles1 = ['Name', 'Business Relationship Director', 'Owner',
-                    'Course Sponser', ' Description', 'InstructionalDesigner', 'Lead SMP', 'ProgramType',
+                    'Course Sponser', ' Description', 'InstructionalDesigner(s)', 'Lead SMP', 'ProgramType',
                     'Delivery  Type(Single Pick)', 'CPE creadits', 'Course #',
-                    'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort', 'Course Duration?', 'Start Date'];
+                    'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort',
+                    'Start Date', 'S2URl', 'FocusTemplateName ', 'ErrorMessage'];
 
                 const columnTitles2 = ['Name', 'Business Relationship Director', 'Owner',
                     'Course Sponser', ' Description', 'InstructionalDesigner', 'Lead SMP', 'ProgramType',
                     'Delivery  Type(Single Pick)', 'CPE creadits', 'Course #',
-                    'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort', 'Course Duration?', 'Start Date'
-                    , 'ErrorMessage'];
+                    'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort', 'Start Date'
+                    , 'S2URl', 'FocusTemplateName', 'ErrorMessage'];
+
 
                 const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
                 const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
 
-                const filteredData1 = excelData1.filter((obj: any) => obj[19] == null);
-                const filteredData2 = excelData2.filter((obj: any) => obj[19] !== null);
+                const filteredData1 = excelData1.filter((obj: any) => obj[16] == null);
+                const filteredData2 = excelData2.filter((obj: any) => obj[16] !== null);
+
+                // let filteredData1 = excelData1.filter((row: string[]) => row[17].trim() === "");
+                // let filteredData2 = excelData2.filter((row: string[]) => row[17].trim() !== "");
+
+
+
+                // let filteredData1 = excelData1.filter((row: string[]) => {
+                //     const value = row[16]?.trim();
+                //     return value === "" || value == null; // Filter empty string values and null values
+                // });
+
+                // let filteredData2 = excelData2.filter((row: string[]) => {
+                //     const value = row[16]?.trim();
+                //     return value !== "" && value !== null; // Filter non-empty string values and non-null values
+                // });
 
 
                 function generateRandom(maxLimit = 100) {
@@ -570,8 +671,8 @@ export class CourseListComponent implements OnInit {
                 const fileName2 = 'Clarizen_ErrorRecords_' + myDate + '_' + random + '.xlsx';
 
 
-                const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...filteredData1]);
-                const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...filteredData2]);
+                const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...excelData1]);
+                const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...excelData2]);
 
                 // Set column widths
                 const columnWidths1 = headers1.map(() => ({ width: 40 }));
@@ -656,6 +757,57 @@ export class CourseListComponent implements OnInit {
         }
 
     }
+
+    downloadExcelofFilter() {
+        const filteredData = this.dt1.filteredValue;
+        if (filteredData) {
+            var courseData: any = filteredData;
+            console.log(courseData)
+            const columnIndices = [2, 1, 10, 27, 63, 12, 6, 8, 37, 56, 5, 7, 17, 21, 26, 57
+            ]; // Array of column indices to include
+            const headers = columnIndices.map(index => Object.keys(courseData[0])[index]);
+            const excelData = courseData.map((obj: any) => columnIndices.map(index => obj[Object.keys(obj)[index]]));
+
+            // var courseData: any = filteredData;
+            // const headers = Object.keys(courseData[0]).slice(1, 65);
+            // const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
+            function generateRandom(maxLimit = 100) {
+                let rand = Math.random() * maxLimit;
+                console.log(rand); // say 99.81321410836433
+
+                rand = Math.floor(rand); // 99
+
+                return rand;
+            }
+            generateRandom(); // 43
+            //generateRandom(500); // 165
+
+            console.log(generateRandom());
+            const random = (generateRandom());
+            const currentDate = new Date();
+            const myDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd');
+            const fileName = 'Filter_Records_' + myDate + '_' + random + '.xlsx';
+
+            const worksheetName = 'Data Of Filter Field';
+
+
+            const worksheet = XLSX.utils.aoa_to_sheet([headers, ...excelData]);
+
+
+            // Set column widths
+            const columnWidths = headers.map(() => ({ width: 24 }));
+            worksheet['!cols'] = columnWidths;
+
+
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, worksheetName);
+            XLSX.writeFile(workbook, fileName);
+        }
+        this.selectedCourseIds = []
+        this.selectAll = false
+    }
+
+
 }
 
 

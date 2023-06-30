@@ -11,11 +11,11 @@ namespace AdvisoryDatabase.Framework.Entities
     {
         public string CourseMasterID { get; set; }
         public string CourseName { get; set; }
-        public string LDIntakeOwner { get; set; }
-        public string ProjectManagerContact { get; set; }
+        public string LDIIntakeOwner { get; set; }
+        public string ProjectManagerContactMaster { get; set; }
 
         public string CourseSponsor { get; set; }
-        public string InstructionalDesigner { get; set; }
+        public string InstructionalDesignerMaster { get; set; }
         public string EstimatedCPE { get; set; }
 
         public string Material { get; set; }

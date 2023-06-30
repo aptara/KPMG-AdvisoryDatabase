@@ -32,7 +32,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
         }*/
         protected override void FillParameters(OperationType operation, ExcelForClarizen instance, List<System.Data.Common.DbParameter> parameters)
-        {
+       {
             switch (operation)
             {
                 case OperationType.GetAll:
@@ -74,13 +74,15 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
                          DeploymentFiscalYear = row.ReadString("DeploymentFiscalYear"),
                          LevelofEffort = row.ReadString("LevelofEffort"),
-                         Duration = row.ReadString("Duration"),
+                        // Duration = row.ReadString("Duration"),
                          ClarizenStartDate = row.ReadString("ClarizenStartDate"),
+                         CourseRecordURL = row.ReadString("CourseRecordURL"),
+                         FocusTemplateName = row.ReadString("FocusTemplateName"),
+
                          ErrorMessage = row.ReadString("ErrorMessage"),
                          Status = row.ReadString("Status"),
                          //ProjectStatusID = row.ReadString("ProjectStatusID"),
-                         ServiceNowID = row.ReadString("ServiceNowID"),
-                         CourseRecordURL = row.ReadString("CourseRecordURL")
+                         
                      }).ToList();
 
             return GetAllData;
@@ -109,13 +111,16 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
                 DeploymentFiscalYear = data.ReadString("DeploymentFiscalYear"),
                 LevelofEffort = data.ReadString("LevelofEffort"),
-                Duration = data.ReadString("Duration"),
+               // Duration = data.ReadString("Duration"),
                 ClarizenStartDate = data.ReadString("ClarizenStartDate"),
+                CourseRecordURL = data.ReadString("CourseRecordURL"),
+                FocusTemplateName = data.ReadString("FocusTemplateName"),
                 ErrorMessage = data.ReadString("ErrorMessage"),
+               
                 Status = data.ReadString("Status"),
                 //ProjectStatusID = data.ReadString("ProjectStatusID"),
-                ServiceNowID = data.ReadString("ServiceNowID"),
-                CourseRecordURL = data.ReadString("CourseRecordURL")
+                
+              
 
 
 

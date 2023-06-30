@@ -30,18 +30,21 @@ namespace AdvisoryDatabase.Framework.Entities
         public string DeploymentFiscalYear { get; set; }
 
         public string LevelofEffort { get; set; }
-        public string Duration { get; set; }
+       // public string Duration { get; set; }// remove
 
         public string ClarizenStartDate { get; set; }
-
-        public string ErrorMessage { get; set; }
-        public string Status { get; set; }
-        //public string ProjectStatusID { get; set; }
-        public string ServiceNowID { get; set; }
         public string CourseRecordURL { get; set; }
 
+        public string FocusTemplateName { get; set; }
+        public string ErrorMessage { get; set; }
+
+
+        public string Status { get; set; }
         public string CourseMasterIDs { get; set; }
         public int CourseMasterID { get; set; }
+
+        //public string ProjectStatusID { get; set; }
+        //  public string ServiceNowID { get; set; }
 
 
 
