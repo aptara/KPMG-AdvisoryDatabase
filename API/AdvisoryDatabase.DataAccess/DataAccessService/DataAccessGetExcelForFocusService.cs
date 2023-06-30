@@ -65,7 +65,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          CourseMasterID = Int32.Parse(row.ReadString("CourseMasterID")),
                          FORDLSONLY = row.ReadString("FORDLSONLY"),
                          CourseID = row.ReadString("CourseID"),
-                         // LeaveBlank = row.ReadString("LeaveBlank"),
+                       Version = row.ReadString("Version"),
 
                          CourseName = row.ReadString("CourseName"),
 
@@ -135,7 +135,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                 FORDLSONLY = data.ReadString("FORDLSONLY"),
                 CourseID = data.ReadString("CourseID"),
-                // LeaveBlank = data.ReadString("LeaveBlank"),
+             Version = data.ReadString("Version"),
 
                 CourseName = data.ReadString("CourseName"),
                 FocusDomain = data.ReadString("FocusDomain"),

@@ -12,7 +12,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FORDLSONLY { get; set; } //add new
         public string CourseID { get; set; }
 
-        public string LeaveBlank { get; set; }//add new
+        public string Version { get; set; }//add new
         public string CourseName { get; set; }
 
 
