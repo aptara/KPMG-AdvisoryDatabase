@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,7 +30,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         {
             try
             {
-                AdvisoryDatabase.Business.Controllers.CourseOwnerController ObjBayDetai = new Business.Controllers.CourseOwnerController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method Start");
+        AdvisoryDatabase.Business.Controllers.CourseOwnerController ObjBayDetai = new Business.Controllers.CourseOwnerController();
                 CourseOwnerDetails ObjInputParameters = new CourseOwnerDetails();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
@@ -43,12 +44,16 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+               AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method End: "+ jsonData);
                 return response;
+
 
             }
             catch (Exception ex)
             {
-                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowData Exception", ex.Message);
+    /*    return Erroresponse<Course>(error);*/
+        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
                 return errorResponse;
 

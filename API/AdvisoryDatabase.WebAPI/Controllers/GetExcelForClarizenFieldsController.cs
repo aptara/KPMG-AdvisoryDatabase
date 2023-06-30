@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -31,7 +31,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         {
             try
             {
-                AdvisoryDatabase.Business.Controllers.GETExcelForClarizenFieldsController ObjBayDetai = new Business.Controllers.GETExcelForClarizenFieldsController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofclarizen Method Start");
+        AdvisoryDatabase.Business.Controllers.GETExcelForClarizenFieldsController ObjBayDetai = new Business.Controllers.GETExcelForClarizenFieldsController();
                 ExcelForClarizen ObjInputParameters = new ExcelForClarizen();
                /* ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;*/
@@ -43,12 +44,14 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                return response;
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofclarizen Method End:",jsonData);
+        return response;
 
             }
             catch (Exception ex)
             {
-                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowDataofclarizen exception:", ex.Message);
+        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
                 return errorResponse;
 
@@ -64,7 +67,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
             try
             {
-                AdvisoryDatabase.Business.Controllers.GETExcelForClarizenFieldsController ObjBayDetai = new Business.Controllers.GETExcelForClarizenFieldsController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofclarizen2 start:");
+        AdvisoryDatabase.Business.Controllers.GETExcelForClarizenFieldsController ObjBayDetai = new Business.Controllers.GETExcelForClarizenFieldsController();
                 ExcelForClarizen ObjInputParameters = new ExcelForClarizen();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
@@ -81,12 +85,14 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                return response;
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofclarizen2 end:",jsonData);
+        return response;
 
             }
             catch (Exception ex)
             {
-                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowDataofclarizen2 exception:", ex.Message);
+        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
                 return errorResponse;
 

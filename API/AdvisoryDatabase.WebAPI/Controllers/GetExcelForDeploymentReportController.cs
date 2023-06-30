@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -31,7 +31,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         {
             try
             {
-                AdvisoryDatabase.Business.Controllers.GETExcelForDeploymentReportController ObjBayDetai = new Business.Controllers.GETExcelForDeploymentReportController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofdeployment Method Start");
+        AdvisoryDatabase.Business.Controllers.GETExcelForDeploymentReportController ObjBayDetai = new Business.Controllers.GETExcelForDeploymentReportController();
                 ExcelforDeployment ObjInputParameters = new ExcelforDeployment();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
@@ -43,12 +44,14 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                return response;
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofdeployment Method end",jsonData);
+        return response;
 
             }
             catch (Exception ex)
             {
-                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowDataofdeployment Method end", ex.Message);
+        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
                 return errorResponse;
 

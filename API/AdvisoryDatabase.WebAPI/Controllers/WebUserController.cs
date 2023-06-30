@@ -25,6 +25,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
       try
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method Start");
         AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters.LastUpdatedBy = 1;
@@ -35,11 +36,13 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method end"+jsonData);
         return response;
 
       }
       catch (Exception ex)
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowData exception" ,ex.Message);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;
@@ -58,6 +61,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
       try
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("PostData Method start" );
         AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters.LastUpdatedBy = 1;
@@ -74,11 +78,13 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("PostData Method end"+jsonData);
         return response;
 
       }
       catch (Exception ex)
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("PostData exception", ex.Message);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;
@@ -94,6 +100,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
       try
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetDataByUserId Method start");
         AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters.LastUpdatedBy = 1;
@@ -110,11 +117,13 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(UserDataById);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetDataByUserId Method end"+jsonData);
         return response;
 
       }
       catch (Exception ex)
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("GetDataByUserId exception",ex.Message);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;
@@ -133,6 +142,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
       try
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UpdateData Method start");
         AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters = user;
@@ -155,11 +165,13 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UpdateData Method end", jsonData);
         return response;
 
       }
       catch (Exception ex)
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("UpdateData exception", ex.Message);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;
@@ -177,6 +189,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
       try
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("DelData method start" );
         AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters = user;
@@ -202,11 +215,13 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("DelData method end"+jsonData);
         return response;
 
       }
       catch (Exception ex)
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("DelData exception", ex.Message);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;
@@ -219,12 +234,13 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
       try
       {
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetAutherizedUser method start");
         AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
         var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];
-              //headerUserName = "Siddesh.Gaikwad";
+            /*  headerUserName = "NS3148280\\Trupia.Vincent";*/
                 AdvisoryLogger.WriteInfo("Server Variables:" + HttpContext.Current.Request.ServerVariables.ToString());
                 AdvisoryLogger.WriteInfo("Header User Name:" + headerUserName);
                 AdvisoryLogger.WriteInfo("User Identity Name:" + User.Identity.Name);
@@ -242,13 +258,14 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(UserData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetAutherizedUser method end"+jsonData);
         return response;
 
       }
       catch (Exception ex)
       {
 
-                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError(ex.Message, ex);
+         AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("GetAutherizedUser exception", ex.Message);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;

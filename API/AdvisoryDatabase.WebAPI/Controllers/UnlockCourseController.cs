@@ -1,4 +1,4 @@
-﻿using AdvisoryDatabase.Framework.Entities;
+using AdvisoryDatabase.Framework.Entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         {
            try
             {
-                AdvisoryDatabase.Business.Controllers.UnlockCourseController ObjBayDetai = new Business.Controllers.UnlockCourseController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UnlockCourse Method Start");
+        AdvisoryDatabase.Business.Controllers.UnlockCourseController ObjBayDetai = new Business.Controllers.UnlockCourseController();
                 UnlockCourseMap ObjInputParameters = new UnlockCourseMap();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
@@ -45,12 +46,14 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                 AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UnlockCourse Method end"+jsonData);
                 return response;
 
             }
             catch (Exception ex)
             {
-                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("UnlockCourse exception",ex.Message);
+        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
                 return errorResponse;
 
