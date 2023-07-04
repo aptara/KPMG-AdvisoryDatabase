@@ -9,7 +9,7 @@ namespace AdvisoryDatabase.Framework.Entities
 {
     public class ExcelforDeployment : BaseEntity<Int32>
     {
-        public string CourseID { get; set; }//0 -- add in sp
+        public string CourseID { get; set; }//0 
         public string CourseMasterID { get; set; }//1
         public string CourseName { get; set; }//2
         public string DeploymentFiscalYear { get; set; }//3
@@ -46,8 +46,8 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ProjectManagerContactMaster { get; set; }//32
         public string InstructionalDesignerMaster { get; set; }//33
         public string LevelOfEffort { get; set; }//34
-        public string FoucsCourseOwner1 { get; set; }//35
-        public string FocusCourseOwner2 { get; set; }//36
+      //  public string FoucsCourseOwner1 { get; set; }//35
+        //public string FocusCourseOwner2 { get; set; }//36
         public string CourseNotes { get; set; }//37
         public string ProjectStatus { get; set; }//38  ----------which select
         public string Price { get; set; }//39
@@ -61,9 +61,9 @@ namespace AdvisoryDatabase.Framework.Entities
         public string OFFERING_TEMPLATE_NO { get; set; }//47-----remove or not
         public string DevelopmentYear { get; set; }//48
         public string IsRecordLocked { get; set; }//49 --------remove or not
-        public string DoesCourseFromSingularity { get; set; }//50 --------remove
-        public string CourseSingularityID { get; set; }//51 ------------remove
-        public string IsvalueSelected { get; set; }//52  -------------- remove
+//public string DoesCourseFromSingularity { get; set; }//50 --------remove
+      //  public string CourseSingularityID { get; set; }//51 ------------remove
+//public string IsvalueSelected { get; set; }//52  -------------- remove
         public string PrerequisiteCourseID1 { get; set; }//53
         public string PrerequisiteCourseID2 { get; set; }//54
         public string EquivalentCourseID1 { get; set; }//55

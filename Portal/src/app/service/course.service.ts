@@ -17,6 +17,9 @@ export class CourseService {
     readonly addCourseAPI = this.apiURL + "Course/AddEditCourse/";
     readonly updateCourseAPI = this.apiURL + "Course/AddEditCourse/";
     readonly deleteCourseAPI = this.apiURL + "Course/DeleteCourse/";
+    readonly CourseListAPI = this.apiURL + "GetCourseList/CourseList";
+    // http://localhost:62220//api/GetCourseList/CourseList
+
 
     constructor(private http: HttpClient) {
 
@@ -35,6 +38,11 @@ export class CourseService {
             .pipe(retry(1), catchError(this.handleError));
     }
 
+    getAllCourselist(): Observable<Course> {
+        return this.http
+            .get<Course>(this.CourseListAPI)
+            .pipe(retry(1), catchError(this.handleError));
+    }
 
     getCourse(id: any): Observable<Course> {
         return this.http

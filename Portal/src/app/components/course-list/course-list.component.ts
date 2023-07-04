@@ -29,6 +29,7 @@ interface Column {
 export class CourseListComponent implements OnInit {
     @ViewChild('dt1') dt1!: Table;
     CourseData: any = [];
+    CourseList: any = [];
     statuses: any = [];
     loading: boolean = false;
     activityValues: number[] = [0, 100];
@@ -49,10 +50,12 @@ export class CourseListComponent implements OnInit {
     }
 
 
+
     ngOnInit(): void {
         this.hasPermission = this.userservice.GetUserPermission();
-        this.GetAllCourse()
-
+        // this.GetAllCourse()
+        // this.GetCourseList()
+        this.ExcelOfFilter()
         this.ExcelOfClarizen()
         //this.ExcelOfFocus()
         //this.ExcelOfDeployment()
@@ -69,16 +72,34 @@ export class CourseListComponent implements OnInit {
         this._selectedColumns = this.cols.filter((col) => val.includes(col));
     }
 
-
-    GetAllCourse() {
+    GetCourseList() {
         this.loading = true;
-        return this.service.getAllCourses().subscribe((data: any) => {
+        return this.downloadExcelService.getAllCourseList().subscribe((data: any) => {
             this.loading = false;
             if (data.Success) {
                 this.CourseData = data.Data;
             }
         });
+
     }
+    ExcelOfFilter() {
+        this.http.get<any[]>(environment.baseUrl + 'GetCourseList/CourseList/').subscribe(data2 => {
+
+            //this.datac = [];
+            this.CourseList = data2
+            console.log(this.datac)
+        });
+    }
+    // GetAllCourse() {
+    //     this.loading = true;
+    //     return this.service.getAllCourses().subscribe((data: any) => {
+    //         console.log(data)
+    //         this.loading = false;
+    //         if (data.Success) {
+    //             this.CourseData = data.Data;
+    //         }
+    //     });
+    // }
 
     clear(table: Table) {
         table.clear();
@@ -101,7 +122,7 @@ export class CourseListComponent implements OnInit {
                 return this.service.deleteCourse(CourseId).subscribe((data: any) => {
                     if (data != null) {
                         bootbox.alert('Course deleted successfully');
-                        this.GetAllCourse();
+                        //this.GetAllCourse();
                     } else {
                         bootbox.alert('Deletion not successful');
                     }
@@ -437,7 +458,7 @@ export class CourseListComponent implements OnInit {
             this.downloadExcelService.getAllCoursesForDataOfFocus(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
-                const headers1 = Object.keys(courseData[0]).slice(0, 35); // First 10 columns
+                const headers1 = Object.keys(courseData[0]).slice(0, 34); // First 10 columns
                 const headers2 = Object.keys(courseData[0]).slice(0, 35); // First 15 columns
 
                 // Custom titles for each column
@@ -452,7 +473,7 @@ export class CourseListComponent implements OnInit {
 
                     'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 
-                    'FOS_DEFAULT_CREDITS2', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'Error Message'];
+                    'FOS_DEFAULT_CREDITS2', 'MIN_CT', 'MAX_CT', 'MAX_CT'];
 
                 const columnTitles2 = ['ID', 'OFFERING_TEMPLATE_NO',
                     'VERSION', 'TITLE',
@@ -473,8 +494,8 @@ export class CourseListComponent implements OnInit {
 
                 // DELIVERY_TYPE1	DT_DURATION1	FIELD_OF_STUDY1	FOS_DEFAULT_CREDITS1	FIELD_OF_STUDY2	FOS_DEFAULT_CREDITS2	MIN_CT	MAX_CT	MAX_CT
 
-                const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
-                const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
+                //   const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
+                //const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
 
 
 
@@ -491,17 +512,31 @@ export class CourseListComponent implements OnInit {
                 // let filteredData2 = excelData2.filter((row: string[]) => row[34].trim() !== "");
 
 
-                let filteredData1 = excelData1.filter((row: string[]) => {
-                    const value = row[34]?.trim(); // Access column number 35 and trim the value
-                    return value === "" || value === null; // Filter empty string values and null values
-                });
+                // let filteredData1 = excelData1.filter((row: string[]) => {
+                //     const value = row[34]?.trim(); // Access column number 35 and trim the value
+                //     return value === "" || value === null; // Filter empty string values and null values
+                // });
 
-                let filteredData2 = excelData2.filter((row: string[]) => {
-                    const value = row[34]?.trim(); // Access column number 35 and trim the value
-                    return value !== "" && value !== null; // Filter non-empty string values and non-null values
-                });
+                // let filteredData2 = excelData2.filter((row: string[]) => {
+                //     const value = row[34]?.trim(); // Access column number 35 and trim the value
+                //     return value !== "" && value !== null; // Filter non-empty string values and non-null values
+                // });
 
 
+                //2
+                const excelDataWithErrorMessageNull = [];
+                const excelDataWithErrorMessageNotNull = [];
+
+                for (let i = 0; i < courseData.length; i++) {
+                    const ErrorMessage = courseData[i]['ErrorMessage'];
+                    const rowData = headers2.map((key, index) => columnTitles2[index] ? courseData[i][key] : '');
+
+                    if (ErrorMessage === null || ErrorMessage.trim() === '') {
+                        excelDataWithErrorMessageNull.push(rowData);
+                    } else {
+                        excelDataWithErrorMessageNotNull.push(rowData);
+                    }
+                }
 
 
 
@@ -533,8 +568,8 @@ export class CourseListComponent implements OnInit {
                 const fileName1 = 'Focus_Records_' + myDate + '_' + random + '.xlsx';
                 const fileName2 = 'Focus_ErrorRecords_' + myDate + '_' + random + '.xlsx';
 
-                const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...filteredData1]);
-                const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...filteredData2]);
+                const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...excelDataWithErrorMessageNull]);
+                const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...excelDataWithErrorMessageNotNull]);
 
                 // Set column widths
                 const columnWidths1 = headers1.map(() => ({ width: 40 }));
@@ -544,8 +579,8 @@ export class CourseListComponent implements OnInit {
 
 
                 const confirmMessage = `<br>` +
-                    `Success Records Count: ${filteredData1.length}<br><br>` +
-                    `Error Records Count: ${filteredData2.length}`;
+                    `Success Records Count: ${excelDataWithErrorMessageNull.length}<br><br>` +
+                    `Error Records Count: ${excelDataWithErrorMessageNotNull.length}`;
 
                 bootbox.alert({
 
@@ -556,12 +591,12 @@ export class CourseListComponent implements OnInit {
                     centerVertical: true,
 
                     callback: () => {
-                        if (filteredData1.length > 0) {
+                        if (excelDataWithErrorMessageNull.length > 0) {
                             const workbook1 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook1, worksheet1, worksheetName1);
                             XLSX.writeFile(workbook1, fileName1);
                         }
-                        if (filteredData2.length > 0) {
+                        if (excelDataWithErrorMessageNotNull.length > 0) {
                             const workbook2 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
                             XLSX.writeFile(workbook2, fileName2);
@@ -610,15 +645,15 @@ export class CourseListComponent implements OnInit {
             this.downloadExcelService.getAllCoursesForClarizen(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
-                const headers1 = Object.keys(courseData[0]).slice(0, 17); // First 16 columns
-                const headers2 = Object.keys(courseData[0]).slice(0, 17); // First 17 columns
+                const headers1 = Object.keys(courseData[0]).slice(0, 18); // First 18 columns
+                const headers2 = Object.keys(courseData[0]).slice(0, 19); // First 19 columns
 
                 // Custom titles for each column
                 const columnTitles1 = ['Name', 'Business Relationship Director', 'Owner',
                     'Course Sponser', ' Description', 'InstructionalDesigner(s)', 'Lead SMP', 'ProgramType',
                     'Delivery  Type(Single Pick)', 'CPE creadits', 'Course #',
                     'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort',
-                    'Start Date', 'S2URl', 'FocusTemplateName ', 'ErrorMessage'];
+                    'Start Date', 'S2URl', 'FocusTemplateName '];
 
                 const columnTitles2 = ['Name', 'Business Relationship Director', 'Owner',
                     'Course Sponser', ' Description', 'InstructionalDesigner', 'Lead SMP', 'ProgramType',
@@ -627,27 +662,40 @@ export class CourseListComponent implements OnInit {
                     , 'S2URl', 'FocusTemplateName', 'ErrorMessage'];
 
 
-                const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
-                const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
+                //   const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
+                // const excelData2 = courseData.map((obj: any) => headers2.map((key, index) => columnTitles2[index] ? obj[key] : ''));
 
-                const filteredData1 = excelData1.filter((obj: any) => obj[16] == null);
-                const filteredData2 = excelData2.filter((obj: any) => obj[16] !== null);
+                //const filteredData1 = excelData1.filter((obj: any) => obj[17] === null);
+                // const filteredData2 = excelData2.filter((obj: any) => obj[17] !== null);
 
                 // let filteredData1 = excelData1.filter((row: string[]) => row[17].trim() === "");
                 // let filteredData2 = excelData2.filter((row: string[]) => row[17].trim() !== "");
 
 
 
-                // let filteredData1 = excelData1.filter((row: string[]) => {
-                //     const value = row[16]?.trim();
+                // let filteredData1 = excelData1.filter((row: any[]) => {
+                //     const value = row[17]?.trim();
                 //     return value === "" || value == null; // Filter empty string values and null values
                 // });
 
-                // let filteredData2 = excelData2.filter((row: string[]) => {
-                //     const value = row[16]?.trim();
-                //     return value !== "" && value !== null; // Filter non-empty string values and non-null values
+                // let filteredData2 = excelData2.filter((row: any[]) => {
+                //     const value = row[17]?.trim();
+                //     return value !== "" || value !== null; // Filter non-empty string values and non-null values
                 // });
 
+                const excelDataWithErrorMessageNull = [];
+                const excelDataWithErrorMessageNotNull = [];
+
+                for (let i = 0; i < courseData.length; i++) {
+                    const ErrorMessage = courseData[i]['ErrorMessage'];
+                    const rowData = headers2.map((key, index) => columnTitles2[index] ? courseData[i][key] : '');
+
+                    if (ErrorMessage === null || ErrorMessage.trim() === '') {
+                        excelDataWithErrorMessageNull.push(rowData);
+                    } else {
+                        excelDataWithErrorMessageNotNull.push(rowData);
+                    }
+                }
 
                 function generateRandom(maxLimit = 100) {
                     let rand = Math.random() * maxLimit;
@@ -671,8 +719,8 @@ export class CourseListComponent implements OnInit {
                 const fileName2 = 'Clarizen_ErrorRecords_' + myDate + '_' + random + '.xlsx';
 
 
-                const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...excelData1]);
-                const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...excelData2]);
+                const worksheet1 = XLSX.utils.aoa_to_sheet([columnTitles1, ...excelDataWithErrorMessageNull]);
+                const worksheet2 = XLSX.utils.aoa_to_sheet([columnTitles2, ...excelDataWithErrorMessageNotNull]);
 
                 // Set column widths
                 const columnWidths1 = headers1.map(() => ({ width: 40 }));
@@ -681,8 +729,8 @@ export class CourseListComponent implements OnInit {
                 worksheet2['!cols'] = columnWidths2;
 
                 const confirmMessage = `<br><br>` +
-                    `Success Records Count: ${filteredData1.length}<br><br>` +
-                    `Error Records Count: ${filteredData2.length}`;
+                    `Success Records Count: ${excelDataWithErrorMessageNull.length}<br><br>` +
+                    `Error Records Count: ${excelDataWithErrorMessageNotNull.length}`;
                 bootbox.alert({
                     size: "heigh",
                     title: "Export RDI for Clarizen -  File Download is in Progress.",
@@ -692,12 +740,12 @@ export class CourseListComponent implements OnInit {
                     centerVertical: true,
 
                     callback: () => {
-                        if (filteredData1.length > 0) {
+                        if (excelDataWithErrorMessageNull.length > 0) {
                             const workbook1 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook1, worksheet1, worksheetName1);
                             XLSX.writeFile(workbook1, fileName1);
                         }
-                        if (filteredData2.length > 0) {
+                        if (excelDataWithErrorMessageNotNull.length > 0) {
                             const workbook2 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
                             XLSX.writeFile(workbook2, fileName2);
@@ -763,11 +811,38 @@ export class CourseListComponent implements OnInit {
         if (filteredData) {
             var courseData: any = filteredData;
             console.log(courseData)
-            const columnIndices = [2, 1, 10, 27, 63, 12, 6, 8, 37, 56, 5, 7, 17, 21, 26, 57
-            ]; // Array of column indices to include
-            const headers = columnIndices.map(index => Object.keys(courseData[0])[index]);
-            const excelData = courseData.map((obj: any) => columnIndices.map(index => obj[Object.keys(obj)[index]]));
 
+
+
+            const columnTitles = [
+                'Course ID',
+                'Course Name',
+                'Target Audience', 'First Delivery Date', 'FOS',
+                'Estimated CPE', 'Skill', 'Program Type', 'Delivery Type',
+                'L&D Intake Owner', 'Program Knowledge Level', 'Instructional Designer',
+                'Project Manager Contact', 'Competency ', 'Industry', 'Course Sponsor',
+                'Vendor', 'ServiceNow ID', 'SG/SL/SN sponsor', 'Duration', 'Domain', 'Status '
+
+            ];
+            const headers = columnTitles.slice(1, 24); // Limiting to 64 columns, change as needed
+
+            const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
+
+
+            // const columnIndices = [2, 1, 10, 27, 63, 12, 6, 58, 24, 25, 55, 8, 37, 56, 5, 7, 17, 20, 21, 62, 26, 43, 57];
+            // const columnTitles = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w'];
+            // const headers = columnIndices.map(index => columnTitles[index]);
+            // const excelData = courseData.map((obj: any) => columnIndices.map(index => obj[Object.keys(obj)[index]]));
+
+
+            //-----method 2----
+            // const columnIndices = [2, 1, 10, 27, 63, 12, 6, 58, 24, 25, 55, 8, 37, 56, 5, 7, 17, 20, 21, 62, 26, 43, 57
+            // ]; // Array of column indices to include
+            // const headers = columnIndices.map(index => Object.keys(courseData[0])[index]);
+            // const excelData = courseData.map((obj: any) => columnIndices.map(index => obj[Object.keys(obj)[index]]));
+
+
+            // method 1 ---
             // var courseData: any = filteredData;
             // const headers = Object.keys(courseData[0]).slice(1, 65);
             // const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));

@@ -44,10 +44,10 @@ namespace AdvisoryDatabase.Framework.Entities
         public string DeliveryType { get; set; }
         public string Duration { get; set; }
         public string FieldOfStudy1 { get; set; }
-        public string FOSCredit1 { get; set; } //FOS credit..?
+        public string FOSCredit1 { get; set; } 
         public string FieldOfStudy2 { get; set; }
 
-        public string FOSCredit2 { get; set; }//FOS credit..? //FOSCredit
+        public string FOSCredit2 { get; set; }
 
         public string MinimumAttendeeCount { get; set; }
 

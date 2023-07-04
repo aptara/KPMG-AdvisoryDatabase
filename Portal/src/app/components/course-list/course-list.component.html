@@ -1,14 +1,16 @@
 <div class="card" style="overflow-x: auto; ">
-    <p-table #dt1 [value]="CourseData" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true" scrollHeight="200"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    <p-table #dt1 [value]="CourseList" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[{showAll: 'All'},100, 200, 500 ]" [loading]="loading" [paginator]="true"
+        scrollHeight="200" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [tableStyle]="{'min-height': '30rem'}"
-        [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName', 'LDIntakeOwner', 'ProjectManagerContact', 'CourseSponsor', 'DeploymentFiscalYear']">
+        [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName', 'TargetAudience', 'FirstDeliveryDate',
+         'EstimatedCPE','ProgramKnowledgeLeveltext', 'CompetencyText','InstructionalDesignertext', 'ProgramTypeText', 'DeliveryTypeText','LDIIntakeOwnerText','IndustryMasterID', 'ProjectManagerContactMasterText', 'CourseSponsor','Vendor','ServiceNowID', 'Duration','Domain',  'FieldOfStudyMasterID','StatusText',  'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
-                <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                <!-- <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
                     selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}"
-                    placeholder="Choose Columns"></p-multiSelect>
+                    placeholder="Choose Columns"></p-multiSelect> -->
+                <input type="checkbox">Wrap Text
                 <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
                     (click)="clear(dt1)"></button> -->
                 <button pButton class="btn-excel-width" (click)=" UnlockCourse()">Unlock Course</button>
@@ -68,115 +70,124 @@
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Target Audience
-                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="TargetAudience" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         First Delivery Date
-                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="FirstDeliveryDate" display="menu"></p-columnFilter>
                     </div>
                 </th>
+                <!-- <th>
+                    <div class="flex align-items-center sticky-header">
+                        FOS
+                        <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
+                    </div>
+                </th> -->
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Estimated CPE
-                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="EstimatedCPE" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <th>
+                <!-- <th>
                     <div class="flex align-items-center sticky-header">
                         Skill
-                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
                     </div>
-                </th>
+                </th> -->
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Program Type
-                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="ProgramTypeText " display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Delivery Type
-                        <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="DeliveryTypeText" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         L&D Intake Owner
-                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="LDIIntakeOwnerText" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Program Knowladge Level
-                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="ProgramKnowledgeLeveltext" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Instructional Designer
-                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th>
-                    <div class="flex align-items-center sticky-header">
-                        Competency
-                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
-                    </div>
-                </th>
-                <th>
-                    <div class="flex align-items-center sticky-header">
-                        Industry
-                        <p-columnFilter type="text" field="LDIntakeOwner" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="InstructionalDesignertext" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Project Manager Contact
-                        <p-columnFilter type="text" field="ProjectManagerContact" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="ProjectManagerContactMasterText"
+                            display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
+                        Competency
+                        <p-columnFilter type="text" field="CompetencyText" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <!-- <th>
+                    <div class="flex align-items-center sticky-header">
+                        Industry
+                        <p-columnFilter type="text" field="IndustryText" display="menu"></p-columnFilter>
+                    </div>
+                </th> -->
+
+                <th>
+                    <div class="flex align-items-center sticky-header">
                         Course Sponsor
-                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="CourseSponsor" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Vendor
-                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="Vendor" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         ServiceNowID
-                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="ServiceNowID" display="menu"></p-columnFilter>
                     </div>
                 </th>
+                <!-- <th>
+                    <div class="flex align-items-center sticky-header">
+                        SG/SL/SN sponsor
+                        <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
+                    </div>
+                </th> -->
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Duration
-                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="Duration" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Domain
-                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="Domain" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <th>
-                    <div class="flex align-items-center sticky-header">
-                        Field Of Study
-                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
-                    </div>
-                </th>
+
                 <th>
                     <div class="flex align-items-center sticky-header">
                         Project Status
-                        <p-columnFilter type="text" field="DeploymentFiscalYear" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="StatusText" display="menu"></p-columnFilter>
                     </div>
                 </th>
             </tr>
@@ -218,36 +229,41 @@
                 <td>
                     {{ course.FirstDeliveryDate }}
                 </td>
+                <!-- <td>
+                    {{Course.FOS}}
+                </td> -->
                 <td>
                     {{ course.EstimatedCPE }}
                 </td>
+                <!--   <td>
+                    {{ course.Skilltext }}
+                </td>-->
                 <td>
-                    {{ course.SkillMasterID }}
+                    {{ course.ProgramTypeText }}
                 </td>
                 <td>
-                    {{ course.ProgramTypeID }}
-                </td>
-                <td>
-                    {{ course.DeliveryTypeID }}
+                    {{ course.DeliveryTypeText }}
                 </td>
                 <td>
                     {{ course.LDIIntakeOwnerText }}
                 </td>
                 <td>
-                    {{ course.InstructionalDesigner }}
+                    {{ course.ProgramKnowledgeLeveltext }}
                 </td>
                 <td>
-                    {{ course.CompentencyMasterID }}
-                </td>
-                <td>
-                    {{ course.IndustryMasterID }}
-                </td>
-                <td>
-                    {{ course.ProgramKnowledgeLevelMasterID }}
+                    {{ course.InstructionalDesignertext }}
                 </td>
                 <td>
                     {{ course.ProjectManagerContactMasterText }}
                 </td>
+                <td>
+                    {{ course.CompetencyText }}
+                </td>
+                <!-- <td>
+                    {{ course.IndustryText }}
+                </td> -->
+
+
                 <td>
                     {{ course.CourseSponsor }}
                 </td>
@@ -257,15 +273,16 @@
                 <td>
                     {{ course.ServiceNowID }}
                 </td>
+                <!-- <td>
+                    {{course.SGSNSL}}
+                </td> -->
                 <td>
                     {{ course.Duration }}
                 </td>
                 <td>
                     {{ course.FocusDomain }}
                 </td>
-                <td>
-                    {{ course.FieldOfStudyMasterID }}
-                </td>
+
                 <td>
                     {{ course.StatusText }}
                 </td>
