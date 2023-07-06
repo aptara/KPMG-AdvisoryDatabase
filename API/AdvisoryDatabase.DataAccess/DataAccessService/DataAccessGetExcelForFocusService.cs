@@ -63,26 +63,26 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
 
                          CourseMasterID = Int32.Parse(row.ReadString("CourseMasterID")),
-                         FORDLSONLY = row.ReadString("FORDLSONLY"),
-                         CourseID = row.ReadString("CourseID"),
+                         ID = row.ReadString("ID"),
+                        // CourseID = row.ReadString("CourseID"),
                          Version = row.ReadString("Version"),
 
                          CourseName = row.ReadString("CourseName"),
 
-                         FocusDomain = row.ReadString("FocusDomain"),
+                         CourseDomain = row.ReadString("CourseDomain"),
 
-                         FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
+                         AvailableFrom = row.ReadString("AvailableFrom"),
 
-                         FocusDiscFrom = row.ReadString("FocusDiscFrom"),
+                         DiscontinuedFrom = row.ReadString("DiscontinuedFrom"),
 
 
                          Currency = row.ReadString("Currency"),
                          Price = row.ReadString("Price"),
                       
                          CourseOverviewObjective = row.ReadString("CourseOverviewObjective"),
-                        
-                         FocusDisplayedToLearner = row.ReadString("FocusDisplayedToLearner"),
-                         DisplayCallCenter = row.ReadString("DisplayCallCenter"),
+
+                         DisplaytoLearner = row.ReadString("DisplaytoLearner"),
+                         DisplaytoCallCenter = row.ReadString("DisplaytoCallCenter"),
                          AudienceType1 = row.ReadString("AudienceType1"),
                          AudienceType2 = row.ReadString("AudienceType2"),
                          Vendor = row.ReadString("Vendor"),
@@ -96,29 +96,26 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          FoucsCourseOwner1 = row.ReadString("FoucsCourseOwner1"),
                          FocusCourseOwner2 = row.ReadString("FocusCourseOwner2"),
                          PrerequisiteCourseID1 = row.ReadString("PrerequisiteCourseID1"),
+                         PrerequisiteCourseID2 = row.ReadString("PrerequisiteCourseID2"),
                          EquivalentCourseID1 = row.ReadString("EquivalentCourseID1"),
+                         EquivalentCourseID2 = row.ReadString("EquivalentCourseID2"),
                          DeliveryType = row.ReadString("DeliveryType"),
                          Duration = row.ReadString("Duration"),
                          FieldOfStudy1 = row.ReadString("FieldOfStudy1"),
                          FOSCredit1 = row.ReadString("FOSCredit1"),
                          FieldOfStudy2 = row.ReadString("FieldOfStudy2"),
                          FOSCredit2 = row.ReadString("FOSCredit2"),
+                         FieldOfStudy3 = row.ReadString("FieldOfStudy3"),
                          MinimumAttendeeCount = row.ReadString("MinimumAttendeeCount"),
                          MaximumAttendeeCount = row.ReadString("MaximumAttendeeCount"),
                          MaximumAttendeeWaitlist = row.ReadString("MaximumAttendeeWaitlist"),
-                         /*
-                                                 
-                                                 
-                                                 
-                                                  PrerequisiteCourseID2 = row.ReadString("PrerequisiteCourseID2"),
-                                                 
-                                                  EquivalentCourseID2 = row.ReadString("EquivalentCourseID2"),
-       
-                                                  FocusTemplateName = row.ReadString("FocusTemplateName"),
-                                                  ErrorMessage = row.ReadString("ErrorMessage"),
+                        
+                        
+                         FocusTemplateName = row.ReadString("FocusTemplateName"),
+                         ErrorMessage = row.ReadString("ErrorMessage"),
+                         OFFERING_TEMPLATE_NO = row.ReadString("OFFERING_TEMPLATE_NO"),
+                         IsAllowedToFocusRDI = row.ReadString("IsAllowedToFocusRDI")
 
-                                                  IsAllowedToFocusRDI = row.ReadString("IsAllowedToFocusRDI")
-                                              */
 
                      }).ToList();
 
@@ -132,20 +129,18 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                 CourseMasterID = Int32.Parse(data.ReadString("CourseMasterID")),
 
-
-                FORDLSONLY = data.ReadString("FORDLSONLY"),
-                CourseID = data.ReadString("CourseID"),
+                ID = data.ReadString("ID"),
+                //CourseID = data.ReadString("CourseID"),
                 Version = data.ReadString("Version"),
-
                 CourseName = data.ReadString("CourseName"),
-                FocusDomain = data.ReadString("FocusDomain"),
-                FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
-                FocusDiscFrom = data.ReadString("FocusDiscFrom"),
+                CourseDomain = data.ReadString("CourseDomain"),
+                AvailableFrom = data.ReadString("AvailableFrom"),
+                DiscontinuedFrom = data.ReadString("DiscontinuedFrom"),
                 Currency = data.ReadString("Currency"),
                 Price = data.ReadString("Price"),        
                 CourseOverviewObjective = data.ReadString("CourseOverviewObjective"),
-                FocusDisplayedToLearner = data.ReadString("FocusDisplayedToLearner"),
-                DisplayCallCenter = data.ReadString("DisplayCallCenter"),
+                DisplaytoLearner = data.ReadString("DisplaytoLearner"),
+                DisplaytoCallCenter = data.ReadString("DisplaytoCallCenter"),
                 AudienceType1 = data.ReadString("AudienceType1"),
                 AudienceType2 = data.ReadString("AudienceType2"),
                 Vendor = data.ReadString("Vendor"),
@@ -158,33 +153,31 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 FoucsCourseOwner1 = data.ReadString("FoucsCourseOwner1"),
                 FocusCourseOwner2 = data.ReadString("FocusCourseOwner2"),
                 PrerequisiteCourseID1 = data.ReadString("PrerequisiteCourseID1"),
+                PrerequisiteCourseID2 = data.ReadString("PrerequisiteCourseID2"),
                 EquivalentCourseID1 = data.ReadString("EquivalentCourseID1"),
+                EquivalentCourseID2 = data.ReadString("EquivalentCourseID2"),
                 DeliveryType = data.ReadString("DeliveryType"),
                 Duration = data.ReadString("Duration"),
                 FieldOfStudy1 = data.ReadString("FieldOfStudy1"),
                 FOSCredit1 = data.ReadString("FOSCredit1"),
                 FieldOfStudy2 = data.ReadString("FieldOfStudy2"),
                 FOSCredit2 = data.ReadString("FOSCredit2"),
+                FieldOfStudy3 = data.ReadString("FieldOfStudy3"),
+                FOSCredit3 = data.ReadString("FOSCredit3"),
+                FieldOfStudy4 = data.ReadString("FieldOfStudy4"),
+                FOSCredit4 = data.ReadString("FOSCredit4"),
                 MinimumAttendeeCount = data.ReadString("MinimumAttendeeCount"),
                 MaximumAttendeeCount = data.ReadString("MaximumAttendeeCount"),
                 MaximumAttendeeWaitlist = data.ReadString("MaximumAttendeeWaitlist"),
-
-                /*
-                               
-                              
-                             
-                                PrerequisiteCourseID2 = data.ReadString("PrerequisiteCourseID2"),
-                              
-                                EquivalentCourseID2 = data.ReadString("EquivalentCourseID2"),
-
-
-                    
-                                FocusTemplateName = data.ReadString("FocusTemplateName"),
-                                ErrorMessage = data.ReadString("ErrorMessage"),
-                                IsAllowedToFocusRDI = data.ReadString("IsAllowedToFocusRDI"),
-                                *//* CourseMasterIDs = data.ReadString("CourseMasterIDs")*//*
+               
+               
+                FocusTemplateName = data.ReadString("FocusTemplateName"),
+                ErrorMessage = data.ReadString("ErrorMessage"),
+                OFFERING_TEMPLATE_NO = data.ReadString("OFFERING_TEMPLATE_NO"),
+                IsAllowedToFocusRDI = data.ReadString("IsAllowedToFocusRDI")
+                                //* CourseMasterIDs = data.ReadString("CourseMasterIDs")*//*
                                 //SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional")
-                */
+                
 
             };
         }

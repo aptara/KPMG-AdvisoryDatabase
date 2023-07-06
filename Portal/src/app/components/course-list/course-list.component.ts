@@ -53,8 +53,8 @@ export class CourseListComponent implements OnInit {
 
     ngOnInit(): void {
         this.hasPermission = this.userservice.GetUserPermission();
-        // this.GetAllCourse()
-        // this.GetCourseList()
+        this.GetAllCourse()
+        this.GetCourseList()
         this.ExcelOfFilter()
         this.ExcelOfClarizen()
         //this.ExcelOfFocus()
@@ -90,16 +90,16 @@ export class CourseListComponent implements OnInit {
             console.log(this.datac)
         });
     }
-    // GetAllCourse() {
-    //     this.loading = true;
-    //     return this.service.getAllCourses().subscribe((data: any) => {
-    //         console.log(data)
-    //         this.loading = false;
-    //         if (data.Success) {
-    //             this.CourseData = data.Data;
-    //         }
-    //     });
-    // }
+    GetAllCourse() {
+        this.loading = true;
+        return this.service.getAllCourses().subscribe((data: any) => {
+            console.log(data)
+            this.loading = false;
+            if (data.Success) {
+                this.CourseData = data.Data;
+            }
+        });
+    }
 
     clear(table: Table) {
         table.clear();
@@ -148,8 +148,30 @@ export class CourseListComponent implements OnInit {
         this.downloadExcelService.getAllCoursesForDataOfDeployment().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
-                const headers = Object.keys(courseData[0]).slice(1, 23);
+                const headers = Object.keys(courseData[0]).slice(1, 57);//78 final
+
+
+                const columnTitles = [
+                    'Course ID', 'Course Name', 'Deployment Fiscal Year', 'Competency', 'Skill', 'Industry', 'Program Knowledge Level',
+                    'Course Overview & Objective', 'Target Audience', 'Audience Level', 'Estimated CPE', 'Special Notice', 'Function Name',
+
+                    'Course Sponsor', 'Which SGSLSNSponsor Learning ..?', 'Subject Matter Professional', 'Vendor', 'ServiceNowID', 'Descriptions',
+
+                    'Is Regulatoryor Legal Requirement..?', 'Program Type', 'Delivery Type', 'Duration', 'First Delivery Date', 'Maximum Attendee Count',
+                    'Minimum Attendee Count', 'Maximum Attendee Waitlist', 'Material', 'Collateral', 'Room Set Up Comments', 'Deployment Facilitator Consideration', 'L & D Intake Owner',
+                    'Project Manager Contact', 'Instructional Designer ', 'Level Of Effort', 'Course Owner 1', ' Course Owner 2',
+                    'Course Notes', 'Price', 'Currency', 'Display Call Center',
+
+                    'Status', 'OFFERING_TEMPLATE_NO', 'Development Year', 'Is RecordLocked..?', 'Clarizen Start Date', 'Course Record URL',
+                    'Focus Domain', 'Focus Retired', 'Focus Disc From', 'Focus Displayed To Learner', 'FOSvalues', 'SGSLSNValues', 'PrerequisiteCourseID', 'EquivalentCourseID', 'AudienceType'
+
+                ]
+
+
+
+
                 const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
+                excelData.unshift(columnTitles);
                 function generateRandom(maxLimit = 100) {
                     let rand = Math.random() * maxLimit;
                     console.log(rand); // say 99.81321410836433
@@ -169,8 +191,8 @@ export class CourseListComponent implements OnInit {
 
                 const worksheetName = 'Data All_Course_Records_ Field';
 
-
-                const worksheet = XLSX.utils.aoa_to_sheet([headers, ...excelData]);
+                const worksheet = XLSX.utils.aoa_to_sheet([...excelData]);
+                //const worksheet = XLSX.utils.aoa_to_sheet([headers, ...excelData]);
 
                 // Set the color to blue
                 const headerCellStyle = {
@@ -185,7 +207,7 @@ export class CourseListComponent implements OnInit {
                 });
 
                 // Set column widths
-                const columnWidths = headers.map(() => ({ width: 24 }));
+                const columnWidths = headers.map(() => ({ width: 35 }));
                 worksheet['!cols'] = columnWidths;
 
 
@@ -411,7 +433,7 @@ export class CourseListComponent implements OnInit {
     toggleSelectAll() {
         if (this.selectAll) {
             // Add all course IDs to the selectedCourseIds array
-            this.selectedCourseIds = this.CourseData.map((course: { CourseMasterID: any; }) => course.CourseMasterID);
+            this.selectedCourseIds = this.CourseList.map((course: { CourseMasterID: any; }) => course.CourseMasterID);
         } else {
             // Clear the selectedCourseIds array to unselect all checkboxes
             this.selectedCourseIds = [];
@@ -458,8 +480,8 @@ export class CourseListComponent implements OnInit {
             this.downloadExcelService.getAllCoursesForDataOfFocus(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
-                const headers1 = Object.keys(courseData[0]).slice(0, 34); // First 10 columns
-                const headers2 = Object.keys(courseData[0]).slice(0, 35); // First 15 columns
+                const headers1 = Object.keys(courseData[0]).slice(0, 41); // First 10 columns
+                const headers2 = Object.keys(courseData[0]).slice(0, 41); // First 15 columns
 
                 // Custom titles for each column
                 const columnTitles1 = ['ID', 'OFFERING_TEMPLATE_NO',
@@ -469,11 +491,12 @@ export class CourseListComponent implements OnInit {
 
                     'DISPLAY_LEARNER', 'DISPLAY_CALL_CENTER', ' AUDIENCE_TYPE1', 'AUDIENCE_TYPE2', 'VENDOR', 'CUSTOM0', 'CUSTOM1', 'CUSTOM2',
 
-                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'EQUIVALENT1', 'DELIVERY_TYPE1', 'DT_DURATION1',
+                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1', 'DT_DURATION1',
 
                     'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 
-                    'FOS_DEFAULT_CREDITS2', 'MIN_CT', 'MAX_CT', 'MAX_CT'];
+                    'FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3', 'FOS_DEFAULT_CREDITS3', 'FIELD_OF_STUDY4',
+                    'FOS_DEFAULT_CREDITS4', 'MIN_CT', 'MAX_CT', 'MAX_CT'];
 
                 const columnTitles2 = ['ID', 'OFFERING_TEMPLATE_NO',
                     'VERSION', 'TITLE',
@@ -482,11 +505,12 @@ export class CourseListComponent implements OnInit {
 
                     'DISPLAY_LEARNER', 'DISPLAY_CALL_CENTER', ' AUDIENCE_TYPE1', 'AUDIENCE_TYPE2', 'VENDOR', 'CUSTOM0', 'CUSTOM1', 'CUSTOM2',
 
-                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'EQUIVALENT1', 'DELIVERY_TYPE1', 'DT_DURATION1',
+                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1', 'DT_DURATION1',
 
                     'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 
-                    'FOS_DEFAULT_CREDITS2', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'Error Message'];
+                    'FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3', 'FOS_DEFAULT_CREDITS3', 'FIELD_OF_STUDY4',
+                    'FOS_DEFAULT_CREDITS4', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'Error Message'];
 
                 // ID	OFFERING_TEMPLATE_NO	VERSION	TITLE	DOMAIN	AVAIL_FROM	DISC_FROM	CURRENCY	PRICE	DESCRIPTION	DISPLAY_LEARNER	DISPLAY_CALL_CENTER
 
@@ -537,12 +561,6 @@ export class CourseListComponent implements OnInit {
                         excelDataWithErrorMessageNotNull.push(rowData);
                     }
                 }
-
-
-
-
-
-
 
 
 
@@ -814,26 +832,30 @@ export class CourseListComponent implements OnInit {
 
 
 
-            const columnTitles = [
-                'Course ID',
-                'Course Name',
-                'Target Audience', 'First Delivery Date', 'FOS',
-                'Estimated CPE', 'Skill', 'Program Type', 'Delivery Type',
-                'L&D Intake Owner', 'Program Knowledge Level', 'Instructional Designer',
-                'Project Manager Contact', 'Competency ', 'Industry', 'Course Sponsor',
-                'Vendor', 'ServiceNow ID', 'SG/SL/SN sponsor', 'Duration', 'Domain', 'Status '
+            // const columnTitles = [
+            //     'Course ID',
+            //     'Course Name',
+            //     'Target Audience', 'First Delivery Date', 'FOS1','FOS2','FOS3','FOS4',
+            //     'Estimated CPE', 'Skill', 'Program Type', 'Delivery Type',
+            //     'L&D Intake Owner', 'Program Knowledge Level', 'Instructional Designer',
+            //     'Project Manager Contact', 'Competency ',  'Course Sponsor',
+            //     'Vendor'
 
-            ];
-            const headers = columnTitles.slice(1, 24); // Limiting to 64 columns, change as needed
+            // ];
+            // const headers = columnTitles.slice(1, 24); // Limiting to 64 columns, change as needed
 
-            const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
+            // const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
+            /////-------////----
 
+            const columnIndices = [1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 34];//36-SGSLSN,37-FOS
+            const columnTitles = ['Course ID', 'Course Name', 'Target Audience', 'First Delivery Date',
+                'FOS ',
 
-            // const columnIndices = [2, 1, 10, 27, 63, 12, 6, 58, 24, 25, 55, 8, 37, 56, 5, 7, 17, 20, 21, 62, 26, 43, 57];
-            // const columnTitles = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w'];
-            // const headers = columnIndices.map(index => columnTitles[index]);
-            // const excelData = courseData.map((obj: any) => columnIndices.map(index => obj[Object.keys(obj)[index]]));
-
+                'Estimated CPE', 'Skill', 'Program Type', 'Delivery Type', 'LDIIntakeOwner', 'ProgramKnowledgeLevel',
+                'Instructional Designer', 'Project Manager Contact', 'Competency', 'Industry', 'CourseSponsor',
+                'Vendor', 'ServiceNowID', 'Duration', 'Focus Domain', 'Status', 'SGSNSL Sponsor'];
+            const headers = columnIndices.map(index => columnTitles[index]);
+            const excelData = courseData.map((obj: any) => columnIndices.map(index => obj[Object.keys(obj)[index]]));
 
             //-----method 2----
             // const columnIndices = [2, 1, 10, 27, 63, 12, 6, 58, 24, 25, 55, 8, 37, 56, 5, 7, 17, 20, 21, 62, 26, 43, 57
@@ -844,7 +866,7 @@ export class CourseListComponent implements OnInit {
 
             // method 1 ---
             // var courseData: any = filteredData;
-            // const headers = Object.keys(courseData[0]).slice(1, 65);
+            // const headers = Object.keys(courseData[0]).slice(1, 39); //39
             // const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
             function generateRandom(maxLimit = 100) {
                 let rand = Math.random() * maxLimit;

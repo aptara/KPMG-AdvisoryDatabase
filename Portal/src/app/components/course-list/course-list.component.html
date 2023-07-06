@@ -1,18 +1,21 @@
 <div class="card" style="overflow-x: auto; ">
     <p-table #dt1 [value]="CourseList" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[{showAll: 'All'},100, 200, 500 ]" [loading]="loading" [paginator]="true"
-        scrollHeight="200" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [tableStyle]="{'min-height': '30rem'}"
-        [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName', 'TargetAudience', 'FirstDeliveryDate',
-         'EstimatedCPE','ProgramKnowledgeLeveltext', 'CompetencyText','InstructionalDesignertext', 'ProgramTypeText', 'DeliveryTypeText','LDIIntakeOwnerText','IndustryMasterID', 'ProjectManagerContactMasterText', 'CourseSponsor','Vendor','ServiceNowID', 'Duration','Domain',  'FieldOfStudyMasterID','StatusText',  'DeploymentFiscalYear']">
+        [scrollable]="true" scrollHeight="200"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [tableStyle]="{'min-height': '30rem'}" [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName',
+        'TargetAudience', 'FirstDeliveryDate','Skilltext','ProgramType',
+         'EstimatedCPE','ProgramKnowledgeLeveltext', 'CompetencyText','InstructionalDesignertext',
+         'DeliveryType','LDIIntakeOwner','IndustryMasterID',
+         'ProjectManagerContactMasterText', 'CourseSponsor','Vendor','ServiceNowID', 'Duration','Domain',
+         'StatusText',  'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
                 <!-- <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
                     selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}"
                     placeholder="Choose Columns"></p-multiSelect> -->
-                <input type="checkbox">Wrap Text
-                <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
-                    (click)="clear(dt1)"></button> -->
+
+
                 <button pButton class="btn-excel-width" (click)=" UnlockCourse()">Unlock Course</button>
 
                 <button pButton class="btn-excel-width" (click)="downloadExceloffocusN()"
@@ -62,132 +65,131 @@
                     </div>
                 </th>
                 <th class="sticky-col fourth-col">
-                    <div class="flex align-items-center  sticky-header">
+                    <div class="flex align-items-center ">
                         Course Name
                         <p-columnFilter type="text" field="CourseName" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Target Audience
                         <p-columnFilter type="text" field="TargetAudience" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         First Delivery Date
                         <p-columnFilter type="text" field="FirstDeliveryDate" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <!-- <th>
-                    <div class="flex align-items-center sticky-header">
-                        FOS
-                        <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
-                    </div>
-                </th> -->
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
+                        FOS
+                        <p-columnFilter type="text" field="FOSvalues" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center ">
                         Estimated CPE
                         <p-columnFilter type="text" field="EstimatedCPE" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <!-- <th>
-                    <div class="flex align-items-center sticky-header">
+                <th>
+                    <div class="flex align-items-center ">
                         Skill
-                        <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="Skilltext" display="menu"></p-columnFilter>
                     </div>
-                </th> -->
+                </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Program Type
-                        <p-columnFilter type="text" field="ProgramTypeText " display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="ProgramType" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Delivery Type
-                        <p-columnFilter type="text" field="DeliveryTypeText" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="DeliveryType" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         L&D Intake Owner
-                        <p-columnFilter type="text" field="LDIIntakeOwnerText" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="LDIIntakeOwner" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Program Knowladge Level
-                        <p-columnFilter type="text" field="ProgramKnowledgeLeveltext" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="ProgramKnowledgeLevel" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Instructional Designer
-                        <p-columnFilter type="text" field="InstructionalDesignertext" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="InstructionalDesignerMaster" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Project Manager Contact
-                        <p-columnFilter type="text" field="ProjectManagerContactMasterText"
-                            display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="ProjectManagerContactMaster" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Competency
-                        <p-columnFilter type="text" field="CompetencyText" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="Competency" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <!-- <th>
-                    <div class="flex align-items-center sticky-header">
+                <th>
+                    <div class="flex align-items-center ">
                         Industry
                         <p-columnFilter type="text" field="IndustryText" display="menu"></p-columnFilter>
                     </div>
-                </th> -->
+                </th>
 
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Course Sponsor
                         <p-columnFilter type="text" field="CourseSponsor" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Vendor
                         <p-columnFilter type="text" field="Vendor" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center">
                         ServiceNowID
                         <p-columnFilter type="text" field="ServiceNowID" display="menu"></p-columnFilter>
                     </div>
                 </th>
-                <!-- <th>
-                    <div class="flex align-items-center sticky-header">
-                        SG/SL/SN sponsor
-                        <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
-                    </div>
-                </th> -->
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center">
+                        SG/SL/SN sponsor
+                        <p-columnFilter type="text" field="SGSLSNValues" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="flex align-items-center ">
                         Duration
                         <p-columnFilter type="text" field="Duration" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Domain
-                        <p-columnFilter type="text" field="Domain" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="FocusDomain" display="menu"></p-columnFilter>
                     </div>
                 </th>
 
                 <th>
-                    <div class="flex align-items-center sticky-header">
+                    <div class="flex align-items-center ">
                         Project Status
-                        <p-columnFilter type="text" field="StatusText" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="Status" display="menu"></p-columnFilter>
                     </div>
                 </th>
             </tr>
@@ -229,39 +231,39 @@
                 <td>
                     {{ course.FirstDeliveryDate }}
                 </td>
-                <!-- <td>
-                    {{Course.FOS}}
-                </td> -->
+                <td>
+                    {{course.FOSvalues}}
+                </td>
                 <td>
                     {{ course.EstimatedCPE }}
                 </td>
-                <!--   <td>
+                <td>
                     {{ course.Skilltext }}
-                </td>-->
-                <td>
-                    {{ course.ProgramTypeText }}
                 </td>
                 <td>
-                    {{ course.DeliveryTypeText }}
+                    {{ course.ProgramType }}
                 </td>
                 <td>
-                    {{ course.LDIIntakeOwnerText }}
+                    {{ course.DeliveryType }}
+                </td>
+                <td>
+                    {{ course.LDIIntakeOwner }}
                 </td>
                 <td>
                     {{ course.ProgramKnowledgeLeveltext }}
                 </td>
                 <td>
-                    {{ course.InstructionalDesignertext }}
+                    {{ course.InstructionalDesignerMaster }}
                 </td>
                 <td>
-                    {{ course.ProjectManagerContactMasterText }}
+                    {{ course.ProjectManagerContactMaster }}
                 </td>
                 <td>
-                    {{ course.CompetencyText }}
+                    {{ course.Competency }}
                 </td>
-                <!-- <td>
+                <td>
                     {{ course.IndustryText }}
-                </td> -->
+                </td>
 
 
                 <td>
@@ -273,9 +275,9 @@
                 <td>
                     {{ course.ServiceNowID }}
                 </td>
-                <!-- <td>
-                    {{course.SGSNSL}}
-                </td> -->
+                <td>
+                    {{course.SGSLSNValues}}
+                </td>
                 <td>
                     {{ course.Duration }}
                 </td>
@@ -284,7 +286,7 @@
                 </td>
 
                 <td>
-                    {{ course.StatusText }}
+                    {{ course.Status }}
                 </td>
 
             </tr>
@@ -296,31 +298,3 @@
         </ng-template>
     </p-table>
 </div>
-
-
-
-<!-- <div class="card">
-    <p-table [columns]="selectedColumns" [value]="products" [tableStyle]="{'min-width': '50rem'}">
-        <ng-template pTemplate="caption">
-            <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
-                selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}"
-                placeholder="Choose Columns"></p-multiSelect>
-        </ng-template>
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th>Code</th>
-                <th *ngFor="let col of columns">
-                    {{col.header}}
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product let-columns="columns">
-            <tr>
-                <td>{{product.code}}</td>
-                <td *ngFor="let col of columns">
-                    {{product[col.field]}}
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div> -->

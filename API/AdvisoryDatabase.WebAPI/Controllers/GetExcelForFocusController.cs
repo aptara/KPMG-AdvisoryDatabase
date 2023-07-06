@@ -38,7 +38,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 GetExcelForFocusInfo ObjInputParameters = new GetExcelForFocusInfo();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
-                ObjInputParameters.CourseID = courseId;
+               //ObjInputParameters.CourseID = courseId;
 
 
                 ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
