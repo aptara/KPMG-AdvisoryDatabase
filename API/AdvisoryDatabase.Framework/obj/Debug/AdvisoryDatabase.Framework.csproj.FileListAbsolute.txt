@@ -91,7 +91,6 @@ D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\AP
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.xml
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\bin\Debug\Microsoft.Practices.Unity.Interception.Configuration.xml
-D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.AssemblyReference.cache
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CoreCompileInputs.cache
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.csproj.CopyComplete
 D:\Pushpraj Jagadale\Project\KPMG\KPMG-AdvisoryDatabase\KPMG-AdvisoryDatabase\API\AdvisoryDatabase.Framework\obj\Debug\AdvisoryDatabase.Framework.dll

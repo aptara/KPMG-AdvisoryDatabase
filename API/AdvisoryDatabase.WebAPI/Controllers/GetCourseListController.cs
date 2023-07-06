@@ -78,7 +78,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofclarizen Method Start");
                 AdvisoryDatabase.Business.Controllers.GETExcelForClarizenFieldsController ObjBayDetai = new Business.Controllers.GETExcelForClarizenFieldsController();
                 ExcelForClarizen ObjInputParameters = new ExcelForClarizen();
-                *//* ObjInputParameters.LastUpdatedBy = 1;
+              
                  ObjInputParameters.IsActive = true;*//*
                 ObjBayDetai.ExcelforclarizenfeildsDetails(ObjInputParameters);
 

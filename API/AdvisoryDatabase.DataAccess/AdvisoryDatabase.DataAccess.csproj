@@ -55,6 +55,7 @@
     <Compile Include="DataAccessService\DataAccessAudienceLevelMappingService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseAudienceTypeMappingService.cs" />
     <Compile Include="DataAccessService\DataAccessCourseFunctionMappingService.cs" />
+    <Compile Include="DataAccessService\DataAccessCourseList.cs" />
     <Compile Include="DataAccessService\DataAccessFOCUSCourseOwnerMappingService.cs" />
     <Compile Include="DataAccessService\DataAccessAudienceTypeMappingService.cs" />
     <Compile Include="DataAccessService\DataAccessEquivalentCourseIDMappingService.cs" />
