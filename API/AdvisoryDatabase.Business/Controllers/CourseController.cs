@@ -3,9 +3,12 @@ using AdvisoryDatabase.Framework.Entities;
 using AdvisoryDatabase.Framework.Response;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 using Task = System.Threading.Tasks.Task;
 
 namespace AdvisoryDatabase.Business.Controllers
@@ -44,6 +47,7 @@ namespace AdvisoryDatabase.Business.Controllers
             try
             {
                 CourseDataService service = new CourseDataService();
+                course.CurrentData = ToXML(course);
                 course.CourseMasterID = service.Add(course);
                 SaveUpdateSkillMasterIDs(course);
                 SaveUpdateIndustries(course);
@@ -68,7 +72,8 @@ namespace AdvisoryDatabase.Business.Controllers
             try
             {
                 CourseDataService service = new CourseDataService();
-
+                course.CurrentData = ToXML(course);
+                course.PreviousData = ToXML(service.GetAll(course).SingleOrDefault());
                 service.Update(course);
                 SaveUpdateSkillMasterIDs(course);
                 SaveUpdateIndustries(course);
@@ -86,6 +91,19 @@ namespace AdvisoryDatabase.Business.Controllers
             {
                 var error = LogError(ex);
                 return Erroresponse<Course>(error);
+            }
+        }
+
+        public string ToXML(Object oObject)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlSerializer xmlSerializer = new XmlSerializer(oObject.GetType());
+            using (MemoryStream xmlStream = new MemoryStream())
+            {
+                xmlSerializer.Serialize(xmlStream, oObject);
+                xmlStream.Position = 0;
+                xmlDoc.Load(xmlStream);
+                return xmlDoc.InnerXml;
             }
         }
 

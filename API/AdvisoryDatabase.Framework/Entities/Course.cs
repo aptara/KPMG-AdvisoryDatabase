@@ -78,6 +78,8 @@ namespace AdvisoryDatabase.Framework.Entities
         public List<PrerequisiteCourseIDFormData> PrerequisiteCourseIDFormGroup { get; set; }
         public List<EquivalentCourseIDFormData> EquivalentCourseIDFormGroup { get; set; }
         public List<AudienceTypeFormData> AudienceTypeFormGroup { get; set; }
+        public string CurrentData { get; set; }
+        public string PreviousData { get; set; }
     }
 }
  

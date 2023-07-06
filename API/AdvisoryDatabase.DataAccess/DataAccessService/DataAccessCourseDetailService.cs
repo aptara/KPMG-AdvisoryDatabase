@@ -86,8 +86,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("InstructionalDesigner", instance.InstructionalDesigner));
                 parameters.Add(DbHelper.CreateParameter("LevelofEffortMasterId", instance.LevelofEffortMasterId));
                 parameters.Add(DbHelper.CreateParameter("CourseNotes", instance.CourseNotes));
-
-
+                parameters.Add(DbHelper.CreateParameter("CurrentData", instance.CurrentData));
+                parameters.Add(DbHelper.CreateParameter("PreviousData", instance.PreviousData));
             }
             else if (operation == OperationType.Delete)
             {
