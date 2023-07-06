@@ -18,7 +18,7 @@ export class CourseService {
     readonly updateCourseAPI = this.apiURL + "Course/AddEditCourse/";
     readonly deleteCourseAPI = this.apiURL + "Course/DeleteCourse/";
     readonly CourseListAPI = this.apiURL + "GetCourseList/CourseList";
-    // http://localhost:62220//api/GetCourseList/CourseList
+
 
 
     constructor(private http: HttpClient) {

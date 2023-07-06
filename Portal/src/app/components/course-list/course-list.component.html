@@ -1,8 +1,7 @@
 <div class="card" style="overflow-x: auto; ">
     <p-table #dt1 [value]="CourseList" dataKey="CourseMasterID" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[{showAll: 'All'},100, 200, 500 ]" [loading]="loading" [paginator]="true"
-        [scrollable]="true" scrollHeight="200"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,50,100,150,200]" [loading]="loading" [paginator]="true" [scrollable]="true"
+        scrollHeight="200" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [tableStyle]="{'min-height': '30rem'}" [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName',
         'TargetAudience', 'FirstDeliveryDate','Skilltext','ProgramType',
          'EstimatedCPE','ProgramKnowledgeLeveltext', 'CompetencyText','InstructionalDesignertext',
