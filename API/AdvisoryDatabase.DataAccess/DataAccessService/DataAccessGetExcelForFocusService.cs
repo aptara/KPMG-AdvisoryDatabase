@@ -87,7 +87,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          AudienceType2 = row.ReadString("AudienceType2"),
                          Vendor = row.ReadString("Vendor"),
                          FunctionName = row.ReadString("FunctionName"),
-                         DeploymentFiscalYear = row.ReadString("DeploymentFiscalYear"),
+                         DevelopmentYear = row.ReadString("DevelopmentYear"),
                          ProgramKnowledgeLevel = row.ReadString("ProgramKnowledgeLevel"),
                          EstimatedCPE = row.ReadString("EstimatedCPE"),
                          TargetAudience = row.ReadString("TargetAudience"),
@@ -96,9 +96,17 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          FoucsCourseOwner1 = row.ReadString("FoucsCourseOwner1"),
                          FocusCourseOwner2 = row.ReadString("FocusCourseOwner2"),
                          PrerequisiteCourseID1 = row.ReadString("PrerequisiteCourseID1"),
+                         PREREQUISITE_VERSION1 = row.ReadString("PREREQUISITE_VERSION1"),//
+                      
+                         
                          PrerequisiteCourseID2 = row.ReadString("PrerequisiteCourseID2"),
+                         PREREQUISITE_VERSION2 = row.ReadString("PREREQUISITE_VERSION2"),//
                          EquivalentCourseID1 = row.ReadString("EquivalentCourseID1"),
+
+                         EQUIVALENT_VERSION1 = row.ReadString("EQUIVALENT_VERSION1"),//
                          EquivalentCourseID2 = row.ReadString("EquivalentCourseID2"),
+
+                         EQUIVALENT_VERSION2 = row.ReadString("EQUIVALENT_VERSION2"),//
                          DeliveryType = row.ReadString("DeliveryType"),
                          Duration = row.ReadString("Duration"),
                          FieldOfStudy1 = row.ReadString("FieldOfStudy1"),
@@ -145,7 +153,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 AudienceType2 = data.ReadString("AudienceType2"),
                 Vendor = data.ReadString("Vendor"),
                 FunctionName = data.ReadString("FunctionName"),
-                DeploymentFiscalYear = data.ReadString("DeploymentFiscalYear"),
+                DevelopmentYear = data.ReadString("DevelopmentYear"),
                 ProgramKnowledgeLevel = data.ReadString("ProgramKnowledgeLevel"),
                 EstimatedCPE = data.ReadString("EstimatedCPE"),
                 TargetAudience = data.ReadString("TargetAudience"),
@@ -153,9 +161,22 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 FoucsCourseOwner1 = data.ReadString("FoucsCourseOwner1"),
                 FocusCourseOwner2 = data.ReadString("FocusCourseOwner2"),
                 PrerequisiteCourseID1 = data.ReadString("PrerequisiteCourseID1"),
+
+                PREREQUISITE_VERSION1 = data.ReadString("PREREQUISITE_VERSION1"),//
+
                 PrerequisiteCourseID2 = data.ReadString("PrerequisiteCourseID2"),
+
+                PREREQUISITE_VERSION2 = data.ReadString("PREREQUISITE_VERSION2"),//
+
                 EquivalentCourseID1 = data.ReadString("EquivalentCourseID1"),
+
+                EQUIVALENT_VERSION1 = data.ReadString("EQUIVALENT_VERSION1"),//
+
                 EquivalentCourseID2 = data.ReadString("EquivalentCourseID2"),
+
+                EQUIVALENT_VERSION2 = data.ReadString("EQUIVALENT_VERSION2"),//
+             
+           
                 DeliveryType = data.ReadString("DeliveryType"),
                 Duration = data.ReadString("Duration"),
                 FieldOfStudy1 = data.ReadString("FieldOfStudy1"),

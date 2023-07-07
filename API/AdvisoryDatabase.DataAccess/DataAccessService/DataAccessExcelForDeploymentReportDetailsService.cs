@@ -78,7 +78,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          LevelOfEffort = row.ReadString("LevelOfEffort"),
                          FoucsCourseOwner1 = row.ReadString("FoucsCourseOwner1"),
                         FocusCourseOwner2 = row.ReadString("FocusCourseOwner2"),
-                         CourseNotes = row.ReadString("CourseNotes"),
+                        // CourseNotes = row.ReadString("CourseNotes"),
                         // ProjectStatus = row.ReadString("ProjectStatus"),
                          Price = row.ReadString("Price"),
                          Currency = row.ReadString("Currency"),
@@ -191,7 +191,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 LevelOfEffort = data.ReadString("LevelOfEffort"),
                 FoucsCourseOwner1 = data.ReadString("FoucsCourseOwner1"),
                 FocusCourseOwner2 = data.ReadString("FocusCourseOwner2"),
-                CourseNotes = data.ReadString("CourseNotes"),
+                //CourseNotes = data.ReadString("CourseNotes"),
                // ProjectStatus = data.ReadString("ProjectStatus"),
                 Price = data.ReadString("Price"),
                 Currency = data.ReadString("Currency"),
@@ -253,13 +253,18 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 EquivalentCourseID = data.ReadString("EquivalentCourseID"),
                 AudienceType = data.ReadString("AudienceType")
 
-
-
-
             };
         }
     }
-}/*
+}
+
+
+
+
+
+
+
+/*
 
 public string FOSvalues { get; set; } // addd new 
 
