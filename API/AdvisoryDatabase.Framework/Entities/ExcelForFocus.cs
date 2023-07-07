@@ -31,7 +31,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string AudienceType2 { get; set; }
         public string Vendor { get; set; } 
         public string FunctionName { get; set; }
-        public string DeploymentFiscalYear { get; set; }
+        public string DevelopmentYear { get; set; }
        
         public string ProgramKnowledgeLevel { get; set; }
         public string EstimatedCPE { get; set; }
@@ -41,9 +41,13 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FoucsCourseOwner1 { get; set; }
         public string FocusCourseOwner2 { get; set; }
         public string PrerequisiteCourseID1 { get; set; }
-        public string PrerequisiteCourseID2 { get; set; } //
+        public string PREREQUISITE_VERSION1 { get; set; }// add new
+        public string PrerequisiteCourseID2 { get; set; }
+        public string PREREQUISITE_VERSION2 { get; set; }// add new
         public string EquivalentCourseID1 { get; set; }
-        public string EquivalentCourseID2 { get; set; }//add new
+        public string EQUIVALENT_VERSION1 { get; set; }
+        public string EquivalentCourseID2 { get; set; }
+        public string EQUIVALENT_VERSION2 { get; set; }//add new
         public string DeliveryType { get; set; }
         public string Duration { get; set; }
         public string FieldOfStudy1 { get; set; }

@@ -49,7 +49,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string LevelOfEffort { get; set; }//34
        public string FoucsCourseOwner1 { get; set; }//35
        public string FocusCourseOwner2 { get; set; }//36
-        public string CourseNotes { get; set; }//37
+        //public string CourseNotes { get; set; }//37
        // public string ProjectStatus { get; set; }//38  ----------which select
         public string Price { get; set; }//39
         public string Currency { get; set; }//40
