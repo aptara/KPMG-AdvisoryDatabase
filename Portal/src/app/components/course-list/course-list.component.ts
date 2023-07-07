@@ -148,7 +148,7 @@ export class CourseListComponent implements OnInit {
         this.downloadExcelService.getAllCoursesForDataOfDeployment().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
-                const headers = Object.keys(courseData[0]).slice(1, 57);//78 final
+                const headers = Object.keys(courseData[0]).slice(1, 56);//78 final
 
 
                 const columnTitles = [
@@ -160,7 +160,7 @@ export class CourseListComponent implements OnInit {
                     'Is Regulatoryor Legal Requirement..?', 'Program Type', 'Delivery Type', 'Duration', 'First Delivery Date', 'Maximum Attendee Count',
                     'Minimum Attendee Count', 'Maximum Attendee Waitlist', 'Material', 'Collateral', 'Room Set Up Comments', 'Deployment Facilitator Consideration', 'L & D Intake Owner',
                     'Project Manager Contact', 'Instructional Designer ', 'Level Of Effort', 'Course Owner 1', ' Course Owner 2',
-                    'Course Notes', 'Price', 'Currency', 'Display Call Center',
+                    , 'Price', 'Currency', 'Display Call Center',
 
                     'Status', 'OFFERING_TEMPLATE_NO', 'Development Year', 'Is RecordLocked..?', 'Clarizen Start Date', 'Course Record URL',
                     'Focus Domain', 'Focus Retired', 'Focus Disc From', 'Focus Displayed To Learner', 'FOSvalues', 'SGSLSNValues', 'PrerequisiteCourseID', 'EquivalentCourseID', 'AudienceType'
@@ -464,6 +464,7 @@ export class CourseListComponent implements OnInit {
 
 
     }
+
     downloadExceloffocusN() {
         if (this.selectedCourseIds.length !== 0) {
             if (this.selectedCourseIds.length > 450) {
@@ -480,8 +481,8 @@ export class CourseListComponent implements OnInit {
             this.downloadExcelService.getAllCoursesForDataOfFocus(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
-                const headers1 = Object.keys(courseData[0]).slice(0, 41); // First 10 columns
-                const headers2 = Object.keys(courseData[0]).slice(0, 41); // First 15 columns
+                const headers1 = Object.keys(courseData[0]).slice(0, 45); // First 10 columns
+                const headers2 = Object.keys(courseData[0]).slice(0, 45); // First 15 columns
 
                 // Custom titles for each column
                 const columnTitles1 = ['ID', 'OFFERING_TEMPLATE_NO',
@@ -491,7 +492,9 @@ export class CourseListComponent implements OnInit {
 
                     'DISPLAY_LEARNER', 'DISPLAY_CALL_CENTER', ' AUDIENCE_TYPE1', 'AUDIENCE_TYPE2', 'VENDOR', 'CUSTOM0', 'CUSTOM1', 'CUSTOM2',
 
-                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1', 'DT_DURATION1',
+                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'PREREQUISITE_VERSION1', 'PREREQUISITE2',
+                    'PREREQUISITE_VERSION2', 'EQUIVALENT1', 'EQUIVALENT_VERSION1', 'EQUIVALENT2', 'EQUIVALENT_VERSION2',
+                    'DELIVERY_TYPE1', 'DT_DURATION1',
 
                     'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 
@@ -505,7 +508,9 @@ export class CourseListComponent implements OnInit {
 
                     'DISPLAY_LEARNER', 'DISPLAY_CALL_CENTER', ' AUDIENCE_TYPE1', 'AUDIENCE_TYPE2', 'VENDOR', 'CUSTOM0', 'CUSTOM1', 'CUSTOM2',
 
-                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'PREREQUISITE2', 'EQUIVALENT1', 'EQUIVALENT2', 'DELIVERY_TYPE1', 'DT_DURATION1',
+                    'CUSTOM3', 'CUSTOM5', ' CUSTOM8', 'OWNER1', 'Owner two	', 'PREREQUISITE1', 'PREREQUISITE_VERSION1', 'PREREQUISITE2',
+                    'PREREQUISITE_VERSION2', 'EQUIVALENT1', 'EQUIVALENT_VERSION1', 'EQUIVALENT2', 'EQUIVALENT_VERSION2',
+                    'DELIVERY_TYPE1', 'DT_DURATION1',
 
                     'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 

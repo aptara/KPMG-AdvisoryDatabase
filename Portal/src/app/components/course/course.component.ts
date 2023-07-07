@@ -11,6 +11,9 @@ import { NgxDropdownConfig } from 'ngx-select-dropdown';
 import { DatePipe } from '@angular/common';
 import { UserService } from 'src/app/service/userservice';
 import { CoursePermission } from 'src/app/domain/user';
+
+
+
 declare var bootbox: any;
 
 @Component({
@@ -46,6 +49,8 @@ export class CourseComponent implements OnInit {
     LDIntakeOwnerMaster: any = [];
     StatusMasterData: any = [];
     CurrentDate: any;
+    isDisabled: boolean = true;
+    UserData: any
     IsRegulatoryOrLegalRequirementDropdownData: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     collaterals: any[] = [{ DisplayName: 'Yes', Id: true }, { DisplayName: 'No', Id: false }];
     web = { label: 'google', url: 'https://www.google.com' }
@@ -94,13 +99,13 @@ export class CourseComponent implements OnInit {
             StatusMasterID: ['', [Validators.required]],
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
-            DeploymentFiscalYear: [''],
+            DeploymentFiscalYear: [{ value: '', disabled: true }],
             DevelopmentYear: ['', [Validators.pattern(/^[0-9]*$/)]],
             CompetencyMasterID: [''],
             ProgramKnowledgeLevelMasterID: [''],
             CourseOverviewObjective: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             TargetAudience: [''],
-            EstimatedCPE: ['', [Validators.pattern(/^[0-9]*$/)]],
+            EstimatedCPE: [{ value: '', disabled: true }, [Validators.pattern(/^[0-9]*$/)]],
             //AudienceLevelMasterID: [''],
             SpecialNoticeMasterID: [''],
             FunctionMasterID: [''],
@@ -159,6 +164,9 @@ export class CourseComponent implements OnInit {
         if (this.hasPermission.hasPermissionCreateCourse === false && this.hasPermission.hasPermissionUpdateCourse === false && this.hasPermission.hasPermissionReviewCourse === true) {
             this.CourseForm.disable()
         }
+        this.userService.WindowAuthentication().subscribe(data => {
+            this.UserData = data
+        })
     }
 
     GetSGSNSLFormControl() {
@@ -178,19 +186,19 @@ export class CourseComponent implements OnInit {
 
     GetPrerequisiteCourseIDFormGroup() {
         return this.formBuilder.group({
-            PrerequisiteCourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            PrerequisiteCourseID: ['No Prerequisite', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetEquivalentCourseIDFormGroup() {
         return this.formBuilder.group({
-            EquivalentCourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            EquivalentCourseID: ['No Equivalent', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
     GetAudienceTypeFormGroup() {
         return this.formBuilder.group({
-            AudienceType: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            AudienceType: ['US Only', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/), Validators.required]],
         });
     }
 
@@ -387,7 +395,7 @@ export class CourseComponent implements OnInit {
             return this.courseService.getCourse(this.URLParamCourseId).subscribe((data: any) => {
                 if (data.Success) {
                     this.CourseData = data.Data;
-                    debugger
+
                     this.bindFormData();
                 }
             });
@@ -535,6 +543,37 @@ export class CourseComponent implements OnInit {
     }
 
 
+    controlFieldMapping: { [key: string]: string } = {
+        CourseName: 'Course Name',
+        StatusMasterID: ' Project Status',
+        AudienceTypeFormGroup: 'Audience Type',
+        CourseSponsor: 'Course Sponsor',
+        ServiceNowID: 'Service Now ID',
+        Descriptions: 'Please provide a description/the business need related to this request',
+        ProgramTypeID: 'Program Type ',
+        DeliveryTypeID: 'Delivery Type',
+        FirstDeliveryDate: 'First Delivery Date',
+        LDIntakeOwner: 'L&D Intake Owner ',
+        FOCUSCourseOwnerFormGroup: 'Course Owner',
+    };
+
+    findInvalidControls1(): string[] {
+        const invalidFields: string[] = [];
+        const controls = this.CourseForm.controls;
+
+        for (const controlName in controls) {
+            if (controls.hasOwnProperty(controlName)) {
+                if (controls[controlName].invalid) {
+                    const fieldName = this.controlFieldMapping[controlName] || controlName;
+                    invalidFields.push(fieldName);
+                }
+            }
+        }
+
+        return invalidFields;
+    }
+
+
     onSubmitCourse() {
         this.IsSubmit = true;
         var SaveData = this.BindCourseDataForSaveEdit();
@@ -546,7 +585,9 @@ export class CourseComponent implements OnInit {
                             if (data.Success) {
                                 this.router.navigate(['/course-List']);
                             }
+                            //bootbox.alert('Invalid form data. Please fill in all required fields correctly.');
                         });
+
                     }
                     return;
                 });
@@ -563,9 +604,21 @@ export class CourseComponent implements OnInit {
                 });
             }
         } else {
-            this.findInvalidControls()
+            const invalidFields = this.findInvalidControls1();
+            const fieldNames = invalidFields.map(fieldName => this.controlFieldMapping[fieldName] || fieldName);
+            const message = fieldNames.join(', ');
+
+            bootbox.alert({
+                size: "heigh",
+                title: "Some required fields are not filled. Please update the value.",
+                message: message,
+                closeButton: false,
+                className: 'center-alert-box',
+                centerVertical: true,
+            });
         }
     }
+
 
     public findInvalidControls() {
         const invalid = [];
@@ -609,4 +662,16 @@ export class CourseComponent implements OnInit {
         // Clear the form
         this.clearForm();
     }
+
+    // Inside your component class
+    getDeploymentFiscalYear() {
+        const firstDeliveryDate = this.CourseForm?.get('FirstDeliveryDate')?.value;
+        if (firstDeliveryDate) {
+            const year = new Date(firstDeliveryDate).getFullYear();
+            const lastTwoDigits = year % 100; // Get the last two digits
+            return `FY${lastTwoDigits}`;
+        }
+        return '';
+    }
+
 }

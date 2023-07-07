@@ -1,8 +1,8 @@
 <div class="add-course">
-    <!-- <div class="LastUpdatedData">
-        <p style="margin: 0 20px 0 0;">Last Updated By: {{ UserData?.FirstName }}</p>
-        <p>Last Updated On: {{ UserData?.LastUpdatedOn }}</p>
-    </div> -->
+    <div class="LastUpdatedData">
+        <p style="margin: 0 20px 0 0;">Last Updated By: {{ CourseData?.LastUpdatedBy}}</p>
+        <p>Last Updated On: {{ CourseData?.LastUpdatedOn}}</p>
+    </div>
     <form #userForm="ngForm" (ngSubmit)="onSubmitCourse()" [formGroup]="CourseForm">
         <div class="panel panel-default">
             <div class="panel-heading">Course Details</div>
@@ -38,8 +38,8 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="DeploymentFiscalYear">Deployment Fiscal Year</label>
-                        <input type="date" class="form-control" formControlName="DeploymentFiscalYear"
-                            id="DeploymentFiscalYear">
+                        <input type="text" class="form-control" formControlName="DeploymentFiscalYear"
+                            id="DeploymentFiscalYear" [value]="getDeploymentFiscalYear()">
                         <div class="message-error"
                             *ngIf="IsSubmit &&  CourseForm.controls['DeploymentFiscalYear'].errors">
                             <div class="error-tooltips"
@@ -398,7 +398,7 @@
                                     <label for="AudienceType">Audience Type {{ i + 1}}<span
                                             style="color:red;">*</span></label>
                                     <input type="text" class="form-control" formControlName="AudienceType"
-                                        id="AudienceType" value="US Only">
+                                        id="AudienceType" placeholder="US Only">
                                 </div>
                                 <div class="message-error">
                                     <div class="error-tooltips"
@@ -589,7 +589,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="Duration">Duration</label>
-                        <input class="form-control" type="text" placeholder="HH:MM" formControlName="Duration"
+                        <input class="form-control" type="time" placeholder="HH:MM" formControlName="Duration"
                             id="Duration">
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
@@ -781,7 +781,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="ProjectManagerContact">Project Manager Contact</label>
+                        <label for="ProjectManagerContact">Project Manager</label>
                         <ngx-select-dropdown [config]="config" formControlName="ProjectManagerContact"
                             [options]="ProjectManagerContactMaster">
                         </ngx-select-dropdown>
@@ -872,6 +872,14 @@
                                 Course Notes/ Additional Information should be Alpha Numeric.
                             </div>
                         </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="CourseNotes">Work Notes</label>
+                        <textarea class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -879,25 +887,28 @@
         <div class="panel panel-default">
             <div class="panel-heading">Focus Feed</div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Retired</label>
                         <div>{{CourseData?.FocusRetired}}</div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Domain</label><br>
                         <div>04-Course Development</div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label>Discontinued Form</label>
+                        <label>Discontinued From</label>
                         <div>{{CurrentDate | date:'yyyy-MM-dd'}}</div>
                     </div>
                 </div>
-                <div class="col-md-3">
+
+
+
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Displayed to Learner</label>
                         <div>
@@ -905,8 +916,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Link To This Record In Database</label>
+                        <div>link</div>
+                    </div>
+                </div>
+
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-md-12">
                 <button type="submit" class="btn btn-default"

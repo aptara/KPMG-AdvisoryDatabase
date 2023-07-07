@@ -15,32 +15,35 @@
                     placeholder="Choose Columns"></p-multiSelect> -->
 
 
-                <button pButton class="btn-excel-width" (click)=" UnlockCourse()">Unlock Course</button>
+                <button pButton class="btn-excel-width" (click)=" UnlockCourse()" style="height: 50px;">Unlock
+                    Course</button>
 
                 <button pButton class="btn-excel-width" (click)="downloadExceloffocusN()"
-                    *ngIf="hasPermission.hasPermissionDownloadCourseRDIforFocus">
+                    *ngIf="hasPermission.hasPermissionDownloadCourseRDIforFocus" style="height: 50px;">
                     Export RDI for Focus
                 </button>
 
                 <button pButton class="btn-excel-width" (click)="downloadExcelofClarizeN()"
-                    *ngIf="hasPermission.hasPermissionDownloadCourseRDIforClarizen">
+                    *ngIf="hasPermission.hasPermissionDownloadCourseRDIforClarizen" style="height: 50px;">
                     Export RDI for Clarizen
                 </button>
-                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()">
+                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()" style="height: 50px;">
                     Export RDI for All Courses
                 </button>
-                <button pButton class="btn-excel-width" (click)="downloadExcelofFilter()">
+                <button pButton class="btn-excel-width" (click)="downloadExcelofFilter()" style="height: 50px;">
                     Export RDI Filter
                 </button>
-                <button pButton class="btn-excel-width" (click)="cancelSelection()">Reset</button>
+                <button pButton class="btn-excel-width" (click)="cancelSelection()" style="height: 50px;">Reset</button>
 
+                <button pButton class="btn-excel-width" (click)="AddCourse()"
+                    *ngIf="hasPermission.hasPermissionCreateCourse" style="height: 50px;">
+                    Add Records
+                </button>
                 <span class="p-input-icon-left ml-auto filter-bar">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
                         placeholder="Search keyword" />
-                    <button pButton class="p-button-outlined btn-width" icon="pi pi-plus" (click)="AddCourse()"
-                        *ngIf="hasPermission.hasPermissionCreateCourse">
-                    </button>
+
                 </span>
             </div>
 
@@ -174,13 +177,13 @@
                 </th>
                 <th>
                     <div class="flex align-items-center ">
-                        Duration
+                        Domain
                         <p-columnFilter type="text" field="Duration" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="flex align-items-center ">
-                        Domain
+                        Duration
                         <p-columnFilter type="text" field="FocusDomain" display="menu"></p-columnFilter>
                     </div>
                 </th>
@@ -278,10 +281,10 @@
                     {{course.SGSLSNValues}}
                 </td>
                 <td>
-                    {{ course.Duration }}
+                    {{ course.FocusDomain}}
                 </td>
                 <td>
-                    {{ course.FocusDomain }}
+                    {{ course.Duration }}
                 </td>
 
                 <td>
@@ -292,7 +295,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="7">No Course found.</td>
+                <td colspan="7">Course Loading</td>
             </tr>
         </ng-template>
     </p-table>
