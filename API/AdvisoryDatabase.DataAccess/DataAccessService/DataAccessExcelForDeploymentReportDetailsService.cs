@@ -249,7 +249,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                 FOSvalues = data.ReadString("FOSvalues"),
                 SGSLSNValues = data.ReadString("SGSLSNValues"),
-                PrerequisiteCourseID = data.ReadString("FocusDomain"),
+                PrerequisiteCourseID = data.ReadString("PrerequisiteCourseID"),
                 EquivalentCourseID = data.ReadString("EquivalentCourseID"),
                 AudienceType = data.ReadString("AudienceType")
 

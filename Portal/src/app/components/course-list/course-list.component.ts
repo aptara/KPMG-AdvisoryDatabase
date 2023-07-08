@@ -13,6 +13,7 @@ import { filter } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { Button } from 'primeng/button';
 import { Divider } from 'primeng/divider';
+import { table } from 'console';
 
 
 declare var bootbox: any;
@@ -148,22 +149,27 @@ export class CourseListComponent implements OnInit {
         this.downloadExcelService.getAllCoursesForDataOfDeployment().subscribe((data: any) => {
             if (data) {
                 var courseData: any = data;
-                const headers = Object.keys(courseData[0]).slice(1, 56);//78 final
+                const headers = Object.keys(courseData[0]).slice(0, 56);//78 final
 
 
                 const columnTitles = [
-                    'Course ID', 'Course Name', 'Deployment Fiscal Year', 'Competency', 'Skill', 'Industry', 'Program Knowledge Level',
-                    'Course Overview & Objective', 'Target Audience', 'Audience Level', 'Estimated CPE', 'Special Notice', 'Function Name',
+                    'Course Name', 'Course ID', 'Deployment Fiscal Year', 'Competency', 'Skill', 'Industry', 'Program Knowledge Level',
+                    'Status',
+                    'Course Overview & Objective', 'Target Audience', 'Audience Level', 'Development Year',
+                    'SG/SL/SN Values', 'FOS values', 'Estimated CPE', 'Prerequisite Course ID', 'Equivalent Course ID',
+                    'Special Notice', 'Function Name', 'AudienceType',
 
-                    'Course Sponsor', 'Which SGSLSNSponsor Learning ..?', 'Subject Matter Professional', 'Vendor', 'ServiceNowID', 'Descriptions',
-
-                    'Is Regulatoryor Legal Requirement..?', 'Program Type', 'Delivery Type', 'Duration', 'First Delivery Date', 'Maximum Attendee Count',
-                    'Minimum Attendee Count', 'Maximum Attendee Waitlist', 'Material', 'Collateral', 'Room Set Up Comments', 'Deployment Facilitator Consideration', 'L & D Intake Owner',
-                    'Project Manager Contact', 'Instructional Designer ', 'Level Of Effort', 'Course Owner 1', ' Course Owner 2',
+                    'Course Sponsor', 'Which SG/SL/SNSponsor Learning ', 'Subject Matter Professional', 'Vendor',
+                    'ServiceNowID', 'Descriptions',
+                    'Is Regulatoryor Legal Requirement', 'Program Type', 'Delivery Type', 'Duration',
+                    'First Delivery Date', 'Maximum Attendee Count',
+                    'Minimum Attendee Count', 'Maximum Attendee Waitlist', 'Material', 'Collateral',
+                    'Level Of Effort', 'Room Set Up Comments', 'Deployment Facilitator Consideration', 'L&D Intake Owner',
+                    'Project Manager ', 'Instructional Designer ', 'Course Owner 1', ' Course Owner 2',
                     , 'Price', 'Currency', 'Display Call Center',
 
-                    'Status', 'OFFERING_TEMPLATE_NO', 'Development Year', 'Is RecordLocked..?', 'Clarizen Start Date', 'Course Record URL',
-                    'Focus Domain', 'Focus Retired', 'Focus Disc From', 'Focus Displayed To Learner', 'FOSvalues', 'SGSLSNValues', 'PrerequisiteCourseID', 'EquivalentCourseID', 'AudienceType'
+                    'OFFERING_TEMPLATE_NO', 'Is RecordLocked', 'Clarizen Start Date', 'Course Record URL',
+                    'Focus Domain', 'Focus Retired', 'Focus Disc From', 'Focus Displayed To Learner',
 
                 ]
 
@@ -613,20 +619,64 @@ export class CourseListComponent implements OnInit {
                     closeButton: false,
                     centerVertical: true,
 
+                    // callback: () => {
+                    //     if (excelDataWithErrorMessageNull.length > 0) {
+                    //         const workbook1 = XLSX.utils.book_new();
+                    //         XLSX.utils.book_append_sheet(workbook1, worksheet1, worksheetName1);
+                    //         XLSX.writeFile(workbook1, fileName1);
+                    //     }
+                    //     if (excelDataWithErrorMessageNotNull.length > 0) {
+                    //         const workbook2 = XLSX.utils.book_new();
+                    //         XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
+                    //         XLSX.writeFile(workbook2, fileName2);
+                    //     }
+                    //     this.selectedCourseIds = []
+
+                    // }
                     callback: () => {
                         if (excelDataWithErrorMessageNull.length > 0) {
                             const workbook1 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook1, worksheet1, worksheetName1);
-                            XLSX.writeFile(workbook1, fileName1);
+                            try {
+                                XLSX.writeFile(workbook1, fileName1);
+                            } catch (error) {
+                                //bootbox.alert("Clarizen success can not be download due to " + error);
+                                bootbox.alert({
+                                    size: "heigh",
+                                    message: ("Max character limit exceeds. Please select only 100 records."),
+                                    closeButton: false,
+                                    className: 'center-alert-box',
+                                    centerVertical: true,
+                                })
+                                return;
+                            }
+                            this.selectedCourseIds = [];
                         }
+
                         if (excelDataWithErrorMessageNotNull.length > 0) {
                             const workbook2 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
-                            XLSX.writeFile(workbook2, fileName2);
-                        }
-                        this.selectedCourseIds = []
+                            try {
+                                XLSX.writeFile(workbook2, fileName2);
+                            } catch (error) {
 
+                                bootbox.alert({
+                                    size: "heigh",
+                                    message: ("Max character limit exceeds. Please select only 100 records. "),
+                                    closeButton: false,
+                                    className: 'center-alert-box',
+                                    centerVertical: true,
+                                });// bootbox.alert("Clarizen Error Records file can not be download due to  " + error);
+                                return;
+                            }
+                            this.selectedCourseIds = [];
+                        }
+
+                        this.selectedCourseIds = [];
+                        this.selectAll = false;
                     }
+
+
 
 
                 })
@@ -761,21 +811,52 @@ export class CourseListComponent implements OnInit {
                     closeButton: false,
                     className: 'center-alert-box',
                     centerVertical: true,
-
                     callback: () => {
                         if (excelDataWithErrorMessageNull.length > 0) {
                             const workbook1 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook1, worksheet1, worksheetName1);
-                            XLSX.writeFile(workbook1, fileName1);
+                            try {
+                                XLSX.writeFile(workbook1, fileName1);
+                            } catch (error) {
+                                //bootbox.alert("Clarizen success can not be download due to " + error);
+                                bootbox.alert({
+                                    size: "heigh",
+                                    message: ("Max character limit exceeds. Please select only 100 records."),
+                                    closeButton: false,
+                                    className: 'center-alert-box',
+                                    centerVertical: true,
+                                })
+                                return;
+                            }
+                            this.selectedCourseIds = [];
                         }
+
                         if (excelDataWithErrorMessageNotNull.length > 0) {
                             const workbook2 = XLSX.utils.book_new();
                             XLSX.utils.book_append_sheet(workbook2, worksheet2, worksheetName2);
-                            XLSX.writeFile(workbook2, fileName2);
+                            try {
+                                XLSX.writeFile(workbook2, fileName2);
+                            } catch (error) {
+
+                                bootbox.alert({
+                                    size: "heigh",
+                                    message: ("Max character limit exceeds. Please select only 100 records."),
+                                    closeButton: false,
+                                    className: 'center-alert-box',
+                                    centerVertical: true,
+                                });// bootbox.alert("Clarizen Error Records file can not be download due to  " + error);
+                                return;
+                            }
+                            this.selectedCourseIds = [];
                         }
-                        this.selectedCourseIds = []
-                        this.selectAll = false
+
+                        this.selectedCourseIds = [];
+                        this.selectAll = false;
                     }
+
+
+
+
                 })
 
 
@@ -852,13 +933,13 @@ export class CourseListComponent implements OnInit {
             // const excelData = courseData.map((obj: any) => headers.map(key => obj[key]));
             /////-------////----
 
-            const columnIndices = [1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 34];//36-SGSLSN,37-FOS
+            const columnIndices = [1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
             const columnTitles = ['Course ID', 'Course Name', 'Target Audience', 'First Delivery Date',
                 'FOS ',
 
-                'Estimated CPE', 'Skill', 'Program Type', 'Delivery Type', 'LDIIntakeOwner', 'ProgramKnowledgeLevel',
-                'Instructional Designer', 'Project Manager Contact', 'Competency', 'Industry', 'CourseSponsor',
-                'Vendor', 'ServiceNowID', 'Duration', 'Focus Domain', 'Status', 'SGSNSL Sponsor'];
+                'Estimated CPE', 'Skill', 'Program Type', 'Delivery Type', 'L&D Intake Owner ', 'Program Knowledge Level',
+                'Instructional Designer', 'Project Manager ', 'Competency', 'Industry', 'Course Sponsor',
+                'Vendor (s)', 'Service Now ID', 'SG/SN/SL Sponsor', 'Focus Domain', 'Duration', 'Status'];
             const headers = columnIndices.map(index => columnTitles[index]);
             const excelData = courseData.map((obj: any) => columnIndices.map(index => obj[Object.keys(obj)[index]]));
 
@@ -897,7 +978,7 @@ export class CourseListComponent implements OnInit {
 
 
             // Set column widths
-            const columnWidths = headers.map(() => ({ width: 24 }));
+            const columnWidths = headers.map(() => ({ width: 30 }));
             worksheet['!cols'] = columnWidths;
 
 
@@ -907,6 +988,7 @@ export class CourseListComponent implements OnInit {
         }
         this.selectedCourseIds = []
         this.selectAll = false
+        // this.clear(this.dt1);
     }
 
 
