@@ -1,4 +1,4 @@
-﻿using AdvisoryDatabase.Framework.Common;
+using AdvisoryDatabase.Framework.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,6 +80,6 @@ namespace AdvisoryDatabase.Framework.Entities
         public List<AudienceTypeFormData> AudienceTypeFormGroup { get; set; }
         public string CurrentData { get; set; }
         public string PreviousData { get; set; }
+       public string UpdatedUserName { get; set; }
     }
 }
- 

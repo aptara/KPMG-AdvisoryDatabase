@@ -1,6 +1,6 @@
 <div class="add-course">
     <div class="LastUpdatedData">
-        <p style="margin: 0 20px 0 0;">Last Updated By: {{ CourseData?.LastUpdatedBy}}</p>
+        <p style="margin: 0 20px 0 0;">Last Updated By: {{ CourseData?.UpdatedUserName}}</p>
         <p>Last Updated On: {{ CourseData?.LastUpdatedOn}}</p>
     </div>
     <form #userForm="ngForm" (ngSubmit)="onSubmitCourse()" [formGroup]="CourseForm">
@@ -589,7 +589,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="Duration">Duration</label>
-                        <input class="form-control" type="time" placeholder="HH:MM" formControlName="Duration"
+                        <input class="form-control" type="text" placeholder="HH:MM" formControlName="Duration"
                             id="Duration">
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">

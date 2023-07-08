@@ -45,7 +45,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
                 parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
-            }
+               
+      }
             else if (operation == OperationType.Add || operation == OperationType.Update)
             {
 
@@ -88,7 +89,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("CourseNotes", instance.CourseNotes));
                 parameters.Add(DbHelper.CreateParameter("CurrentData", instance.CurrentData));
                 parameters.Add(DbHelper.CreateParameter("PreviousData", instance.PreviousData));
-            }
+              
+      }
             else if (operation == OperationType.Delete)
             {
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
@@ -168,6 +170,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     LDIIntakeOwnerText = row.ReadString("LDIIntakeOwnerText"),
                     ProjectManagerContactMasterText = row.ReadString("ProjectManagerContactMasterText"),
                     StatusText = row.ReadString("StatusText"),
+                  UpdatedUserName = row.ReadString("UpdatedUserName")
+
+
+
 
                 }).ToList();
             if (GetAllData.Count == 1)
@@ -390,6 +396,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 DisplayCallCenter = data.ReadString("DisplayCallCenter"),
                 FieldOfStudyMasterID = data.Read<int>("FieldOfStudyMasterID"),
                 FuntionMasterID = data.Read<long>("FuntionMasterID"),
+                UpdatedUserName = data.ReadString("UpdatedUserName")
             };
         }
     }
