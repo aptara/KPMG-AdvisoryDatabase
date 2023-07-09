@@ -11,6 +11,7 @@ import { NgxDropdownConfig } from 'ngx-select-dropdown';
 import { DatePipe } from '@angular/common';
 import { UserService } from 'src/app/service/userservice';
 import { CoursePermission } from 'src/app/domain/user';
+import { createMask } from '@ngneat/input-mask';
 
 
 
@@ -77,6 +78,7 @@ export class CourseComponent implements OnInit {
     UseData: string | null;
     hasPermission: CoursePermission;
     False: any;
+    TimeInputMask = createMask({ mask: '(99:99)|(00:00)', keepStatic: true });
 
     constructor(
         private formBuilder: FormBuilder,
@@ -105,7 +107,7 @@ export class CourseComponent implements OnInit {
             ProgramKnowledgeLevelMasterID: [''],
             CourseOverviewObjective: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             TargetAudience: [''],
-            EstimatedCPE: [{ value: '', disabled: true }, [Validators.pattern(/^[0-9]*$/)]],
+            EstimatedCPE: [{ value: '', disabled: true }],
             //AudienceLevelMasterID: [''],
             SpecialNoticeMasterID: [''],
             FunctionMasterID: [''],
@@ -142,6 +144,7 @@ export class CourseComponent implements OnInit {
             EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup()]),
             AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup()]),
             FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()]),
+            WorkNotes: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]]
             // Discontinued: ['', (this.discontinuedDate)]
         })
     }
@@ -167,6 +170,15 @@ export class CourseComponent implements OnInit {
         this.userService.WindowAuthentication().subscribe(data => {
             this.UserData = data
         })
+    }
+
+
+    OnChangeFieldOfStudy(fieldOfStudy: any) {
+        if (fieldOfStudy.controls.FieldOfStudy.value.length) {
+            fieldOfStudy.get('FieldOfStudy').addValidators(Validators.required);
+        } else {
+            fieldOfStudy.get('FieldOfStudy').clearValidators();
+        }
     }
 
     GetSGSNSLFormControl() {
@@ -337,7 +349,7 @@ export class CourseComponent implements OnInit {
             AudienceLevels: this.CourseData.AudienceLevels,
             FunctionMasterIDs: this.CourseData.FunctionMasterIDs,
             StatusMasterID: this.GetDropDownObjectForBindData(this.CourseData.StatusMasterID, this.StatusMasterData),
-
+            WorkNotes: this.CourseData?.WorkNotes
         });
         if (this.FieldOfStudyFormGroup?.length == 1 && this.CourseData.FieldOfStudyFormGroup?.length) {
             this.FieldOfStudyFormGroup.clear();
@@ -438,12 +450,24 @@ export class CourseComponent implements OnInit {
         formControl.controls.ServiceLine.reset()
         formControl.controls.ServiceNetwork.reset()
         this.ServiceLineMasterDataOption = this.ServiceLineMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
+        if (formControl.controls.ServiceGroup.value.length) {
+            formControl.get('ServiceLine').addValidators(Validators.required);
+            formControl.get('ServiceNetwork').addValidators(Validators.required);
+        } else {
+            formControl.get('ServiceLine').clearValidators();
+            formControl.get('ServiceNetwork').clearValidators();
+        }
     }
 
     ServiceNetworkMasterDataOption: any = [];
     OnChangedServiceLine(data: any, formControl: any) {
         formControl.controls.ServiceNetwork.reset()
         this.ServiceNetworkMasterDataOption = this.ServiceNetworkMasterData.filter((x: { ParentId: any; }) => x.ParentId === data.value.Id)
+        if (formControl.controls.ServiceNetwork.value.length) {
+            formControl.get('ServiceNetwork').addValidators(Validators.required);
+        } else {
+            formControl.get('ServiceNetwork').clearValidators();
+        }
     }
 
     GetServiceLineDropdownOptions(formControl: any) {

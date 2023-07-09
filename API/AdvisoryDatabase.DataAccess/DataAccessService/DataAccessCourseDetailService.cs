@@ -45,8 +45,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
             {
                 parameters.Add(DbHelper.CreateParameter("CourseMasterID", instance.CourseMasterID));
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
-               
-      }
+
+            }
             else if (operation == OperationType.Add || operation == OperationType.Update)
             {
 
@@ -89,8 +89,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 parameters.Add(DbHelper.CreateParameter("CourseNotes", instance.CourseNotes));
                 parameters.Add(DbHelper.CreateParameter("CurrentData", instance.CurrentData));
                 parameters.Add(DbHelper.CreateParameter("PreviousData", instance.PreviousData));
-              
-      }
+                parameters.Add(DbHelper.CreateParameter("WorkNotes", instance.WorkNotes));
+
+
+            }
             else if (operation == OperationType.Delete)
             {
                 parameters.Add(DbHelper.CreateParameter("IsActive", instance.IsActive));
@@ -170,8 +172,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     LDIIntakeOwnerText = row.ReadString("LDIIntakeOwnerText"),
                     ProjectManagerContactMasterText = row.ReadString("ProjectManagerContactMasterText"),
                     StatusText = row.ReadString("StatusText"),
-                  UpdatedUserName = row.ReadString("UpdatedUserName")
-
+                    UpdatedUserName = row.ReadString("UpdatedUserName"),
+                    WorkNotes = row.ReadString("WorkNotes")
+                  
 
 
 
@@ -189,7 +192,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     DisplayName = row.ReadString("DisplayName"),
                 }).ToList();
             }
-            else{
+            else
+            {
                 course.AudienceLevels = new List<CourseMasterData>();
             }
             if (data.Tables[2].Rows.Count > 0)
