@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../service/userservice';
 import { User } from '../../domain/user';
 import { Table } from 'primeng/table';
+import { saveAs } from 'file-saver';
 
 
 
@@ -14,7 +15,7 @@ declare var bootbox: any;
 })
 
 export class UserManagementComponent implements OnInit {
-
+    @ViewChild('dt') table: Table;
     // @ViewChild(DataBindingDirective)
     // dataBinding!: DataBindingDirective;
     displayCheckBoxList = false
@@ -131,6 +132,26 @@ export class UserManagementComponent implements OnInit {
                 });
             }
         });
+    }
+    exportCSV() {
+        if (this.table && this.table.value) {
+            const columnTitles = ['First Name', 'Last Name', 'NetworkID'];
+            const csvData = this.table.value.map(user => [
+                user.FirstName,
+                user.LastName,
+                user.NetworkID
+            ]);
+
+            // Prepare the CSV content
+            const csvContent = columnTitles.join(",") + "\n"
+                + csvData.map(row => row.join(",")).join("\n");
+
+            // Create a Blob object and save the file
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+            saveAs(blob, 'User_data.csv');
+        }
+
+
     }
 
 }
