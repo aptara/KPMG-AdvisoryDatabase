@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms'
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray, AbstractControl, ValidationErrors } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { Message } from "primeng/api";
@@ -80,6 +80,7 @@ export class CourseComponent implements OnInit {
     False: any;
     TimeInputMask = createMask({ mask: '(99:99)|(00:00)', keepStatic: true });
 
+
     constructor(
         private formBuilder: FormBuilder,
         private dropdownService: DropdownDataService,
@@ -120,7 +121,8 @@ export class CourseComponent implements OnInit {
             IsRegulatoryOrLegalRequirement: [''],
             ProgramTypeID: ['', [Validators.required]],
             DeliveryTypeID: ['', [Validators.required]],
-            Duration: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            // Duration: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            Duration: ['', [Validators.required, this.validateDurationFormat]],
             FirstDeliveryDate: ['', [Validators.required]],
             MaximumAttendeeCount: ['', [Validators.pattern(/^[0-9]*$/)]],
             MinimumAttendeeCount: ['', [Validators.pattern(/^[0-9]*$/)]],
@@ -160,6 +162,18 @@ export class CourseComponent implements OnInit {
         return value < 10 ? `0${value}` : value.toString();
     }
 
+    validateDurationFormat(control: AbstractControl): ValidationErrors | null {
+        const value = control.value;
+        const timeParts = value.split(':');
+        const hours = parseInt(timeParts[0], 10);
+        const minutes = parseInt(timeParts[1], 10);
+
+        if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours >= 99 || minutes < 0 || minutes > 60) {
+            return { invalidDurationFormat: true };
+        }
+        return null;
+    }
+
     ngOnInit() {
         this.getDropdownData();
         this.CourseForm.controls.CourseNotes.disable();
@@ -170,6 +184,7 @@ export class CourseComponent implements OnInit {
         this.userService.WindowAuthentication().subscribe(data => {
             this.UserData = data
         })
+        console.log(this.CourseData)
     }
 
 
@@ -213,6 +228,8 @@ export class CourseComponent implements OnInit {
             AudienceType: ['US Only', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/), Validators.required]],
         });
     }
+
+
 
     GetFOCUSCourseOwnerFormGroup() {
         return this.formBuilder.group({

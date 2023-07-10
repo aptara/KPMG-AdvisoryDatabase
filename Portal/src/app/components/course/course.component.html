@@ -399,7 +399,7 @@
                                     <label for="AudienceType">Audience Type {{ i + 1}}<span
                                             style="color:red;">*</span></label>
                                     <input type="text" class="form-control" formControlName="AudienceType"
-                                        id="AudienceType" placeholder="US Only">
+                                        id="AudienceType">
                                 </div>
                                 <div class="message-error">
                                     <div class="error-tooltips"
@@ -423,6 +423,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -491,14 +492,16 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="Vendor">Vendor(s)</label>
-                        <input type="text" class="form-control" formControlName="Vendor" id="Vendor">
+                        <!-- <input type="text"  class="form-control" formControlName="Vendor" id="Vendor"> -->
+                        <input type="text" class="form-control vendor-input" formControlName="Vendor" id="Vendor">
+
                         <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Vendor'].errors">
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.required">
+                            <!-- <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.required">
                                 Vendor(s) is required.
-                            </div>
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.pattern">
+                            </div> -->
+                            <!-- <div class="error-tooltips" *ngIf="CourseForm.controls?.Vendor?.errors?.pattern">
                                 Vendor(s) should be Alpha Numeric.
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -587,18 +590,19 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="Duration">Duration</label>
-                        <input class="form-control" type="text" placeholder="HH:MM" [inputMask]="TimeInputMask"
-                            formControlName="Duration" id="Duration">
+                        <input class="form-control" type="text" placeholder="HH:MM" formControlName="Duration"
+                            id="Duration" [inputMask]="TimeInputMask">
                         <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
+                            <!-- <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
                                 Duration is required.
-                            </div>
-                            <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.pattern">
-                                Duration should be Alpha Numeric.
-                            </div>
+                            </div> -->
+                            <!-- <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.pattern">
+                                                Duration should be Alpha Numeric.
+                                            </div> -->
                         </div>
                     </div>
                 </div>
