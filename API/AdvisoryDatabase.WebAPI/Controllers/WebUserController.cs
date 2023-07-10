@@ -240,7 +240,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
         var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];
-                headerUserName = "NS3148280\\Trupia.Vincent";
+              /*  headerUserName = "NS3148280\\Trupia.Vincent";*/
                 AdvisoryLogger.WriteInfo("Server Variables:" + HttpContext.Current.Request.ServerVariables.ToString());
                 AdvisoryLogger.WriteInfo("Header User Name:" + headerUserName);
                 AdvisoryLogger.WriteInfo("User Identity Name:" + User.Identity.Name);
