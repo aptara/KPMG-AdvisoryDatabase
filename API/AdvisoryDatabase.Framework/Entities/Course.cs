@@ -1,4 +1,4 @@
-﻿using AdvisoryDatabase.Framework.Common;
+using AdvisoryDatabase.Framework.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace AdvisoryDatabase.Framework.Entities
 {
-    public class Course: BaseEntity<int>
+    public class Course : BaseEntity<int>
     {
         public int CourseMasterID { get; set; }
         public string CourseName { get; set; }
         public string CourseID { get; set; }
         public string DeploymentFiscalYear { get; set; }
         public string DevelopmentYear { get; set; }
-        public long? CompetencyMasterID { get; set; } 
+        public long? CompetencyMasterID { get; set; }
         public long? SkillMasterID { get; set; }
         public long? IndustryMasterID { get; set; }
         public long? ProgramKnowledgeLevelMasterID { get; set; }
@@ -68,10 +68,10 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ProjectManagerContactMasterText { get; set; }
         public string StatusText { get; set; }
 
-        public List<CourseMasterData>SkillMasterIDs { get; set; }
-        public List<CourseMasterData>Industries { get; set; }
-        public List<CourseMasterData>AudienceLevels { get; set; }
-        public List<CourseMasterData>FunctionMasterIDs { get; set; }
+        public List<CourseMasterData> SkillMasterIDs { get; set; }
+        public List<CourseMasterData> Industries { get; set; }
+        public List<CourseMasterData> AudienceLevels { get; set; }
+        public List<CourseMasterData> FunctionMasterIDs { get; set; }
         public List<SGSLSNFormData> SGSLSNFormGroups { get; set; }
         public List<FieldOfStudyFormData> FieldOfStudyFormGroup { get; set; }
         public List<CourseMasterData> FOCUSCourseOwnerFormGroup { get; set; }
@@ -80,6 +80,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public List<AudienceTypeFormData> AudienceTypeFormGroup { get; set; }
         public string CurrentData { get; set; }
         public string PreviousData { get; set; }
+        public string UpdatedUserName { get; set; }
+        public string WorkNotes { get; set; }
     }
 }
- 

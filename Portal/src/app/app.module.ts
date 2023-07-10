@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 
@@ -47,6 +47,9 @@ import { CourseService } from './service/course.service';
 import { DownloadExcelService } from './service/service/download-excel.service';
 import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { DatePipe } from '@angular/common';
+import { InputMaskModule } from '@ngneat/input-mask';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoadingInterceptor } from './service/Loader-forbrowser/loading.interceptor';
 
 @NgModule({
     declarations: [
@@ -61,7 +64,8 @@ import { DatePipe } from '@angular/common';
         CourseManagementComponent,
         NavMenuComponent,
         MainBodyComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        SpinnerComponent
     ],
     imports: [
         BrowserModule,
@@ -105,6 +109,7 @@ import { DatePipe } from '@angular/common';
                 { path: '**', component: CourseListComponent }
 
             ]),
+        InputMaskModule,
 
     ],
     providers: [
@@ -112,7 +117,10 @@ import { DatePipe } from '@angular/common';
         MessageService,
         CourseService,
         DownloadExcelService,
-        DatePipe
+        DatePipe,
+        {
+            provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

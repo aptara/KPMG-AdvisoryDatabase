@@ -3,9 +3,9 @@
         [rowsPerPageOptions]="[10,50,100,150,200]" [loading]="loading" [paginator]="true" [scrollable]="true"
         scrollHeight="200" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [tableStyle]="{'min-height': '30rem'}" [globalFilterFields]="['CourseMasterID','CourseID', 'CourseName',
-        'TargetAudience', 'FirstDeliveryDate','Skilltext','ProgramType',
-         'EstimatedCPE','ProgramKnowledgeLeveltext', 'CompetencyText','InstructionalDesignertext',
-         'DeliveryType','LDIIntakeOwner','IndustryMasterID',
+        'TargetAudience', 'FirstDeliveryDate','FOSvalues','Skilltext','ProgramType','DeliveryType',
+         'EstimatedCPE','ProgramKnowledgeLevel', 'CompetencyText','InstructionalDesignertext',
+         'LDIIntakeOwner','IndustryMasterID',
          'ProjectManagerContactMasterText', 'CourseSponsor','Vendor','ServiceNowID', 'Duration','Domain',
          'StatusText',  'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
@@ -39,11 +39,15 @@
                     *ngIf="hasPermission.hasPermissionCreateCourse" style="height: 50px;">
                     Add Records
                 </button>
+                <button pButton class="btn-excel-width" (click)="clear(dt1)" style="height: 50px;">Clear Filter</button>
+
+            </div>
+            <br>
+            <div class="flex" style="margin-right: 1010px;">
                 <span class="p-input-icon-left ml-auto filter-bar">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
                         placeholder="Search keyword" />
-
                 </span>
             </div>
 
@@ -252,7 +256,7 @@
                     {{ course.LDIIntakeOwner }}
                 </td>
                 <td>
-                    {{ course.ProgramKnowledgeLeveltext }}
+                    {{ course.ProgramKnowledgeLevel }}
                 </td>
                 <td>
                     {{ course.InstructionalDesignerMaster }}
@@ -295,7 +299,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="7">Course Loading</td>
+                <td colspan="7">Course not found</td>
             </tr>
         </ng-template>
     </p-table>

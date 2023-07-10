@@ -9,22 +9,31 @@ namespace AdvisoryDatabase.Framework.Entities
 {
     public class ExcelforDeployment : BaseEntity<Int32>
     {
-        public string CourseMasterID { get; set; }//0
-        public string CourseID { get; set; }//1 
+    
+        public string CourseName { get; set; }
+        public string CourseID { get; set; }
       
-        public string CourseName { get; set; }//2
+        
         public string DeploymentFiscalYear { get; set; }//3
-
+  
         public string Competency { get; set; }// add in sp --done
         public string Skilltext { get; set; }//4  --------//Skilltext --done
-        public string IndustryText { get; set; }//5 ------IndustryText --done
-        public string ProgramKnowledgeLevel { get; set; }//6        
+        public string IndustryText { get; set; }
+        public string ProgramKnowledgeLevel { get; set; }
+        public string Status { get; set; }
         public string CourseOverviewObjective { get; set; }//7
         public string TargetAudience { get; set; }//8
-        public string AudienceLevelText { get; set; }//9  ----------AudienceLevelText
+        public string AudienceLevelText { get; set; }
+        public string DevelopmentYear { get; set; }
+        public string SGSLSNValues { get; set; }
+        public string FOSvalues { get; set; }
         public string EstimatedCPE { get; set; }//10
+
+        public string PrerequisiteCourseID { get; set; }// add new 
+        public string EquivalentCourseID { get; set; }
         public string SpecialNotice { get; set; }//11
-        public string FunctionNameText { get; set; }//12 -------FunctionNameText
+        public string FunctionNameText { get; set; }
+        public string AudienceType { get; set; }
         public string CourseSponsor { get; set; }//13
         public string WhichSGSLSNSponsorLearning { get; set; }//14
         public string SubjectMatterProfessional { get; set; }//15
@@ -41,12 +50,13 @@ namespace AdvisoryDatabase.Framework.Entities
         public string MaximumAttendeeWaitlist { get; set; }//26
         public string Material { get; set; }//27
         public string Collateral { get; set; }//28
+        public string LevelOfEffort { get; set; }
         public string RoomSetUpComments { get; set; }//29
         public string DeploymentFacilitatorConsideration { get; set; }//30
         public string LDIIntakeOwner { get; set; }//31
         public string ProjectManagerContactMaster { get; set; }//32
         public string InstructionalDesignerMaster { get; set; }//33
-        public string LevelOfEffort { get; set; }//34
+       //34
        public string FoucsCourseOwner1 { get; set; }//35
        public string FocusCourseOwner2 { get; set; }//36
         //public string CourseNotes { get; set; }//37
@@ -83,9 +93,9 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ServiceNetwork2 { get; set; }//65
         public string ServiceNetwork3 { get; set; }//66
         public string ServiceNetwork4 { get; set; }//67*/
-        public string Status { get; set; }//68 -----------which select --final 
+       //68 -----------which select --final 
         public string OFFERING_TEMPLATE_NO { get; set; }//69
-        public string DevelopmentYear { get; set; }//70
+        //70
         public string IsRecordLocked { get; set; }//71
         public string ClarizenStartDate { get; set; }//72
         public string CourseRecordURL { get; set; }//73
@@ -93,13 +103,13 @@ namespace AdvisoryDatabase.Framework.Entities
         public string FocusRetired { get; set; }//75  ----hard code 2
         public string FocusDiscFrom { get; set; }//76 ---- hard code 3
         public string FocusDisplayedToLearner { get; set; }//77 --hard code4
+        public string CourseMasterID { get; set; }
 
-        public string FOSvalues { get; set; } // addd new 
+        // addd new 
 
-        public string SGSLSNValues { get; set; }//ad new
-        public string PrerequisiteCourseID { get; set; }// add new 
-        public string EquivalentCourseID { get; set; }// add new
-        public string AudienceType { get; set; }// add new
+        //ad new
+        // add new
+
 
     }
 }
