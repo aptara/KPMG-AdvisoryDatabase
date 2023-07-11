@@ -109,10 +109,12 @@ export class CourseListComponent implements OnInit {
     EditCourse(CourseId: any) {
         console.log("Edit ", CourseId)
         this.router.navigate(['/course-details', { id: CourseId }]);
+        this.service.setSaveButtonDisabled(false);
     }
 
     ViewCourse(CourseId: any) {
         this.router.navigate(['/course-details', { id: CourseId }]);
+        this.service.setSaveButtonDisabled(true);
     }
 
     DeleteCourse(CourseId: any) {
@@ -141,6 +143,7 @@ export class CourseListComponent implements OnInit {
 
     AddCourse() {
         this.router.navigate(['/course-details'])
+        this.service.setSaveButtonDisabled(false);
     }
 
 
@@ -487,8 +490,8 @@ export class CourseListComponent implements OnInit {
             this.downloadExcelService.getAllCoursesForDataOfFocus(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
-                const headers1 = Object.keys(courseData[0]).slice(0, 45); // First 10 columns
-                const headers2 = Object.keys(courseData[0]).slice(0, 45); // First 15 columns
+                const headers1 = Object.keys(courseData[0]).slice(0, 46); // First 10 columns
+                const headers2 = Object.keys(courseData[0]).slice(0, 46); // First 15 columns
 
                 // Custom titles for each column
                 const columnTitles1 = ['ID', 'OFFERING_TEMPLATE_NO',
@@ -505,7 +508,7 @@ export class CourseListComponent implements OnInit {
                     'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 
                     'FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3', 'FOS_DEFAULT_CREDITS3', 'FIELD_OF_STUDY4',
-                    'FOS_DEFAULT_CREDITS4', 'MIN_CT', 'MAX_CT', 'MAX_CT'];
+                    'FOS_DEFAULT_CREDITS4', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'FocusTemplateName'];
 
                 const columnTitles2 = ['ID', 'OFFERING_TEMPLATE_NO',
                     'VERSION', 'TITLE',
@@ -521,7 +524,7 @@ export class CourseListComponent implements OnInit {
                     'FIELD_OF_STUDY1', 'FOS_DEFAULT_CREDITS1', 'FIELD_OF_STUDY2',
 
                     'FOS_DEFAULT_CREDITS2', 'FIELD_OF_STUDY3', 'FOS_DEFAULT_CREDITS3', 'FIELD_OF_STUDY4',
-                    'FOS_DEFAULT_CREDITS4', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'Error Message'];
+                    'FOS_DEFAULT_CREDITS4', 'MIN_CT', 'MAX_CT', 'MAX_CT', 'FocusTemplateName', 'Error Message'];
 
                 // ID	OFFERING_TEMPLATE_NO	VERSION	TITLE	DOMAIN	AVAIL_FROM	DISC_FROM	CURRENCY	PRICE	DESCRIPTION	DISPLAY_LEARNER	DISPLAY_CALL_CENTER
 

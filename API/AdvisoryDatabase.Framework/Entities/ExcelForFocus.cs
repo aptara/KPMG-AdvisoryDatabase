@@ -66,10 +66,10 @@ namespace AdvisoryDatabase.Framework.Entities
         public string MaximumAttendeeCount { get; set; }
 
         public string MaximumAttendeeWaitlist { get; set; }
-        // public string DiscontinuedFrom { get; set; }
+    // public string DiscontinuedFrom { get; set; }
 
-
-        public string ErrorMessage { get; set; }
+        public string FocusTemplateName { get; set; }
+    public string ErrorMessage { get; set; }
 
         public string CourseMasterIDs { get; set; }
         public int CourseMasterID { get; set; }
@@ -84,7 +84,7 @@ namespace AdvisoryDatabase.Framework.Entities
 
        //not show in the client excel 
       
-        public string FocusTemplateName { get; set; } //not show in the client excel 
+       //not show in the client excel 
 
         public string IsAllowedToFocusRDI { get; set; }//not show in the client excel 
         public string Status { get; set; }//not show in the client excel 

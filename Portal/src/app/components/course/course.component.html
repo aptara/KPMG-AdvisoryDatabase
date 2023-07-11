@@ -44,7 +44,7 @@
                             *ngIf="IsSubmit &&  CourseForm.controls['DeploymentFiscalYear'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.DeploymentFiscalYear?.errors?.required">
-                                Project Status is required.
+                                Deplyment Fiscal Year is required.
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             *ngIf="IsSubmit &&  CourseForm.controls['CompetencyMasterID'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.CompetencyMasterID?.errors?.required">
-                                Project Status is required.
+                                Competency is required.
                             </div>
                         </div>
                     </div>
@@ -125,17 +125,14 @@
                         <label for="CourseOverviewObjective">Course Overview/Objectives</label>
                         <textarea type="test" class="form-control" formControlName="CourseOverviewObjective"
                             id="CourseOverviewObjective"></textarea>
-                        <div class="message-error"
+                        <!-- <div class="message-error"
                             *ngIf="IsSubmit &&  CourseForm.controls['CourseOverviewObjective'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.CourseOverviewObjective?.errors?.required">
                                 Course Overview/Objectives is reuired.
                             </div>
-                            <div class="error-tooltips"
-                                *ngIf="CourseForm.controls?.CourseOverviewObjective?.errors?.pattern">
-                                Course Overview/Objectives should be Alpha Numeric.
-                            </div>
-                        </div>
+
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -178,58 +175,60 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div formArrayName="SGSLSNFormGroups">
-                    <div *ngFor="let sgslsnFormGroup of SGSLSNFormGroups.controls; let i=index;">
-                        <div class="col-md-3" [formGroupName]="i">
-                            <div class="form-group">
-                                <label for="ServiceGroup">Service Group {{ i + 1}}</label>
-                                <ngx-select-dropdown [config]="config" formControlName="ServiceGroup"
-                                    (change)="OnChangedServiceGroup($event, sgslsnFormGroup)"
-                                    [options]="ServiceGroupMasterData">
-                                </ngx-select-dropdown>
+            <div class="field-container">
+                <div class="row">
+                    <div formArrayName="SGSLSNFormGroups">
+                        <div *ngFor="let sgslsnFormGroup of SGSLSNFormGroups.controls; let i=index;">
+                            <div class="col-md-3" [formGroupName]="i">
+                                <div class="form-group">
+                                    <label for="ServiceGroup">Service Group {{ i + 1}}</label>
+                                    <ngx-select-dropdown [config]="config" formControlName="ServiceGroup"
+                                        (change)="OnChangedServiceGroup($event, sgslsnFormGroup)"
+                                        [options]="ServiceGroupMasterData">
+                                    </ngx-select-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-md-3" [formGroupName]="i">
+                                <div class="form-group">
+                                    <label for="ServiceLine">Service Line {{ i + 1}}</label>
+                                    <ngx-select-dropdown [config]="config" formControlName="ServiceLine"
+                                        (change)="OnChangedServiceLine($event, sgslsnFormGroup)"
+                                        [options]="GetServiceLineDropdownOptions(sgslsnFormGroup)">
+                                    </ngx-select-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-md-3" [formGroupName]="i">
+                                <div class="form-group">
+                                    <label for="ServiceNetwork">Service Network {{ i + 1}}</label>
+                                    <ngx-select-dropdown [config]="config" formControlName="ServiceNetwork"
+                                        [options]="GetServiceNetworkDropdownOptions(sgslsnFormGroup)">
+                                    </ngx-select-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div *ngIf="i != 0">
+                                    <button type="button" class="btn btn-default dynamic-btn"
+                                        (click)="removeFormControl(i)">
+                                        <i class="pi pi-minus"></i>
+                                    </button>
+                                </div>
+                                <div *ngIf="i == 0">
+                                    <button type="button" class="btn btn-default dynamic-btn"
+                                        (click)="addSGSLSNCourseChild()">
+                                        <i class="pi pi-plus"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3" [formGroupName]="i">
-                            <div class="form-group">
-                                <label for="ServiceLine">Service Line {{ i + 1}}</label>
-                                <ngx-select-dropdown [config]="config" formControlName="ServiceLine"
-                                    (change)="OnChangedServiceLine($event, sgslsnFormGroup)"
-                                    [options]="GetServiceLineDropdownOptions(sgslsnFormGroup)">
-                                </ngx-select-dropdown>
-                            </div>
+                        <div *ngIf="IsRequiredsgslsnFormControl" style="font-size: 12px; color: red;">
+                            Service Group, Service Line and Service Network is
+                            required.
                         </div>
-                        <div class="col-md-3" [formGroupName]="i">
-                            <div class="form-group">
-                                <label for="ServiceNetwork">Service Network {{ i + 1}}</label>
-                                <ngx-select-dropdown [config]="config" formControlName="ServiceNetwork"
-                                    [options]="GetServiceNetworkDropdownOptions(sgslsnFormGroup)">
-                                </ngx-select-dropdown>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div *ngIf="i != 0">
-                                <button type="button" class="btn btn-default dynamic-btn"
-                                    (click)="removeFormControl(i)">
-                                    <i class="pi pi-minus"></i>
-                                </button>
-                            </div>
-                            <div *ngIf="i == 0">
-                                <button type="button" class="btn btn-default dynamic-btn"
-                                    (click)="addSGSLSNCourseChild()">
-                                    <i class="pi pi-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="IsRequiredsgslsnFormControl" style="font-size: 12px; color: red;">
-                        Service Group, Service Line and Service Network is
-                        required.
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-9 FOS-container" style="margin-top: 20px; margin-left: 12px;">
                     <div formArrayName="FieldOfStudyFormGroup">
                         <div *ngFor="let fOSFormGroup of FieldOfStudyFormGroup.controls; let i=index;">
                             <div>
@@ -291,70 +290,74 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div formArrayName="PrerequisiteCourseIDFormGroup">
-                    <div *ngFor="let PCIDFormGroup of PrerequisiteCourseIDFormGroup.controls; let i=index;">
-                        <div>
-                            <div class="col-md-3" [formGroupName]="i">
-                                <div class="form-group">
-                                    <label for="PrerequisiteCourseID">Prerequisite CourseId {{ i + 1}}</label>
-                                    <input type="text" class="form-control" formControlName="PrerequisiteCourseID"
-                                        id="PrerequisiteCourseID">
-                                </div>
-                                <div class="message-error">
-                                    <div class="error-tooltips"
-                                        *ngIf="IsSubmit && PCIDFormGroup.get('PrerequisiteCourseID')?.hasError('pattern')">
-                                        Prerequisite CourseId should be Alpha Numeric.
+            <div class="PrerequisiteCourseId" style="margin-top: 20px;">
+                <div class="row">
+                    <div formArrayName="PrerequisiteCourseIDFormGroup">
+                        <div *ngFor="let PCIDFormGroup of PrerequisiteCourseIDFormGroup.controls; let i=index;">
+                            <div>
+                                <div class="col-md-3" [formGroupName]="i">
+                                    <div class="form-group">
+                                        <label for="PrerequisiteCourseID">Prerequisite CourseId {{ i + 1}}</label>
+                                        <input type="text" class="form-control" formControlName="PrerequisiteCourseID"
+                                            id="PrerequisiteCourseID">
+                                    </div>
+                                    <div class="message-error">
+                                        <div class="error-tooltips"
+                                            *ngIf="IsSubmit && PCIDFormGroup.get('PrerequisiteCourseID')?.hasError('pattern')">
+                                            Prerequisite CourseId should be Alpha Numeric.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3" [formGroupName]="i">
-                                <div *ngIf="i != 0">
-                                    <button type="button" class="btn btn-default dynamic-btn"
-                                        (click)="removePrerequisiteCourseIDFormControl(i)">
-                                        <i class="pi pi-minus"></i>
-                                    </button>
-                                </div>
-                                <div *ngIf="i == 0">
-                                    <button type="button" class="btn btn-default dynamic-btn"
-                                        (click)="addPrerequisiteCourseIDChildForm()">
-                                        <i class="pi pi-plus"></i>
-                                    </button>
+                                <div class="col-md-3" [formGroupName]="i">
+                                    <div *ngIf="i != 0">
+                                        <button type="button" class="btn btn-default dynamic-btn"
+                                            (click)="removePrerequisiteCourseIDFormControl(i)">
+                                            <i class="pi pi-minus"></i>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="i == 0">
+                                        <button type="button" class="btn btn-default dynamic-btn"
+                                            (click)="addPrerequisiteCourseIDChildForm()">
+                                            <i class="pi pi-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div formArrayName="EquivalentCourseIDFormGroup">
-                    <div *ngFor="let ECIDFormGroup of EquivalentCourseIDFormGroup.controls; let i=index;">
-                        <div [formGroupName]="i">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="EquivalentCourseID">Equivalent CourseId {{ i + 1}}</label>
-                                    <input type="text" class="form-control" formControlName="EquivalentCourseID"
-                                        id="EquivalentCourseID">
-                                </div>
-                                <div class="message-error">
-                                    <div class="error-tooltips"
-                                        *ngIf="IsSubmit && ECIDFormGroup.get('EquivalentCourseID')?.hasError('pattern')">
-                                        Equivalent CourseId should be Alpha Numeric.
+            <div class="EquivalentCourseId" style="margin-top: 20px;">
+                <div class="row">
+                    <div formArrayName="EquivalentCourseIDFormGroup">
+                        <div *ngFor="let ECIDFormGroup of EquivalentCourseIDFormGroup.controls; let i=index;">
+                            <div [formGroupName]="i">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="EquivalentCourseID">Equivalent CourseId {{ i + 1}}</label>
+                                        <input type="text" class="form-control" formControlName="EquivalentCourseID"
+                                            id="EquivalentCourseID">
+                                    </div>
+                                    <div class="message-error">
+                                        <div class="error-tooltips"
+                                            *ngIf="IsSubmit && ECIDFormGroup.get('EquivalentCourseID')?.hasError('pattern')">
+                                            Equivalent CourseId should be Alpha Numeric.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div *ngIf="i != 0">
-                                    <button type="button" class="btn btn-default dynamic-btn"
-                                        (click)="removeEquivalentCourseIDFormControl(i)">
-                                        <i class="pi pi-minus"></i>
-                                    </button>
-                                </div>
-                                <div *ngIf="i == 0">
-                                    <button type="button" class="btn btn-default dynamic-btn"
-                                        (click)="addEquivalentCourseIDChildForm()">
-                                        <i class="pi pi-plus"></i>
-                                    </button>
+                                <div class="col-md-3">
+                                    <div *ngIf="i != 0">
+                                        <button type="button" class="btn btn-default dynamic-btn"
+                                            (click)="removeEquivalentCourseIDFormControl(i)">
+                                            <i class="pi pi-minus"></i>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="i == 0">
+                                        <button type="button" class="btn btn-default dynamic-btn"
+                                            (click)="addEquivalentCourseIDChildForm()">
+                                            <i class="pi pi-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -366,8 +369,8 @@
                     <div class="form-group">
                         <label for="SpecialNotice">Special Notice</label>
                         <div class="form-check" *ngFor="let SpecialNotes of SpecialNoticeMasterData">
-                            <input class="form-check-input" type="radio" [value]="SpecialNotes.Id"
-                                formControlName="SpecialNoticeMasterID" id="SpecialNoticeMasterID" />
+                            <input class="form-check-input custom-radio" type="radio" [value]="SpecialNotes.Id" style=" border: 1px solid black;
+   " formControlName="SpecialNoticeMasterID" id="SpecialNoticeMasterID" />
                             <label class="form-check-label"
                                 for="SpecialNoticeMasterID">{{SpecialNotes.DisplayName}}</label>
                         </div>
@@ -390,40 +393,42 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div formArrayName="AudienceTypeFormGroup">
-                    <div *ngFor="let fOSFormGroup of AudienceTypeFormGroup.controls; let i=index;">
-                        <div [formGroupName]="i">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="AudienceType">Audience Type {{ i + 1}}<span
-                                            style="color:red;">*</span></label>
-                                    <input type="text" class="form-control" formControlName="AudienceType"
-                                        id="AudienceType">
+            <div class="AudienceType">
+                <div class="row">
+                    <div formArrayName="AudienceTypeFormGroup">
+                        <div *ngFor="let fOSFormGroup of AudienceTypeFormGroup.controls; let i=index;">
+                            <div [formGroupName]="i">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="AudienceType">Audience Type {{ i + 1}}<span
+                                                style="color:red;">*</span></label>
+                                        <input type="text" class="form-control" formControlName="AudienceType"
+                                            id="AudienceType">
+                                    </div>
+                                    <div class="message-error">
+                                        <div class="error-tooltips"
+                                            *ngIf="IsSubmit && fOSFormGroup.get('AudienceType')?.hasError('pattern')">
+                                            Audience Type should be Alpha Numeric.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="message-error">
-                                    <div class="error-tooltips"
-                                        *ngIf="IsSubmit && fOSFormGroup.get('AudienceType')?.hasError('pattern')">
-                                        Audience Type should be Alpha Numeric.
+                                <div class="col-md-3">
+                                    <div *ngIf="i != 0">
+                                        <button type="button" class="btn btn-default dynamic-btn"
+                                            (click)="removeAudienceTypeFormControl(i)">
+                                            <i class="pi pi-minus"></i>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="i == 0">
+                                        <button type="button" class="btn btn-default dynamic-btn"
+                                            (click)="addAudienceTypeChildForm()">
+                                            <i class="pi pi-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div *ngIf="i != 0">
-                                    <button type="button" class="btn btn-default dynamic-btn"
-                                        (click)="removeAudienceTypeFormControl(i)">
-                                        <i class="pi pi-minus"></i>
-                                    </button>
-                                </div>
-                                <div *ngIf="i == 0">
-                                    <button type="button" class="btn btn-default dynamic-btn"
-                                        (click)="addAudienceTypeChildForm()">
-                                        <i class="pi pi-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -593,17 +598,17 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="Duration">Duration</label>
+                        <label for="Duration">Duration<span style="color:red;">*</span></label>
                         <input class="form-control" type="text" placeholder="HH:MM" formControlName="Duration"
                             id="Duration" [inputMask]="TimeInputMask">
-                        <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
-                            <!-- <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
+                        <!-- <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
+                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.required">
                                 Duration is required.
-                            </div> -->
-                            <!-- <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.pattern">
+                            </div>
+                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Duration?.errors?.pattern">
                                                 Duration should be Alpha Numeric.
-                                            </div> -->
-                        </div>
+                                            </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -934,7 +939,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-default"
+                <button type="submit" class="btn btn-default" [disabled]="isSaveButtonDisabled"
                     *ngIf="(hasPermission.hasPermissionCreateCourse || hasPermission.hasPermissionUpdateCourse)">
                     <span class="p-button-label">Save</span>
                 </button>

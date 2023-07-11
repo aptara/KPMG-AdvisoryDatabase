@@ -82,5 +82,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string PreviousData { get; set; }
         public string UpdatedUserName { get; set; }
         public string WorkNotes { get; set; }
+
+        public string IsRecordLocked { get; set; }
     }
 }
