@@ -24,6 +24,7 @@ declare var bootbox: any;
 })
 export class CourseComponent implements OnInit {
     @ViewChild('discontinuedInput', { static: true }) discontinuedInput: ElementRef;
+    isSaveButtonDisabled: boolean = false;
     discontinuedDate: string;
     public CourseForm: FormGroup;
     URLParamCourseId: number = 0;
@@ -99,14 +100,14 @@ export class CourseComponent implements OnInit {
         this.URLParamCourseId = this.route.snapshot.params['id'];
         this.hasPermission = new CoursePermission();
         this.CourseForm = this.formBuilder.group({
-            StatusMasterID: ['', [Validators.required]],
+            StatusMasterID: ['Record Creation', [Validators.required]],
             CourseName: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             CourseID: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
             DeploymentFiscalYear: [{ value: '', disabled: true }],
             DevelopmentYear: ['', [Validators.pattern(/^[0-9]*$/)]],
             CompetencyMasterID: [''],
             ProgramKnowledgeLevelMasterID: [''],
-            CourseOverviewObjective: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            CourseOverviewObjective: [''],
             TargetAudience: [''],
             EstimatedCPE: [{ value: '', disabled: true }],
             //AudienceLevelMasterID: [''],
@@ -122,7 +123,7 @@ export class CourseComponent implements OnInit {
             ProgramTypeID: ['', [Validators.required]],
             DeliveryTypeID: ['', [Validators.required]],
             // Duration: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
-            Duration: ['', [Validators.required, this.validateDurationFormat]],
+            Duration: ['', [this.validateDurationFormat]],
             FirstDeliveryDate: ['', [Validators.required]],
             MaximumAttendeeCount: ['', [Validators.pattern(/^[0-9]*$/)]],
             MinimumAttendeeCount: ['', [Validators.pattern(/^[0-9]*$/)]],
@@ -142,9 +143,9 @@ export class CourseComponent implements OnInit {
             FunctionMasterIDs: [''],
             SGSLSNFormGroups: this.formBuilder.array([this.GetSGSNSLFormControl()]),
             FieldOfStudyFormGroup: this.formBuilder.array([this.GetFieldOfStudyFormGroup()]),
-            PrerequisiteCourseIDFormGroup: this.formBuilder.array([this.GetPrerequisiteCourseIDFormGroup()]),
-            EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup()]),
-            AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup()]),
+            PrerequisiteCourseIDFormGroup: this.formBuilder.array([this.GetPrerequisiteCourseIDFormGroup('No Prerequisite')]),
+            EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup('No Equivalant')]),
+            AudienceTypeFormGroup: this.formBuilder.array([this.GetAudienceTypeFormGroup('US Only')]),
             FOCUSCourseOwnerFormGroup: this.formBuilder.array([this.GetFOCUSCourseOwnerFormGroup()]),
             WorkNotes: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]]
             // Discontinued: ['', (this.discontinuedDate)]
@@ -175,6 +176,11 @@ export class CourseComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.courseService.saveButtonDisabled$.subscribe(disabled => {
+            this.isSaveButtonDisabled = disabled;
+        });
+
         this.getDropdownData();
         this.CourseForm.controls.CourseNotes.disable();
         this.hasPermission = this.userService.GetUserPermission();
@@ -184,7 +190,7 @@ export class CourseComponent implements OnInit {
         this.userService.WindowAuthentication().subscribe(data => {
             this.UserData = data
         })
-        console.log(this.CourseData)
+
     }
 
 
@@ -211,23 +217,24 @@ export class CourseComponent implements OnInit {
         });
     }
 
-    GetPrerequisiteCourseIDFormGroup() {
+    GetPrerequisiteCourseIDFormGroup(defaultValue: string = '') {
         return this.formBuilder.group({
-            PrerequisiteCourseID: ['No Prerequisite', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            PrerequisiteCourseID: [defaultValue, [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
-    GetEquivalentCourseIDFormGroup() {
+    GetEquivalentCourseIDFormGroup(defaultValue: string = '') {
         return this.formBuilder.group({
-            EquivalentCourseID: ['No Equivalent', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            EquivalentCourseID: [defaultValue, [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
-    GetAudienceTypeFormGroup() {
+    GetAudienceTypeFormGroup(defaultValue: string = '') {
         return this.formBuilder.group({
-            AudienceType: ['US Only', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/), Validators.required]],
+            AudienceType: [defaultValue, [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/), Validators.required]],
         });
     }
+
 
 
 
@@ -426,11 +433,19 @@ export class CourseComponent implements OnInit {
                     this.CourseData = data.Data;
 
                     this.bindFormData();
+                    console.log(this.CourseData);
+
+                    // Check if the record is locked
+                    if (this.CourseData.IsRecordLocked === 'Yes       ') {
+
+                        this.isSaveButtonDisabled = true; // Use '=' for assignment
+                    }
                 }
             });
         }
         return {};
     }
+
 
     getDropdownData() {
         return this.dropdownService.getAllCourses().subscribe((data: any) => {
@@ -708,11 +723,22 @@ export class CourseComponent implements OnInit {
     getDeploymentFiscalYear() {
         const firstDeliveryDate = this.CourseForm?.get('FirstDeliveryDate')?.value;
         if (firstDeliveryDate) {
-            const year = new Date(firstDeliveryDate).getFullYear();
-            const lastTwoDigits = year % 100; // Get the last two digits
-            return `FY${lastTwoDigits}`;
+            const date = new Date(firstDeliveryDate);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const isOctoberOrLater = month >= 10;
+
+            if (isOctoberOrLater) {
+                const nextYear = year + 1;
+                const lastTwoDigits = nextYear % 100; // Get the last two digits
+                return `FY${lastTwoDigits}`;
+            } else {
+                const lastTwoDigits = year % 100; // Get the last two digits
+                return `FY${lastTwoDigits}`;
+            }
         }
         return '';
     }
+
 
 }

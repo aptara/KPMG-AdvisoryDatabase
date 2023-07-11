@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Course } from '../domain/Course';
 import { retry, catchError } from 'rxjs/operators';
@@ -9,6 +9,15 @@ import { retry, catchError } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class CourseService {
+
+    private saveButtonDisabledSubject = new BehaviorSubject<boolean>(false);
+    saveButtonDisabled$ = this.saveButtonDisabledSubject.asObservable();
+
+    setSaveButtonDisabled(disabled: boolean) {
+        this.saveButtonDisabledSubject.next(disabled);
+    }
+
+
     apiURL = environment.baseUrl;
 
     //constant variable for API URL
