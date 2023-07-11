@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    baseURL: 'http://ctsdemo.aptaracorp.net/advisorydatabasedev/',
-    baseUrl: 'https://ctsdemo.aptaracorp.net/AdvisoryDatabaseAPIDev/API/'
+    baseURL: 'http://ctsdemo.aptaracorp.net/advisorydatabase/',
+    baseUrl: 'https://ctsdemo.aptaracorp.net/AdvisoryDatabaseAPI/API/'
 };
