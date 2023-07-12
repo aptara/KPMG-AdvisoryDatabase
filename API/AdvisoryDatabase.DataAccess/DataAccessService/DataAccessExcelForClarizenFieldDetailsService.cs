@@ -77,6 +77,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                         // Duration = row.ReadString("Duration"),
                          ClarizenStartDate = row.ReadString("ClarizenStartDate"),
                          CourseRecordURL = row.ReadString("CourseRecordURL"),
+
+                         ProjectType = row.ReadString("ProjectType"),
                          FocusTemplateName = row.ReadString("FocusTemplateName"),
 
                          ErrorMessage = row.ReadString("ErrorMessage"),
@@ -114,9 +116,12 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                // Duration = data.ReadString("Duration"),
                 ClarizenStartDate = data.ReadString("ClarizenStartDate"),
                 CourseRecordURL = data.ReadString("CourseRecordURL"),
+                ProjectType = data.ReadString("ProjectType"),
                 FocusTemplateName = data.ReadString("FocusTemplateName"),
                 ErrorMessage = data.ReadString("ErrorMessage"),
-               
+              
+
+
                 Status = data.ReadString("Status"),
                 //ProjectStatusID = data.ReadString("ProjectStatusID"),
                 

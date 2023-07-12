@@ -84,5 +84,6 @@ namespace AdvisoryDatabase.Framework.Entities
         public string WorkNotes { get; set; }
 
         public string IsRecordLocked { get; set; }
+        public string LinkUrl { get; set; }
     }
 }

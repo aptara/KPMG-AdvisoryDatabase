@@ -142,6 +142,7 @@ export class CourseComponent implements OnInit {
             AudienceLevels: [''],
             FunctionMasterIDs: [''],
             SGSLSNFormGroups: this.formBuilder.array([this.GetSGSNSLFormControl()]),
+
             FieldOfStudyFormGroup: this.formBuilder.array([this.GetFieldOfStudyFormGroup()]),
             PrerequisiteCourseIDFormGroup: this.formBuilder.array([this.GetPrerequisiteCourseIDFormGroup('No Prerequisite')]),
             EquivalentCourseIDFormGroup: this.formBuilder.array([this.GetEquivalentCourseIDFormGroup('No Equivalant')]),
@@ -204,16 +205,16 @@ export class CourseComponent implements OnInit {
 
     GetSGSNSLFormControl() {
         return this.formBuilder.group({
-            ServiceGroup: [''],
-            ServiceLine: [''],
-            ServiceNetwork: [''],
-        })
+            ServiceGroup: ['', [Validators.required]],
+            ServiceLine: ['', [Validators.required]],
+            ServiceNetwork: ['', [Validators.required]]
+        });
     }
 
     GetFieldOfStudyFormGroup() {
         return this.formBuilder.group({
-            FieldOfStudy: [''],
-            FieldOfStudyCredit: ['', [Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
+            FieldOfStudy: ['', [Validators.required]],
+            FieldOfStudyCredit: ['', [Validators.required, Validators.pattern(/^[ A-Za-z0-9_@./#&+-]*$/)]],
         });
     }
 
@@ -611,6 +612,9 @@ export class CourseComponent implements OnInit {
         FirstDeliveryDate: 'First Delivery Date',
         LDIntakeOwner: 'L&D Intake Owner ',
         FOCUSCourseOwnerFormGroup: 'Course Owner',
+        FieldOfStudyFormGroup: 'Field of Study  & Field of Study Credit ',
+        SGSLSNFormGroups: 'Service Group/Service Line/Service Network '
+
     };
 
     findInvalidControls1(): string[] {

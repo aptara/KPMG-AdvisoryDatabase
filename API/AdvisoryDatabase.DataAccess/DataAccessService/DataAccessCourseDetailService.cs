@@ -174,8 +174,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                     StatusText = row.ReadString("StatusText"),
                     UpdatedUserName = row.ReadString("UpdatedUserName"),
                     WorkNotes = row.ReadString("WorkNotes"),
-                    IsRecordLocked = row.ReadString("IsRecordlocked")
-                  
+                    IsRecordLocked = row.ReadString("IsRecordlocked"),
+                    LinkUrl = row.ReadString("LinkUrl")
+
 
 
 
@@ -402,7 +403,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 FieldOfStudyMasterID = data.Read<int>("FieldOfStudyMasterID"),
                 FuntionMasterID = data.Read<long>("FuntionMasterID"),
                 UpdatedUserName = data.ReadString("UpdatedUserName"),
-              IsRecordLocked = data.ReadString("IsRecordlocked")
+              IsRecordLocked = data.ReadString("IsRecordlocked"),
+                LinkUrl = data.ReadString("LinkUrl")
             };
         }
     }

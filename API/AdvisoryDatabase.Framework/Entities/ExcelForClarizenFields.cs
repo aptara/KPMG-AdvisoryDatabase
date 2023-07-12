@@ -35,6 +35,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ClarizenStartDate { get; set; }
         public string CourseRecordURL { get; set; }
 
+        public string ProjectType { get; set; }
         public string FocusTemplateName { get; set; }
         public string ErrorMessage { get; set; }
 

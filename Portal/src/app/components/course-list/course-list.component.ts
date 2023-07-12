@@ -721,21 +721,21 @@ export class CourseListComponent implements OnInit {
             this.downloadExcelService.getAllCoursesForClarizen(this.selectedCourseIds).subscribe((data: any) => {
                 console.log(data)
                 var courseData: any = data;
-                const headers1 = Object.keys(courseData[0]).slice(0, 18); // First 18 columns
+                const headers1 = Object.keys(courseData[0]).slice(0, 19); // First 18 columns
                 const headers2 = Object.keys(courseData[0]).slice(0, 19); // First 19 columns
 
                 // Custom titles for each column
-                const columnTitles1 = ['Name', 'Business Relationship Director', 'Owner',
-                    'Course Sponser', ' Description', 'InstructionalDesigner(s)', 'Lead SMP', 'ProgramType',
-                    'Delivery  Type(Single Pick)', 'CPE creadits', 'Course #',
-                    'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort',
-                    'Start Date', 'S2URl', 'FocusTemplateName '];
+                const columnTitles1 = ['Name', 'L&D Intake Owner', 'Owner',
+                    'Course Sponser', ' Description', 'Instructional Designer(s)', 'Lead SMP', 'Program Type',
+                    'Delivery Type (Single Pick)', 'CPE Credits', 'Course #',
+                    'First Delivery Date', 'Deployment Fiscal Year', 'Level Of Effort',
+                    'Start Date', 'S2 URL', 'Project Type', 'FromTemplate:'];
 
-                const columnTitles2 = ['Name', 'Business Relationship Director', 'Owner',
-                    'Course Sponser', ' Description', 'InstructionalDesigner', 'Lead SMP', 'ProgramType',
-                    'Delivery  Type(Single Pick)', 'CPE creadits', 'Course #',
-                    'First Delivery Date', 'Deployment Fiscal Year', 'Level of Effort', 'Start Date'
-                    , 'S2URl', 'FocusTemplateName', 'ErrorMessage'];
+                const columnTitles2 = ['Name', 'L&D Intake Owner', 'Owner',
+                    'Course Sponser', ' Description', 'Instructional Designer(s)', 'Lead SMP', 'Program Type',
+                    'Delivery Type (Single Pick)', 'CPE Credits', 'Course #',
+                    'First Delivery Date', 'Deployment Fiscal Year', 'Level Of Effort', 'Start Date'
+                    , 'S2 URL', 'Project Type', 'FromTemplate:', 'Error Message'];
 
 
                 //   const excelData1 = courseData.map((obj: any) => headers1.map((key, index) => columnTitles1[index] ? obj[key] : ''));
