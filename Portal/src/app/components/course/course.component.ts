@@ -438,6 +438,7 @@ export class CourseComponent implements OnInit {
 
                     // Check if the record is locked
                     if (this.CourseData.IsRecordLocked === 'Yes       ') {
+                        bootbox.alert("Respective course is uploaded in Focus. So record is locked.")
 
                         this.isSaveButtonDisabled = true; // Use '=' for assignment
                     }
