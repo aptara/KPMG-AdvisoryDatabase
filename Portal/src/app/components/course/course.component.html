@@ -1,5 +1,10 @@
 <div class="add-course">
     <div class="LastUpdatedData">
+        <span *ngIf="CourseData?.IsRecordLocked === 'Yes       '" style="color: red; margin-right: 230px;">Respective
+            course is uploaded in
+            Focus.
+            So record
+            is locked.</span>
         <p style="margin: 0 20px 0 0;">Last Updated By: {{ CourseData?.UpdatedUserName}}</p>
         <p>Last Updated On: {{ CourseData?.LastUpdatedOn}}</p>
     </div>
