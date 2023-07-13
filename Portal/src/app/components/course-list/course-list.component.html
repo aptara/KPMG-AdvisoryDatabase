@@ -10,27 +10,19 @@
          'StatusText',  'DeploymentFiscalYear']">
         <ng-template pTemplate="caption">
             <div class="flex">
-                <!-- <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
-                    selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}"
-                    placeholder="Choose Columns"></p-multiSelect> -->
-
-
-                <button pButton class="btn-excel-width" (click)=" UnlockCourse()" style="height: 50px;">Unlock
-                    Course</button>
-
-                <button pButton class="btn-excel-width" (click)="downloadExceloffocusN()"
+                <button pButton class="btn-excel-width" (click)="DownloadExcelForFocus()"
                     *ngIf="hasPermission.hasPermissionDownloadCourseRDIforFocus" style="height: 50px;">
                     Export RDI for Focus
                 </button>
 
-                <button pButton class="btn-excel-width" (click)="downloadExcelofClarizeN()"
+                <button pButton class="btn-excel-width" (click)="DownloadExcelForClarize()"
                     *ngIf="hasPermission.hasPermissionDownloadCourseRDIforClarizen" style="height: 50px;">
                     Export RDI for Clarizen
                 </button>
-                <button pButton class="btn-excel-width" (click)="downloadExcelofDeployment()" style="height: 50px;">
+                <button pButton class="btn-excel-width" (click)="DownloadExcelForAllCourse()" style="height: 50px;">
                     Export RDI for All Courses
                 </button>
-                <button pButton class="btn-excel-width" (click)="downloadExcelofFilter()" style="height: 50px;">
+                <button pButton class="btn-excel-width" (click)="DownloadExcelForFilter()" style="height: 50px;">
                     Export RDI Filter
                 </button>
                 <button pButton class="btn-excel-width" (click)="cancelSelection()" style="height: 50px;">Reset</button>
@@ -43,13 +35,16 @@
 
             </div>
             <br>
-            <div class="flex" style="margin-right: 1010px;">
-                <span class="p-input-icon-left ml-auto filter-bar">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
-                        placeholder="Search keyword" />
-                </span>
+            <div class="row">
+                <div class="flex" style="margin-right: 250px;">
+                    <span class="p-input-icon-left ml-auto filter-bar">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search keyword" />
+                    </span>
+                </div>
             </div>
+
 
         </ng-template>
         <ng-template pTemplate="header">
@@ -297,10 +292,10 @@
 
             </tr>
         </ng-template>
-        <ng-template pTemplate="emptymessage">
+        <!-- <ng-template pTemplate="emptymessage">
             <tr>
                 <td colspan="7"></td>
             </tr>
-        </ng-template>
+        </ng-template> -->
     </p-table>
 </div>

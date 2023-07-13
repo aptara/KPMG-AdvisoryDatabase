@@ -19,7 +19,7 @@ export class UserService {
         return Promise.resolve(this.userData);
     }
 
-    public url = environment.baseUrl + 'WebUser/ShowData'
+    public url = environment.baseUrl + 'WebUser/GetUserData'
     getData() {
         var req = this.url;
         return this.http.get(req);
@@ -70,27 +70,25 @@ export class UserService {
         return JSON.parse(userData);
     }
 
-
-
     public LocationUrl = environment.baseUrl + 'TaskLocationMaster/LocationAction'
     GetLocationData() {
         var LocationData = this.LocationUrl;
         return this.http.get(LocationData);
     }
 
-    public TaskUrl = environment.baseUrl + 'TaskLocationMaster/TaskAction'
+    public TaskUrl = environment.baseUrl + 'TaskLocationMaster/GetTask'
     GetTasks() {
         return this.http.get(this.TaskUrl)
     }
 
-    public postData = environment.baseUrl + 'WebUser/PostData'
+    public postData = environment.baseUrl + 'WebUser/PostUserData'
     PostUserData(User: any) {
         var req = this.postData;
         return this.http.post(req, User, { headers: this.headers })
     }
 
 
-    public EditData = environment.baseUrl + 'WebUser/UpdateData'
+    public EditData = environment.baseUrl + 'WebUser/UpdateUser'
     EditUserData(UserData: any) {
         var req = this.EditData;
         return this.http.post(req, UserData)
@@ -107,18 +105,11 @@ export class UserService {
 
     //to show only true value data
     getUsers(): Observable<any[]> {
-        var req = environment.baseUrl + 'WebUser/ShowData'
+        var req = environment.baseUrl + 'WebUser/GetUserData'
         return this.http.get<any[]>(req);
     }
 
-    public emailDataUrl = environment.baseUrl + 'WebUser/EmailData';
-    getDataByEmail(empData: any) {
 
-        var req = this.emailDataUrl + '?Email=' + empData
-        // console.log(empData)
-        return this.http.get(req, { headers: this.headers });
-    }
-    // private apiUrl = environment.baseUrl + 'WebUser/GetDataByEmail';
 
     public GetAuthUser = environment.baseUrl + "WebUser/GetAutherizedUser";
 

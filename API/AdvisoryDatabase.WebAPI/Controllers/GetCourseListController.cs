@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,20 +30,20 @@ namespace AdvisoryDatabase.WebAPI.Controllers
             try
             {
                 AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetCourselist Method Start");
-                AdvisoryDatabase.Business.Controllers.CourseListDataController ObjBayDetai = new Business.Controllers.CourseListDataController();
+                AdvisoryDatabase.Business.Controllers.CourseListDataController CourseList = new Business.Controllers.CourseListDataController();
                 GetCourseList ObjInputParameters = new GetCourseList();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
-               
 
-                ObjBayDetai.GetCourseListDetails(ObjInputParameters);
 
-                List<GetCourseList> outputData = ObjBayDetai.GetCourseListDetails(ObjInputParameters);
+                 CourseList.GetCourseListDetails(ObjInputParameters);
+
+                List<GetCourseList> outputData = CourseList.GetCourseListDetails(ObjInputParameters);
 
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetCourselist Method end" + jsonData);
+                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetCourselist Method Record count" + outputData.Count);
                 return response;
 
             }
@@ -61,58 +61,5 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
 
 
-/*
-
-
-namespace AdvisoryDatabase.WebAPI.Controllers
-{
-    public class GetExcelForClarizenFieldsController : ApiController
-    {
-        [System.Web.Http.HttpGet]
-        public HttpResponseMessage ShowDataofclarizen()
-        // GET: GETExcelForClarizenFields
-        *//* public ActionResult Index()*//*
-        {
-            try
-            {
-                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofclarizen Method Start");
-                AdvisoryDatabase.Business.Controllers.GETExcelForClarizenFieldsController ObjBayDetai = new Business.Controllers.GETExcelForClarizenFieldsController();
-                ExcelForClarizen ObjInputParameters = new ExcelForClarizen();
-              
-                 ObjInputParameters.IsActive = true;*//*
-                ObjBayDetai.ExcelforclarizenfeildsDetails(ObjInputParameters);
-
-
-                List<ExcelForClarizen> outputData = ObjBayDetai.ExcelforclarizenfeildsDetails(ObjInputParameters);
-
-                string jsonData = JsonConvert.SerializeObject(outputData);
-                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-                response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofclarizen Method End:", jsonData);
-                return response;
-
-            }
-            catch (Exception ex)
-            {
-                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowDataofclarizen exception:", ex.Message);
-                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
-                errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
-                return errorResponse;
-
-            };
-
-
-        }
-
-
-
-
-
-
-
-    }
-}
-
-*/
 
 

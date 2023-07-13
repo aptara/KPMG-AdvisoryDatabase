@@ -16,33 +16,31 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 {
   public class WebUserController : ApiController
   {
-    //http://localhost:62220//api/WebUser/ShowData
-
-    //Display All Data
+    
     [System.Web.Http.HttpGet]
-    public HttpResponseMessage ShowData()
+    public HttpResponseMessage GetUserData()
 
     {
       try
       {
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method Start");
-        AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetUserData Method Start");
+        AdvisoryDatabase.Business.Controllers.WebUserController UserObject = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
 
-        List<UserDetail> outputData = ObjBayDetai.GetUserDetails(ObjInputParameters);
+        List<UserDetail> UserData = UserObject.GetUserDetails(ObjInputParameters);
      
-        string jsonData = JsonConvert.SerializeObject(outputData);
+        string jsonData = JsonConvert.SerializeObject(UserData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method end"+jsonData);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetUserData Method Record Count :" + UserData.Count);
         return response;
 
       }
       catch (Exception ex)
       {
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowData exception" ,ex.Message);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("GetUserData exception", ex.Message);
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
         errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
         return errorResponse;
@@ -51,18 +49,15 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     }
 
     
-
-
-
     //Action method for Add Data
     [System.Web.Mvc.HttpPost]
-    public HttpResponseMessage PostData(UserDetail user)
+    public HttpResponseMessage PostUserData(UserDetail user)
 
     {
       try
       {
         AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("PostData Method start" );
-        AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
+        AdvisoryDatabase.Business.Controllers.WebUserController UserObject = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
@@ -73,12 +68,12 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.NetworkID = user.NetworkID;
         ObjInputParameters.TaskMasterID = user.TaskMasterID;
 
-        List<UserDetail> outputData = ObjBayDetai.PostUserDetail(ObjInputParameters);
+        List<UserDetail> UserOutput = UserObject.PostUserDetail(ObjInputParameters);
 
-        string jsonData = JsonConvert.SerializeObject(outputData);
+        string jsonData = JsonConvert.SerializeObject(UserOutput);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("PostData Method end"+jsonData);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("PostData Method  Record Count :" + UserOutput.Count);
         return response;
 
       }
@@ -117,7 +112,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(UserDataById);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetDataByUserId Method end"+jsonData);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetDataByUserId Method Record Count :" + outputData.Count);
         return response;
 
       }
@@ -137,13 +132,13 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
     //Action method for Update data
     [System.Web.Mvc.HttpPost]
-    public HttpResponseMessage UpdateData(UserDetail user)
+    public HttpResponseMessage UpdateUser(UserDetail user)
 
     {
       try
       {
         AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UpdateData Method start");
-        AdvisoryDatabase.Business.Controllers.WebUserController ObjBayDetai = new Business.Controllers.WebUserController();
+        AdvisoryDatabase.Business.Controllers.WebUserController UserObject = new Business.Controllers.WebUserController();
         UserDetail ObjInputParameters = new UserDetail();
         ObjInputParameters = user;
         ObjInputParameters.LastUpdatedBy = 1;
@@ -158,14 +153,14 @@ namespace AdvisoryDatabase.WebAPI.Controllers
 
         UserDetail UserDataByUID = new UserDetail();
         var UserId = user.UserMasterID;
-        List<UserDetail> outputData = ObjBayDetai.updateDetails(ObjInputParameters);
+        List<UserDetail> UserOutput = UserObject.updateDetails(ObjInputParameters);
 
 
 
-        string jsonData = JsonConvert.SerializeObject(outputData);
+        string jsonData = JsonConvert.SerializeObject(UserOutput);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UpdateData Method end", jsonData);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UpdateData Method Record Count :" + UserOutput.Count);
         return response;
 
       }
@@ -215,7 +210,7 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("DelData method end"+jsonData);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("DelData method Record Count :" + outputData.Count);
         return response;
 
       }
@@ -240,8 +235,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
         var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];
-              /*  headerUserName = "NS3148280\\Trupia.Vincent";*/
-                AdvisoryLogger.WriteInfo("Server Variables:" + HttpContext.Current.Request.ServerVariables.ToString());
+   /*     headerUserName = "NS3148280\\Trupia.Vincent";*/
+        AdvisoryLogger.WriteInfo("Server Variables:" + HttpContext.Current.Request.ServerVariables.ToString());
                 AdvisoryLogger.WriteInfo("Header User Name:" + headerUserName);
                 AdvisoryLogger.WriteInfo("User Identity Name:" + User.Identity.Name);
 

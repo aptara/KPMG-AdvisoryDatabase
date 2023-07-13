@@ -12,7 +12,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-//using System.Web.Http;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using System.Web.Http.Results;
@@ -29,24 +28,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         public APIResponse<DropdownData> GetDropdownData()
         {
             DropdownData dropdownData = new DropdownData();
-
             AdvisoryDatabase.Business.Controllers.CourseDropdownMasterDataController courseDropdownMasterDataController = new CourseDropdownMasterDataController();
-
             dropdownData = courseDropdownMasterDataController.GetCourseDropdownMasterData();
-
-            //dropdownData.CourseOwnerMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().CourseOwnerMasters;
-            //dropdownData.ProgramTypeMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ProgramTypeMasters;
-            //dropdownData.DeliveryTypeMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().DeliveryTypeMasters;
-            //dropdownData.ProjectStatusMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ProjectStatusMasters;
-            //dropdownData.StatusMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().StatusMasters;
-            //dropdownData.CompetencyMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().CompetencyMasters;
-            //dropdownData.ServiceGroupMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ServiceGroupMasters;
-            //dropdownData.ServiceLineMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ServiceLineMasters;
-            //dropdownData.ServiceNetworkMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().ServiceNetworkMasters;
-            //dropdownData.AudienceLevelMasters = courseDropdownMasterDataController.GetCourseDropdownMasterData().AudienceLevelMasters;
-            //dropdownData.FieldOfFieldOfStudyMaster = courseDropdownMasterDataController.GetCourseDropdownMasterData().FieldOfFieldOfStudyMaster;
-            //dropdownData.ProgramKnowledgeLevelMaster = courseDropdownMasterDataController.GetCourseDropdownMasterData().ProgramKnowledgeLevelMaster;
-
 
             return new APIResponse<DropdownData>
             {

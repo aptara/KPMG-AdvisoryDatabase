@@ -17,7 +17,7 @@ namespace WKFS.WebAPI.Controllers
     }
 
     [System.Web.Http.HttpGet]
-    // [System.Web.Http.ActionName("GetWindowsUser")]
+
     public string GetWindowsUser()
     {
       var headerUserName = HttpContext.Current.Request.ServerVariables["AUTH_USER"];

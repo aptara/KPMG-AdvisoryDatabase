@@ -13,23 +13,20 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-//using System.Web.Http;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using System.Web.Http.Results;
 using System.Web.Script.Serialization;
 
 
-
-
 namespace AdvisoryDatabase.WebAPI.Controllers
 {
     public class GetExcelForFocusController : ApiController
     {
-        // GET: GetExcelForFocus
+   
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage ShowDataoffocus(string courseId)
-        /*public ActionResult Index()*/
+        public HttpResponseMessage GetAllShowDataoffocus(string courseId)
+     
         {
 
             try
@@ -38,13 +35,10 @@ namespace AdvisoryDatabase.WebAPI.Controllers
                 GetExcelForFocusInfo ObjInputParameters = new GetExcelForFocusInfo();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
-               //ObjInputParameters.CourseID = courseId;
-
+              
 
                 ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
                
-
-
 
                 List<GetExcelForFocusInfo> outputData = ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
 
@@ -64,31 +58,31 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         }
 
     [System.Web.Http.HttpGet]
-    public HttpResponseMessage ShowDataoffocus2(string courseId)
-    /*public ActionResult Index()*/
+    public HttpResponseMessage GetShowDataoffocus(string courseId)
+   
     {
 
       try
       {
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataoffocus2 Method Start");
-        AdvisoryDatabase.Business.Controllers.GETExcelForFocusController ObjBayDetai = new Business.Controllers.GETExcelForFocusController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetShowDataoffocus Method Start");
+        AdvisoryDatabase.Business.Controllers.GETExcelForFocusController UserObject = new Business.Controllers.GETExcelForFocusController();
         GetExcelForFocusInfo ObjInputParameters = new GetExcelForFocusInfo();
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
         ObjInputParameters.CourseMasterIDs = courseId;
 
 
-        ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
+        UserObject.GetExcelForFocusInfoDetails(ObjInputParameters);
 
 
 
 
-        List<GetExcelForFocusInfo> outputData = ObjBayDetai.GetExcelForFocusInfoDetails(ObjInputParameters);
+        List<GetExcelForFocusInfo> outputData = UserObject.GetExcelForFocusInfoDetails(ObjInputParameters);
 
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataoffocus2 Method end", jsonData);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetShowDataoffocus Method record count :"+ outputData.Count);
         return response;
 
       }

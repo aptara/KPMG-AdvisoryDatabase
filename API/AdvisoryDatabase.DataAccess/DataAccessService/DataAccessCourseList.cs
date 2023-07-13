@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,11 +46,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                           TargetAudience = row.ReadString("TargetAudience"),
                           FirstDeliveryDate = row.ReadString("FirstDeliveryDate"),
                          FOSvalues = row.ReadString("FOSvalues"),
-                       /*  FieldOfStudy1 = row.ReadString("FieldOfStudy1"),
-                         FieldOfStudy2 = row.ReadString("FieldOfStudy2"),
-                         FieldOfStudy3 = row.ReadString("FieldOfStudy3"),
-                         FieldOfStudy4 = row.ReadString("FieldOfStudy4"),
-                         */EstimatedCPE = row.ReadString("EstimatedCPE"),
+                       EstimatedCPE = row.ReadString("EstimatedCPE"),
                          Skilltext = row.ReadString("Skilltext"),
                          ProgramType = row.ReadString("ProgramType"),
                          DeliveryType = row.ReadString("DeliveryType"),
@@ -63,20 +59,8 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                           CourseSponsor = row.ReadString("CourseSponsor"),
                           Vendor = row.ReadString("Vendor"),
                           ServiceNowID = row.ReadString("ServiceNowID"),
-                           
+                        
                          SGSLSNValues = row.ReadString("SGSLSNValues"),
-                      /*   ServiceGroup1 = row.ReadString("ServiceGroup1"),
-                         ServiceGroup2 = row.ReadString("ServiceGroup2"),
-                         ServiceGroup3 = row.ReadString("ServiceGroup3"),
-                         ServiceGroup4 = row.ReadString("ServiceGroup4"),
-                         ServiceLine1 = row.ReadString("ServiceLine1"),
-                         ServiceLine2 = row.ReadString("ServiceLine2"),
-                         ServiceLine3 = row.ReadString("ServiceLine3"),
-                         ServiceLine4 = row.ReadString("ServiceLine4"),
-                         ServiceNetwork1 = row.ReadString("ServiceNetwork1"),
-                         ServiceNetwork2 = row.ReadString("ServiceNetwork2"),
-                         ServiceNetwork3 = row.ReadString("ServiceNetwork3"),
-                         ServiceNetwork4 = row.ReadString("ServiceNetwork4"),*/
                          Duration = row.ReadString("Duration"),
                          FocusDomain = row.ReadString("FocusDomain"),
                          Status = row.ReadString("Status")
@@ -98,10 +82,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                  TargetAudience = data.ReadString("TargetAudience"),
                 FirstDeliveryDate = data.ReadString("FirstDeliveryDate"),
                 FOSvalues = data.ReadString("FOSvalues"),
-               /* FieldOfStudy1 = data.ReadString("FieldOfStudy1"),
-                FieldOfStudy2 = data.ReadString("FieldOfStudy2"),
-                FieldOfStudy3 = data.ReadString("FieldOfStudy3"),
-                FieldOfStudy4 = data.ReadString("FieldOfStudy4"),*/
+               
                 EstimatedCPE = data.ReadString("EstimatedCPE"),
                  Skilltext = data.ReadString("Skilltext"),
                 ProgramType = data.ReadString("ProgramType"),
@@ -115,27 +96,10 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 CourseSponsor = data.ReadString("CourseSponsor"),
                 Vendor = data.ReadString("Vendor"),
                 ServiceNowID = data.ReadString("ServiceNowID"),
-
                 SGSLSNValues = data.ReadString("SGSLSNValues"),
-           /*     ServiceGroup1 = data.ReadString("ServiceGroup1"),
-                ServiceGroup2 = data.ReadString("ServiceGroup2"),
-                ServiceGroup3 = data.ReadString("ServiceGroup3"),
-                ServiceGroup4 = data.ReadString("ServiceGroup4"),
-                ServiceLine1 = data.ReadString("ServiceLine1"),
-                ServiceLine2 = data.ReadString("ServiceLine2"),
-                ServiceLine3 = data.ReadString("ServiceLine3"),
-                ServiceLine4 = data.ReadString("ServiceLine4"),
-                ServiceNetwork1 = data.ReadString("ServiceNetwork1"),
-                ServiceNetwork2 = data.ReadString("ServiceNetwork2"),
-                ServiceNetwork3 = data.ReadString("ServiceNetwork3"),
-                ServiceNetwork4 = data.ReadString("ServiceNetwork4"),*/
                 Duration = data.ReadString("Duration"),
                 FocusDomain = data.ReadString("FocusDomain"),
                 Status = data.ReadString("Status")
-
-
-
-
 
             };
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +17,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string TargetAudience { get; set; }
         public string FirstDeliveryDate { get; set; }
         public string FOSvalues { get; set; }
-        /*
-         public string FieldOfStudy1 { get; set; }
-         public string FieldOfStudy2 { get; set; }
-         public string FieldOfStudy3 { get; set; }
-         public string FieldOfStudy4 { get; set; }
- */
+        
         public string EstimatedCPE { get; set; }
 
         public string Skilltext { get; set; }
@@ -39,18 +34,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public string ServiceNowID { get; set; }
         public string SGSLSNValues { get; set; }
 
-        /*      public string ServiceGroup1 { get; set; }
-              public string ServiceGroup2 { get; set; }
-              public string ServiceGroup3 { get; set; }
-              public string ServiceGroup4 { get; set; }
-              public string ServiceLine1 { get; set; }
-              public string ServiceLine2 { get; set; }
-              public string ServiceLine3 { get; set; }
-              public string ServiceLine4 { get; set; }
-              public string ServiceNetwork1 { get; set; }
-              public string ServiceNetwork2 { get; set; }
-              public string ServiceNetwork3 { get; set; }
-              public string ServiceNetwork4 { get; set; }*/
+        
 
         public string FocusDomain { get; set; }
         public string Duration { get; set; }

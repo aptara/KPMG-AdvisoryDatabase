@@ -12,7 +12,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-//using System.Web.Http;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using System.Web.Http.Results;
@@ -26,32 +25,31 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
         [System.Web.Http.HttpGet]
         public HttpResponseMessage ShowDataofdeployment()
-        // GET: GetExcelForDeploymentReport
-        /*public ActionResult Index()*/
+     
         {
             try
             {
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofdeployment Method Start");
-        AdvisoryDatabase.Business.Controllers.GETExcelForDeploymentReportController ObjBayDetai = new Business.Controllers.GETExcelForDeploymentReportController();
+                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofdeployment Method Start");
+                AdvisoryDatabase.Business.Controllers.GETExcelForDeploymentReportController DataForDeployment = new Business.Controllers.GETExcelForDeploymentReportController();
                 ExcelforDeployment ObjInputParameters = new ExcelforDeployment();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
-                ObjBayDetai.GetExcelForDeploymentReportDetails(ObjInputParameters);
+                DataForDeployment.GetExcelForDeploymentReportDetails(ObjInputParameters);
 
 
-                List<ExcelforDeployment> outputData = ObjBayDetai.GetExcelForDeploymentReportDetails(ObjInputParameters);
+                List<ExcelforDeployment> outputData = DataForDeployment.GetExcelForDeploymentReportDetails(ObjInputParameters);
 
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofdeployment Method end",jsonData);
-        return response;
+                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowDataofdeployment Method Record Count" + outputData.Count);
+                return response;
 
             }
             catch (Exception ex)
             {
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowDataofdeployment Method end", ex.Message);
-        HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowDataofdeployment Method end", ex.Message);
+                HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");
                 return errorResponse;
 

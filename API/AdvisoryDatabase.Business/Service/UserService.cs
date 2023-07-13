@@ -18,17 +18,14 @@ namespace AdvisoryDatabase.Business.Service
             return new DataAccessUserService();
         }
 
-
-
     //method for update data
     public int GetUpdatedUserMasterID(UserDetail userDetail)
     {
       
-
       int updatedUserMasterID = userDetail.UserMasterID;
       return updatedUserMasterID;
     }
-    //GetEmail method
+    
     public UserDetail GetUserByUserEmail(string emailID)
     {
       UserDetail ObjUser = new UserDetail();

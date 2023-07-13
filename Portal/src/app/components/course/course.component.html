@@ -1,10 +1,8 @@
 <div class="add-course">
     <div class="LastUpdatedData">
-        <span *ngIf="CourseData?.IsRecordLocked === 'Yes       '" style="color: red; margin-right: 230px;">Respective
-            course is uploaded in
-            Focus.
-            So record
-            is locked.</span>
+        <span *ngIf="CourseData?.IsRecordLocked === 'Yes' " style="color: red; margin-right: 230px;">
+            Respective course is uploaded in Focus.So record is locked.
+        </span>
         <p style="margin: 0 20px 0 0;">Last Updated By: {{ CourseData?.UpdatedUserName}}</p>
         <p>Last Updated On: {{ CourseData?.LastUpdatedOn}}</p>
     </div>
@@ -405,17 +403,19 @@
                             <div [formGroupName]="i">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="AudienceType">Audience Type {{ i + 1}}<span
-                                                style="color:red;">*</span></label>
+                                        <label for="AudienceType">Audience Type {{ i + 1}}
+                                            <!-- <span
+                                                style="color:red;">*</span> -->
+                                        </label>
                                         <input type="text" class="form-control" formControlName="AudienceType"
                                             id="AudienceType">
                                     </div>
-                                    <div class="message-error">
+                                    <!-- <div class="message-error">
                                         <div class="error-tooltips"
                                             *ngIf="IsSubmit && fOSFormGroup.get('AudienceType')?.hasError('pattern')">
                                             Audience Type should be Alpha Numeric.
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-md-3">
                                     <div *ngIf="i != 0">
@@ -443,16 +443,18 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="CourseSponsor">Course Sponsor <span style="color:red;">*</span></label>
+                        <label for="CourseSponsor">Course Sponsor
+                            <!-- <span style="color:red;">*</span> -->
+                        </label>
                         <input type="text" class="form-control" formControlName="CourseSponsor" id="CourseSponsor">
-                        <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['CourseSponsor'].errors">
+                        <!-- <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['CourseSponsor'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseSponsor?.errors?.required">
                                 Course Sponsor is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.CourseSponsor?.errors?.pattern">
                                 Course Sponsor should be Alpha Numeric.
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -519,16 +521,18 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="ServiceNowID">Service Now ID <span style="color:red;">*</span></label>
+                        <label for="ServiceNowID">Service Now ID
+                            <!-- <span style="color:red;">*</span> -->
+                        </label>
                         <input type="text" class="form-control" formControlName="ServiceNowID" id="ServiceNowID">
-                        <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['ServiceNowID'].errors">
+                        <!-- <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['ServiceNowID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.required">
                                 Service Now ID is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ServiceNowID?.errors?.pattern">
                                 Service Now ID should be Alpha Numeric.
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -540,17 +544,19 @@
                     <div class="form-group">
                         <label for="Descriptions">Please provide a description/the business need related to this
                             request
-                            <span style="color:red;">*</span></label>
+                            <!-- <span style="color:red;">*</span> -->
+
+                        </label>
                         <textarea type="text" class="form-control" formControlName="Descriptions"
                             id="Descriptions"></textarea>
-                        <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Descriptions'].errors">
+                        <!-- <div class="message-error" *ngIf="IsSubmit &&  CourseForm.controls['Descriptions'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.required">
                                 Business Description is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.Descriptions?.errors?.pattern">
                                 Business Description should be Alpha Numeric.
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -576,20 +582,24 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="ProgramTypeID">Program Type <span style="color:red;">*</span></label>
+                        <label for="ProgramTypeID">Program Type
+                            <!-- <span style="color:red;">*</span> -->
+                        </label>
                         <ngx-select-dropdown [config]="config" formControlName="ProgramTypeID"
                             [options]="ProgramTypeMasterData">
                         </ngx-select-dropdown>
-                        <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['ProgramTypeID'].errors">
+                        <!-- <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['ProgramTypeID'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.ProgramTypeID?.errors?.required">
                                 Program Type is required.
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="DeliveryTypeID">Delivery Type <span style="color:red;">*</span></label>
+                        <label for="DeliveryTypeID">Delivery Type
+                            <!-- <span style="color:red;">*</span> -->
+                        </label>
                         <ngx-select-dropdown [config]="config" formControlName="DeliveryTypeID"
                             [options]="DeliveryTypeMasterData">
                         </ngx-select-dropdown>
@@ -603,7 +613,9 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="Duration">Duration<span style="color:red;">*</span></label>
+                        <label for="Duration">Duration
+                            <!-- <span style="color:red;">*</span> -->
+                        </label>
                         <input class="form-control" type="text" placeholder="HH:MM" formControlName="Duration"
                             id="Duration" [inputMask]="TimeInputMask">
                         <!-- <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['Duration'].errors">
@@ -618,16 +630,18 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="FirstDeliveryDate">First Delivery Date<span style="color:red;">*</span></label>
+                        <label for="FirstDeliveryDate">First Delivery Date
+                            <!-- <span style="color:red;">*</span> -->
+                        </label>
                         <input class="form-control" type="date" title="MM/DD/YY" formControlName="FirstDeliveryDate"
                             id="FirstDeliveryDate">
 
-                        <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['FirstDeliveryDate'].errors">
+                        <!-- <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['FirstDeliveryDate'].errors">
                             <div class="error-tooltips"
                                 *ngIf="CourseForm.controls?.FirstDeliveryDate?.errors?.required">
                                 First Delivery Date is required.
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -780,17 +794,19 @@
                 <div class="col-md-3">
 
                     <div class="form-group">
-                        <label for="LDIntakeOwner">L&D Intake Owner <span style="color:red;">*</span></label>
+                        <label for="LDIntakeOwner">L&D Intake Owner
+                            <!-- <span style="color:red;">*</span> -->
+                        </label>
                         <ngx-select-dropdown [config]="config" formControlName="LDIntakeOwner"
                             [options]="LDIntakeOwnerMaster"></ngx-select-dropdown>
-                        <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['LDIntakeOwner'].errors">
+                        <!-- <div class="message-error" *ngIf="IsSubmit && CourseForm.controls['LDIntakeOwner'].errors">
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.required">
                                 L&D-Intake-Owner is required.
                             </div>
                             <div class="error-tooltips" *ngIf="CourseForm.controls?.LDIntakeOwner?.errors?.pattern">
                                 L&D-Intake-Owner should be Alpha Numeric.
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -840,17 +856,19 @@
                         <div>
                             <div class="col-md-3" [formGroupName]="i">
                                 <div class="form-group">
-                                    <label for="CourseOwner">Course Owner {{i + 1}} <span
-                                            style="color:red;">*</span></label>
+                                    <label for="CourseOwner">Course Owner {{i + 1}}
+                                        <!-- <span
+                                            style="color:red;">*</span> -->
+                                    </label>
                                     <ngx-select-dropdown [config]="config" formControlName="CourseOwner"
                                         [options]="CourseOwnerMasterData">
                                     </ngx-select-dropdown>
-                                    <div class="message-error">
+                                    <!-- <div class="message-error">
                                         <div class="error-tooltips"
                                             *ngIf="IsSubmit && fCOFormGroup.get('CourseOwner')?.hasError('required')">
                                             Course Owner is required.
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -954,5 +972,5 @@
             </div>
         </div>
     </form>
-    <!-- </div> -->
+
 </div>

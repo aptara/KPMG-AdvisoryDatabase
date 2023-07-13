@@ -12,7 +12,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-//using System.Web.Http;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using System.Web.Http.Results;
@@ -25,33 +24,32 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     {
         [System.Web.Http.HttpGet]
         public HttpResponseMessage ShowData()
-        // GET: CourseOwner
-        /* public ActionResult Index()*/
+      
         {
             try
             {
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method Start");
-        AdvisoryDatabase.Business.Controllers.CourseOwnerController ObjBayDetai = new Business.Controllers.CourseOwnerController();
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetCourseOwner Method Start");
+        AdvisoryDatabase.Business.Controllers.CourseOwnerController GetCourseOwner = new Business.Controllers.CourseOwnerController();
                 CourseOwnerDetails ObjInputParameters = new CourseOwnerDetails();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
-                ObjBayDetai.GetCourseOwnerDetails(ObjInputParameters);
+        GetCourseOwner.GetCourseOwnerDetails(ObjInputParameters);
 
 
 
-                List<CourseOwnerDetails> outputData = ObjBayDetai.GetCourseOwnerDetails(ObjInputParameters);
+                List<CourseOwnerDetails> outputData = GetCourseOwner.GetCourseOwnerDetails(ObjInputParameters);
 
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-               AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("ShowData Method End: "+ jsonData);
+               AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("GetCourseOwner Method record count :" + outputData.Count);
                 return response;
 
 
             }
             catch (Exception ex)
             {
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("ShowData Exception", ex.Message);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteError("GetCourseOwner Exception", ex.Message);
     /*    return Erroresponse<Course>(error);*/
         HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 errorResponse.Content = new StringContent("An error occurred: " + ex.Message, Encoding.UTF8, "text/plain");

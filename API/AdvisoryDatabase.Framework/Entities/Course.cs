@@ -36,7 +36,7 @@ namespace AdvisoryDatabase.Framework.Entities
         public int ProgramTypeID { get; set; }
         public int DeliveryTypeID { get; set; }
         public string Duration { get; set; }
-        public DateTime FirstDeliveryDate { get; set; }
+        public DateTime? FirstDeliveryDate { get; set; }
         public decimal? MaximumAttendeeCount { get; set; }
         public decimal? MinimumAttendeeCount { get; set; }
         public decimal? MaximumAttendeeWaitlist { get; set; }

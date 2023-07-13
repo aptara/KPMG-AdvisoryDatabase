@@ -12,7 +12,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-//using System.Web.Http;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using System.Web.Http.Results;
@@ -28,10 +27,10 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         [HttpGet]
         public APIResponse<Course> GetCourse(int Id)
         {
-            Course course = new Course();
-            course.CourseMasterID = Id;
+            Course CourseDetail = new Course();
+            CourseDetail.CourseMasterID = Id;
             AdvisoryDatabase.Business.Controllers.CourseController courseController = new Business.Controllers.CourseController();
-            return courseController.GetCourse(course);
+            return courseController.GetCourse(CourseDetail);
         }
 
         [HttpGet]

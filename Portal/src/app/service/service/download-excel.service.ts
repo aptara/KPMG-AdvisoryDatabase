@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment';
 export class DownloadExcelService {
     apiURL = environment.baseUrl;
 
-    readonly getAllShowDataofclarizenAPI = this.apiURL + "GETExcelForClarizenFields/ShowDataofclarizen2/";
-    readonly getAllShowDataoffocusAPI = this.apiURL + "GetExcelForFocus/ShowDataoffocus2/";
+    readonly getAllShowDataofclarizenAPI = this.apiURL + "GETExcelForClarizenFields/GetShowDataForClarizan/";
+    readonly getAllShowDataoffocusAPI = this.apiURL + "GetExcelForFocus/GetShowDataoffocus/";
     readonly getAllShowDataofdeploymentAPI = this.apiURL + "GetExcelForDeploymentReport/ShowDataofdeployment/";
     readonly getAllShowDataofUnlockAPI = this.apiURL + "UnlockCourse/UnlockCourse/";
     readonly getAllShowDataofCourseList = this.apiURL + "GetCourseList/CourseList/";

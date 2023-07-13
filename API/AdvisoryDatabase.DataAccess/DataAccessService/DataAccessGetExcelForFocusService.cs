@@ -24,9 +24,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 case OperationType.GetAll:
                     spName = "USP_ExcelForFocus";
                     break;
-                /*  case OperationType.GetAll:
-                      spName = "CourseOwnerDetail";
-                      break;*/
+
                 default:
                     spName = string.Empty;
                     break;
@@ -64,7 +62,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
 
                          CourseMasterID = Int32.Parse(row.ReadString("CourseMasterID")),
                          ID = row.ReadString("ID"),
-                        // CourseID = row.ReadString("CourseID"),
+                         CourseID = row.ReadString("CourseID"),
                          Version = row.ReadString("Version"),
 
                          CourseName = row.ReadString("CourseName"),
@@ -117,11 +115,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                          MinimumAttendeeCount = row.ReadString("MinimumAttendeeCount"),
                          MaximumAttendeeCount = row.ReadString("MaximumAttendeeCount"),
                          MaximumAttendeeWaitlist = row.ReadString("MaximumAttendeeWaitlist"),
-                        
-                        
                          FocusTemplateName = row.ReadString("FocusTemplateName"),
                          ErrorMessage = row.ReadString("ErrorMessage"),
-                         OFFERING_TEMPLATE_NO = row.ReadString("OFFERING_TEMPLATE_NO"),
+                         OFFERING_TEMPLATE_NO = row.ReadString("CourseID"),
                          IsAllowedToFocusRDI = row.ReadString("IsAllowedToFocusRDI")
 
 
@@ -138,7 +134,7 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                 CourseMasterID = Int32.Parse(data.ReadString("CourseMasterID")),
 
                 ID = data.ReadString("ID"),
-                //CourseID = data.ReadString("CourseID"),
+                CourseID = data.ReadString("CourseID"),
                 Version = data.ReadString("Version"),
                 CourseName = data.ReadString("CourseName"),
                 CourseDomain = data.ReadString("CourseDomain"),
@@ -194,12 +190,9 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                
                 FocusTemplateName = data.ReadString("FocusTemplateName"),
                 ErrorMessage = data.ReadString("ErrorMessage"),
-                OFFERING_TEMPLATE_NO = data.ReadString("OFFERING_TEMPLATE_NO"),
+                OFFERING_TEMPLATE_NO = data.ReadString("CourseID"),
                 IsAllowedToFocusRDI = data.ReadString("IsAllowedToFocusRDI")
-                                //* CourseMasterIDs = data.ReadString("CourseMasterIDs")*//*
-                                //SubjectMatterProfessional = data.ReadString("SubjectMatterProfessional")
-                
-
+                               
             };
         }
 
@@ -207,51 +200,3 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
     }
 }
 
-
-/*
-
-public string FORDLSONLY { get; set; } //add new
-public string CourseID { get; set; }
-
-public string LeaveBlank { get; set; }
-public string CourseName { get; set; }
-
-
-public string FocusDomain { get; set; }
-
-public string FirstDeliveryDate { get; set; }
-public string FocusDiscFrom { get; set; }
-public string Currency { get; set; }
-public string Price { get; set; }
-public string CourseOverviewObjective { get; set; }
-
-public string FocusDisplayedToLearner { get; set; }
-public string DisplayCallCenter { get; set; }
-public string AudienceType1 { get; set; }
-public string AudienceType2 { get; set; }
-public string Vendor { get; set; } //addnew
-public string FunctionName { get; set; }
-public string DeploymentFiscalYear { get; set; }
-
-public string ProgramKnowledgeLevel { get; set; }
-public string EstimatedCPE { get; set; }
-
-public string TargetAudience { get; set; }
-public string SpecialNotice { get; set; }
-public string FoucsCourseOwner1 { get; set; }
-public string FocusCourseOwner2 { get; set; }
-public string PrerequisiteCourseID1 { get; set; }
-public string EquivalentCourseID1 { get; set; }
-public string DeliveryType { get; set; }
-public string Duration { get; set; }
-public string FieldOfStudy1 { get; set; }
-public string CPECrdit { get; set; } //FOS credit..?
-public string FieldOfStudy2 { get; set; }
-
-public string CPECrdit2 { get; set; }
-public string MinimumAttendeeCount { get; set; }
-
-public string MaximumAttendeeCount { get; set; }
-
-public string MaximumAttendeeWaitlist { get; set; }
-*/

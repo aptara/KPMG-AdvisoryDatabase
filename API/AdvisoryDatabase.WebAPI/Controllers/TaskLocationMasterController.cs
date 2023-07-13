@@ -14,36 +14,26 @@ namespace AdvisoryDatabase.WebAPI.Controllers
   public class TaskLocationMasterController : ApiController
   {
 
-   
-
-
-
-    //http://localhost:62220//api/TaskLocationMaster/TaskAction
     [System.Web.Http.HttpGet]
-    public HttpResponseMessage TaskAction()
-    /* public ActionResult Index()*/
+    public HttpResponseMessage GetTask()
+    
     {
       try
       {
         AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("TaskAction Method Start");
-        AdvisoryDatabase.Business.Controllers.TaskLocationMasterController ObjBayDetai = new Business.Controllers.TaskLocationMasterController();
+        AdvisoryDatabase.Business.Controllers.TaskLocationMasterController TaskObject = new Business.Controllers.TaskLocationMasterController();
         Task ObjInputParameters = new Task();
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
-        // ObjBayDetai.GetUserDetailsByUserID(ObjInputParameters);
-
-
-        List<Task> outputData = ObjBayDetai.GetTasks(ObjInputParameters);
-        //*string B= JsonConvert.SerializeObject(outputData);
-
-
-
+        
+        List<Task> outputData = TaskObject.GetTasks(ObjInputParameters);
+      
 
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
         var jsonResponse = JsonConvert.DeserializeObject<dynamic>(jsonData);
         response.Content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
-        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("TaskAction Method end",jsonData);
+        AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("TaskAction Method count"+ outputData.Count);
         return response;
 
       }
@@ -58,11 +48,11 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     }
 
 
-    //http://localhost:62220//api/TaskLocationMaster/LocationAction
-    //LocationMaster
+   
+
     [System.Web.Http.HttpGet]
     public HttpResponseMessage LocationAction()
-    /* public ActionResult Index()*/
+ 
     {
       try
       {
@@ -70,14 +60,8 @@ namespace AdvisoryDatabase.WebAPI.Controllers
         LocationDetail ObjInputParameters = new LocationDetail();
         ObjInputParameters.LastUpdatedBy = 1;
         ObjInputParameters.IsActive = true;
-        // ObjBayDetai.GetUserDetailsByUserID(ObjInputParameters);
-
-
+ 
         List<LocationDetail> outputData = ObjBayDetai.GetLocation(ObjInputParameters);
-        //*string B= JsonConvert.SerializeObject(outputData);
-
-
-
 
         string jsonData = JsonConvert.SerializeObject(outputData);
         HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);

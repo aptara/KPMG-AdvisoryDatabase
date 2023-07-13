@@ -8,12 +8,10 @@ using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Http;
-
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.IO;
-//using System.Web.Http;
 using AdvisoryDatabase.Business;
 using AdvisoryDatabase.Framework.Logger;
 using System.Web.Http.Results;
@@ -27,26 +25,26 @@ namespace AdvisoryDatabase.WebAPI.Controllers
     public class UnlockCourseController : ApiController
     {
           [System.Web.Http.HttpGet]
-        public HttpResponseMessage UnlockCourse(string courseId)
+        public HttpResponseMessage GetUnlockCourse(string courseId)
       
         {
            try
             {
         AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UnlockCourse Method Start");
-        AdvisoryDatabase.Business.Controllers.UnlockCourseController ObjBayDetai = new Business.Controllers.UnlockCourseController();
+        AdvisoryDatabase.Business.Controllers.UnlockCourseController UnlockCourseData = new Business.Controllers.UnlockCourseController();
                 UnlockCourseMap ObjInputParameters = new UnlockCourseMap();
                 ObjInputParameters.LastUpdatedBy = 1;
                 ObjInputParameters.IsActive = true;
                 ObjInputParameters.CourseMasterIDs = courseId;
 
-                ObjBayDetai.UnlockCourseDataService(ObjInputParameters);
+        UnlockCourseData.UnlockCourseDataService(ObjInputParameters);
 
-                List<UnlockCourseMap> outputData = ObjBayDetai.UnlockCourseDataService(ObjInputParameters);
+                List<UnlockCourseMap> outputData = UnlockCourseData.UnlockCourseDataService(ObjInputParameters);
 
                 string jsonData = JsonConvert.SerializeObject(outputData);
                 HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
                 response.Content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                 AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UnlockCourse Method end"+jsonData);
+                 AdvisoryDatabase.Framework.Logger.AdvisoryLogger.WriteInfo("UnlockCourse Method record count :"+outputData.Count);
                 return response;
 
             }

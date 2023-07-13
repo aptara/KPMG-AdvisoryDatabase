@@ -31,7 +31,6 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
           spName = "UpdateUser";
           break;
 
-
         default:
           spName = string.Empty;
           break;
@@ -58,7 +57,6 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
                  LastUpdatedOn = DateTime.Parse(row.ReadString("LastUpdatedOn")),
                  NetworkID = row.ReadString("NetworkID")
 
-
                }).ToList();
 
       return GetAllData;
@@ -76,21 +74,11 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
         LocationID = Int32.Parse(data.ReadString("LocationID")),
         Location = data.ReadString("Location"),
         TaskMasterID = data.ReadString("TaskMasterID"),
-        /* LastUpdatedBy = Int32.Parse(data.ReadString("LastUpdatedBy")),
-         LastUpdatedOn = DateTime.Parse(data.ReadString("LastUpdatedOn"))*/
-
-
       };
     }
 
-
-
-
-
     protected override void FillParameters(OperationType operation, UserDetail instance, List<DbParameter> parameters)
     {
-
-
       switch (operation)
       {
         case OperationType.Add:
@@ -102,7 +90,6 @@ namespace AdvisoryDatabase.DataAccess.DataAccessService
           parameters.Add(DbHelper.CreateParameter("NetworkID", instance.NetworkID));
 
           break;
-
 
         case OperationType.Update:
           parameters.Add(DbHelper.CreateParameter("UserMasterID", instance.UserMasterID));

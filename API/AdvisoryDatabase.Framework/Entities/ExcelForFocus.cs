@@ -11,7 +11,7 @@ namespace AdvisoryDatabase.Framework.Entities
     {
         public string ID { get; set; }
         public string OFFERING_TEMPLATE_NO { get; set; }
-      //  public string CourseID { get; set; }
+       
 
         public string Version { get; set; }
         public string CourseName { get; set; }
@@ -66,28 +66,18 @@ namespace AdvisoryDatabase.Framework.Entities
         public string MaximumAttendeeCount { get; set; }
 
         public string MaximumAttendeeWaitlist { get; set; }
-    // public string DiscontinuedFrom { get; set; }
+   
 
         public string FocusTemplateName { get; set; }
-    public string ErrorMessage { get; set; }
+       public string ErrorMessage { get; set; }
 
         public string CourseMasterIDs { get; set; }
         public int CourseMasterID { get; set; }
+         public string CourseID { get; set; }
 
-        // add new col
 
-        //---------------------------------------end-------------
-
-       //not show in the client excel 
-       //not show in the client excel 
-       //not show in the client excel 
-
-       //not show in the client excel 
-      
-       //not show in the client excel 
-
-        public string IsAllowedToFocusRDI { get; set; }//not show in the client excel 
-        public string Status { get; set; }//not show in the client excel 
+    public string IsAllowedToFocusRDI { get; set; }
+        public string Status { get; set; }
 
 
 
